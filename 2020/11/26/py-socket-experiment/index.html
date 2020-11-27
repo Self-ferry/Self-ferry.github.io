@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Self-ferry">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="py_socket_experiment"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="Self-ferry"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://Self-ferry.github.io"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Self-ferry" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/eagle.ico">
+  
+
+  <!-- Site Title -->
+  <title>Self-ferry</title>
+
+  <!-- Bootstrap CSS -->
+  
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+  <!-- Custom CSS -->
+  
+  
+<link rel="stylesheet" href="/css/style.light.css">
+
+
+  <!-- Google Analytics -->
+  
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">py_socket_experiment</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a target="_blank" rel="noopener" href="https://github.com/Self-ferry">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:Self_ferry@163.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Self-ferry</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2020-11-26</span>
+            <span class="time">14:33:38</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/python/">python</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/socket/">#socket</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>计算机双语实验写|ू･ω･` )的。</p>
+<h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2><blockquote>
+<p>当初看了李华峰的《Python渗透测试编程技术 方法与实践》里面就介绍了socket编程用客户端去控制服务端的的简单远程操控脚本。于是就准备自己写一个，可是写了之后发现自己写的很Low，于是就想到前辈们常说的“不要重复造轮子”(ಥ_ಥ) ，就去网上找了一个，这个还不错。忘记原作者的地址，转载自CSDN。</p>
+</blockquote>
+<h3 id="TCP-服务端（server）"><a href="#TCP-服务端（server）" class="headerlink" title="TCP 服务端（server）"></a>TCP 服务端（server）</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket, os</span><br><span class="line"></span><br><span class="line">server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  <span class="comment"># 指的是tcp协议</span></span><br><span class="line">server.bind((<span class="string">&quot;localhost&quot;</span>, <span class="number">9999</span>))</span><br><span class="line">server.listen(<span class="number">5</span>)</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    print(<span class="string">&quot;开始等待连接!!!&quot;</span>)</span><br><span class="line">    conn, addr = server.accept()</span><br><span class="line">    print(<span class="string">&quot;客户端地址：&quot;</span>, addr[<span class="number">0</span>], <span class="string">&quot;端口：&quot;</span>, addr[<span class="number">1</span>])</span><br><span class="line">    print(<span class="string">&quot;客户端连接成功\n&quot;</span>)</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            print(<span class="string">&quot;开始工作&quot;</span>.center(<span class="number">25</span>, <span class="string">&quot;-&quot;</span>))</span><br><span class="line">            print(<span class="string">&quot;等待新指令：&quot;</span>)</span><br><span class="line">            msg = conn.recv(<span class="number">1024</span>).decode()  <span class="comment"># 接收客户端信息并解码，默认为UTF-8编码</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> msg:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">elif</span> msg == <span class="string">&quot;bye&quot;</span> <span class="keyword">or</span> msg == <span class="string">&quot;exit&quot;</span>:</span><br><span class="line">                print(<span class="string">&quot;客户端[%s:%s]已断开连接！！！\n&quot;</span> % (addr[<span class="number">0</span>], addr[<span class="number">1</span>]))</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                print(<span class="string">&quot;执行新指令：%s&quot;</span> % msg)</span><br><span class="line">                <span class="comment"># 接受字符串，相当于在dos命令界面，执行命令</span></span><br><span class="line">                cmd_res = os.popen(msg).read()  </span><br><span class="line">                <span class="comment"># 将命令的结果编译成\xx\xx\xx,再进行统计字符数，因为结果中有汉字，编码后的一个汉字</span></span><br><span class="line">                <span class="comment">#为三个字符，所以客户端接收的时候也要统计bytes类型的字符数</span></span><br><span class="line">                cmd_size = <span class="built_in">len</span>(cmd_res.encode(<span class="string">&quot;utf-8&quot;</span>))  </span><br><span class="line">                    </span><br><span class="line">                <span class="keyword">if</span> cmd_size == <span class="number">0</span>:  <span class="comment"># 如果执行的是错误的命令，数据大小就为0，就执行下面的语句</span></span><br><span class="line">                    <span class="comment"># 发送一个0给客户端，客户端接收的是个字符串0就表示命令有误，可以重新输入</span></span><br><span class="line">                    conn.send(<span class="string">&quot;0&quot;</span>.encode(<span class="string">&quot;utf-8&quot;</span>))  </span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="comment"># 发送响应数据的大小（全部是变为bytes类型后统计的字符数）    </span></span><br><span class="line">                conn.send(<span class="built_in">str</span>(cmd_size).encode(<span class="string">&quot;utf-8&quot;</span>))  </span><br><span class="line">                cli_res = conn.recv(<span class="number">1024</span>).decode()</span><br><span class="line">                print(cli_res)</span><br><span class="line">                conn.send(cmd_res.encode(<span class="string">&quot;utf-8&quot;</span>))  <span class="comment"># 发送真实的数据</span></span><br><span class="line">                print(<span class="string">&quot;all send done。。。。。。\n&quot;</span>)</span><br><span class="line">        <span class="comment"># 客户端轻强制断开时，服务端会报这个错误，利用断言来捕获异常        </span></span><br><span class="line">        <span class="keyword">except</span> ConnectionResetError <span class="keyword">as</span> f:  </span><br><span class="line">            print(f)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">TCP黏包问题：</span></span><br><span class="line"><span class="string">面向流的通信特点和Nagle算法：</span></span><br><span class="line"><span class="string">TCP（transport control protocol，传输控制协议）是面向连接的，面向流的，提供高可靠性服务。</span></span><br><span class="line"><span class="string">收发两端（客户端和服务器端）都要有一一成对的socket，因此，发送端为了将多个发往接收端的包，更有效的发</span></span><br><span class="line"><span class="string">到对方，使用了优化方法（Nagle算法），</span></span><br><span class="line"><span class="string">将多次间隔较小且数据量小的数据，合并成一个大的数据块，然后进行封包。</span></span><br><span class="line"><span class="string">这样，接收端，就难于分辨出来了，必须提供科学的拆包机制。 即面向流的通信是无消息保护边界的。</span></span><br><span class="line"><span class="string">对于空消息：tcp是基于数据流的，于是收发的消息不能为空，这就需要在客户端和服务端都添加空消息的处理机</span></span><br><span class="line"><span class="string">制，防止程序卡住，而udp是基于数据报的，</span></span><br><span class="line"><span class="string">即便是你输入的是空内容（直接回车），也可以被发送，udp协议会帮你封装上消息头发送过去。</span></span><br><span class="line"><span class="string">可靠黏包的tcp协议：tcp的协议数据不会丢，没有收完包，下次接收，会继续上次继续接收，己端总是在收到ack</span></span><br><span class="line"><span class="string">时才会清除缓冲区内容。数据是可靠的，</span></span><br><span class="line"><span class="string">但是会粘包。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">黏包有两种：</span></span><br><span class="line"><span class="string">一种是因为发送数据包时，每次发送的包小，因为系统进行优化算法，就将两次的包放在一起发送，减少了资源的</span></span><br><span class="line"><span class="string">重复占用。多次发送会经历多次网络延迟，</span></span><br><span class="line"><span class="string">一起发送会减少网络延迟的次数。因此在发送小数据时会将两次数据一起发送，而客户端接收时，则会一并接收。</span></span><br><span class="line"><span class="string">#即出现多次send会出现黏包</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">第二种是因为接收数据时，又多次接收，第一次接收的数据量小，导致数据还没接收完，就停下了，剩余的数据会</span></span><br><span class="line"><span class="string">缓存在内存中，然后等到下次接收时和下</span></span><br><span class="line"><span class="string">一波数据一起接收。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">发送方问题：</span></span><br><span class="line"><span class="string">发送端需要等缓冲区满才发送出去，造成粘包（发送数据时间间隔很短，数据了很小，会合到一起，产生粘包）</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">接收方问题：</span></span><br><span class="line"><span class="string">接收方不及时接收缓冲区的包，造成多个包接收（客户端发送了一段数据，服务端只收了一小部分，服务端下次再</span></span><br><span class="line"><span class="string">收的时候还是从缓冲区拿上次遗留的数据，</span></span><br><span class="line"><span class="string">产生粘包）</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="TCP-客户端（client）"><a href="#TCP-客户端（client）" class="headerlink" title="TCP 客户端（client）"></a>TCP 客户端（client）</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"></span><br><span class="line">client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">client.connect((<span class="string">&quot;localhost&quot;</span>, <span class="number">9999</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    msg = <span class="built_in">input</span>(<span class="string">&quot;&gt;&gt;&gt;:&quot;</span>).strip()</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> msg:</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    client.send(msg.encode(<span class="string">&quot;utf-8&quot;</span>))  <span class="comment"># 发送命令</span></span><br><span class="line">    <span class="keyword">if</span> msg == <span class="string">&quot;bye&quot;</span> <span class="keyword">or</span> msg == <span class="string">&quot;exit&quot;</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    cmd_size = client.recv(<span class="number">1024</span>)  <span class="comment"># 接收响应数据的大小,此时接收的数据为bytes类型</span></span><br><span class="line">    <span class="keyword">if</span> cmd_size.decode() == <span class="built_in">str</span>(<span class="number">0</span>):  <span class="comment"># 如果等于字符串0就表示命令有误</span></span><br><span class="line">        print(<span class="string">&quot;执行无结果，可能命令错误，请重新输入&quot;</span>)</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    print(<span class="string">&quot;数据总大小为：&quot;</span>, cmd_size.decode())  </span><br><span class="line">    <span class="comment"># 将结果解码，如果不解码,打印的结果中前面会多一个“b”例如：b&quot;593&quot;</span></span><br><span class="line">    client.send(<span class="string">&quot;已收到发的数据。&quot;</span>.encode(<span class="string">&quot;utf-8&quot;</span>)) </span><br><span class="line">     <span class="comment"># 防止黏包，只有TCP有粘包现象，UDP永远不会粘包</span></span><br><span class="line">    data_size = <span class="number">0</span>  <span class="comment"># 数据的起始值</span></span><br><span class="line">    data_total = <span class="string">b&quot;&quot;</span>  <span class="comment"># 空值，用于和后面接收的数据拼接起来，形成完整的响应数据</span></span><br><span class="line">    <span class="keyword">while</span> data_size != <span class="built_in">int</span>(cmd_size.decode()):  </span><br><span class="line">    <span class="comment"># 判断服务端发送的大小和客户端接收的大小是否一致，一致表示全部接收，不一致时一直循环接收数据</span></span><br><span class="line">        data = client.recv(<span class="number">1024</span>)  <span class="comment"># 接收的是bytes类型</span></span><br><span class="line">        data_size += <span class="built_in">len</span>(data)  </span><br><span class="line">        <span class="comment"># 接收的数据大小，这里的汉字也变成了bytes类型，一个汉字为3个字符，和服务端一致</span></span><br><span class="line">        data_total += data  <span class="comment"># 这里不能解码，因为拼接的类型就是bytes类型</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">&quot;实际接收的大小：&quot;</span>, data_size)  <span class="comment"># 实际接收的总数据大小</span></span><br><span class="line">        print(data_total.decode())  <span class="comment"># 将所有接收到的结果进行解码，得到可见的结果</span></span><br><span class="line">        print(<span class="string">&quot;recv done ......&quot;</span>)</span><br><span class="line"></span><br><span class="line">client.close()</span><br></pre></td></tr></table></figure>
+<h2 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h2><p>这仅仅是一个简单的socket通信脚本</p>
+<h3 id="UDP服务端（server）"><a href="#UDP服务端（server）" class="headerlink" title="UDP服务端（server）"></a>UDP服务端（server）</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">UDP 服务端</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">accept()和connect()方法都不需要</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 接收客户端传来的数据 recvfrom接收客户端的数据，默认是阻塞的，直到有客户端传来数据</span></span><br><span class="line"><span class="string">        # recvfrom 参数的意义，表示最大能接收多少数据，单位是字节</span></span><br><span class="line"><span class="string">        # recvfrom返回值说明</span></span><br><span class="line"><span class="string">        # receive_data表示接受到的传来的数据,是bytes类型</span></span><br><span class="line"><span class="string">        # client  表示传来数据的客户端的身份信息，客户端的ip和端口，元组</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 创建一个套接字socket对象，用于进行通讯</span></span><br><span class="line"><span class="string"># # socket.AF_INET 指明使用INET地址集，进行网间通讯</span></span><br><span class="line"><span class="string"># # socket.SOCK_DGRAM 指明使用数据协议，即使用传输层的udp协议</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> socket  </span><br><span class="line"><span class="keyword">import</span> time  </span><br><span class="line"></span><br><span class="line"><span class="comment"># server 接收端</span></span><br><span class="line">server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)</span><br><span class="line">address = (<span class="string">&quot;127.0.0.1&quot;</span>, <span class="number">9977</span>)</span><br><span class="line">server_socket.bind(address)</span><br><span class="line">server_socket.settimeout(<span class="number">10</span>)  <span class="comment"># 设置一个时间提示，如果10秒钟没接到数据进行提示</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">&#x27;ヽ(ー_ー)ノ启动socket服务，等待客户端连接...&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        now = time.time()  <span class="comment"># 获取当前时间</span></span><br><span class="line">        receive_data, client = server_socket.recvfrom(<span class="number">1024</span>)</span><br><span class="line">        server_socket.sendto(<span class="string">&quot;服务器已收到你的信息la(๑╹ヮ╹๑)ﾉ &quot;</span>.encode(), client)</span><br><span class="line">        <span class="keyword">if</span> receive_data.decode() == <span class="string">&quot;exit&quot;</span>:</span><br><span class="line">            exit(<span class="string">&quot;结束通讯 (￢_￢)瞄&quot;</span>)</span><br><span class="line">        print(time.strftime(<span class="string">&#x27;%Y-%m-%d %H:%M:%S&#x27;</span>, time.localtime(now)))  <span class="comment"># 以指定格式显示时间</span></span><br><span class="line">        print(<span class="string">&quot;收到(*￣︶￣)来自客户端&#123;&#125;端口为&#123;&#125;,发送的\n*********\n&#123;&#125;\n*********&quot;</span>.<span class="built_in">format</span>(client[<span class="number">0</span>], client[<span class="number">1</span>], receive_data.decode()))</span><br><span class="line">    <span class="keyword">except</span> socket.timeout:  <span class="comment"># 如果10秒钟没有接收数据进行提示</span></span><br><span class="line">        print(<span class="string">&quot;10秒没理我la(^_−)☆&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="UDP客户端（client）"><a href="#UDP客户端（client）" class="headerlink" title="UDP客户端（client）"></a>UDP客户端（client）</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">UDP</span></span><br><span class="line"><span class="string">客户端</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">创建套接字，连接远端地址</span></span><br><span class="line"><span class="string">连接后发送数据和接受数据</span></span><br><span class="line"><span class="string">传输完毕，关闭套接字</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment"># client 发送端</span></span><br><span class="line">client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)</span><br><span class="line">server_address = (<span class="string">&quot;127.0.0.1&quot;</span>, <span class="number">9977</span>)  <span class="comment"># 接收方 服务器的ip地址和端口号</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    start = time.time()</span><br><span class="line"></span><br><span class="line">    print(time.strftime(<span class="string">&#x27;%Y-%m-%d %H:%M:%S&#x27;</span>, time.localtime(start)))  <span class="comment"># 以指定格式显示当前时间</span></span><br><span class="line"></span><br><span class="line">    msg = <span class="built_in">input</span>(<span class="string">&quot;(*^▽^*)客户端，请输入要发送的内容：&quot;</span>)</span><br><span class="line"></span><br><span class="line">    client_socket.sendto(msg.encode(), server_address)  <span class="comment"># 将msg内容发送给指定接收方</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> msg == <span class="string">&quot;exit&quot;</span>:</span><br><span class="line">        exit(<span class="string">&quot;结束通讯 (￢_￢)瞄&quot;</span>)</span><br><span class="line">    receive_data, server = client_socket.recvfrom(<span class="number">1024</span>)</span><br><span class="line"></span><br><span class="line">    print(<span class="string">&quot;(︶.̮︶✽)接收到来自&#123;&#125;端口为&#123;&#125;的信息:\n**********\n&#123;&#125;\n**********&quot;</span>.<span class="built_in">format</span>(server[<span class="number">0</span>], server[<span class="number">1</span>], receive_data.decode()))</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+
+<script src="/js/highlight.pack.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
