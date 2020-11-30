@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Self-ferry">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="Apache_Config"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="Self-ferry"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://Self-ferry.github.io"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Self-ferry" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/eagle.ico">
+  
+
+  <!-- Site Title -->
+  <title>Self-ferry</title>
+
+  <!-- Bootstrap CSS -->
+  
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+  <!-- Custom CSS -->
+  
+  
+<link rel="stylesheet" href="/css/style.light.css">
+
+
+  <!-- Google Analytics -->
+  
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">Apache_Config</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a target="_blank" rel="noopener" href="https://github.com/Self-ferry">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:Self_ferry@163.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Self-ferry</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2020-11-30</span>
+            <span class="time">11:02:51</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/web/">web</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/Apeache/">#Apeache</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <h1 id="一、Apache主要配置文件注释"><a href="#一、Apache主要配置文件注释" class="headerlink" title="一、Apache主要配置文件注释"></a>一、Apache主要配置文件注释</h1><p>Apache的主配置文件：httpd.conf </p>
+<hr>
+<p>Apache服务器的配置信息全部存储在主配置文件httpd.conf中，这个文件中的内容非常多，其中大部分是以#开头的注释行。</p>
+<hr>
+<p>ServerTokens OS<br>在出现错误页的时候是否显示服务器操作系统的名称，ServerTokens Prod为不显示</p>
+<hr>
+<p>ServerRoot “/etc/httpd”<br>用于指定Apache的运行目录，服务启动之后自动将目录改变为当前目录，在后面使用到的所有相对路径都是相对这个目录</p>
+<hr>
+<p>User daemon                          # apache的用户，默认为daemon<br>Group daemon                         # apache的用户，默认为daemon</p>
+<hr>
+<p>PidFile run/httpd.pid<br>记录httpd守护进程的pid号码，这是系统识别一个进程的方法，系统中httpd进程可以有多个，但这个PID对应的进程是其他的父进程</p>
+<hr>
+<p>Listen 80<br>监听的端口</p>
+<hr>
+<p>Include conf.modules.d/<em>.conf<br>包含辅助配置文件目录下的所有以.conf结尾的;;;文件(/etc/httpd/conf.modules.d/</em>.conf)</p>
+<hr>
+<p>User apache       //运行web服务的用户<br>Group apache    </p>
+<p>ServerAdmin root@localhost<br>管理员邮件地址</p>
+<hr>
+<p>#ServerName <a target="_blank" rel="noopener" href="http://www.example.com/">www.example.com:80</a>  </p>
+<p>ServerName <a target="_blank" rel="noopener" href="http://www.uplooking.com/">www.uplooking.com:80</a></p>
+<p>服务器的名字</p>
+<hr>
+<p>&lt;Directory /&gt;   —容器，对整个目录中的东西进行设置，权限等等<br>    AllowOverride none<br>    Require all denied<br>&lt;/Directory&gt;</p>
+<hr>
+<p>DocumentRoot “/var/www/html”    //web服务文档根路径</p>
+<p>&lt;Directory “/var/www”&gt;<br>    AllowOverride None<br>    # Allow open access:<br>    Require all granted<br>&lt;/Directory&gt;</p>
+<hr>
+<p>&lt;Directory “/var/www/html”&gt;<br>    Options Indexes FollowSymLinks     //Indexes：索引目录，（默认没有主页时），允许索引目录   FollowSymLinks：支持符号链接  软连接<br>    AllowOverride None     //和访问权限有关  可以进行认证        None –不使用认证  all–应用所有的认证指令  AuthConfig  –允许使用与认证授权相关的指令<br>    Require all granted    //访问控制  所有人放行<br>&lt;/Directory&gt;</p>
+<hr>
+<p>&lt;IfModule dir_module&gt;<br>    DirectoryIndex index.html    //网站索引页的名称<br>&lt;/IfModule&gt;</p>
+<hr>
+<p>&lt;Files “.ht*”&gt;   //以所有.ht开头进行模式匹配不能进行访问<br>    Require all denied<br>&lt;/Files&gt;</p>
+<hr>
+<p>ErrorLog “logs/error_log”    //错误日志的设定</p>
+<hr>
+<p>LogLevel warn  //日志级别</p>
+<hr>
+<p>&lt;IfModule log_config_module&gt;<br>    LogFormat “%h %l %u %t &quot;%r&quot; %&gt;s %b &quot;%{Referer}i&quot; &quot;%{User-Agent}i&quot;“ combined   //日志格式规定<br>    LogFormat “%h %l %u %t &quot;%r&quot; %&gt;s %b” common     //日志格式规定<br>    &lt;IfModule logio_module&gt;<br>    LogFormat “%h %l %u %t &quot;%r&quot; %&gt;s %b &quot;%{Referer}i&quot; &quot;%{User-Agent}i&quot; %I %O” combinedio   //日志格式规定<br>    &lt;/IfModule&gt;<br>    CustomLog “logs/access_log” combined  //访问日志<br>&lt;/IfModule&gt;</p>
+<hr>
+<p>&lt;IfModule alias_module&gt;<br>    # Alias /webpath /full/filesystem/path<br>    给路径设置别名<br>    意味着访问<code>http://Server_ip/webpath</code>时，其页面文件来自于/full/filesystem/path中<br>    ScriptAlias /cgi-bin/ “/var/www/cgi-bin/“<br>    脚本路径的别名</p>
+<p>&lt;/IfModule&gt;</p>
+<hr>
+<p>&lt;Directory “/var/www/cgi-bin”&gt;<br>    AllowOverride None<br>    Options None<br>    Require all granted<br>&lt;/Directory&gt;</p>
+<hr>
+<p>&lt;IfModule mime_module&gt;<br>    TypesConfig /etc/mime.types    //支持哪些非二进制文件<br>    AddType application/x-compress .Z<br>    AddType application/x-gzip .gz .tgz<br>    AddType text/html .shtml<br>    AddOutputFilter INCLUDES .shtml<br>&lt;/IfModule&gt;</p>
+<hr>
+<p>AddDefaultCharset UTF-8   //默认字符集</p>
+<hr>
+<p>#EnableMMAP off    //线程模式<br>EnableSendfile on   //开启进程模式(默认)</p>
+<hr>
+<p>IncludeOptional conf.d/<em>.conf    //包含辅助配置文件目录下的所有以.conf结尾的文件(/etc/httpd/conf.d/</em>.conf)</p>
+<hr>
+<h1 id="二、Apache扩展的配置文件"><a href="#二、Apache扩展的配置文件" class="headerlink" title="二、Apache扩展的配置文件"></a>二、Apache扩展的配置文件</h1><p>$APACHE_HOME/conf/extra          # apache扩展的配置文件<br>[root@extra]# ll<br>total 56<br>-rw-r–r– 1 root root  2859 Jan 10 01:49 httpd-autoindex.conf<br>-rw-r–r– 1 root root  1753 Jan 10 01:49 httpd-dav.conf<br>-rw-r–r– 1 root root  2344 Jan 10 01:49 httpd-default.conf<br>-rw-r–r– 1 root root  1103 Jan 10 01:49 httpd-info.conf<br>-rw-r–r– 1 root root  5078 Jan 10 01:49 httpd-languages.conf<br>-rw-r–r– 1 root root   932 Jan 10 01:49 httpd-manual.conf<br>-rw-r–r– 1 root root  3789 Jan 10 01:49 httpd-mpm.conf<br>-rw-r–r– 1 root root  2207 Jan 10 01:49 httpd-multilang-errordoc.conf<br>-rw-r–r– 1 root root 11185 Jan 10 01:49 httpd-ssl.conf<br>-rw-r–r– 1 root root   817 Jan 10 01:49 httpd-userdir.conf<br>-rw-r–r– 1 root root  1507 Jan 10 01:49 httpd-vhosts.conf # 虚拟主机配置文件</p>
+<hr>
+<h1 id="三、httpd-vhosts-conf虚拟主机配置文件注释"><a href="#三、httpd-vhosts-conf虚拟主机配置文件注释" class="headerlink" title="三、httpd-vhosts.conf虚拟主机配置文件注释"></a>三、httpd-vhosts.conf虚拟主机配置文件注释</h1><p>[root@extra]# egrep -v “^.*#|^$” httpd-vhosts.conf |nl<br>     1  NameVirtualHost *:80                                # 基于名称的虚拟主机配置（ *:80表示监听本机所有ip）<br>     2  &lt;VirtualHost *:80&gt;                                  # 定义一个虚拟主机<br>     3      ServerAdmin <a href="mailto:&#x77;&#101;&#98;&#109;&#97;&#115;&#x74;&#x65;&#114;&#x40;&#x64;&#x75;&#109;&#109;&#x79;&#45;&#104;&#x6f;&#115;&#116;&#46;&#101;&#x78;&#x61;&#x6d;&#x70;&#108;&#x65;&#x2e;&#x63;&#111;&#109;">&#x77;&#101;&#98;&#109;&#97;&#115;&#x74;&#x65;&#114;&#x40;&#x64;&#x75;&#109;&#109;&#x79;&#45;&#104;&#x6f;&#115;&#116;&#46;&#101;&#x78;&#x61;&#x6d;&#x70;&#108;&#x65;&#x2e;&#x63;&#111;&#109;</a>    # 配置管理员邮箱<br>     4      DocumentRoot “/application/apache2.2.22/docs/dummy-host.example.com”  # 程序的站点目录<br>     5      ServerName dummy-host.example.com               # 域名服务，需要apache mode_alias模块支持<br>     6      ServerAlias <a target="_blank" rel="noopener" href="http://www.dummy-host.example.com/">www.dummy-host.example.com</a>          # 虚拟主机别名<br>     7      ErrorLog “logs/dummy-host.example.com-error_log”# 错误的日志路径<br>     8      CustomLog “logs/dummy-host.example.com-access_log” common  #访问日志配置（生产环境我们用combined格式代替common格式）<br>     9  &lt;/VirtualHost&gt;<br>    10  &lt;VirtualHost *:80&gt;<br>    11      ServerAdmin <a href="mailto:&#119;&#101;&#x62;&#109;&#97;&#x73;&#116;&#101;&#x72;&#x40;&#100;&#x75;&#x6d;&#109;&#121;&#x2d;&#104;&#x6f;&#115;&#x74;&#50;&#46;&#x65;&#120;&#97;&#x6d;&#112;&#108;&#x65;&#x2e;&#x63;&#x6f;&#109;">&#119;&#101;&#x62;&#109;&#97;&#x73;&#116;&#101;&#x72;&#x40;&#100;&#x75;&#x6d;&#109;&#121;&#x2d;&#104;&#x6f;&#115;&#x74;&#50;&#46;&#x65;&#120;&#97;&#x6d;&#112;&#108;&#x65;&#x2e;&#x63;&#x6f;&#109;</a><br>    12      DocumentRoot “/application/apache2.2.22/docs/dummy-host2.example.com”<br>    13      ServerName dummy-host2.example.com<br>    14      ErrorLog “logs/dummy-host2.example.com-error_log”<br>    15      CustomLog “logs/dummy-host2.example.com-access_log” common<br>    16  &lt;/VirtualHost&gt;</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+
+<script src="/js/highlight.pack.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
