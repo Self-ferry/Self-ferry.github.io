@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Self-ferry">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="url-http"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="Self-ferry"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://Self-ferry.github.io"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Self-ferry" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/eagle.ico">
+  
+
+  <!-- Site Title -->
+  <title>Self-ferry</title>
+
+  <!-- Bootstrap CSS -->
+  
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+  <!-- Custom CSS -->
+  
+  
+<link rel="stylesheet" href="/css/style.light.css">
+
+
+  <!-- Google Analytics -->
+  
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">url-http</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a target="_blank" rel="noopener" href="https://github.com/Self-ferry">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:Self_ferry@163.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Self-ferry</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2020-12-01</span>
+            <span class="time">15:22:06</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/web/">web</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/url/">#url</a> <a class="tag" href="/tags/http/">#http</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<p>跟着SECEVERY学习web安全，昨晚讲了URL与http协议，之前虽然学过，但也忘的不少，这次就总结复习巩固一下</p>
+</blockquote>
+<h1 id="什么是URL？"><a href="#什么是URL？" class="headerlink" title="什么是URL？"></a>什么是URL？</h1><p>URL的全称统一资源定位符(Uniform Resource Locator)是对可以从互联网上得到的资源的位置和访问方法的一种简洁的表示，是互联网上标准资源的地址。互联网上的每个文件都有一个唯一的URL，它包含的信息指出文件的位置以及浏览器应该怎么处理它。</p>
+<h1 id="URL的组成"><a href="#URL的组成" class="headerlink" title="URL的组成"></a>URL的组成</h1><pre><code>scheme://login:password@address:/path/to/resource?query_string#fragment</code></pre>
+<ol>
+<li>Scheme<br>Scheme是用来指定使用的传输协议，其中最常见的就是HTTP协议，它也是互联网中应用最广的协议。其他常用的协议还有:<br> Øfile: 用于访问资源位于本地计算机上的文件。<br> Øftp: 用于访问FTP服务器上的资源。<br> Øhttps: 通过SSL协议的HTTP访问web服务器资源。<br> Ømailto:访问资源属于电子邮件地址，通过SMTP协议访问。<br> Øed2k、flashget、thunde等，通过支持专用下载协议的P2P软件访问资源。</li>
+<li>//<br>URL 层级URL标记符号，根据RFC 1738规定的语法，在授权信息之前，每个层级结构的URL中都会包括固定的“//”符号。<br>非层级结构的URL:mailto:</li>
+<li>login:password<br>访问资源的身份验证。在URL中，身份验证属于可选项，在向服务器申请资源时，在某些情况下，需要指定一个用户名和密码。<br>如果没有身份验证字段，浏览器默认以匿名的方式访问资源<br>最简单的例子便是访问FTP服务器</li>
+<li>address<br>完整的层级URL，必须有一个域名、IPv4或者IPv6地址作为请求服务器的位置。域名不区分大小写，IPv6需要括在方括号中。<br>这里注意@符号，<a target="_blank" rel="noopener" href="https://www.qq.com@www.baidu.com/">https://www.qq.com@www.baidu.com</a>这个连接点击后会跳转到百度</li>
+<li>Port<br>服务器端口是URL中可选内容，在没有指定端口时，会默认去访问协议的标准端口。如http的默认端口为80.基本上浏览器支持的协议都会有关联的默认服务接口。不过默认接口可以在URL中进行修改</li>
+<li>/path/to/resource<br>URL的这部分被称为层级文件路径，这一结构来源自UNIX目录语义，因此保留了对/../，/./的支持。</li>
+<li>?query_string<br>查询字符串是一个非必须的字段，只要负责将一系列非层级格式的任意参数传递给服务器。可同时传递多个参数，参数之间用“&amp;”符号连接，每个参数名与值用“=”隔开。?后接参数</li>
+<li>#fragment<br>片段ID同样是应用的位置有别于查询字符串，他应用于客户端，片段ID值并不会回传至服务端。在实际场景下，片段ID一般用于指向页面中的某个锚点，将片段ID与与预先设置的锚点名称匹配，并滚到相应的位置</li>
+</ol>
+<h1 id="浏览器对URL的解析过程"><a href="#浏览器对URL的解析过程" class="headerlink" title="浏览器对URL的解析过程"></a>浏览器对URL的解析过程</h1><blockquote>
+<p>1、提取协议名   </p>
+<blockquote>
+<p>浏览器接收到url之后会查找第一个“:”，找到左边的便是协议名。</p>
+</blockquote>
+</blockquote>
+<hr>
+<blockquote>
+<p>2、去除层级标识符 </p>
+<blockquote>
+<p>字符串//应该算跟在协议名后面的，如果发现有该字符则会跳过该字符，如果没有找到便不管了，所以http:baidu.com也是可以访问的。</p>
+</blockquote>
+</blockquote>
+<hr>
+<blockquote>
+<p>3、获取授权信息部分  </p>
+<blockquote>
+<p>紧接着会依次扫描url，以/、?、#,那个先出现为准来截取URL,如果存在认证信息，提取出来的再查找@符号，如果找到，@符号左边便是登录信息。<br>4、提取目标地址<br>第3步提取授权信息之后@符号右边便是目标地址信息。目标地址信息第一个“：”分开的就是主机名和端口号。</p>
+</blockquote>
+</blockquote>
+<hr>
+<blockquote>
+<p>5、确认路径</p>
+<blockquote>
+<p>在目标地址部分结尾跟着一个正斜杠，接下来扫描？和#直至结尾，那个先出现便以那个为准，截取出来中间部分即路径信息。</p>
+</blockquote>
+</blockquote>
+<hr>
+<blockquote>
+<p>6、提取查询字符串</p>
+<blockquote>
+<p>在第5步中，如果存在“？”，便会扫描#或者至字符串结尾，中间部分便是查询字段。</p>
+</blockquote>
+</blockquote>
+<hr>
+<blockquote>
+<p>7、提取片段ID</p>
+<blockquote>
+<p>如果成功解析完上一条信息，它最后还跟着#号那么从这个符号到字符串的结尾便算片段ID了，片段ID是不会发送到服务器的！一般用来跳到A标签的锚链接。</p>
+</blockquote>
+</blockquote>
+<h1 id="URI-URN"><a href="#URI-URN" class="headerlink" title="URI URN"></a>URI URN</h1><p>URI，是uniform resource identifier，统一资源标识符，用来唯一的标识一个资源<br>URL是uniform resource locator，统一资源定位器，它是一种具体的URI，即URL可以用来标识一个资源，而且还指明了如何locate这个资源。<br>URN，uniform resource name，统一资源命名，是通过名字来标识资源，比如mailto:<a href="mailto:&#106;&#x61;&#x76;&#x61;&#x2d;&#110;&#x65;&#x74;&#x40;&#106;&#x61;&#x76;&#x61;&#46;&#115;&#117;&#x6e;&#46;&#99;&#x6f;&#109;">&#106;&#x61;&#x76;&#x61;&#x2d;&#110;&#x65;&#x74;&#x40;&#106;&#x61;&#x76;&#x61;&#46;&#115;&#117;&#x6e;&#46;&#99;&#x6f;&#109;</a>。</p>
+<p>这里就不详细介绍这两个了</p>
+<h1 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h1><p>这一篇就够了<a target="_blank" rel="noopener" href="https://www.cnblogs.com/ranyonsue/p/5984001.html">https://www.cnblogs.com/ranyonsue/p/5984001.html</a><br>http听说已经发展到http/3 了</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+
+<script src="/js/highlight.pack.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
