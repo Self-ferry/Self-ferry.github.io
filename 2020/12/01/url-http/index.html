@@ -5,20 +5,20 @@
 });
 </script><link id="light-prism-css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism.css" media="(prefers-color-scheme: light)"><link id="dark-prism-css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism-tomorrow.css" media="(prefers-color-scheme: dark)"><link rel="shortcut icon" type="image/svg+xml" href="/yun.svg"><link rel="mask-icon" href="/yun.svg" color="#0078E7"><link rel="alternate icon" href="/yun.ico"><link rel="preload" href="/css/hexo-theme-yun.css" as="style"><link rel="preload" href="/js/utils.js" as="script"><link rel="preload" href="/js/hexo-theme-yun.js" as="script"><link rel="prefetch" href="/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="stylesheet" href="/css/hexo-theme-yun.css"><script id="yun-config">
     const Yun = window.Yun || {};
-    window.CONFIG = {"hostname":"self-ferry.github.io","root":"/","title":"1asy的小站","version":"1.3.0","mode":"auto","copycode":true,"anonymous_image":"https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/avatar/none.jpg","say":{"api":"https://v1.hitokoto.cn","hitokoto":true},"fireworks":{"colors":["102, 167, 221","62, 131, 225","33, 78, 194"]}};
-  </script><meta name="description" content="URL的组成，浏览器对URL的解析过程，">
+    window.CONFIG = {"hostname":"self-ferry.github.io","root":"/","title":"1asy的小站","version":"1.3.0","mode":"dark","copycode":true,"anonymous_image":"https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/avatar/none.jpg","say":{"api":"https://v1.hitokoto.cn","hitokoto":true},"fireworks":{"colors":["102, 167, 221","62, 131, 225","33, 78, 194"]}};
+  </script><meta name="description" content="URL的组成，浏览器对URL的解析过程，http协议">
 <meta property="og:type" content="article">
 <meta property="og:title" content="url-http">
 <meta property="og:url" content="https://self-ferry.github.io/2020/12/01/url-http/index.html">
 <meta property="og:site_name" content="1asy">
-<meta property="og:description" content="URL的组成，浏览器对URL的解析过程，">
+<meta property="og:description" content="URL的组成，浏览器对URL的解析过程，http协议">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-12-01T00:52:06.000Z">
-<meta property="article:modified_time" content="2020-12-03T09:28:41.946Z">
+<meta property="article:modified_time" content="2020-12-04T06:01:12.064Z">
 <meta property="article:author" content="1asy">
 <meta property="article:tag" content="url">
 <meta property="article:tag" content="http">
-<meta name="twitter:card" content="summary"><script src="/js/ui/mode.js"></script></head><body><script defer src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script defer src="/js/ui/fireworks.js"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script src="/js/sidebar.js"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="文章目录"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-list-ordered"></use></svg></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="站点概览"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-passport-line"></use></svg></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/about/" title="1asy"><img width="96" loading="lazy" src="/cool.jpg" alt="1asy"></a><div class="site-author-name"><a href="/about/">1asy</a></div><a class="site-name" href="/about/site.html">1asy</a><sub class="site-subtitle">悟已往之不谏 知来者之可追 实迷途其未远 觉今是而昨非</sub><div class="site-desciption"></div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="首页"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-4-line"></use></svg></span></a><div class="site-state-item"><a href="/archives/" title="归档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-archive-line"></use></svg></span><span class="site-state-item-count">11</span></a></div><div class="site-state-item"><a href="/categories/" title="分类"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-2-line"></use></svg></span><span class="site-state-item-count">7</span></a></div><div class="site-state-item"><a href="/tags/" title="标签"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="site-state-item-count">13</span></a></div><a class="site-state-item hty-icon-button" target="_blank" rel="noopener" href="https://yun.yunyoujun.cn" title="文档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-settings-line"></use></svg></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="/atom.xml" title="RSS" target="_blank" style="color:orange"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-rss-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://qm.qq.com/cgi-bin/qm/qr?k=epvxdq1sknJe9JMj6J1LsBw4a6cI_2ln&amp;jump_from=webapi" title="QQ 群 389401003" target="_blank" style="color:#12B7F5"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-qq-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/Self-ferry" title="GitHub" target="_blank" style="color:#6e5494"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://weibo.com/jizhideyunyoujun" title="微博" target="_blank" style="color:#E6162D"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-weibo-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://www.douban.com/people/yunyoujun/" title="豆瓣" target="_blank" style="color:#007722"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-douban-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://music.163.com/#/user/home?id=247102977" title="网易云音乐" target="_blank" style="color:#C20C0C"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-netease-cloud-music-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://www.zhihu.com/people/yunyoujun/" title="知乎" target="_blank" style="color:#0084FF"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-zhihu-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://twitter.com/YunYouJun" title="Twitter" target="_blank" style="color:#1da1f2"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-twitter-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://t.me/elpsycn" title="Telegram Channel" target="_blank" style="color:#0088CC"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-telegram-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="mailto:Self_ferry@163.com" title="E-Mail" target="_blank" style="color:#8E71C1"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-mail-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://travellings.now.sh/" title="Travelling" target="_blank" style="color:var(--hty-text-color)"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-send-plane-2-line"></use></svg></a></div><hr style="margin:0.5rem 1rem"><div class="links"><a class="links-item hty-icon-button" href="/links/" title="我的小伙伴们" style="color:dodgerblue"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-genderless-line"></use></svg></a></div><br><a class="links-item hty-icon-button" id="toggle-mode-btn" href="javascript:;" title="Mode" style="color: #f1cb64"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-contrast-2-line"></use></svg></a></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFURL%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">什么是URL？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#URL%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-number">3.</span> <span class="toc-text">URL的组成</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9URL%E7%9A%84%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B"><span class="toc-number">4.</span> <span class="toc-text">浏览器对URL的解析过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#URI-URN"><span class="toc-number">5.</span> <span class="toc-text">URI URN</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP%E5%8D%8F%E8%AE%AE"><span class="toc-number">6.</span> <span class="toc-text">HTTP协议</span></a></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="post-block" itemscope itemtype="https://schema.org/Article"><link itemprop="mainEntityOfPage" href="https://Self-ferry.github.io/2020/12/01/url-http/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="1asy"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="1asy"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">url-http</h1><div class="post-meta"><div class="post-time" style="display:inline-block"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-line"></use></svg></span> <time title="创建时间：2020-12-01 08:52:06" itemprop="dateCreated datePublished" datetime="2020-12-01T08:52:06+08:00">2020-12-01</time><span class="post-meta-divider">-</span><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-2-line"></use></svg></span> <time title="修改时间：2020-12-03 17:28:41" itemprop="dateModified" datetime="2020-12-03T17:28:41+08:00">2020-12-03</time></div><div class="post-classify"><span class="post-category"> <span class="post-meta-item-icon" style="margin-right:3px;"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-line"></use></svg></span><span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category" href="/categories/Internet/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">Internet</span></a></span></span><span class="post-tag"><span class="post-meta-divider">-</span><a class="tag" href="/tags/url/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">url</span></a><a class="tag" href="/tags/http/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">http</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body" style="--smc-primary:#0078E7;"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<meta name="twitter:card" content="summary"><script src="/js/ui/mode.js"></script></head><body><script defer src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script defer src="/js/ui/fireworks.js"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script src="/js/sidebar.js"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="文章目录"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-list-ordered"></use></svg></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="站点概览"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-passport-line"></use></svg></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/about/" title="1asy"><img width="96" loading="lazy" src="/cool.jpg" alt="1asy"></a><div class="site-author-name"><a href="/about/">1asy</a></div><a class="site-name" href="/about/site.html">1asy</a><sub class="site-subtitle">悟已往之不谏 知来者之可追 实迷途其未远 觉今是而昨非</sub><div class="site-desciption"></div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="首页"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-4-line"></use></svg></span></a><div class="site-state-item"><a href="/archives/" title="归档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-archive-line"></use></svg></span><span class="site-state-item-count">11</span></a></div><div class="site-state-item"><a href="/categories/" title="分类"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-2-line"></use></svg></span><span class="site-state-item-count">7</span></a></div><div class="site-state-item"><a href="/tags/" title="标签"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="site-state-item-count">13</span></a></div><a class="site-state-item hty-icon-button" target="_blank" rel="noopener" href="https://yun.yunyoujun.cn" title="文档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-settings-line"></use></svg></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="/atom.xml" title="RSS" target="_blank" style="color:orange"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-rss-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://qm.qq.com/cgi-bin/qm/qr?k=epvxdq1sknJe9JMj6J1LsBw4a6cI_2ln&amp;jump_from=webapi" title="QQ 群 389401003" target="_blank" style="color:#12B7F5"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-qq-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/Self-ferry" title="GitHub" target="_blank" style="color:#6e5494"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://weibo.com/jizhideyunyoujun" title="微博" target="_blank" style="color:#E6162D"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-weibo-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://www.douban.com/people/yunyoujun/" title="豆瓣" target="_blank" style="color:#007722"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-douban-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://music.163.com/#/user/home?id=247102977" title="网易云音乐" target="_blank" style="color:#C20C0C"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-netease-cloud-music-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://www.zhihu.com/people/yunyoujun/" title="知乎" target="_blank" style="color:#0084FF"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-zhihu-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://twitter.com/YunYouJun" title="Twitter" target="_blank" style="color:#1da1f2"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-twitter-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://t.me/elpsycn" title="Telegram Channel" target="_blank" style="color:#0088CC"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-telegram-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="mailto:Self_ferry@163.com" title="E-Mail" target="_blank" style="color:#8E71C1"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-mail-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://travellings.now.sh/" title="Travelling" target="_blank" style="color:var(--hty-text-color)"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-send-plane-2-line"></use></svg></a></div><hr style="margin:0.5rem 1rem"><div class="links"><a class="links-item hty-icon-button" href="/links/" title="我的小伙伴们" style="color:dodgerblue"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-genderless-line"></use></svg></a></div></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFURL%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">什么是URL？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#URL%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-number">3.</span> <span class="toc-text">URL的组成</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9URL%E7%9A%84%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B"><span class="toc-number">4.</span> <span class="toc-text">浏览器对URL的解析过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#URI-URN"><span class="toc-number">5.</span> <span class="toc-text">URI URN</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP%E5%8D%8F%E8%AE%AE"><span class="toc-number">6.</span> <span class="toc-text">HTTP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTPS"><span class="toc-number">6.1.</span> <span class="toc-text">HTTPS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15%E7%A7%8Dhttp%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95"><span class="toc-number">6.2.</span> <span class="toc-text">15种http请求方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP-%E7%8A%B6%E6%80%81%E6%B6%88%E6%81%AF"><span class="toc-number">6.3.</span> <span class="toc-text">HTTP 状态消息</span></a></li></ol></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="post-block" itemscope itemtype="https://schema.org/Article"><link itemprop="mainEntityOfPage" href="https://Self-ferry.github.io/2020/12/01/url-http/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="1asy"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="1asy"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">url-http</h1><div class="post-meta"><div class="post-time" style="display:inline-block"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-line"></use></svg></span> <time title="创建时间：2020-12-01 08:52:06" itemprop="dateCreated datePublished" datetime="2020-12-01T08:52:06+08:00">2020-12-01</time><span class="post-meta-divider">-</span><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-2-line"></use></svg></span> <time title="修改时间：2020-12-04 14:01:12" itemprop="dateModified" datetime="2020-12-04T14:01:12+08:00">2020-12-04</time></div><div class="post-classify"><span class="post-category"> <span class="post-meta-item-icon" style="margin-right:3px;"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-line"></use></svg></span><span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category" href="/categories/Internet/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">Internet</span></a></span></span><span class="post-tag"><span class="post-meta-divider">-</span><a class="tag" href="/tags/url/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">url</span></a><a class="tag" href="/tags/http/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">http</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body" style="--smc-primary:#0078E7;"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
 <p>跟着SECEVERY学习web安全，昨晚讲了URL与http协议，之前虽然学过，但也忘的不少，这次就总结复习巩固一下</p>
 </blockquote>
 <h1 id="什么是URL？"><a href="#什么是URL？" class="headerlink" title="什么是URL？"></a>什么是URL？</h1><p>URL的全称统一资源定位符(Uniform Resource Locator)是对可以从互联网上得到的资源的位置和访问方法的一种简洁的表示，是互联网上标准资源的地址。互联网上的每个文件都有一个唯一的URL，它包含的信息指出文件的位置以及浏览器应该怎么处理它。</p>
@@ -74,7 +74,356 @@
 <p>如果成功解析完上一条信息，它最后还跟着#号那么从这个符号到字符串的结尾便算片段ID了，片段ID是不会发送到服务器的！一般用来跳到A标签的锚链接。</p>
 </blockquote>
 </blockquote>
-<h1 id="URI-URN"><a href="#URI-URN" class="headerlink" title="URI URN"></a>URI URN</h1><p>URI，是uniform resource identifier，统一资源标识符，用来唯一的标识一个资源<br>URL是uniform resource locator，统一资源定位器，它是一种具体的URI，即URL可以用来标识一个资源，而且还指明了如何locate这个资源。<br>URN，uniform resource name，统一资源命名，是通过名字来标识资源，比如mailto:<a href="mailto:&#106;&#97;&#118;&#x61;&#x2d;&#110;&#101;&#x74;&#64;&#106;&#x61;&#x76;&#97;&#x2e;&#x73;&#x75;&#x6e;&#x2e;&#x63;&#111;&#x6d;">&#106;&#97;&#118;&#x61;&#x2d;&#110;&#101;&#x74;&#64;&#106;&#x61;&#x76;&#97;&#x2e;&#x73;&#x75;&#x6e;&#x2e;&#x63;&#111;&#x6d;</a>。</p>
-<p>这里就不详细介绍这两个了</p>
-<h1 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h1><p>这一篇就够了，不重复造轮子了。<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ranyonsue/p/5984001.html">https://www.cnblogs.com/ranyonsue/p/5984001.html</a><br>http听说已经发展到http/3 了</p>
+<h1 id="URI-URN"><a href="#URI-URN" class="headerlink" title="URI URN"></a>URI URN</h1><ul>
+<li><p>URI，是uniform resource identifier，统一资源标识符，用来唯一的标识一个资源</p>
+</li>
+<li><p>URL是uniform resource locator，统一资源定位器，它是一种具体的URI，即URL可以用来标识一个资源，而且还指明了如何locate这个资源。</p>
+</li>
+<li><p>URN，uniform resource name，统一资源命名，是通过名字来标识资源，比如mailto:<a href="mailto:&#x6a;&#97;&#x76;&#x61;&#45;&#110;&#x65;&#116;&#64;&#x6a;&#97;&#x76;&#97;&#x2e;&#x73;&#117;&#x6e;&#x2e;&#99;&#x6f;&#109;">&#x6a;&#97;&#x76;&#x61;&#45;&#110;&#x65;&#116;&#64;&#x6a;&#97;&#x76;&#97;&#x2e;&#x73;&#117;&#x6e;&#x2e;&#99;&#x6f;&#109;</a>。</p>
+</li>
+</ul>
+<p>就不详细介绍另外两个了</p>
+<h1 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h1><p>这一篇就够了，不重复造轮子了。<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ranyonsue/p/5984001.html">https://www.cnblogs.com/ranyonsue/p/5984001.html</a></p>
+<h2 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a><strong>HTTPS</strong></h2><blockquote>
+<p>在HTTP的基础上主要基于SPDF协议结合SSL/TLS加密协议，客户端依靠证书验证服务器身份传递加密信息的通信协议。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">时间</th>
+<th align="left">版本</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1991年</td>
+<td align="left">HTTP/0.9</td>
+<td align="center">仅支持GET请求，不支持请求头</td>
+</tr>
+<tr>
+<td align="left">1996年</td>
+<td align="left">HTTP/1.0</td>
+<td align="center">默认短连接（一次请求建议一次TCP连接，请求完就断开），支持GET、POST、 HEAD请求</td>
+</tr>
+<tr>
+<td align="left">1999年</td>
+<td align="left">HTTP/1.1</td>
+<td align="center">默认长连接（一次TCP连接可以多次请求）；支持PUT、DELETE、PATCH等六种请求增加host头，支持虚拟主机；支持断点续传功能</td>
+</tr>
+<tr>
+<td align="left">2015年</td>
+<td align="left">HTTP/2.0</td>
+<td align="center">多路复用，降低开销（一次TCP连接可以处理多个请求）；服务器主动推送（相关资源一个请求全部推送）；解析基于二进制，解析错误少，更高效（HTTP/1.X解析基于文本）；报头压缩，降低开销。</td>
+</tr>
+</tbody></table>
+<h2 id="15种http请求方法"><a href="#15种http请求方法" class="headerlink" title="15种http请求方法"></a><strong>15种http请求方法</strong></h2><table>
+<thead>
+<tr>
+<th align="left">编号</th>
+<th align="left">方法</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1</td>
+<td align="left">GET</td>
+<td align="center">请求指定的页面信息，并返回实体主体</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">HEAD</td>
+<td align="center">类似于get请求，只不过返回的响应中没有具体的内容，用于获取报头</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">POST</td>
+<td align="center">向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST请求可能会导致新的资源的建立和/或已有资源的修改</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">PUT</td>
+<td align="center">从客户端向服务器传送的数据取代指定的文档的内容</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">DELETE</td>
+<td align="center">请求服务器删除指定的页面。</td>
+</tr>
+<tr>
+<td align="left">6</td>
+<td align="left">CONNECT</td>
+<td align="center">HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器。</td>
+</tr>
+<tr>
+<td align="left">7</td>
+<td align="left">OPTIONS</td>
+<td align="center">允许客户端查看服务器的性能。</td>
+</tr>
+<tr>
+<td align="left">8</td>
+<td align="left">TRACE</td>
+<td align="center">回显服务器收到的请求，主要用于测试或诊断。</td>
+</tr>
+<tr>
+<td align="left">9</td>
+<td align="left">PATCH</td>
+<td align="center">实体中包含一个表，表中说明与该URI所表示的原内容的区别。</td>
+</tr>
+<tr>
+<td align="left">10</td>
+<td align="left">MOVE</td>
+<td align="center">请求服务器将指定的页面移至另一个网络地址。</td>
+</tr>
+<tr>
+<td align="left">11</td>
+<td align="left">COPY</td>
+<td align="center">请求服务器将指定的页面拷贝至另一个网络地址。</td>
+</tr>
+<tr>
+<td align="left">12</td>
+<td align="left">LINK</td>
+<td align="center">请求服务器建立链接关系。</td>
+</tr>
+<tr>
+<td align="left">13</td>
+<td align="left">UNLINK</td>
+<td align="center">断开链接关系。</td>
+</tr>
+<tr>
+<td align="left">14</td>
+<td align="left">WRAPPED</td>
+<td align="center">允许客户端发送经过封装的请求。</td>
+</tr>
+<tr>
+<td align="left">15</td>
+<td align="left">Extension-mothed</td>
+<td align="center">在不改动协议的前提下，可增加另外的方法。</td>
+</tr>
+</tbody></table>
+<h2 id="HTTP-状态消息"><a href="#HTTP-状态消息" class="headerlink" title="HTTP 状态消息"></a>HTTP 状态消息</h2><blockquote>
+<p>当浏览器从 web 服务器请求服务时，可能会发生错误。</p>
+</blockquote>
+<p><strong>以下列举了有可能会返回的一系列 HTTP 状态消息：</strong></p>
+<p>1xx: 信息</p>
+<table>
+<thead>
+<tr>
+<th align="left">消息：</th>
+<th align="center">描述：</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">100 Continue</td>
+<td align="center">服务器仅接收到部分请求，如果服务器没有拒绝该请求，客户端应该继续发送其余的请求。</td>
+</tr>
+<tr>
+<td align="left">101 Switching Protocols</td>
+<td align="center">服务器转换协议：服务器将遵从客户的请求转换到另外一种协议。</td>
+</tr>
+<tr>
+<td align="left">103 Checkpoint</td>
+<td align="center">用于 PUT 或者 POST 请求恢复失败时的恢复请求建议。</td>
+</tr>
+</tbody></table>
+<p>2xx: 成功</p>
+<table>
+<thead>
+<tr>
+<th align="left">消息：</th>
+<th align="center">描述：</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">200 OK</td>
+<td align="center">请求成功（这是对HTTP请求成功的标准应答。）</td>
+</tr>
+<tr>
+<td align="left">201 Created</td>
+<td align="center">请求被创建完成，同时新的资源被创建。</td>
+</tr>
+<tr>
+<td align="left">202 Accepted</td>
+<td align="center">供处理的请求已被接受，但是处理未完成。</td>
+</tr>
+<tr>
+<td align="left">203 Non-Authoritative Information</td>
+<td align="center">请求已经被成功处理，但是一些应答头可能不正确，因为使用的是其他文档的拷贝。</td>
+</tr>
+<tr>
+<td align="left">204 No Content</td>
+<td align="center">请求已经被成功处理，但是没有返回新文档。浏览器应该继续显示原来的文档。如果用户定期地刷新页面，而Servlet可以确定用户文档足够新，这个状态代码是很有用的。</td>
+</tr>
+<tr>
+<td align="left">205 Reset Content</td>
+<td align="center">请求已经被成功处理，但是没有返回新文档。但浏览器应该重置它所显示的内容。用来强制浏览器清除表单输入内容。</td>
+</tr>
+<tr>
+<td align="left">206 Partial Content</td>
+<td align="center">客户发送了一个带有Range头的GET请求，服务器完成了它。</td>
+</tr>
+</tbody></table>
+<p>3xx: 重定向</p>
+<table>
+<thead>
+<tr>
+<th align="left">消息：</th>
+<th align="center">描述：</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">300 Multiple Choices</td>
+<td align="center">多重选择。链接列表。用户可以选择某链接到达目的地。最多允许五个地址。</td>
+</tr>
+<tr>
+<td align="left">301 Moved Permanently</td>
+<td align="center">所请求的页面已经转移至新的 URL 。</td>
+</tr>
+<tr>
+<td align="left">302 Found</td>
+<td align="center">所请求的页面已经临时转移至新的 URL 。</td>
+</tr>
+<tr>
+<td align="left">303 See Other</td>
+<td align="center">所请求的页面可在别的 URL 下被找到。</td>
+</tr>
+<tr>
+<td align="left">304 Not Modified</td>
+<td align="center">未按预期修改文档。客户端有缓冲的文档并发出了一个条件性的请求（一般是提供If-Modified-Since头表示客户只想比指定日期更新的文档）。服务器告诉客户，原来缓冲的文档还可以继续使用。</td>
+</tr>
+<tr>
+<td align="left">305 Use Proxy</td>
+<td align="center">客户请求的文档应该通过Location头所指明的代理服务器提取。</td>
+</tr>
+<tr>
+<td align="left">306 Switch Proxy</td>
+<td align="center">目前已不再使用，但是代码依然被保留。</td>
+</tr>
+<tr>
+<td align="left">307 Temporary Redirect</td>
+<td align="center">被请求的页面已经临时移至新的 URL 。</td>
+</tr>
+<tr>
+<td align="left">308 Resume Incomplete</td>
+<td align="center">用于 PUT 或者 POST 请求恢复失败时的恢复请求建议。</td>
+</tr>
+</tbody></table>
+<p>4xx: 客户端错误</p>
+<table>
+<thead>
+<tr>
+<th align="left">消息：</th>
+<th align="center">描述：</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">400 Bad Request</td>
+<td align="center">因为语法错误，服务器未能理解请求。</td>
+</tr>
+<tr>
+<td align="left">401 Unauthorized</td>
+<td align="center">合法请求，但对被请求页面的访问被禁止。因为被请求的页面需要身份验证，客户端没有提供或者身份验证失败。</td>
+</tr>
+<tr>
+<td align="left">402 Payment Required</td>
+<td align="center">此代码尚无法使用。</td>
+</tr>
+<tr>
+<td align="left">403 Forbidden</td>
+<td align="center">合法请求，但对被请求页面的访问被禁止。</td>
+</tr>
+<tr>
+<td align="left">404 Not Found</td>
+<td align="center">服务器无法找到被请求的页面。</td>
+</tr>
+<tr>
+<td align="left">405 Method Not Allowed</td>
+<td align="center">请求中指定的方法不被允许。</td>
+</tr>
+<tr>
+<td align="left">406 Not Acceptable</td>
+<td align="center">服务器生成的响应无法被客户端所接受。</td>
+</tr>
+<tr>
+<td align="left">407 Proxy Authentication Required</td>
+<td align="center">用户必须首先使用代理服务器进行验证，这样请求才会被处理。</td>
+</tr>
+<tr>
+<td align="left">408 Request Timeout</td>
+<td align="center">请求超出了服务器的等待时间。</td>
+</tr>
+<tr>
+<td align="left">409 Conflict</td>
+<td align="center">由于冲突，请求无法被完成。</td>
+</tr>
+<tr>
+<td align="left">410 Gone</td>
+<td align="center">被请求的页面不可用。</td>
+</tr>
+<tr>
+<td align="left">411 Length Required    “Content-Length”</td>
+<td align="center">未被定义。如果无此内容，服务器不会接受请求。</td>
+</tr>
+<tr>
+<td align="left">412 Precondition Failed</td>
+<td align="center">请求中的前提条件被服务器评估为失败。</td>
+</tr>
+<tr>
+<td align="left">413 Request Entity Too Large</td>
+<td align="center">由于所请求的实体太大，服务器不会接受请求。</td>
+</tr>
+<tr>
+<td align="left">414 Request-URI Too Long</td>
+<td align="center">由于 URL 太长，服务器不会接受请求。当 POST 请求被转换为带有很长的查询信息的 GET 请求时，就会发生这种情况。</td>
+</tr>
+<tr>
+<td align="left">415 Unsupported Media Type</td>
+<td align="center">由于媒介类型不被支持，服务器不会接受请求。</td>
+</tr>
+<tr>
+<td align="left">416 Requested Range Not Satisfiable</td>
+<td align="center">客户端请求部分文档，但是服务器不能提供被请求的部分。</td>
+</tr>
+<tr>
+<td align="left">417 Expectation Failed</td>
+<td align="center">服务器不能满足客户在请求中指定的请求头。</td>
+</tr>
+</tbody></table>
+<p>5xx: 服务器错误</p>
+<table>
+<thead>
+<tr>
+<th align="left">消息：</th>
+<th align="center">描述：</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">500 Internal Server Error</td>
+<td align="center">请求未完成。服务器遇到不可预知的情况。</td>
+</tr>
+<tr>
+<td align="left">501 Not Implemented</td>
+<td align="center">请求未完成。服务器不支持所请求的功能，或者服务器无法完成请求。</td>
+</tr>
+<tr>
+<td align="left">502 Bad Gateway</td>
+<td align="center">请求未完成。服务器充当网关或者代理的角色时，从上游服务器收到一个无效的响应。</td>
+</tr>
+<tr>
+<td align="left">503 Service Unavailable</td>
+<td align="center">服务器当前不可用（过载或者当机）。</td>
+</tr>
+<tr>
+<td align="left">504 Gateway Timeout</td>
+<td align="center">网关超时。服务器充当网关或者代理的角色时，未能从上游服务器收到一个及时的响应。</td>
+</tr>
+<tr>
+<td align="left">505 HTTP Version Not Supported</td>
+<td align="center">服务器不支持请求中指明的HTTP协议版本。</td>
+</tr>
+<tr>
+<td align="left">511 Network Authentication Required</td>
+<td align="center">用户需要提供身份验证来获取网络访问入口。</td>
+</tr>
+</tbody></table>
+<p>附上链接<a target="_blank" rel="noopener" href="https://www.runoob.com/tags/html-httpmessages.html">https://www.runoob.com/tags/html-httpmessages.html</a></p>
 </div><div id="reward-container"><span class="hty-icon-button button-glow" id="reward-button" title="打赏" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === &quot;none&quot;) ? &quot;block&quot; : &quot;none&quot;;"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-hand-coin-line"></use></svg></span><div id="reward-comment">I'm so cute. Please give me money.</div><div id="qr" style="display:none;"><div style="display:inline-block"><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/donate/alipay-qrcode.jpg"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/donate/alipay-qrcode.jpg" alt="支付宝" title="支付宝"></a><div><span style="color:#00A3EE"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-alipay-line"></use></svg></span></div></div><div style="display:inline-block"><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/donate/qqpay-qrcode.png"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/donate/qqpay-qrcode.png" alt="QQ 支付" title="QQ 支付"></a><div><span style="color:#12B7F5"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-qq-line"></use></svg></span></div></div><div style="display:inline-block"><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/donate/wechatpay-qrcode.jpg"><img loading="lazy" src="https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/donate/wechatpay-qrcode.jpg" alt="微信支付" title="微信支付"></a><div><span style="color:#2DC100"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-wechat-pay-line"></use></svg></span></div></div></div></div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>1asy</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="https://self-ferry.github.io/2020/12/01/url-http/" title="url-http">https://self-ferry.github.io/2020/12/01/url-http/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均默认采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><svg class="icon"><use xlink:href="#icon-creative-commons-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-by-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-nc-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-sa-line"></use></svg></a> 许可协议。</li></ul></section></article><div class="post-nav"><div class="post-nav-item"><a class="post-nav-prev" href="/2020/12/01/BHP%E7%AC%AC%E4%BA%8C%E7%AB%A0%E2%80%94%E2%80%94%E5%8F%96%E4%BB%A3NetCat/" rel="prev" title="BHP第二章——取代NetCat"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-left-s-line"></use></svg><span class="post-nav-text">BHP第二章——取代NetCat</span></a></div><div class="post-nav-item"><a class="post-nav-next" href="/2020/11/30/Apache-Config/" rel="next" title="Apache_Config"><span class="post-nav-text">Apache_Config</span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-right-s-line"></use></svg></a></div></div></div><div id="comment"><div class="comment-tooltip text-center"><span>点击按钮跳转 GitHub Issues 评论。</span><br><span>若没有本文 Issue，您可以使用 Comment 模版新建。</span><br><a class="hty-button hty-button--raised" id="github-issues" target="_blank" rel="noopener" href="https://github.com/YunYouJun/yunyoujun.github.io/issues?q=is:issue+url-http">GitHub Issues</a></div></div></main><footer class="sidebar-translate" id="footer"><div class="copyright"><span>&copy; 2019 – 2020 </span><span class="with-love" id="animate"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-cloud-line"></use></svg></span><span class="author"> 1asy</span></div><div class="powered"><span>由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v5.2.0</span><span class="footer-separator">|</span><span>主题 - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v1.3.0</span></div></footer><a class="hty-icon-button" id="goUp" aria-label="back-to-top" href="#"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-up-s-line"></use></svg><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#0078E7" stroke-width="2" stroke-linecap="round"></circle></svg></a></div><script defer src="/js/utils.js"></script><script defer src="/js/hexo-theme-yun.js"></script></body></html>
