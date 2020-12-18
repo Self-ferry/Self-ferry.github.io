@@ -1013,6 +1013,52 @@ body::before {
   z-index: 11;
   pointer-events: none;
 }
+#trianglifyContainer {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  opacity: 0.5;
+  animation: triFadeIn 2s;
+}
+@-moz-keyframes triFadeIn {
+  from {
+    opacity: 0;
+    filter: grayscale(1);
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+@-webkit-keyframes triFadeIn {
+  from {
+    opacity: 0;
+    filter: grayscale(1);
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+@-o-keyframes triFadeIn {
+  from {
+    opacity: 0;
+    filter: grayscale(1);
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+@keyframes triFadeIn {
+  from {
+    opacity: 0;
+    filter: grayscale(1);
+  }
+  to {
+    opacity: 0.5;
+  }
+}
 .spinner {
   width: 60px;
   height: 60px;
@@ -1697,10 +1743,10 @@ pre[class*='language-']:hover .copy-btn {
   left: 0;
   width: 20rem;
   background-color: #fff;
-  background-image: url("https://cdn.jsdelivr.net/gh/YunYouJun/cdn@master/img/bg/alpha-stars-timing-1.webp");
+  background-image: url("https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/bg/stars-timing-1.jpg");
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: bottom 1rem center;
+  background-position: bottom 3rem center;
   text-align: center;
   z-index: 10;
   transition-property: all;
