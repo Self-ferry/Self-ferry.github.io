@@ -1,0 +1,361 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#0078E7"><meta name="author" content="1asy"><meta name="copyright" content="1asy"><meta name="generator" content="Hexo 5.2.0"><meta name="theme" content="hexo-theme-yun"><title>python 期末复习 | 1asy</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&amp;display=swap" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/star-markdown-css@0.1.22/dist/yun/yun-markdown.min.css"><script src="//at.alicdn.com/t/font_1140697_ed8vp4atwoj.js" async></script><script src="https://cdn.jsdelivr.net/npm/scrollreveal/dist/scrollreveal.min.js" defer></script><script>document.addEventListener("DOMContentLoaded", () => {
+  [".post-card",".post-content img"].forEach((target)=> {
+    ScrollReveal().reveal(target);
+  })
+});
+</script><link id="light-prism-css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism.css" media="(prefers-color-scheme: light)"><link id="dark-prism-css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism-tomorrow.css" media="(prefers-color-scheme: dark)"><link rel="shortcut icon" type="image/svg+xml" href="/yun.svg"><link rel="mask-icon" href="/yun.svg" color="#0078E7"><link rel="alternate icon" href="/yun.ico"><link rel="preload" href="/css/hexo-theme-yun.css" as="style"><link rel="preload" href="/js/utils.js" as="script"><link rel="preload" href="/js/hexo-theme-yun.js" as="script"><link rel="prefetch" href="/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="stylesheet" href="/css/hexo-theme-yun.css"><script id="yun-config">
+    const Yun = window.Yun || {};
+    window.CONFIG = {"hostname":"self-ferry.github.io","root":"/","title":"1asy的小站","version":"1.3.0","mode":"dark","copycode":true,"anonymous_image":"https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/avatar/none.jpg","say":{"api":"https://v1.hitokoto.cn","hitokoto":true},"fireworks":{"colors":["102, 167, 221","62, 131, 225","33, 78, 194"]}};
+  </script><meta name="description" content="前言 老师怕学生考试挂科，额外安排了一节课讲考试范围和题型（变相的泄题）。就喜欢这样的老师！本来学的也不怎么好，权当巩固一下咯，专门记一些我没有记住的知识点。  Python简介Python，读作[‘paɪθɑn],汉语是蟒蛇，Python的logo是两条缠绕在一起的蟒蛇. Python语言是由荷兰程序员Guido van Rossum，独立开发完成初版的。之所以选中Python作为该编程语言的名">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python 期末复习">
+<meta property="og:url" content="https://self-ferry.github.io/2020/12/18/python-%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/index.html">
+<meta property="og:site_name" content="1asy">
+<meta property="og:description" content="前言 老师怕学生考试挂科，额外安排了一节课讲考试范围和题型（变相的泄题）。就喜欢这样的老师！本来学的也不怎么好，权当巩固一下咯，专门记一些我没有记住的知识点。  Python简介Python，读作[‘paɪθɑn],汉语是蟒蛇，Python的logo是两条缠绕在一起的蟒蛇. Python语言是由荷兰程序员Guido van Rossum，独立开发完成初版的。之所以选中Python作为该编程语言的名">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://self-ferry.github.io/2020/12/18/python-%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image001.png">
+<meta property="article:published_time" content="2020-12-18T08:53:24.000Z">
+<meta property="article:modified_time" content="2020-12-18T16:06:47.133Z">
+<meta property="article:author" content="1asy">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://self-ferry.github.io/2020/12/18/python-%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image001.png"><script src="/js/ui/mode.js"></script></head><body><script defer src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script defer src="/js/ui/fireworks.js"></script><canvas class="fireworks"></canvas><canvas id="trianglifyContainer"></canvas><script defer src="https://cdn.jsdelivr.net/npm/trianglify@4/dist/trianglify.bundle.js"></script><script>document.addEventListener("DOMContentLoaded", () => {
+  const pattern = trianglify({
+    width: 800,
+    height: 600,
+    cellSize: 75,
+    palette: ["YlGnBu", "GnBu", "Purples", "Blues"],
+  });
+  const canvasOpts = {
+    applyCssScaling: false
+  }
+  document.body.appendChild(pattern.toCanvas(trianglifyContainer, canvasOpts));
+});</script><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script src="/js/sidebar.js"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="文章目录"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-list-ordered"></use></svg></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="站点概览"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-passport-line"></use></svg></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/about/" title="1asy"><img width="96" loading="lazy" src="/cool.jpg" alt="1asy"></a><div class="site-author-name"><a href="/about/">1asy</a></div><a class="site-name" href="/about/site.html">1asy</a><sub class="site-subtitle">悟已往之不谏 知来者之可追 实迷途其未远 觉今是而昨非</sub><div class="site-desciption"></div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="首页"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-4-line"></use></svg></span></a><div class="site-state-item"><a href="/archives/" title="归档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-archive-line"></use></svg></span><span class="site-state-item-count">21</span></a></div><div class="site-state-item"><a href="/categories/" title="分类"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-2-line"></use></svg></span><span class="site-state-item-count">9</span></a></div><div class="site-state-item"><a href="/tags/" title="标签"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="site-state-item-count">29</span></a></div><a class="site-state-item hty-icon-button" target="_blank" rel="noopener" href="https://yun.yunyoujun.cn" title="文档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-settings-line"></use></svg></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="/atom.xml" title="RSS" target="_blank" style="color:orange"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-rss-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://qm.qq.com/cgi-bin/qm/qr?k=epvxdq1sknJe9JMj6J1LsBw4a6cI_2ln&amp;jump_from=webapi" title="QQ 群 389401003" target="_blank" style="color:#12B7F5"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-qq-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/Self-ferry" title="GitHub" target="_blank" style="color:#6e5494"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://weibo.com/jizhideyunyoujun" title="微博" target="_blank" style="color:#E6162D"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-weibo-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://www.douban.com/people/yunyoujun/" title="豆瓣" target="_blank" style="color:#007722"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-douban-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://music.163.com/#/user/home?id=247102977" title="网易云音乐" target="_blank" style="color:#C20C0C"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-netease-cloud-music-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://www.zhihu.com/people/yunyoujun/" title="知乎" target="_blank" style="color:#0084FF"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-zhihu-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://twitter.com/YunYouJun" title="Twitter" target="_blank" style="color:#1da1f2"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-twitter-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://t.me/elpsycn" title="Telegram Channel" target="_blank" style="color:#0088CC"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-telegram-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="mailto:Self_ferry@163.com" title="E-Mail" target="_blank" style="color:#8E71C1"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-mail-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://travellings.now.sh/" title="Travelling" target="_blank" style="color:var(--hty-text-color)"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-send-plane-2-line"></use></svg></a></div><hr style="margin:0.5rem 1rem"><div class="links"><a class="links-item hty-icon-button" href="/links/" title="我的小伙伴们" style="color:dodgerblue"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-genderless-line"></use></svg></a></div></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E7%AE%80%E4%BB%8B"><span class="toc-number">2.</span> <span class="toc-text">Python简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E8%AF%AD%E8%A8%80%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">3.</span> <span class="toc-text">Python语言的特点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%80%9C%E5%86%85%E7%BD%AE%E7%94%B5%E6%B1%A0%E2%80%9D%EF%BC%8C%E5%A4%A7%E9%87%8F%E7%9A%84%E6%A0%87%E5%87%86%E5%BA%93%E5%92%8C%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93"><span class="toc-number">3.1.</span> <span class="toc-text">“内置电池”，大量的标准库和第三方库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BE%E5%8C%BA%E6%B4%BB%E8%B7%83%EF%BC%8C%E8%B4%A1%E7%8C%AE%E8%80%85%E5%A4%9A%EF%BC%8C%E4%BA%92%E5%B8%AE%E4%BA%92%E5%8A%A9"><span class="toc-number">3.2.</span> <span class="toc-text">社区活跃，贡献者多，互帮互助</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E6%BA%90%E8%AF%AD%E8%A8%80%EF%BC%8C%E5%8F%91%E5%B1%95%E5%8A%A8%E5%8A%9B%E5%B7%A8%E5%A4%A7"><span class="toc-number">3.3.</span> <span class="toc-text">开源语言，发展动力巨大</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7"><span class="toc-number">4.</span> <span class="toc-text">Python包管理工具</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#pip%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">4.1.</span> <span class="toc-text">pip的使用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E7%9A%84virtualenv-%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83"><span class="toc-number">5.</span> <span class="toc-text">Python的virtualenv 虚拟环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E5%9F%BA%E7%A1%80"><span class="toc-number">6.</span> <span class="toc-text">Python基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">6.1.</span> <span class="toc-text">数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">6.1.1.</span> <span class="toc-text">可变数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">6.1.2.</span> <span class="toc-text">不可变数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%AD%97"><span class="toc-number">6.1.2.1.</span> <span class="toc-text">数字</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">6.1.2.2.</span> <span class="toc-text">字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E7%BC%96%E7%A0%81"><span class="toc-number">6.1.2.2.1.</span> <span class="toc-text">字符串与编码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA"><span class="toc-number">6.1.2.2.2.</span> <span class="toc-text">字符串的格式化输出</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-number">6.1.2.2.2.1.</span> <span class="toc-text">%的用法</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#format%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-number">6.1.2.2.2.2.</span> <span class="toc-text">format的用法</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%87%E7%89%87"><span class="toc-number">6.2.</span> <span class="toc-text">切片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E5%92%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">6.3.</span> <span class="toc-text">运算符和表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-number">6.4.</span> <span class="toc-text">函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97-%E5%8C%85%E4%BB%A5%E5%8F%8A%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86"><span class="toc-number">6.5.</span> <span class="toc-text">模块&#x2F;包以及文件处理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="toc-number">7.</span> <span class="toc-text">Python面向对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AD%94%E6%B3%95%E6%96%B9%E6%B3%95"><span class="toc-number">7.1.</span> <span class="toc-text">魔法方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B"><span class="toc-number">8.</span> <span class="toc-text">Python网络编程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP"><span class="toc-number">8.1.</span> <span class="toc-text">TCP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UDP"><span class="toc-number">8.2.</span> <span class="toc-text">UDP</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">9.</span> <span class="toc-text">Python正则表达式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E7%88%AC%E8%99%AB"><span class="toc-number">10.</span> <span class="toc-text">Python爬虫</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#URL"><span class="toc-number">10.1.</span> <span class="toc-text">URL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">10.2.</span> <span class="toc-text">原理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%94%B6%E9%9B%86%E8%87%AA%E4%BB%A5%E4%B8%8B"><span class="toc-number">11.</span> <span class="toc-text">收集自以下</span></a></li></ol></div></div></div><div class="tag-cloud"><div class="tag-cloud-tags"><a href="/tags/ANSI/" style="font-size: 12px; color: #999">ANSI</a> <a href="/tags/ASCII/" style="font-size: 12px; color: #999">ASCII</a> <a href="/tags/Apeache/" style="font-size: 12px; color: #999">Apeache</a> <a href="/tags/GBK/" style="font-size: 12px; color: #999">GBK</a> <a href="/tags/HTML/" style="font-size: 12px; color: #999">HTML</a> <a href="/tags/SQLmap/" style="font-size: 12px; color: #999">SQLmap</a> <a href="/tags/SSH%E9%9A%A7%E9%81%93/" style="font-size: 12px; color: #999">SSH隧道</a> <a href="/tags/URL-%E7%BC%96%E7%A0%81-%E8%A7%A3%E7%A0%81/" style="font-size: 12px; color: #999">URL 编码/解码</a> <a href="/tags/UTF-8/" style="font-size: 12px; color: #999">UTF-8</a> <a href="/tags/Unicode/" style="font-size: 12px; color: #999">Unicode</a> <a href="/tags/WindowsPE%E7%BB%93%E6%9E%84/" style="font-size: 12px; color: #999">WindowsPE结构</a> <a href="/tags/guestbook/" style="font-size: 12px; color: #999">guestbook</a> <a href="/tags/http/" style="font-size: 12px; color: #999">http</a> <a href="/tags/markdown-%E5%AD%A6%E4%B9%A0/" style="font-size: 12px; color: #999">markdown 学习</a> <a href="/tags/multiprocessing/" style="font-size: 12px; color: #999">multiprocessing</a> <a href="/tags/my-first-blog/" style="font-size: 12px; color: #999">my first blog</a> <a href="/tags/mysql%E4%B8%BB%E9%94%AE/" style="font-size: 12px; color: #999">mysql主键</a> <a href="/tags/php/" style="font-size: 30px; color: #0078e7">php</a> <a href="/tags/python/" style="font-size: 30px; color: #0078e7">python</a> <a href="/tags/socket/" style="font-size: 12px; color: #999">socket</a></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="post-block" itemscope itemtype="https://schema.org/Article"><link itemprop="mainEntityOfPage" href="https://Self-ferry.github.io/2020/12/18/python-%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="1asy"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="1asy"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">python 期末复习</h1><div class="post-meta"><div class="post-time" style="display:block"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-line"></use></svg></span> <time title="创建时间：2020-12-18 16:53:24" itemprop="dateCreated datePublished" datetime="2020-12-18T16:53:24+08:00">2020-12-18</time><span class="post-meta-divider">-</span><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-2-line"></use></svg></span> <time title="修改时间：2020-12-19 00:06:47" itemprop="dateModified" datetime="2020-12-19T00:06:47+08:00">2020-12-19</time></div><span class="post-count"><span class="post-symbolcount"><span class="post-meta-item-icon" title="本文字数"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-file-word-line"></use></svg></span> <span title="本文字数">4.5k</span><span class="post-meta-divider">-</span><span class="post-meta-item-icon" title="阅读时长"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-timer-line"></use></svg></span> <span title="阅读时长">17m</span></span></span><div class="post-classify"><span class="post-category"> <span class="post-meta-item-icon" style="margin-right:3px;"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-line"></use></svg></span><span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category" href="/categories/python/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">python</span></a></span></span><span class="post-tag"><span class="post-meta-divider">-</span><a class="tag" href="/tags/python/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">python</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body" style="--smc-primary:#0078E7;"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<p>老师怕学生考试挂科，额外安排了一节课讲考试范围和题型（变相的泄题）。就喜欢这样的老师！<br>本来学的也不怎么好，权当巩固一下咯，专门记一些我没有记住的知识点。</p>
+</blockquote>
+<h1 id="Python简介"><a href="#Python简介" class="headerlink" title="Python简介"></a>Python简介</h1><p>Python，读作[‘paɪθɑn],汉语是蟒蛇，Python的logo是两条缠绕在一起的蟒蛇.</p>
+<p>Python语言是由荷兰程序员Guido van Rossum，独立开发完成初版的。之所以选中Python作为该编程语言的名字，是因为他是一个叫Monty Python喜剧团体的爱好者，其本意并不是想选条蟒蛇。</p>
+<h1 id="Python语言的特点"><a href="#Python语言的特点" class="headerlink" title="Python语言的特点"></a>Python语言的特点</h1><blockquote>
+<p>Emma 这些基础特点到是忘了不少。</p>
+</blockquote>
+<p><font color="red"><strong>简单易学、明确优雅、开发速度快 跨平台、可移植、可扩展、交互式、解释型、面向对象的动态语言</strong></font></p>
+<ul>
+<li>跨平台：Python支持Windows、Linux和MAC os等主流操作系统。</li>
+<li>可移植：代码通常不需要多少改动就能移植到别的平台上使用。</li>
+<li>可扩展：Python语言本身由C语言编写而成的，你完全可以在Python中嵌入C，从而提高代码的运行速度和效率。你也可以使用C语言重写Python的任何模块，从根本上改写Python，PyPy就是这么干的。</li>
+<li>交互式：Python提供很好的人机交互界面，比如IDLE和IPython。可以从终端输入执行代码并获得结果，互动的测试和调试代码片断。</li>
+<li>解释型：Python语言在执行过程中由解释器逐行分析，逐行运行并输出结果。</li>
+<li>面向对象：Python语言具备所有的面向对象特性和功能，支持基于类的程序开发。</li>
+<li>动态语言：在运行时可以改变其结构。例如新的函数、对象、甚至代码可以被引进，已有的函数可以被删除或是其他结构上的变化。动态语言非常具有活力。</li>
+</ul>
+<h2 id="“内置电池”，大量的标准库和第三方库"><a href="#“内置电池”，大量的标准库和第三方库" class="headerlink" title="“内置电池”，大量的标准库和第三方库"></a>“内置电池”，大量的标准库和第三方库</h2><p>Python为我们提供了非常完善的基础库，覆盖了系统、网络、文件、GUI、数据库、文本处理等方方面面，这些是随同解释器被默认安装的，各平台通用，你无需安装第三方支持就可以完成大多数工作，这一特点被形象地称作“内置电池（batteries included）”。</p>
+<p>有一句话叫做“不要重复造轮子”。不要过分迷信自己的代码能力，要知道，能作为标准库被Python内置，必然在可靠性和算法效率上达到了目前最高水平，能被广泛使用的第三方库，必然也是经受了大量的应用考验。那些造轮子的事情，就交给世界最顶尖的那一波程序员去干吧，没有极致的思维和数学能力，想创造好用的轮子是很难的。</p>
+<h2 id="社区活跃，贡献者多，互帮互助"><a href="#社区活跃，贡献者多，互帮互助" class="headerlink" title="社区活跃，贡献者多，互帮互助"></a>社区活跃，贡献者多，互帮互助</h2><p>国外有好多，在国内，好像没有比较成熟，因此学好英语，去和世界范围的程序员交流吧！</p>
+<h2 id="开源语言，发展动力巨大"><a href="#开源语言，发展动力巨大" class="headerlink" title="开源语言，发展动力巨大"></a>开源语言，发展动力巨大</h2><p>Python是基于C语言编写的，并且使用GPL开源协议，你可以免费获取它的源代码，进行学习、研究甚至改进。众人拾柴火焰高，有更多的人参与Python的开发，促使它更好的发展，被更多的应用，形成良性循环。Python为什么会越来越火就是因为它的开放性，自由性，聚起了人气，形成了社区，有很多人在其中做贡献，用的人越来越多，自然就提高了市场占有率，企业、公司、厂家就不得不使用Python，提供的Python程序员岗位就越来越多，这就是开源的力量。</p>
+<h1 id="Python包管理工具"><a href="#Python包管理工具" class="headerlink" title="Python包管理工具"></a>Python包管理工具</h1><p>Python有两个著名的包管理工具easy_install和pip。在Python2.7的安装包中，easy_install是默认安装的，而pip需要我们手动安装。随着Python版本的提高，easy_install已经逐渐被淘汰，但是一些比较老的第三方库，在现在仍然只能通过easy_install进行安装。目前，pip已经成为主流的安装工具，自Python2 &gt;=2.7.9或者Python3.4以后默认都安装有pip。</p>
+<p>就如同Python有2、2.7、3、3.6一样，pip也有pip、pip2、pip3之分。pip是从属于Python的，对应的pip负责给对应的Python安装第三方模块。我们不要关心pip后面跟的数字，核心的问题是这个pip命令对应的是哪个Python解释器，想要为哪个Python解释器安装第三方库，就要调用它名下对应的pip。</p>
+<p>如何确定哪个pip是哪个Python的呢？</p>
+<p>cmd环境中，输入pip -V(大写V)：<br><img src="image001.png" loading="lazy"></p>
+<h2 id="pip的使用"><a href="#pip的使用" class="headerlink" title="pip的使用"></a>pip的使用</h2><ol>
+<li>普通安装</li>
+</ol>
+<p><em>再次强调，使用pip前请务必确认其所对应的Python解释器必须是你想要的那个！</em></p>
+<p>以安装pillow模块为例。输入<font color="red">pip install pillow。</font></p>
+<ol start="2">
+<li><p>指定版本安装<br>安装特定版本的package，通过使用==, &gt;=, &lt;=, &gt;, &lt;来指定一个版本号。<br><font color="red"> pip install ‘Markdown&lt;2.0’<br>pip install ‘Markdown&gt;2.0,&lt;2.0.3 </font></p>
+</li>
+<li><p>卸载已安装的库<br><font color="red">pip uninstall pillow</font></p>
+</li>
+<li><p>列出已经安装的库<br><font color="red">pip list</font></p>
+</li>
+<li><p>将已经安装的库列表保存到文本文件中<br><font color="red">pip freeze &gt; requirements.txt</font></p>
+</li>
+</ol>
+<p>这个功能非常常用、好用！经常被用作项目环境依赖文件。</p>
+<ol start="6">
+<li>根据依赖文件批量安装库<br><font color="red">pip install -r requirements.txt</font></li>
+</ol>
+<p>使用上面的txt文件，批量安装第三方库。</p>
+<h1 id="Python的virtualenv-虚拟环境"><a href="#Python的virtualenv-虚拟环境" class="headerlink" title="Python的virtualenv 虚拟环境"></a>Python的virtualenv 虚拟环境</h1><p>这部分不考，详细内容见<a target="_blank" rel="noopener" href="https://www.liujiangblog.com/course/python/6">https://www.liujiangblog.com/course/python/6</a></p>
+<h1 id="Python基础"><a href="#Python基础" class="headerlink" title="Python基础"></a>Python基础</h1><h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="可变数据类型"><a href="#可变数据类型" class="headerlink" title="可变数据类型"></a>可变数据类型</h3><ul>
+<li><p>列表(list)</p>
+<font color="#00CED1">
+列表的系列函数：
+
+<p>  ①append():元素的追加，在列表的末尾添加新的值 列表名.append(新增的值)</p>
+<p>  ②insert(下标，值)：在指定下标插入指定的值 列表名.insert(下标，值)</p>
+<p>  ③count(值)：求指定元素在列表中出现的次数 列表名.count(值)</p>
+<p>  ④pop(下标)：从列表中根据下标移除指定位置的值 列表名.pop(下标)<br>  （pop删除元素，是将元素从列表移除，但依然存在于内存，如需使用，使用变量接收）</p>
+<p>  ⑤remove(值)：从列表中根据值来删除掉指定的元素<br>  （如果列表中存在重复的元素，删除的时候，仅仅删除第一个）<br>  ⑥sort()：排序，从小到大 .<br>  若需要实现从大到小，需要添加关键字参数reverse=True 列表名.sort(reverse=True)<br>  ⑦sorted()：临时排序 sorted(列表名)</p>
+<p>  ⑧reverse()：翻转 列表名.reverse()</p>
+<p>  ⑨extend()：列表的扩展/列表的拼接 列表名.extend(列表)</p>
+<p>  ⑩index(值)：获取列表中指定元素的下标 列表名.index(值)</font></p>
+</li>
+<li><p>字典(dict)</p>
+<font color="#00CED1">
+  字典的系列函数：
+
+<p>  ①dict():映射到另一个字典：字典名 = dict(字典名)<br>  通过序列创建字典：字典名 = dict(序列) #序列位置只能传入序列，因字典数据格式是键值对 ，所以序列中的每一个元素中应该包含两个值 eg. [(1,2),3,4]</p>
+<p>  ②fromkeys():多个key共用一个值 dict.fromkeys(key的序列，值)</p>
+<p>  ③keys()：获取字典中所有的key，以形式列表返回 字典名.keys()</p>
+<p>  ④values()：获取字典中所有的value，以实行列表返回 字典名.values()</p>
+<p>  ⑤get(key, default)：根据key，获取指定的value 字典名.get(key, 提示信息)</p>
+<p>  ⑥pop(key，default)：根据key，删除这个key的键值对 字典名.pop(key, 提示信息)</p>
+<p>  ⑦clear()：清空字典中所有的键值对，只保留空字典 字典名.clear()</p>
+<p>  ⑧del：删除字典 del 字典名</p>
+<p>  ⑨update()：字典的更新/字典的拼接 字典名.update(字典名)</p>
+<p>  字典新增数据：字典名[key] = value<br>  （key存在，修改字典中key原有的value key不存在，在字典中新增一个键值对）</font></p>
+</li>
+</ul>
+<h3 id="不可变数据类型"><a href="#不可变数据类型" class="headerlink" title="不可变数据类型"></a>不可变数据类型</h3><p>不可变数据类型的函数都不会改变数据的值，所以需要添加一个值来接受</p>
+<h4 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h4><font color="#00CED1">
+    整型：int
+    浮点型：float
+    bool:True、False
+    复数：complex</font>
+
+<h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><h5 id="字符串与编码"><a href="#字符串与编码" class="headerlink" title="字符串与编码"></a>字符串与编码</h5><font color="#00CED1">
+    字符串也是一种数据类型，但它涉及到编码问题，Python3中默认使用的是Unicode编码。关于计算机编码的问题我已经解决了，在[计算机编码与进制](https://self-ferry.github.io/2020/12/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BC%96%E7%A0%81%E4%B8%8E%E8%BF%9B%E5%88%B6/)一文中。
+
+<pre><code>由于Python源代码也是一个文本文件，所以，当你的源代码中包含中文的时候，在保存源代码时，就需要务必指定保存为UTF-8编码。当Python解释器读取源代码时，为了让它按UTF-8编码读取，我们通常在文件开头写上这两行： </code></pre>
+</font>
+    <pre class="language-python" data-language="python"><code class="language-python"><span class="token comment">#!/usr/bin/env python3</span>
+<span class="token comment"># -*- coding: utf-8 -*- </span></code></pre>
+
+<h5 id="字符串的格式化输出"><a href="#字符串的格式化输出" class="headerlink" title="字符串的格式化输出"></a>字符串的格式化输出</h5><h6 id="的用法"><a href="#的用法" class="headerlink" title="%的用法"></a>%的用法</h6><font color="#00CED1">
+     1、整数的输出
+        %o —— oct 八进制
+        %d —— dec 十进制
+        %x —— hex 十六进制
+    2、浮点数输出
+        （1）格式化输出
+        %±m.nf 
+        +号可以省略，表示右对齐。-号表示左对齐。m表示占多少位，n表示保留小数点后几位.
+
+<pre><code>    <pre class="language-python" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"数字%6.6f"</span> <span class="token operator">%</span>  a<span class="token punctuation">)</span>
+数字<span class="token number">6.900000</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"数字%6.2f"</span> <span class="token operator">%</span>  a<span class="token punctuation">)</span>
+数字  <span class="token number">6.90</span></code></pre>
+    %f ——保留小数点后面六位有效数字
+    %e ——保留小数点后面六位有效数字，指数形式输出
+    %g ——在保证六位有效数字的前提下，使用小数方式，否则使用科学计数法
+    %.3g，保留3位有效数字，使用小数或科学计数法
+    字符串格式代码![](image002.png)
+    常用转义字符![](image003.png)</code></pre>
+<h6 id="format的用法"><a href="#format的用法" class="headerlink" title="format的用法"></a>format的用法</h6><p>相对基本格式化输出采用‘%’的方法，format()功能更强大，该函数把字符串当成一个模板，通过传入的参数进行格式化，并且使用大括号‘{}’作为特殊字符代替‘%’</p>
+<ol>
+<li>位置匹配<br>(1)不带编号，即“{}”<br>(2)带数字编号，可调换顺序，即“{1}”、“{2}”<br>(3)带关键字，即“{a}”、“{tom}”<br>(4)通过下标或key匹配参数</li>
+</ol>
+<pre class="language-python" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'&#123;&#125; &#123;&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">,</span><span class="token string">'world'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 不带字段</span>
+hello world
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'&#123;0&#125; &#123;1&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">,</span><span class="token string">'world'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 带数字编号</span>
+hello world
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'&#123;0&#125; &#123;1&#125; &#123;0&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">,</span><span class="token string">'world'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 打乱顺序</span>
+hello world hello
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'&#123;1&#125; &#123;1&#125; &#123;0&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">,</span><span class="token string">'world'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+world world hello
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'&#123;a&#125; &#123;tom&#125; &#123;a&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>tom<span class="token operator">=</span><span class="token string">'hello'</span><span class="token punctuation">,</span>a<span class="token operator">=</span><span class="token string">'world'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 带关键字</span>
+world hello world
+<span class="token operator">>></span><span class="token operator">></span> coord <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token string">'X: &#123;0[0]&#125;;  Y: &#123;0[1]&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>coord<span class="token punctuation">)</span>  <span class="token comment">#通过下标或key</span>
+<span class="token string">'X: 3;  Y: 5'</span></code></pre>
+
+<ol start="2">
+<li>格式转换</li>
+</ol>
+<p>‘b’ - 二进制。将数字以2为基数进行输出。<br>‘c’ - 字符。在打印之前将整数转换成对应的Unicode字符串。<br>‘d’ - 十进制整数。将数字以10为基数进行输出。<br>‘o’ - 八进制。将数字以8为基数进行输出。<br>‘x’ - 十六进制。将数字以16为基数进行输出，9以上的位数用小写字母。<br>‘e’ - 幂符号。用科学计数法打印数字。用’e’表示幂。<br>‘g’ - 一般格式。将数值以fixed-point格式输出。当数值特别大的时候，用幂形式打印。<br>‘n’ - 数字。当值为整数时和’d’相同，值为浮点数时和’g’相同。不同的是它会根据区域设置插入数字分隔符。<br>‘%’ - 百分数。将数值乘以100然后以fixed-point(‘f’)格式打印，值后面会有一个百分号。</p>
+<pre class="language-python" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'&#123;0:b&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token number">11</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'&#123;:c&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'&#123;:d&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token number">20</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'&#123;:o&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token number">24</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'&#123;:x&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token number">14</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'&#123;:e&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token number">2.000000e+01</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'&#123;:g&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token number">20.1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token number">20.1</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'&#123;:f&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token number">20.000000</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'&#123;:n&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token number">20</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'&#123;:%&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token number">2000.000000</span><span class="token operator">%</span></code></pre>
+<ol start="3">
+<li>进阶用法<br>进制转换 (2进制、8进制、10进制、16进制)<pre class="language-python" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token comment"># format also supports binary numbers</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token string">"int: &#123;0:d&#125;;  hex: &#123;0:x&#125;;  oct: &#123;0:o&#125;;  bin: &#123;0:b&#125;"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span>
+<span class="token string">'int: 42;  hex: 2a;  oct: 52;  bin: 101010'</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token comment"># with 0x, 0o, or 0b as prefix:</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token string">"int: &#123;0:d&#125;;  hex: &#123;0:#x&#125;;  oct: &#123;0:#o&#125;;  bin: &#123;0:#b&#125;"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span>  <span class="token comment"># 在前面加“#”，则带进制前缀</span>
+<span class="token string">'int: 42;  hex: 0x2a;  oct: 0o52;  bin: 0b101010'</span></code></pre></li>
+<li>左中右对齐及位数补全<br>(1)&lt; （默认）左对齐、&gt; 右对齐、^ 中间对齐、= （只用于数字）在小数点后进行补齐<br>(2)取位数“{:4s}”、”{:.2f}”等<pre class="language-python" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'&#123;&#125; and &#123;&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">,</span><span class="token string">'world'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 默认左对齐</span>
+hello <span class="token keyword">and</span> world
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'&#123;:10s&#125; and &#123;:>10s&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">,</span><span class="token string">'world'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 取10位左对齐，取10位右对齐</span>
+hello      <span class="token keyword">and</span>      world
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'&#123;:^10s&#125; and &#123;:^10s&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">,</span><span class="token string">'world'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 取10位中间对齐</span>
+  hello    <span class="token keyword">and</span>   world   
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'&#123;&#125; is &#123;:.2f&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token number">1.123</span><span class="token punctuation">,</span><span class="token number">1.123</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 取2位小数</span>
+<span class="token number">1.123</span> <span class="token keyword">is</span> <span class="token number">1.12</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'&#123;0&#125; is &#123;0:>10.2f&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token number">1.123</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 取2位小数，右对齐，取10位</span>
+<span class="token number">1.123</span> <span class="token keyword">is</span>       <span class="token number">1.12</span>
+
+<span class="token operator">>></span><span class="token operator">></span> <span class="token string">'&#123;:&lt;30&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token string">'left aligned'</span><span class="token punctuation">)</span>  <span class="token comment"># 左对齐</span>
+<span class="token string">'left aligned                  '</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token string">'&#123;:>30&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token string">'right aligned'</span><span class="token punctuation">)</span>  <span class="token comment"># 右对齐</span>
+<span class="token string">'                 right aligned'</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token string">'&#123;:^30&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token string">'centered'</span><span class="token punctuation">)</span>  <span class="token comment"># 中间对齐</span>
+<span class="token string">'           centered           '</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token string">'&#123;:*^30&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token string">'centered'</span><span class="token punctuation">)</span>  <span class="token comment"># 使用“*”填充</span>
+<span class="token string">'***********centered***********'</span>
+<span class="token operator">>></span><span class="token operator">></span><span class="token string">'&#123;:0=30&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span>  <span class="token comment"># 还有“=”只能应用于数字，这种方法可用“>”代替</span>
+<span class="token string">'000000000000000000000000000011'</span></code></pre></li>
+<li>正负符号显示<pre class="language-python" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token string">'&#123;:+f&#125;; &#123;:+f&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token number">3.14</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">3.14</span><span class="token punctuation">)</span>  <span class="token comment"># 总是显示符号</span>
+<span class="token string">'+3.140000; -3.140000'</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token string">'&#123;: f&#125;; &#123;: f&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token number">3.14</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">3.14</span><span class="token punctuation">)</span>  <span class="token comment"># 若是+数，则在前面留空格</span>
+<span class="token string">' 3.140000; -3.140000'</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token string">'&#123;:-f&#125;; &#123;:-f&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token number">3.14</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">3.14</span><span class="token punctuation">)</span>  <span class="token comment"># -数时显示-，与'&#123;:f&#125;; &#123;:f&#125;'一致</span>
+<span class="token string">'3.140000; -3.140000'</span></code></pre></li>
+<li>百分数%<pre class="language-python" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> points <span class="token operator">=</span> <span class="token number">19</span>
+<span class="token operator">>></span><span class="token operator">></span> total <span class="token operator">=</span> <span class="token number">22</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token string">'Correct answers: &#123;:.2%&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>points<span class="token operator">/</span>total<span class="token punctuation">)</span>
+<span class="token string">'Correct answers: 86.36%'</span></code></pre></li>
+<li>时间<pre class="language-python" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">import</span> datetime
+<span class="token operator">>></span><span class="token operator">></span> d <span class="token operator">=</span> datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">(</span><span class="token number">2010</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">58</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token string">'&#123;:%Y-%m-%d %H:%M:%S&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span>
+<span class="token string">'2010-07-04 12:15:58'</span></code></pre></li>
+<li>逗号”,”分隔金钱，以千进位<pre class="language-python" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token string">'&#123;:,&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token number">1234567890</span><span class="token punctuation">)</span>
+<span class="token string">'1,234,567,890'</span></code></pre>
+</li>
+</ol>
+<ul>
+<li>字符串系列函数：<br>  ①replace()：替换字符串中的内容为新的字符串内容 字符串.replace(旧字符，新字符，替换次数) #替换次数默认为全部替换<br>  ②upper()：字符串中所有的字符全部转换为大写<br>  ③lower():字符串中所有的字符串全部转换为小写<br>  ④len()：求字符串的长度 len(字符串)<br>  ⑤split(切割字符)：将字符串按照自定的字符进行切割，返回一个列表<br>  eg. a = ‘abcde’ b = a.split(‘c’) (结果)b=[‘ab’,’def’]<br>  ⑥capitalize()：大写字符串的第一个字符<br>  ⑦title()：大写字符串中每一个单词的首字母<br>  ⑧index()：返回字符串中指定元素的下标，如果有重复的元素，返回第一个元素的下标</font>
+</li>
+</ul>
+<ul>
+<li><p>元组<font color="#00CED1"><br>  符号：()<br>  关键字：tuple<br>  创建 只有一个值的元组的时候，要在元素后面加一个逗号：元组名 = （1，）<br>  元组函数：<br>  ①tuple()：创建元素，实现其他数据类型转换为元组<br>  ②count()：统计元组中指定元素出现的次数<br>  ③index()：求出元组内指定元素的下标</font></p>
+</li>
+<li><p>集合<font color="#00CED1"><br>  符号：{}<br>  关键字：set<br>  创建空集合时用小括号：set()<br>  特点：无需不重复<br>  举例：<br>  set1 = {1,2,3}<br>  或 set2 = set(‘hello’)<br>  set2的输出结果：{‘o’,‘e’，‘h’，‘l} #此结果不唯一，满足无需不重复特点即可</font></p>
+</li>
+</ul>
+<h2 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h2><ol>
+<li><p>特点<font color="#00CED1"><br> 只能用于序列(可以用下标获取元素的)：字符串，列表，元组<br> 特点：起始下标不能比截止下标大</font></p>
+</li>
+<li><p>用法<font color="#00CED1"><br> 序列名[起始下标：截止下标]<br> 特例：<br> ①序列名[:]:截取序列中全部内容<br> ②序列名[起始下标：]：截取从起始下标开始的全部内容<br> ③序列名[:截止下标]：截取从0开始到截止下标前一位的所有内容<br> ④序列名[:负数]：截取倒数除了负数个数的全部内容<br> eg.list[:-3]:截取0到倒数第四个的全部内容(倒数第三个不用)</font></p>
+</li>
+<li><p>列表的复制<font color="#00CED1"><br>①列表1 = 列表2：<br>列表1和列表2共用同一块内存地址，修改其中任意一个列表的值，另一个列表也会更改内容<br>②列表1 = 列表2[:]</font></p>
+</li>
+</ol>
+<h2 id="运算符和表达式"><a href="#运算符和表达式" class="headerlink" title="运算符和表达式"></a>运算符和表达式</h2><ol>
+<li><p>算数运算符</p>
+<font color="#00CED1">
+‘+’‘-’‘\*’‘/’‘%’‘//’(整除，求商)‘\*\*’(求幂，2的三次方：2**3)
+</font>
+</li>
+<li><p>赋值运算符</p>
+<font color="#00CED1">
+‘=’‘+=’‘-=’‘*=’‘/=’
+</font>
+</li>
+<li><p>关系运算符(返回一个bool值)</p>
+<font color="#00CED1">
+‘>’‘<’‘==’‘>=’‘<=’‘!=’
+</font>
+</li>
+<li><p>逻辑运算符</p>
+<font color="#00CED1">
+‘and’‘or’‘not’
+</font>
+</li>
+<li><p>三元运算符</p>
+<font color="#00CED1">
+语法：操作1 if 操作数2 else 操作3
+操作数2为真时，执行操作1；操作数2为假时，执行操作3
+</font>
+
+</li>
+</ol>
+<pre class="language-python" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token number">3</span> <span class="token keyword">if</span> <span class="token number">0</span> <span class="token keyword">else</span> <span class="token number">2</span>
+<span class="token number">2</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token number">3</span> <span class="token keyword">if</span> <span class="token number">1</span> <span class="token keyword">else</span> <span class="token number">2</span>
+<span class="token number">3</span></code></pre>
+
+<ol start="6">
+<li><p>成员运算符</p>
+<font color="#00CED1">
+‘in’‘not in’
+</font>
+</li>
+<li><p>身份运算符</p>
+<font color="#00CED1">
+‘is’‘is not’
+</font>
+</li>
+<li><p>命令</p>
+<font color="#00CED1">
+a.循环语句：for / while 语句
+b.判断语句：if / if elif 语句
+c.顺序语句</font>
+
+</li>
+</ol>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><ol>
+<li><p>参数</p>
+<font color="#00CED1">
+ a.形参：形式参数，没有实际作用
+ ①必备参数：用户调用函数时，必须要传入的参数
+ ② 缺省参数：用户调用函数时，可以不用传入的参数 eg.def a(a1=1,a2=2)
+ ③关键字参数：用户调用函数时，必须通过“形参名=实参名/值” 格式传入的参数  eg. def a(a1,a2) a(a1=1,a2=2) →函数调用
+ ④不定长参数
+ 1) *args：接收任意多个单值，组成一个元组
+ 2) **kwargs：接收任意多个键值对，组成一个字典
+
+<p> b.实参：实际参数，真正参与函数的运算</p>
+</font>
+</li>
+<li><p>其他</p>
+<font color="#00CED1">
+
+<p> 匿名函数：<br> lambda 形参1,形参2：执行语句</p>
+</font>
+
+</li>
+</ol>
+<h2 id="模块-包以及文件处理"><a href="#模块-包以及文件处理" class="headerlink" title="模块/包以及文件处理"></a>模块/包以及文件处理</h2><ol>
+<li><p>模块/包</p>
+<font color="#00CED1">
+ 模块： .py文件
+ 包： python package
+</font>
+</li>
+<li><p>文件处理</p>
+<font color="#00CED1">
+ a. 操作模式：r、w、a
+
+<p> b.读<br> ①read():读取文件中的所有内容<br> ②readline():读取单行内容<br> ③readlines():以行的形式读取所有内容，返回一个包含了每一行的序列</p>
+<p> c.写<br> ①write(写入内容)：将指定内容写入文件中<br> ②writelines(序列)：将序列中的每一元素，作为单独的行，按照行的形式写入</p>
+<p> d.其他<br> ①tell():返回光标当前所在的位置<br> ②seek(步长，起始位置):将光标移动到指定的位置<br> (0,0)表示移动光标到文章最开头的地方</p>
+</font>
+
+
+</li>
+</ol>
+<h1 id="Python面向对象"><a href="#Python面向对象" class="headerlink" title="Python面向对象"></a>Python面向对象</h1><h2 id="魔法方法"><a href="#魔法方法" class="headerlink" title="魔法方法"></a>魔法方法</h2><h1 id="Python网络编程"><a href="#Python网络编程" class="headerlink" title="Python网络编程"></a>Python网络编程</h1><h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2><h2 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h2><h1 id="Python正则表达式"><a href="#Python正则表达式" class="headerlink" title="Python正则表达式"></a>Python正则表达式</h1><h1 id="Python爬虫"><a href="#Python爬虫" class="headerlink" title="Python爬虫"></a>Python爬虫</h1><h2 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h2><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><h1 id="收集自以下"><a href="#收集自以下" class="headerlink" title="收集自以下"></a>收集自以下</h1><p><a target="_blank" rel="noopener" href="https://www.liujiangblog.com/course/python/">https://www.liujiangblog.com/course/python/</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/149247533">https://zhuanlan.zhihu.com/p/149247533</a><br><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/1016959663602400">https://www.liaoxuefeng.com/wiki/1016959663602400</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/fat39/p/7159881.html">https://www.cnblogs.com/fat39/p/7159881.html</a></p>
+</div><div id="reward-container"><span class="hty-icon-button button-glow" id="reward-button" title="打赏" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === &quot;none&quot;) ? &quot;block&quot; : &quot;none&quot;;"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-hand-coin-line"></use></svg></span><div id="reward-comment">I'm so cute. Please give me money.</div><div id="qr" style="display:none;"><div style="display:inline-block"><a href="images/reward.jpg"><img loading="lazy" src="/images/reward.jpg" alt="支付宝" title="支付宝"></a><div><span style="color:#00A3EE"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-alipay-line"></use></svg></span></div></div></div></div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>1asy</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="https://self-ferry.github.io/2020/12/18/python-%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" title="python 期末复习">https://self-ferry.github.io/2020/12/18/python-%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均默认采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><svg class="icon"><use xlink:href="#icon-creative-commons-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-by-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-nc-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-sa-line"></use></svg></a> 许可协议。</li></ul></section></article><div class="post-nav"><div class="post-nav-item"></div><div class="post-nav-item"><a class="post-nav-next" href="/2020/12/11/PHP%E7%95%99%E8%A8%80%E6%9D%BF%E5%B0%8F%E8%AE%B0/" rel="next" title="PHP留言板小记"><span class="post-nav-text">PHP留言板小记</span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-right-s-line"></use></svg></a></div></div></div><div id="comment"><div class="comment-tooltip text-center"><span>点击按钮跳转 GitHub Issues 评论。</span><br><span>若没有本文 Issue，您可以使用 Comment 模版新建。</span><br><a class="hty-button hty-button--raised" id="github-issues" target="_blank" rel="noopener" href="https://github.com/YunYouJun/yunyoujun.github.io/issues?q=is:issue+python 期末复习">GitHub Issues</a></div></div></main><footer class="sidebar-translate" id="footer"><div class="copyright"><span>&copy; 2019 – 2020 </span><span class="with-love" id="animate"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-cloud-line"></use></svg></span><span class="author"> 1asy</span></div><div class="powered"><span>由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v5.2.0</span><span class="footer-separator">|</span><span>主题 - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v1.3.0</span></div><div class="live_time"><span>本博客已萌萌哒地运行</span><span id="display_live_time"></span><span class="moe-text">ヾ(=･ω･=)o</span><script>function blog_live_time() {
+  window.setTimeout(blog_live_time, 1000);
+  const start = new Date('2020-11-16T00:00:00');
+  const now = new Date();
+  const timeDiff = (now.getTime() - start.getTime());
+  const msPerMinute = 60 * 1000;
+  const msPerHour = 60 * msPerMinute;
+  const msPerDay = 24 * msPerHour;
+  const passDay = Math.floor(timeDiff / msPerDay);
+  const passHour = Math.floor((timeDiff % msPerDay) / 60 / 60 / 1000);
+  const passMinute = Math.floor((timeDiff % msPerHour) / 60 / 1000);
+  const passSecond = Math.floor((timeDiff % msPerMinute) / 1000);
+  display_live_time.innerHTML = " " + passDay + " 天 " + passHour + " 小时 " + passMinute + " 分 " + passSecond + " 秒";
+}
+blog_live_time();
+</script></div></footer><a class="hty-icon-button" id="goUp" aria-label="back-to-top" href="#"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-up-s-line"></use></svg><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#0078E7" stroke-width="2" stroke-linecap="round"></circle></svg></a></div><script defer src="/js/utils.js"></script><script defer src="/js/hexo-theme-yun.js"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script></body></html>
