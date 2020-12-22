@@ -1,0 +1,170 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#0078E7"><meta name="author" content="1asy"><meta name="copyright" content="1asy"><meta name="generator" content="Hexo 5.2.0"><meta name="theme" content="hexo-theme-yun"><title>大数据学习 | 1asy</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&amp;display=swap" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/star-markdown-css@0.1.22/dist/yun/yun-markdown.min.css"><script src="//at.alicdn.com/t/font_1140697_ed8vp4atwoj.js" async></script><script src="https://cdn.jsdelivr.net/npm/scrollreveal/dist/scrollreveal.min.js" defer></script><script>document.addEventListener("DOMContentLoaded", () => {
+  [".post-card",".post-content img"].forEach((target)=> {
+    ScrollReveal().reveal(target);
+  })
+});
+</script><link id="light-prism-css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism.css" media="(prefers-color-scheme: light)"><link id="dark-prism-css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism-tomorrow.css" media="(prefers-color-scheme: dark)"><link rel="shortcut icon" type="image/svg+xml" href="/yun.svg"><link rel="mask-icon" href="/yun.svg" color="#0078E7"><link rel="alternate icon" href="/yun.ico"><link rel="preload" href="/css/hexo-theme-yun.css" as="style"><link rel="preload" href="/js/utils.js" as="script"><link rel="preload" href="/js/hexo-theme-yun.js" as="script"><link rel="prefetch" href="/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="stylesheet" href="/css/hexo-theme-yun.css"><script id="yun-config">
+    const Yun = window.Yun || {};
+    window.CONFIG = {"hostname":"self-ferry.github.io","root":"/","title":"1asy的小站","version":"1.3.0","mode":"dark","copycode":true,"anonymous_image":"https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/avatar/none.jpg","say":{"api":"https://v1.hitokoto.cn","hitokoto":true},"fireworks":{"colors":["102, 167, 221","62, 131, 225","33, 78, 194"]}};
+  </script><meta name="description" content="前言 复习大数据ing！！老师不靠谱，只能自己来了。踩坑ing  防火墙参考自博客园的一位前辈。要搭建四台集群Linux虚拟机，下载的Linux版本为centos 7系列，装完才知道相比于centos 6做了很大的改动，很多命令都不一样了，例如：系统服务都用systemctl命令来开启service，它是CentOS7的服务管理中主要的工具，融合了之前service和chkconfig的功能，据说">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大数据学习">
+<meta property="og:url" content="https://self-ferry.github.io/2020/12/19/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="1asy">
+<meta property="og:description" content="前言 复习大数据ing！！老师不靠谱，只能自己来了。踩坑ing  防火墙参考自博客园的一位前辈。要搭建四台集群Linux虚拟机，下载的Linux版本为centos 7系列，装完才知道相比于centos 6做了很大的改动，很多命令都不一样了，例如：系统服务都用systemctl命令来开启service，它是CentOS7的服务管理中主要的工具，融合了之前service和chkconfig的功能，据说">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-12-19T12:27:20.000Z">
+<meta property="article:modified_time" content="2020-12-21T07:27:55.005Z">
+<meta property="article:author" content="1asy">
+<meta property="article:tag" content="Hadoop">
+<meta name="twitter:card" content="summary"><script src="/js/ui/mode.js"></script></head><body><script defer src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script defer src="/js/ui/fireworks.js"></script><canvas class="fireworks"></canvas><canvas id="trianglifyContainer"></canvas><script defer src="https://cdn.jsdelivr.net/npm/trianglify@4/dist/trianglify.bundle.js"></script><script>document.addEventListener("DOMContentLoaded", () => {
+  const pattern = trianglify({
+    width: 800,
+    height: 600,
+    cellSize: 75,
+    palette: ["YlGnBu", "GnBu", "Purples", "Blues"],
+  });
+  const canvasOpts = {
+    applyCssScaling: false
+  }
+  document.body.appendChild(pattern.toCanvas(trianglifyContainer, canvasOpts));
+});</script><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script src="/js/sidebar.js"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="文章目录"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-list-ordered"></use></svg></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="站点概览"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-passport-line"></use></svg></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/about/" title="1asy"><img width="96" loading="lazy" src="/cool.jpg" alt="1asy"></a><div class="site-author-name"><a href="/about/">1asy</a></div><a class="site-name" href="/about/site.html">1asy</a><sub class="site-subtitle">悟已往之不谏 知来者之可追 实迷途其未远 觉今是而昨非</sub><div class="site-desciption"></div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="首页"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-4-line"></use></svg></span></a><div class="site-state-item"><a href="/archives/" title="归档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-archive-line"></use></svg></span><span class="site-state-item-count">24</span></a></div><div class="site-state-item"><a href="/categories/" title="分类"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-2-line"></use></svg></span><span class="site-state-item-count">12</span></a></div><div class="site-state-item"><a href="/tags/" title="标签"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="site-state-item-count">32</span></a></div><a class="site-state-item hty-icon-button" target="_blank" rel="noopener" href="https://yun.yunyoujun.cn" title="文档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-settings-line"></use></svg></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="/atom.xml" title="RSS" target="_blank" style="color:orange"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-rss-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://qm.qq.com/cgi-bin/qm/qr?k=epvxdq1sknJe9JMj6J1LsBw4a6cI_2ln&amp;jump_from=webapi" title="QQ 群 389401003" target="_blank" style="color:#12B7F5"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-qq-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/Self-ferry" title="GitHub" target="_blank" style="color:#6e5494"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://weibo.com/jizhideyunyoujun" title="微博" target="_blank" style="color:#E6162D"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-weibo-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://www.douban.com/people/yunyoujun/" title="豆瓣" target="_blank" style="color:#007722"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-douban-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://music.163.com/#/user/home?id=247102977" title="网易云音乐" target="_blank" style="color:#C20C0C"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-netease-cloud-music-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://www.zhihu.com/people/yunyoujun/" title="知乎" target="_blank" style="color:#0084FF"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-zhihu-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://twitter.com/YunYouJun" title="Twitter" target="_blank" style="color:#1da1f2"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-twitter-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://t.me/elpsycn" title="Telegram Channel" target="_blank" style="color:#0088CC"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-telegram-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="mailto:Self_ferry@163.com" title="E-Mail" target="_blank" style="color:#8E71C1"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-mail-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://travellings.now.sh/" title="Travelling" target="_blank" style="color:var(--hty-text-color)"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-send-plane-2-line"></use></svg></a></div><hr style="margin:0.5rem 1rem"><div class="links"><a class="links-item hty-icon-button" href="/links/" title="我的小伙伴们" style="color:dodgerblue"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-genderless-line"></use></svg></a></div></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99"><span class="toc-number">2.</span> <span class="toc-text">防火墙</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E9%98%B2%E7%81%AB%E5%A2%99%E7%9A%84%E5%BC%80%E5%90%AF%E3%80%81%E5%85%B3%E9%97%AD%E3%80%81%E7%A6%81%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">2.1.</span> <span class="toc-text">一、防火墙的开启、关闭、禁用命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8firewall-cmd%E9%85%8D%E7%BD%AE%E7%AB%AF%E5%8F%A3"><span class="toc-number">2.2.</span> <span class="toc-text">二、使用firewall-cmd配置端口</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SSH%E5%85%AC%E9%92%A5%E7%99%BB%E9%99%86"><span class="toc-number">3.</span> <span class="toc-text">SSH公钥登陆</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hadoop%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE%E5%85%8D%E5%AF%86SSH%E7%99%BB%E5%BD%95%E6%96%B9%E6%B3%95"><span class="toc-number">3.1.</span> <span class="toc-text">Hadoop集群配置免密SSH登录方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hadoop%E9%9B%86%E7%BE%A4%E7%8E%AF%E5%A2%83"><span class="toc-number">3.1.1.</span> <span class="toc-text">Hadoop集群环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E5%8E%9F%E7%90%86"><span class="toc-number">3.1.2.</span> <span class="toc-text">免密登录原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95"><span class="toc-number">3.1.3.</span> <span class="toc-text">实现方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Hadoop%E7%9A%84%E5%90%AF%E5%8A%A8%E5%92%8C%E6%B5%8B%E8%AF%95"><span class="toc-number">4.</span> <span class="toc-text">Hadoop的启动和测试</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">4.1.</span> <span class="toc-text">格式化文件系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%A1%E7%90%86JobHistory-Server"><span class="toc-number">4.2.</span> <span class="toc-text">管理JobHistory Server</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E9%AA%8C%E8%AF%81"><span class="toc-number">4.3.</span> <span class="toc-text">集群验证</span></a></li></ol></li></ol></div></div></div><div class="tag-cloud"><div class="tag-cloud-tags"><a href="/tags/ANSI/" style="font-size: 12px; color: #999">ANSI</a> <a href="/tags/ASCII/" style="font-size: 12px; color: #999">ASCII</a> <a href="/tags/Apeache/" style="font-size: 12px; color: #999">Apeache</a> <a href="/tags/GBK/" style="font-size: 12px; color: #999">GBK</a> <a href="/tags/HTML/" style="font-size: 12px; color: #999">HTML</a> <a href="/tags/Hadoop/" style="font-size: 12px; color: #999">Hadoop</a> <a href="/tags/Linux%E5%91%BD%E4%BB%A4/" style="font-size: 12px; color: #999">Linux命令</a> <a href="/tags/SQLmap/" style="font-size: 12px; color: #999">SQLmap</a> <a href="/tags/SSH%E9%9A%A7%E9%81%93/" style="font-size: 12px; color: #999">SSH隧道</a> <a href="/tags/URL-%E7%BC%96%E7%A0%81-%E8%A7%A3%E7%A0%81/" style="font-size: 12px; color: #999">URL 编码/解码</a> <a href="/tags/UTF-8/" style="font-size: 12px; color: #999">UTF-8</a> <a href="/tags/Unicode/" style="font-size: 12px; color: #999">Unicode</a> <a href="/tags/WindowsPE%E7%BB%93%E6%9E%84/" style="font-size: 12px; color: #999">WindowsPE结构</a> <a href="/tags/guestbook/" style="font-size: 12px; color: #999">guestbook</a> <a href="/tags/http/" style="font-size: 12px; color: #999">http</a> <a href="/tags/markdown-%E5%AD%A6%E4%B9%A0/" style="font-size: 12px; color: #999">markdown 学习</a> <a href="/tags/multiprocessing/" style="font-size: 12px; color: #999">multiprocessing</a> <a href="/tags/my-first-blog/" style="font-size: 12px; color: #999">my first blog</a> <a href="/tags/mysql%E4%B8%BB%E9%94%AE/" style="font-size: 12px; color: #999">mysql主键</a> <a href="/tags/php/" style="font-size: 30px; color: #0078e7">php</a></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="post-block" itemscope itemtype="https://schema.org/Article"><link itemprop="mainEntityOfPage" href="https://Self-ferry.github.io/2020/12/19/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="1asy"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="1asy"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">大数据学习</h1><div class="post-meta"><div class="post-time" style="display:block"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-line"></use></svg></span> <time title="创建时间：2020-12-19 20:27:20" itemprop="dateCreated datePublished" datetime="2020-12-19T20:27:20+08:00">2020-12-19</time><span class="post-meta-divider">-</span><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-2-line"></use></svg></span> <time title="修改时间：2020-12-21 15:27:55" itemprop="dateModified" datetime="2020-12-21T15:27:55+08:00">2020-12-21</time></div><span class="post-count"><span class="post-symbolcount"><span class="post-meta-item-icon" title="本文字数"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-file-word-line"></use></svg></span> <span title="本文字数">1.9k</span><span class="post-meta-divider">-</span><span class="post-meta-item-icon" title="阅读时长"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-timer-line"></use></svg></span> <span title="阅读时长">8m</span></span></span><div class="post-classify"><span class="post-category"> <span class="post-meta-item-icon" style="margin-right:3px;"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-line"></use></svg></span><span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category" href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">大数据</span></a></span></span><span class="post-tag"><span class="post-meta-divider">-</span><a class="tag" href="/tags/Hadoop/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">Hadoop</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body" style="--smc-primary:#0078E7;"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<p>复习大数据ing！！老师不靠谱，只能自己来了。踩坑ing</p>
+</blockquote>
+<h1 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h1><p>参考自博客园的一位前辈。要搭建四台集群Linux虚拟机，下载的Linux版本为centos 7系列，装完才知道相比于centos 6做了很大的改动，很多命令都不一样了，例如：系统服务都用systemctl命令来开启service，它是CentOS7的服务管理中主要的工具，融合了之前service和chkconfig的功能，据说，systemctl与以往启动系统服务使用/etc/init.d脚本的方式相比，大幅提高了系统服务的执行效率。由于在配置集群时，很多问题都是因为防火墙导致，需要经常配置，所以特别把防火墙的操作命令记录下来。</p>
+<h2 id="一、防火墙的开启、关闭、禁用命令"><a href="#一、防火墙的开启、关闭、禁用命令" class="headerlink" title="一、防火墙的开启、关闭、禁用命令"></a>一、防火墙的开启、关闭、禁用命令</h2><p>（1）设置开机启用防火墙：systemctl enable firewalld.service</p>
+<p>（2）设置开机禁用防火墙：systemctl disable firewalld.service</p>
+<p>（3）启动防火墙：systemctl start firewalld</p>
+<p>（4）关闭防火墙：systemctl stop firewalld</p>
+<p>（5）检查防火墙状态：systemctl status firewalld </p>
+<h2 id="二、使用firewall-cmd配置端口"><a href="#二、使用firewall-cmd配置端口" class="headerlink" title="二、使用firewall-cmd配置端口"></a>二、使用firewall-cmd配置端口</h2><p>（1）查看防火墙状态：firewall-cmd –state</p>
+<p>（2）重新加载配置：firewall-cmd –reload</p>
+<p>（3）查看开放的端口：firewall-cmd –list-ports</p>
+<p>（4）开启防火墙端口：firewall-cmd –zone=public –add-port=9200/tcp –permanent</p>
+<p>　　命令含义：</p>
+<p>　　–zone #作用域</p>
+<p>　　–add-port=9200/tcp #添加端口，格式为：端口/通讯协议</p>
+<p>　　–permanent #永久生效，没有此参数重启后失效</p>
+<p>　　注意：添加端口后，必须用命令firewall-cmd –reload重新加载一遍才会生效</p>
+<p>（5）关闭防火墙端口：firewall-cmd –zone=public –remove-port=9200/tcp –permanent</p>
+<p>参考自<a target="_blank" rel="noopener" href="https://www.cnblogs.com/marso/archive/2018/01/06/8214927.html">https://www.cnblogs.com/marso/archive/2018/01/06/8214927.html</a></p>
+<h1 id="SSH公钥登陆"><a href="#SSH公钥登陆" class="headerlink" title="SSH公钥登陆"></a>SSH公钥登陆</h1><p>Hadoop集群之间的交互是不用密码的，否则如果每次都必须输入密码会非常麻烦。SSH还提供了公钥登陆，可以省去输入密码的步骤。</p>
+<p>所谓“公钥登陆”，原理很简单，就是用户将自己的公钥存储在远程主机上。登陆的时候，远程主机会向用户发送一段水机字符串，用户用自己的私钥加密后，再发回去。远程主机用事先储存的公钥进行解密，如果成功就证明用户是可信的，直接允许登陆shell，不再要求密码。</p>
+<p>这种方法要求用户必须提供自己的公钥。如果没有现成的，可以直接用ssh-keygen生成一个。建议直接用创建的Hadoop用户进行设置，因为设置只对当前用户用户，一般Hadoop主程序是那个用户，就对那个用户进行SSH设置。</p>
+<p>参考自 <a target="_blank" rel="noopener" href="https://blog.csdn.net/lastyhm/article/details/109702863">hadoop集群配置ssh免密登录的方法</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/shireenlee4testing/p/10366061.html">Hadoop集群配置免密SSH登录方法</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/liukuan73/article/details/78090244">ssh-copy-id命令详解 &amp; 使用ssh-keygen和ssh-copy-id三步实现SSH无密码登录</a></p>
+<h2 id="Hadoop集群配置免密SSH登录方法"><a href="#Hadoop集群配置免密SSH登录方法" class="headerlink" title="Hadoop集群配置免密SSH登录方法"></a>Hadoop集群配置免密SSH登录方法</h2><p>Hadoop集群包含1个主节点和3个从节点，需要实现各节点之间的免密码登录，下面介绍具体的实现方法。</p>
+<h3 id="Hadoop集群环境"><a href="#Hadoop集群环境" class="headerlink" title="Hadoop集群环境"></a>Hadoop集群环境</h3><table>
+<thead>
+<tr>
+<th align="right">节点名称</th>
+<th align="right">节点IP</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">node</td>
+<td align="right">192.168.10.100</td>
+</tr>
+<tr>
+<td align="right">node1</td>
+<td align="right">192.168.10.101</td>
+</tr>
+<tr>
+<td align="right">node2</td>
+<td align="right">192.168.10.102</td>
+</tr>
+<tr>
+<td align="right">node3</td>
+<td align="right">192.168.10.103</td>
+</tr>
+</tbody></table>
+<h3 id="免密登录原理"><a href="#免密登录原理" class="headerlink" title="免密登录原理"></a>免密登录原理</h3><p>每台主机authorized_keys文件里面包含的主机（ssh密钥），该主机都能无密码登录，所以只要每台主机的authorized_keys文件里面都放入其他主机（需要无密码登录的主机）的ssh密钥就行了</p>
+<h3 id="实现方法"><a href="#实现方法" class="headerlink" title="实现方法"></a>实现方法</h3><ol>
+<li>配置每个节点的hosts文件。在hosts文件里新增以下内容。</li>
+</ol>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#vi /etc/hosts</span>
+<span class="token number">192.168</span>.10.100 node
+<span class="token number">192.168</span>.10.101 node1
+<span class="token number">192.168</span>.10.102 node2
+<span class="token number">192.168</span>.10.103 node3</code></pre>
+
+<ol start="2">
+<li>每个节点生成ssh密钥。这里以node主机举例。</li>
+</ol>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@node ~<span class="token punctuation">]</span><span class="token comment"># ssh-keygen -t rsa</span>
+Generating public/private rsa key pair.
+Enter <span class="token function">file</span> <span class="token keyword">in</span> <span class="token function">which</span> to save the key <span class="token punctuation">(</span>/root/.ssh/id_rsa<span class="token punctuation">)</span>: 
+Created directory <span class="token string">'/root/.ssh'</span><span class="token builtin class-name">.</span>
+Enter passphrase <span class="token punctuation">(</span>empty <span class="token keyword">for</span> no passphrase<span class="token punctuation">)</span>: 
+Enter same passphrase again: 
+Your identification has been saved <span class="token keyword">in</span> /root/.ssh/id_rsa.
+Your public key has been saved <span class="token keyword">in</span> /root/.ssh/id_rsa.pub.
+<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>.
+
+<span class="token punctuation">[</span>root@node .ssh<span class="token punctuation">]</span><span class="token comment"># ls</span>
+id_rsa  id_rsa.pub</code></pre>
+<p>执行命令后会在~目录下生成.ssh文件夹，里面包含id_rsa和id_rsa.pub两个文件。</p>
+<p><strong><em>注：使用ssh-keygen -t rsa -P ‘’ -f ~/.ssh/id_rsa命令可避免上述交互式操作。</em></strong><br><font color="red">用完这个命令后我是出现了点小问题，什么让输入密钥以解锁私钥。输入什么都不行</font></p>
+<ol start="3">
+<li>将公钥拷贝到要免密登录的目标机器上</li>
+</ol>
+<p><strong><em>此例是在节点node上</em></strong></p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@node .ssh<span class="token punctuation">]</span><span class="token comment"># ssh-copy-id node1</span>
+/usr/bin/ssh-copy-id: INFO: attempting to log <span class="token keyword">in</span> with the new key<span class="token punctuation">(</span>s<span class="token punctuation">)</span>, to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: <span class="token number">1</span> key<span class="token punctuation">(</span>s<span class="token punctuation">)</span> remain to be installed -- <span class="token keyword">if</span> you are prompted now it is to <span class="token function">install</span> the new keys
+root@node<span class="token punctuation">\</span>'s password: 
+
+Number of key<span class="token punctuation">(</span>s<span class="token punctuation">)</span> added: <span class="token number">1</span>
+
+Now try logging into the machine, with:   <span class="token string">"ssh 'node'"</span>
+and check to <span class="token function">make</span> sure that only the key<span class="token punctuation">(</span>s<span class="token punctuation">)</span> you wanted were added.
+
+<span class="token punctuation">[</span>root@node .ssh<span class="token punctuation">]</span><span class="token comment">#</span></code></pre>
+<p>然后再依次执行以下命令</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@node .ssh<span class="token punctuation">]</span><span class="token comment"># ssh-copy-id node2</span>
+<span class="token punctuation">[</span>root@node .ssh<span class="token punctuation">]</span><span class="token comment"># ssh-copy-id node3</span></code></pre>
+
+<p>此时节点node可以无密码登陆node1、node2、node3了。<br>但node1、node2、node3还不能无密码登陆node与其他节点，还需要在node1、node2、node3上依次执行步骤2~3<br>这里以node1为例。只写命令了。</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@node1 ~<span class="token punctuation">]</span><span class="token comment"># ssh-keygen -t rsa</span>
+<span class="token punctuation">[</span>root@node1 ~<span class="token punctuation">]</span><span class="token comment"># ssh-copy-id node</span>
+<span class="token punctuation">[</span>root@node1 ~<span class="token punctuation">]</span><span class="token comment"># ssh-copy-id node2</span>
+<span class="token punctuation">[</span>root@node1 ~<span class="token punctuation">]</span><span class="token comment"># ssh-copy-id node3</span></code></pre>
+
+<p>其他两个节点配置命令类似。</p>
+<ol start="4">
+<li>.ssh文件夹下（~/.ssh）的文件功能解释<br>known_hosts 记录ssh访问过计算机的公钥(public key)<br>id_rsa 生成的私钥<br>id_rsa.pub 生成的公钥<br>authorized_keys 存放授权过的无密登录服务器公钥</li>
+</ol>
+<h1 id="Hadoop的启动和测试"><a href="#Hadoop的启动和测试" class="headerlink" title="Hadoop的启动和测试"></a>Hadoop的启动和测试</h1><h2 id="格式化文件系统"><a href="#格式化文件系统" class="headerlink" title="格式化文件系统"></a>格式化文件系统</h2><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@node bin<span class="token punctuation">]</span><span class="token comment"># hdfs namenode -format</span>
+./hdfs:行201: /usr/local/jdk1.8//bin/java: 没有那个文件或目录
+<span class="token punctuation">[</span>root@node bin<span class="token punctuation">]</span><span class="token comment"># </span></code></pre>
+
+<p>离谱呀，吐了呀！！<br>跟着这破书没有一步不报错！！</p>
+<p>SHUTDOWN_MSG: Shutting down NameNode at node/192.168.10.100</p>
+<p>node3: /root/hadoop/hadoop-2.2.0/bin/hdfs:行201: /usr/local/jdk1.8//bin/java: 没有那个文件或目录<br>node1: /root/hadoop/hadoop-2.2.0/bin/hdfs:行201: /usr/local/jdk1.8//bin/java: 没有那个文件或目录<br>node2: /root/hadoop/hadoop-2.2.0/bin/hdfs:行201: /usr/local/jdk1.8//bin/java: 没有那个文件或目录</p>
+<p>经历了大量的错误！！一个接一个的那种。<br>搞了一下午。<br>一个晚上。不知道哪里错了，NameNode就是不启动。</p>
+<p>踏遍百度~<br>搞到10点总算好了</p>
+<p>一直没法访问<code>http://node:8088</code>，有个好心的网友把他的Hadoop给我发了过来，我又看了看yarn-site-xml文件里的配置信息，才发现原来是多打了一个s !!我GIAO!!!</p>
+<h2 id="管理JobHistory-Server"><a href="#管理JobHistory-Server" class="headerlink" title="管理JobHistory Server"></a>管理JobHistory Server</h2><p>启动JobHistory Server， 通过Web控制台查看集群计算的任务信息，执行如下命令：<br><code>mr-jobhistory-daemon.sh  start historyserver</code><br>访问<code>http://node:19888/</code>可以查看任务执行历史消息。</p>
+<p>JobHistory Server是个后台进程，不使用的情况下可以关闭以节约资源，终止JobHistory Server执行如下命令：<code>mr-jobhistory-daemon.sh  stop historyserver</code></p>
+<h2 id="集群验证"><a href="#集群验证" class="headerlink" title="集群验证"></a>集群验证</h2><p>使用Hadoop自带的WordCount例子进行集群验证。这个例子为<code>/share/Hadoop/mapreduce.hadoop-mapreduce-examples-2.2.0.jar</code>,下面的命令都会在本书后面章节讲到，可以先不用理会具体意思。</p>
+<p>首先在HDFS上创建目录，执行命令：</p>
+<pre class="language-hadoop" data-language="hadoop"><code class="language-hadoop">hdfs dfs -mkdir -p &#x2F;data&#x2F;wordcount
+hdfs dfs -mkdir -p &#x2F;output&#x2F;</code></pre>
+
+<p>目录/data/wordcount 用来存储Hadoop自带的WordCount例子的数据文件运行这个MapReduce任务的结果输出到/output/wordcount目录中。</p>
+<p>将本地文件上传到HDFS中（这里上传一个配置文件），执行如下命令：<br><code>[root@node ~]# hdfs dfs -put /root/hadoop/hadoop-2.2.0/etc/hadoop/core-site.xml  /data/wordcount/</code><br>可以查看上传后的文件情况，执行如下命令：<br><code>hdfs dfs -ls /data/wordcount</code><br>下面运行WordCount案例，执行如下命令：<br><code> </code><br>学不下去咯</p>
+</div><div id="reward-container"><span class="hty-icon-button button-glow" id="reward-button" title="打赏" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === &quot;none&quot;) ? &quot;block&quot; : &quot;none&quot;;"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-hand-coin-line"></use></svg></span><div id="reward-comment">I'm so cute. Please give me money.</div><div id="qr" style="display:none;"><div style="display:inline-block"><a href="images/reward.jpg"><img loading="lazy" src="/images/reward.jpg" alt="支付宝" title="支付宝"></a><div><span style="color:#00A3EE"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-alipay-line"></use></svg></span></div></div></div></div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>1asy</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="https://self-ferry.github.io/2020/12/19/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0/" title="大数据学习">https://self-ferry.github.io/2020/12/19/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均默认采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><svg class="icon"><use xlink:href="#icon-creative-commons-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-by-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-nc-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-sa-line"></use></svg></a> 许可协议。</li></ul></section></article><div class="post-nav"><div class="post-nav-item"><a class="post-nav-prev" href="/2020/12/20/linux%E5%91%BD%E4%BB%A4scp-%E8%BF%9C%E7%A8%8B%E6%8B%B7%E8%B4%9D%E6%96%87%E4%BB%B6/" rel="prev" title="linux命令scp--远程拷贝文件"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-left-s-line"></use></svg><span class="post-nav-text">linux命令scp--远程拷贝文件</span></a></div><div class="post-nav-item"><a class="post-nav-next" href="/2020/12/19/VMnet0%E3%80%81VMnet1%E3%80%81VMnet8/" rel="next" title="VMnet0、VMnet1、VMnet8"><span class="post-nav-text">VMnet0、VMnet1、VMnet8</span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-right-s-line"></use></svg></a></div></div></div><div id="comment"><div class="comment-tooltip text-center"><span>点击按钮跳转 GitHub Issues 评论。</span><br><span>若没有本文 Issue，您可以使用 Comment 模版新建。</span><br><a class="hty-button hty-button--raised" id="github-issues" target="_blank" rel="noopener" href="https://github.com/YunYouJun/yunyoujun.github.io/issues?q=is:issue+大数据学习">GitHub Issues</a></div></div></main><footer class="sidebar-translate" id="footer"><div class="copyright"><span>&copy; 2019 – 2020 </span><span class="with-love" id="animate"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-cloud-line"></use></svg></span><span class="author"> 1asy</span></div><div class="powered"><span>由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v5.2.0</span><span class="footer-separator">|</span><span>主题 - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v1.3.0</span></div><div class="live_time"><span>本博客已萌萌哒地运行</span><span id="display_live_time"></span><span class="moe-text">ヾ(=･ω･=)o</span><script>function blog_live_time() {
+  window.setTimeout(blog_live_time, 1000);
+  const start = new Date('2020-11-16T00:00:00');
+  const now = new Date();
+  const timeDiff = (now.getTime() - start.getTime());
+  const msPerMinute = 60 * 1000;
+  const msPerHour = 60 * msPerMinute;
+  const msPerDay = 24 * msPerHour;
+  const passDay = Math.floor(timeDiff / msPerDay);
+  const passHour = Math.floor((timeDiff % msPerDay) / 60 / 60 / 1000);
+  const passMinute = Math.floor((timeDiff % msPerHour) / 60 / 1000);
+  const passSecond = Math.floor((timeDiff % msPerMinute) / 1000);
+  display_live_time.innerHTML = " " + passDay + " 天 " + passHour + " 小时 " + passMinute + " 分 " + passSecond + " 秒";
+}
+blog_live_time();
+</script></div></footer><a class="hty-icon-button" id="goUp" aria-label="back-to-top" href="#"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-up-s-line"></use></svg><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#0078E7" stroke-width="2" stroke-linecap="round"></circle></svg></a></div><script defer src="/js/utils.js"></script><script defer src="/js/hexo-theme-yun.js"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script></body></html>
