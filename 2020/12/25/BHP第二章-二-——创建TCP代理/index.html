@@ -1,0 +1,312 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#0078E7"><meta name="author" content="1asy"><meta name="copyright" content="1asy"><meta name="generator" content="Hexo 5.2.0"><meta name="theme" content="hexo-theme-yun"><title>BHP第二章(二)——创建TCP代理 | 1asy</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&amp;display=swap" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/star-markdown-css@0.1.22/dist/yun/yun-markdown.min.css"><script src="//at.alicdn.com/t/font_1140697_ed8vp4atwoj.js" async></script><script src="https://cdn.jsdelivr.net/npm/scrollreveal/dist/scrollreveal.min.js" defer></script><script>document.addEventListener("DOMContentLoaded", () => {
+  [".post-card",".post-content img"].forEach((target)=> {
+    ScrollReveal().reveal(target);
+  })
+});
+</script><link id="light-prism-css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism.css" media="(prefers-color-scheme: light)"><link id="dark-prism-css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism-tomorrow.css" media="(prefers-color-scheme: dark)"><link rel="shortcut icon" type="image/svg+xml" href="/yun.svg"><link rel="mask-icon" href="/yun.svg" color="#0078E7"><link rel="alternate icon" href="/yun.ico"><link rel="preload" href="/css/hexo-theme-yun.css" as="style"><link rel="preload" href="/js/utils.js" as="script"><link rel="preload" href="/js/hexo-theme-yun.js" as="script"><link rel="prefetch" href="/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="stylesheet" href="/css/hexo-theme-yun.css"><script id="yun-config">
+    const Yun = window.Yun || {};
+    window.CONFIG = {"hostname":"self-ferry.github.io","root":"/","title":"1asy的小站","version":"1.3.0","mode":"dark","copycode":true,"anonymous_image":"https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/avatar/none.jpg","say":{"api":"https://v1.hitokoto.cn","hitokoto":true},"fireworks":{"colors":["102, 167, 221","62, 131, 225","33, 78, 194"]}};
+  </script><meta name="description" content="前言总算有时间了，赶紧学一会。 为什么要创建一个TCP代理书中原话：  有很多理由让你的工具箱里，保留一个TCP代理，它不仅可以将流量从一个主机转发给另一个主机，而且可以评估基于网络的软件。在企业级环境下进行渗透测试时，你会经常遇到无法使用Wireshark的情况，无法在windows系统上加载驱动嗅探本地网络流量，分段的网络也阻止使用工具直接嗅探目标主机。我经常在实际案例中部署简单的TCP代理以">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BHP第二章(二)——创建TCP代理">
+<meta property="og:url" content="https://self-ferry.github.io/2020/12/25/BHP%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E4%BA%8C-%E2%80%94%E2%80%94%E5%88%9B%E5%BB%BATCP%E4%BB%A3%E7%90%86/index.html">
+<meta property="og:site_name" content="1asy">
+<meta property="og:description" content="前言总算有时间了，赶紧学一会。 为什么要创建一个TCP代理书中原话：  有很多理由让你的工具箱里，保留一个TCP代理，它不仅可以将流量从一个主机转发给另一个主机，而且可以评估基于网络的软件。在企业级环境下进行渗透测试时，你会经常遇到无法使用Wireshark的情况，无法在windows系统上加载驱动嗅探本地网络流量，分段的网络也阻止使用工具直接嗅探目标主机。我经常在实际案例中部署简单的TCP代理以">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://self-ferry.github.io/2020/12/25/BHP%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E4%BA%8C-%E2%80%94%E2%80%94%E5%88%9B%E5%BB%BATCP%E4%BB%A3%E7%90%86/image001.png">
+<meta property="og:image" content="https://self-ferry.github.io/2020/12/25/BHP%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E4%BA%8C-%E2%80%94%E2%80%94%E5%88%9B%E5%BB%BATCP%E4%BB%A3%E7%90%86/image003.png">
+<meta property="og:image" content="https://self-ferry.github.io/2020/12/25/BHP%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E4%BA%8C-%E2%80%94%E2%80%94%E5%88%9B%E5%BB%BATCP%E4%BB%A3%E7%90%86/image002.png">
+<meta property="og:image" content="https://self-ferry.github.io/2020/12/25/BHP%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E4%BA%8C-%E2%80%94%E2%80%94%E5%88%9B%E5%BB%BATCP%E4%BB%A3%E7%90%86/image004.png">
+<meta property="article:published_time" content="2020-12-25T01:12:58.000Z">
+<meta property="article:modified_time" content="2020-12-28T05:07:04.832Z">
+<meta property="article:author" content="1asy">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://self-ferry.github.io/2020/12/25/BHP%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E4%BA%8C-%E2%80%94%E2%80%94%E5%88%9B%E5%BB%BATCP%E4%BB%A3%E7%90%86/image001.png"><script src="/js/ui/mode.js"></script></head><body><script defer src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script defer src="/js/ui/fireworks.js"></script><canvas class="fireworks"></canvas><canvas id="trianglifyContainer"></canvas><script defer src="https://cdn.jsdelivr.net/npm/trianglify@4/dist/trianglify.bundle.js"></script><script>document.addEventListener("DOMContentLoaded", () => {
+  const pattern = trianglify({
+    width: 800,
+    height: 600,
+    cellSize: 75,
+    palette: ["YlGnBu", "GnBu", "Purples", "Blues"],
+  });
+  const canvasOpts = {
+    applyCssScaling: false
+  }
+  document.body.appendChild(pattern.toCanvas(trianglifyContainer, canvasOpts));
+});</script><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script src="/js/sidebar.js"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="文章目录"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-list-ordered"></use></svg></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="站点概览"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-passport-line"></use></svg></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/about/" title="1asy"><img width="96" loading="lazy" src="/cool.jpg" alt="1asy"></a><div class="site-author-name"><a href="/about/">1asy</a></div><a class="site-name" href="/about/site.html">1asy</a><sub class="site-subtitle">悟已往之不谏 知来者之可追 实迷途其未远 觉今是而昨非</sub><div class="site-desciption"></div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="首页"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-4-line"></use></svg></span></a><div class="site-state-item"><a href="/archives/" title="归档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-archive-line"></use></svg></span><span class="site-state-item-count">25</span></a></div><div class="site-state-item"><a href="/categories/" title="分类"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-2-line"></use></svg></span><span class="site-state-item-count">12</span></a></div><div class="site-state-item"><a href="/tags/" title="标签"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="site-state-item-count">32</span></a></div><a class="site-state-item hty-icon-button" target="_blank" rel="noopener" href="https://yun.yunyoujun.cn" title="文档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-settings-line"></use></svg></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="/atom.xml" title="RSS" target="_blank" style="color:orange"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-rss-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://qm.qq.com/cgi-bin/qm/qr?k=epvxdq1sknJe9JMj6J1LsBw4a6cI_2ln&amp;jump_from=webapi" title="QQ 群 389401003" target="_blank" style="color:#12B7F5"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-qq-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/Self-ferry" title="GitHub" target="_blank" style="color:#6e5494"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://weibo.com/jizhideyunyoujun" title="微博" target="_blank" style="color:#E6162D"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-weibo-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://www.douban.com/people/yunyoujun/" title="豆瓣" target="_blank" style="color:#007722"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-douban-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://music.163.com/#/user/home?id=247102977" title="网易云音乐" target="_blank" style="color:#C20C0C"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-netease-cloud-music-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://www.zhihu.com/people/yunyoujun/" title="知乎" target="_blank" style="color:#0084FF"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-zhihu-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://twitter.com/YunYouJun" title="Twitter" target="_blank" style="color:#1da1f2"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-twitter-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://t.me/elpsycn" title="Telegram Channel" target="_blank" style="color:#0088CC"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-telegram-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="mailto:Self_ferry@163.com" title="E-Mail" target="_blank" style="color:#8E71C1"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-mail-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://travellings.now.sh/" title="Travelling" target="_blank" style="color:var(--hty-text-color)"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-send-plane-2-line"></use></svg></a></div><hr style="margin:0.5rem 1rem"><div class="links"><a class="links-item hty-icon-button" href="/links/" title="我的小伙伴们" style="color:dodgerblue"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-genderless-line"></use></svg></a></div></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AATCP%E4%BB%A3%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">为什么要创建一个TCP代理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">2.1.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8EPython3%E5%AE%9E%E7%8E%B0%E7%9A%84TCP%E4%BB%A3%E7%90%86"><span class="toc-number">2.2.</span> <span class="toc-text">基于Python3实现的TCP代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">2.3.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81"><span class="toc-number">2.4.</span> <span class="toc-text">测试代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E9%80%9A%E5%AE%89%E5%85%A8%E7%9A%84%E7%9F%A5%E8%AF%86"><span class="toc-number">3.</span> <span class="toc-text">数通安全的知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#cmd-%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AA%E5%91%BD%E4%BB%A4"><span class="toc-number">3.1.</span> <span class="toc-text">cmd 运行多个命令</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">4.</span> <span class="toc-text">参考</span></a></li></ol></div></div></div><div class="tag-cloud"><div class="tag-cloud-tags"><a href="/tags/ANSI/" style="font-size: 12px; color: #999">ANSI</a> <a href="/tags/ASCII/" style="font-size: 12px; color: #999">ASCII</a> <a href="/tags/Apeache/" style="font-size: 12px; color: #999">Apeache</a> <a href="/tags/GBK/" style="font-size: 12px; color: #999">GBK</a> <a href="/tags/HTML/" style="font-size: 12px; color: #999">HTML</a> <a href="/tags/Hadoop/" style="font-size: 12px; color: #999">Hadoop</a> <a href="/tags/Linux%E5%91%BD%E4%BB%A4/" style="font-size: 12px; color: #999">Linux命令</a> <a href="/tags/SQLmap/" style="font-size: 12px; color: #999">SQLmap</a> <a href="/tags/SSH%E9%9A%A7%E9%81%93/" style="font-size: 12px; color: #999">SSH隧道</a> <a href="/tags/URL-%E7%BC%96%E7%A0%81-%E8%A7%A3%E7%A0%81/" style="font-size: 12px; color: #999">URL 编码/解码</a> <a href="/tags/UTF-8/" style="font-size: 12px; color: #999">UTF-8</a> <a href="/tags/Unicode/" style="font-size: 12px; color: #999">Unicode</a> <a href="/tags/WindowsPE%E7%BB%93%E6%9E%84/" style="font-size: 12px; color: #999">WindowsPE结构</a> <a href="/tags/guestbook/" style="font-size: 12px; color: #999">guestbook</a> <a href="/tags/http/" style="font-size: 12px; color: #999">http</a> <a href="/tags/markdown-%E5%AD%A6%E4%B9%A0/" style="font-size: 12px; color: #999">markdown 学习</a> <a href="/tags/multiprocessing/" style="font-size: 12px; color: #999">multiprocessing</a> <a href="/tags/my-first-blog/" style="font-size: 12px; color: #999">my first blog</a> <a href="/tags/mysql%E4%B8%BB%E9%94%AE/" style="font-size: 12px; color: #999">mysql主键</a> <a href="/tags/php/" style="font-size: 30px; color: #0078e7">php</a></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="post-block" itemscope itemtype="https://schema.org/Article"><link itemprop="mainEntityOfPage" href="https://Self-ferry.github.io/2020/12/25/BHP%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E4%BA%8C-%E2%80%94%E2%80%94%E5%88%9B%E5%BB%BATCP%E4%BB%A3%E7%90%86/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="1asy"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="1asy"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">BHP第二章(二)——创建TCP代理</h1><div class="post-meta"><div class="post-time" style="display:block"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-line"></use></svg></span> <span class="post-meta-icon-text">发表于</span> <time title="创建时间：2020-12-25 09:12:58" itemprop="dateCreated datePublished" datetime="2020-12-25T09:12:58+08:00">2020-12-25</time><span class="post-meta-divider">-</span><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-2-line"></use></svg></span> <span class="post-meta-icon-text">更新于</span> <time title="修改时间：2020-12-28 13:07:04" itemprop="dateModified" datetime="2020-12-28T13:07:04+08:00">2020-12-28</time></div><span class="post-count"><span class="post-symbolcount"><span class="post-meta-item-icon" title="本文字数"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-file-word-line"></use></svg></span> <span title="本文字数">2k</span><span class="post-meta-divider">-</span><span class="post-meta-item-icon" title="阅读时长"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-timer-line"></use></svg></span> <span title="阅读时长">8m</span></span></span><div class="post-classify"><span class="post-category"> <span class="post-meta-item-icon" style="margin-right:3px;"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-line"></use></svg></span><span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category" href="/categories/BHP/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">BHP</span></a></span></span><span class="post-tag"><span class="post-meta-divider">-</span><a class="tag" href="/tags/python/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">python</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body" style="--smc-primary:#0078E7;"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>总算有时间了，赶紧学一会。</p>
+<h1 id="为什么要创建一个TCP代理"><a href="#为什么要创建一个TCP代理" class="headerlink" title="为什么要创建一个TCP代理"></a>为什么要创建一个TCP代理</h1><p>书中原话：</p>
+<blockquote>
+<p>有很多理由让你的工具箱里，保留一个TCP代理，<font color="green">它不仅可以将流量从一个主机转发给另一个主机，而且可以评估基于网络的软件。在企业级环境下进行渗透测试时，你会经常遇到无法使用Wireshark的情况，无法在windows系统上加载驱动嗅探本地网络流量，分段的网络也阻止使用工具直接嗅探目标主机。我经常在实际案例中部署简单的TCP代理以了解未知的协议，修改发送到应用的数据包，或者为模糊测试创建一个测试环境。</font></p>
+</blockquote>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>首先要搞清楚原理，网上搜索的时候看到了一篇介绍：《简单聊聊网络代理原理》<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/56271931">https://zhuanlan.zhihu.com/p/56271931</a></p>
+<p>Python实现TCP代理的原理</p>
+<ol>
+<li>【需要代理方】向代理服务器发出请求信息。</li>
+<li>【代理服务器】应答。</li>
+<li>【需要代理方】接到应答后发送向【代理服务器】发送【目的】ip和端口。</li>
+<li>【代理服务器】与目的连接。</li>
+<li>【代理服务器】将【需要代理方】发出的信息传到【目的方】，将目的方发出的信息传到【需要代理方】。</li>
+<li>代理完成。</li>
+</ol>
+<p>画了个图：<br><img src="image001.png" loading="lazy"></p>
+<h2 id="基于Python3实现的TCP代理"><a href="#基于Python3实现的TCP代理" class="headerlink" title="基于Python3实现的TCP代理"></a>基于Python3实现的TCP代理</h2><blockquote>
+<p>书上是2.x版本的，想要改成3.x版本的。网上一搜，前辈们已经在几年前就替我们实现了。把代码改变了一下</p>
+</blockquote>
+<p><font color='red'>我已经把所有代码都写上了注释。</font></p>
+<p>解释一下【receive_first】参数：<br>这个参数如果是True，程序会先接受远程目标主机发送的数据，因为有些服务进程可能会做这样的事情，例如ftp服务器一般会首先发送旗标。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre class="language-python" data-language="python"><code class="language-python"><span class="token comment">#说明：这里涉及到三方：本地主机、远程主机和服务器。</span>
+<span class="token comment">#该段代码是运行在Linux服务器上的，为本地主机提供代理以便与远程主机通信。</span>
+
+<span class="token comment">#!/usr/bin/python</span>
+<span class="token comment"># -*- coding:utf-8 -*-</span>
+
+<span class="token keyword">import</span> sys
+<span class="token keyword">import</span> socket
+<span class="token keyword">import</span> threading
+<span class="token keyword">import</span> logging
+<span class="token keyword">import</span> ctypes
+
+logging<span class="token punctuation">.</span>basicConfig<span class="token punctuation">(</span>level<span class="token operator">=</span>logging<span class="token punctuation">.</span>DEBUG<span class="token punctuation">,</span>
+                    <span class="token comment"># 格式化输出</span>
+                    <span class="token builtin">format</span><span class="token operator">=</span><span class="token string">'%(asctime)s - %(levelname)s : %(message)s'</span><span class="token punctuation">,</span>
+                    <span class="token comment"># 日志信息输出到文件中</span>
+                    <span class="token comment">#filename="./TCP_proxy.log", filemode="a"</span>
+                    <span class="token punctuation">)</span>
+
+<span class="token triple-quoted-string string">'''
+logging 为调试部分。不想显示调试信息可以把logging.basicConfig的level改成更高的等级，或者注释logging语句。
+'''</span>
+
+
+<span class="token keyword">def</span> <span class="token function">hex_dump</span><span class="token punctuation">(</span>src<span class="token punctuation">,</span> length<span class="token operator">=</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">'''
+    显示数据包的十六进制，并显示对应的ASCII码。
+    '''</span>
+    result <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    digits <span class="token operator">=</span> <span class="token number">4</span> <span class="token keyword">if</span> <span class="token builtin">isinstance</span><span class="token punctuation">(</span>src<span class="token punctuation">,</span> <span class="token builtin">str</span><span class="token punctuation">)</span> <span class="token keyword">else</span> <span class="token number">2</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>src<span class="token punctuation">)</span><span class="token punctuation">,</span> length<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        s <span class="token operator">=</span> src<span class="token punctuation">[</span>i<span class="token punctuation">:</span>i <span class="token operator">+</span> length<span class="token punctuation">]</span>
+        hexa <span class="token operator">=</span> <span class="token string">' '</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"%0*X"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>digits<span class="token punctuation">,</span> <span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> s<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        logging<span class="token punctuation">.</span>debug<span class="token punctuation">(</span><span class="token string">"\t\thexa:%s"</span> <span class="token operator">%</span> hexa<span class="token punctuation">)</span>
+        logging<span class="token punctuation">.</span>debug<span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> s<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        text <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token builtin">chr</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token keyword">if</span> <span class="token number">0x20</span> <span class="token operator">&lt;=</span> x <span class="token operator">&lt;</span> <span class="token number">0x7F</span> <span class="token keyword">else</span> <span class="token string">'.'</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> s<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        logging<span class="token punctuation">.</span>debug<span class="token punctuation">(</span><span class="token string">"\t\ttext:%s"</span> <span class="token operator">%</span> text<span class="token punctuation">)</span>
+        result<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token string">"%04X   %-*s   %s"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>i<span class="token punctuation">,</span> length <span class="token operator">*</span> <span class="token punctuation">(</span>digits <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> hexa<span class="token punctuation">,</span> text<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">receive_from</span><span class="token punctuation">(</span>connection<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">'''
+    接收本地或远程主机的数据
+    '''</span>
+
+    <span class="token builtin">buffer</span> <span class="token operator">=</span> <span class="token string">b""</span>
+    <span class="token comment"># 接收数据需要在2s内处理完成，否者抛出超时异常。  这个时间有些短，后续测试的时候输入FTP账号、密码的时间有些紧。。。</span>
+    <span class="token comment"># 可调长一些，但其实应该用更科学的办法来处理。。。  还是那句话，后面的路还很远，先略过。。。</span>
+    connection<span class="token punctuation">.</span>settimeout<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        <span class="token comment"># 一直读入缓冲区，直到没有更多的数据</span>
+        <span class="token comment"># 我们给它设置超时报错</span>
+        <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+            data <span class="token operator">=</span> connection<span class="token punctuation">.</span>recv<span class="token punctuation">(</span><span class="token number">4096</span><span class="token punctuation">)</span>
+
+            <span class="token keyword">if</span> <span class="token keyword">not</span> data<span class="token punctuation">:</span>
+                <span class="token comment"># 显示函数没有接收到数据</span>
+                logging<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"def receive_from no data return"</span><span class="token punctuation">)</span>
+                <span class="token keyword">break</span>
+            logging<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"receive data:%s\n"</span> <span class="token operator">%</span> data<span class="token punctuation">)</span>
+            <span class="token builtin">buffer</span> <span class="token operator">+=</span> data
+
+
+    <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+        <span class="token comment"># 显示该函数的报错信息</span>
+        logging<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">'def receive_from error:%s'</span> <span class="token operator">%</span> e<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> <span class="token builtin">buffer</span>
+
+
+<span class="token keyword">def</span> <span class="token function">request_handler</span><span class="token punctuation">(</span><span class="token builtin">buffer</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">'''
+    可以在该函数中修改传送到目标主机的数据（请求数据）。
+    功能未完待续
+    执行包修改
+    '''</span>
+    <span class="token keyword">return</span> <span class="token builtin">buffer</span>
+
+
+<span class="token keyword">def</span> <span class="token function">response_handler</span><span class="token punctuation">(</span><span class="token builtin">buffer</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""
+    可以在该函数中修改目标主机返回到本地主机的数据（响应数据）
+    功能未完待续
+    执行包修改
+    """</span>
+    <span class="token keyword">return</span> <span class="token builtin">buffer</span>
+
+
+<span class="token keyword">def</span> <span class="token function">proxy_handler</span><span class="token punctuation">(</span>client_socket<span class="token punctuation">,</span> remote_host<span class="token punctuation">,</span> remote_port<span class="token punctuation">,</span> receive_first<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">'''
+    在线程中处理代理任务
+    代理服务器与目标绑定套接字
+    '''</span>
+    <span class="token comment"># 打印该线程ID，语句只能在Linux下执行</span>
+    threading_id <span class="token operator">=</span> ctypes<span class="token punctuation">.</span>CDLL<span class="token punctuation">(</span><span class="token string">'libc.so.6'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>syscall<span class="token punctuation">(</span><span class="token number">186</span><span class="token punctuation">)</span>
+    <span class="token comment"># 请求与目标主机的连接。</span>
+    remote_socket <span class="token operator">=</span> socket<span class="token punctuation">.</span>socket<span class="token punctuation">(</span>socket<span class="token punctuation">.</span>AF_INET<span class="token punctuation">,</span> socket<span class="token punctuation">.</span>SOCK_STREAM<span class="token punctuation">)</span>
+    remote_socket<span class="token punctuation">.</span>connect<span class="token punctuation">(</span><span class="token punctuation">(</span>remote_host<span class="token punctuation">,</span> remote_port<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token comment"># 如有必要先从目标接受数据,如FTP服务器会先发送旗标等等</span>
+    <span class="token keyword">if</span> receive_first<span class="token punctuation">:</span>
+        <span class="token comment"># 接收远程主机的数据</span>
+        remote_buffer <span class="token operator">=</span> receive_from<span class="token punctuation">(</span>remote_socket<span class="token punctuation">)</span>
+        <span class="token comment"># 在日志中打印出原始数据</span>
+        logging<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"threading id: %s remote_buffer:%s\n"</span> <span class="token operator">%</span> threading_id<span class="token punctuation">,</span> remote_buffer<span class="token punctuation">)</span>
+        <span class="token comment"># 调用十六进制转储函数</span>
+        hex_dump<span class="token punctuation">(</span>remote_buffer<span class="token punctuation">)</span>
+
+        <span class="token comment"># 将它发送到我们的响应处理器</span>
+        <span class="token comment"># 响应函数什么都没写，数据还是原样返回</span>
+        remote_buffer <span class="token operator">=</span> response_handler<span class="token punctuation">(</span>remote_buffer<span class="token punctuation">)</span>
+
+        <span class="token comment"># 如果从目标接受到了数据，就发送到我们的本地客户端</span>
+        <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>remote_buffer<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"[&lt;==] Sending %d bytes to localhost."</span> <span class="token operator">%</span> <span class="token builtin">len</span><span class="token punctuation">(</span>remote_buffer<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            client_socket<span class="token punctuation">.</span>send<span class="token punctuation">(</span>remote_buffer<span class="token punctuation">)</span>
+
+    <span class="token comment"># 现在我们循环读取数据，发送给远程主机和本地客户端</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        <span class="token comment"># 接收本地主机的数据</span>
+        local_buffer <span class="token operator">=</span> receive_from<span class="token punctuation">(</span>client_socket<span class="token punctuation">)</span>
+        <span class="token comment"># 如果有数据就打印</span>
+        <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>local_buffer<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"[==>] Received %d bytes from localhost."</span> <span class="token operator">%</span> <span class="token builtin">len</span><span class="token punctuation">(</span>local_buffer<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            hex_dump<span class="token punctuation">(</span>local_buffer<span class="token punctuation">)</span>
+
+            <span class="token comment"># 将它发送到我们的请求处理程序</span>
+            <span class="token comment"># 请求处理函数什么都没写，数据还是原样返回</span>
+            local_buffer <span class="token operator">=</span> request_handler<span class="token punctuation">(</span>local_buffer<span class="token punctuation">)</span>
+
+            <span class="token comment"># 将数据发送到目标主机</span>
+            remote_socket<span class="token punctuation">.</span>send<span class="token punctuation">(</span>local_buffer<span class="token punctuation">)</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"[==>] Sent to remote."</span><span class="token punctuation">)</span>
+
+        <span class="token comment"># 接收远程主机的数据</span>
+        remote_buffer <span class="token operator">=</span> receive_from<span class="token punctuation">(</span>remote_socket<span class="token punctuation">)</span>
+        <span class="token comment"># 如果有数据就打印</span>
+        <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>remote_buffer<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"[&lt;==] Received %d bytes from remote."</span> <span class="token operator">%</span> <span class="token builtin">len</span><span class="token punctuation">(</span>remote_buffer<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            hex_dump<span class="token punctuation">(</span>remote_buffer<span class="token punctuation">)</span>
+
+            <span class="token comment"># 发送到我们的响应处理器</span>
+            remote_buffer <span class="token operator">=</span> response_handler<span class="token punctuation">(</span>remote_buffer<span class="token punctuation">)</span>
+
+            <span class="token comment"># 将响应发送到本地套接字</span>
+            client_socket<span class="token punctuation">.</span>send<span class="token punctuation">(</span>remote_buffer<span class="token punctuation">)</span>
+
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"[&lt;==] Sent to localhost."</span><span class="token punctuation">)</span>
+
+        <span class="token comment"># 如果两边没有更多的数据，则关闭连接</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> <span class="token builtin">len</span><span class="token punctuation">(</span>local_buffer<span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token keyword">not</span> <span class="token builtin">len</span><span class="token punctuation">(</span>remote_buffer<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            client_socket<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            remote_socket<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"[*] No more data. Closing connections."</span><span class="token punctuation">)</span>
+            <span class="token keyword">break</span>
+
+
+<span class="token keyword">def</span> <span class="token function">server_loop</span><span class="token punctuation">(</span>local_host<span class="token punctuation">,</span> local_port<span class="token punctuation">,</span> remote_host<span class="token punctuation">,</span> remote_port<span class="token punctuation">,</span> receive_first<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    <span class="token triple-quoted-string string">'''
+    【需要代理方】与【代理服务器】绑定套接字
+    '''</span>
+    <span class="token comment"># 创建一个套接字对象</span>
+    server <span class="token operator">=</span> socket<span class="token punctuation">.</span>socket<span class="token punctuation">(</span>socket<span class="token punctuation">.</span>AF_INET<span class="token punctuation">,</span> socket<span class="token punctuation">.</span>SOCK_STREAM<span class="token punctuation">)</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        <span class="token comment"># 绑定服务地址</span>
+        server<span class="token punctuation">.</span>bind<span class="token punctuation">(</span><span class="token punctuation">(</span>local_host<span class="token punctuation">,</span> local_port<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"[!!] Failed to listen on %s:%d"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>local_host<span class="token punctuation">,</span> local_port<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"[!!] Check for other listening sockets or correct permissions."</span><span class="token punctuation">)</span>
+        sys<span class="token punctuation">.</span>exit<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"[*] Listening on %s:%d"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>local_host<span class="token punctuation">,</span> local_port<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    server<span class="token punctuation">.</span>listen<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        <span class="token comment"># 返回一个二元元组</span>
+        client_socket<span class="token punctuation">,</span> addr <span class="token operator">=</span> server<span class="token punctuation">.</span>accept<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        <span class="token comment"># 打印客户端连接信息</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"[==>] Received incoming connection from %s:%d"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>addr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> addr<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+        <span class="token comment"># 启动一个线程与目标通信</span>
+        proxy_thread <span class="token operator">=</span> threading<span class="token punctuation">.</span>Thread<span class="token punctuation">(</span>target<span class="token operator">=</span>proxy_handler<span class="token punctuation">,</span>
+                                        args<span class="token operator">=</span><span class="token punctuation">(</span>client_socket<span class="token punctuation">,</span> remote_host<span class="token punctuation">,</span> remote_port<span class="token punctuation">,</span> receive_first<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        proxy_thread<span class="token punctuation">.</span>start<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">'''
+    解析运行参数，调用服务。
+    '''</span>
+
+    <span class="token comment"># 这里没有花哨的命令行解析</span>
+    <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>sys<span class="token punctuation">.</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">5</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Usage: ./proxy.py [localhost] [localport] [remotehost] [remoteport] [receive_first]"</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Example: ./proxy.py 127.0.0.1 9000 10.12.132.1 9000 True"</span><span class="token punctuation">)</span>
+        sys<span class="token punctuation">.</span>exit<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+    <span class="token comment"># 设置本地监听参数</span>
+    local_host <span class="token operator">=</span> sys<span class="token punctuation">.</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+    local_port <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>sys<span class="token punctuation">.</span>argv<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+    <span class="token comment"># 设置远程目标</span>
+    remote_host <span class="token operator">=</span> sys<span class="token punctuation">.</span>argv<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span>
+    remote_port <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>sys<span class="token punctuation">.</span>argv<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+    <span class="token comment">#  这告诉我们的代理连接和接收数据</span>
+    <span class="token comment">#  在发送到目标主机之前</span>
+    receive_first <span class="token operator">=</span> sys<span class="token punctuation">.</span>argv<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span>
+
+    <span class="token keyword">if</span> <span class="token string">"True"</span> <span class="token keyword">in</span> receive_first<span class="token punctuation">:</span>
+        receive_first <span class="token operator">=</span> <span class="token boolean">True</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        receive_first <span class="token operator">=</span> <span class="token boolean">False</span>
+
+    <span class="token comment"># 现在打开监听套接字</span>
+    server_loop<span class="token punctuation">(</span>local_host<span class="token punctuation">,</span> local_port<span class="token punctuation">,</span> remote_host<span class="token punctuation">,</span> remote_port<span class="token punctuation">,</span> receive_first<span class="token punctuation">)</span>
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    main<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+
+<h2 id="测试代码"><a href="#测试代码" class="headerlink" title="测试代码"></a>测试代码</h2><p>环境：win10物理机、kali linux 虚拟机 IP地址为192.168.199.128、谷歌浏览器与代理插件。</p>
+<p>在kali上运行代码：<br><code>Python3 TCP_Proxy.py 192.168.199.128 8080 cn.bing.com 80 True</code></p>
+<p>在谷歌浏览器上打开代理<br><img src="image003.png" loading="lazy"></p>
+<p>浏览器访问cn.bing.com<br>kali上显示的信息<br>先查看连接<br>（左边为Windows的cmd 右边为Kali的shell）<br><img src="image002.png" loading="lazy"></p>
+<p>在看数据包<br>（这里不知道为什么是坏的数据包）<br><img src="image004.png" loading="lazy"></p>
+<p>有些问题，等过段时间再解决。</p>
+<h1 id="数通安全的知识"><a href="#数通安全的知识" class="headerlink" title="数通安全的知识"></a>数通安全的知识</h1><blockquote>
+<p>抽空整理一下数通安全的知识，先放这里了。</p>
+</blockquote>
+<h2 id="cmd-运行多个命令"><a href="#cmd-运行多个命令" class="headerlink" title="cmd 运行多个命令"></a>cmd 运行多个命令</h2><p>aa &amp;&amp; bb<br>means：执行aa，成功后再执行bb<br>ex:node a.js &amp;&amp; node b.js<br>如果a.js运行失败则b.js不会再运行</p>
+<p>aa || bb<br>means：先执行aa，若执行成功则不再执行bb，若失败则再执行bb<br>ex:node a.js || node b.js<br>如果a.js运行失败则b.js再运行，如果a.js运行成功则b.js不再运行</p>
+<p>aa &amp; bb<br>means：先执行aa再执行bb，无论aa是否成功<br>ex: node a.js &amp; node b.js<br>先运行a.js运行，不管运行a.js文件是否报错，b.js接着运行</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40549070/article/details/108193537">https://blog.csdn.net/qq_40549070/article/details/108193537</a></p>
+<p>使用ctype获取线程id<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/tjcwt2011/article/details/80885410">https://blog.csdn.net/tjcwt2011/article/details/80885410</a><br><a target="_blank" rel="noopener" href="http://xiaorui.cc/archives/3017">http://xiaorui.cc/archives/3017</a></p>
+</div><div id="reward-container"><span class="hty-icon-button button-glow" id="reward-button" title="打赏" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === &quot;none&quot;) ? &quot;block&quot; : &quot;none&quot;;"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-hand-coin-line"></use></svg></span><div id="reward-comment">I'm so cute. Please give me money.</div><div id="qr" style="display:none;"><div style="display:inline-block"><a href="images/reward.jpg"><img loading="lazy" src="/images/reward.jpg" alt="支付宝" title="支付宝"></a><div><span style="color:#00A3EE"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-alipay-line"></use></svg></span></div></div></div></div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>1asy</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="https://self-ferry.github.io/2020/12/25/BHP%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E4%BA%8C-%E2%80%94%E2%80%94%E5%88%9B%E5%BB%BATCP%E4%BB%A3%E7%90%86/" title="BHP第二章(二)——创建TCP代理">https://self-ferry.github.io/2020/12/25/BHP%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E4%BA%8C-%E2%80%94%E2%80%94%E5%88%9B%E5%BB%BATCP%E4%BB%A3%E7%90%86/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均默认采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><svg class="icon"><use xlink:href="#icon-creative-commons-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-by-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-nc-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-sa-line"></use></svg></a> 许可协议。</li></ul></section></article><div class="post-nav"><div class="post-nav-item"></div><div class="post-nav-item"><a class="post-nav-next" href="/2020/12/20/linux%E5%91%BD%E4%BB%A4scp-%E8%BF%9C%E7%A8%8B%E6%8B%B7%E8%B4%9D%E6%96%87%E4%BB%B6/" rel="next" title="linux命令scp--远程拷贝文件"><span class="post-nav-text">linux命令scp--远程拷贝文件</span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-right-s-line"></use></svg></a></div></div></div><div id="comment"><div class="comment-tooltip text-center"><span>点击按钮跳转 GitHub Issues 评论。</span><br><span>若没有本文 Issue，您可以使用 Comment 模版新建。</span><br><a class="hty-button hty-button--raised" id="github-issues" target="_blank" rel="noopener" href="https://github.com/YunYouJun/yunyoujun.github.io/issues?q=is:issue+BHP第二章(二)——创建TCP代理">GitHub Issues</a></div></div></main><footer class="sidebar-translate" id="footer"><div class="copyright"><span>&copy; 2019 – 2020 </span><span class="with-love" id="animate"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-cloud-line"></use></svg></span><span class="author"> 1asy</span></div><div class="powered"><span>由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v5.2.0</span><span class="footer-separator">|</span><span>主题 - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v1.3.0</span></div><div class="live_time"><span>本博客已萌萌哒地运行</span><span id="display_live_time"></span><span class="moe-text">ヾ(=･ω･=)o</span><script>function blog_live_time() {
+  window.setTimeout(blog_live_time, 1000);
+  const start = new Date('2020-11-16T00:00:00');
+  const now = new Date();
+  const timeDiff = (now.getTime() - start.getTime());
+  const msPerMinute = 60 * 1000;
+  const msPerHour = 60 * msPerMinute;
+  const msPerDay = 24 * msPerHour;
+  const passDay = Math.floor(timeDiff / msPerDay);
+  const passHour = Math.floor((timeDiff % msPerDay) / 60 / 60 / 1000);
+  const passMinute = Math.floor((timeDiff % msPerHour) / 60 / 1000);
+  const passSecond = Math.floor((timeDiff % msPerMinute) / 1000);
+  display_live_time.innerHTML = " " + passDay + " 天 " + passHour + " 小时 " + passMinute + " 分 " + passSecond + " 秒";
+}
+blog_live_time();
+</script></div></footer><a class="hty-icon-button" id="goUp" aria-label="back-to-top" href="#"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-up-s-line"></use></svg><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#0078E7" stroke-width="2" stroke-linecap="round"></circle></svg></a></div><script defer src="/js/utils.js"></script><script defer src="/js/hexo-theme-yun.js"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script></body></html>
