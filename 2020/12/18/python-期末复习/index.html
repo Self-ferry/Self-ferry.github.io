@@ -1,44 +1,159 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#0078E7"><meta name="author" content="1asy"><meta name="copyright" content="1asy"><meta name="generator" content="Hexo 5.2.0"><meta name="theme" content="hexo-theme-yun"><title>python 期末复习 | 1asy</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&amp;display=swap" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/star-markdown-css@0.1.22/dist/yun/yun-markdown.min.css"><script src="//at.alicdn.com/t/font_1140697_ed8vp4atwoj.js" async></script><script src="https://cdn.jsdelivr.net/npm/scrollreveal/dist/scrollreveal.min.js" defer></script><script>document.addEventListener("DOMContentLoaded", () => {
-  [".post-card",".post-content img"].forEach((target)=> {
-    ScrollReveal().reveal(target);
-  })
-});
-</script><link id="light-prism-css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism.css" media="(prefers-color-scheme: light)"><link id="dark-prism-css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism-tomorrow.css" media="(prefers-color-scheme: dark)"><link rel="shortcut icon" type="image/svg+xml" href="/yun.svg"><link rel="mask-icon" href="/yun.svg" color="#0078E7"><link rel="alternate icon" href="/yun.ico"><link rel="preload" href="/css/hexo-theme-yun.css" as="style"><link rel="preload" href="/js/utils.js" as="script"><link rel="preload" href="/js/hexo-theme-yun.js" as="script"><link rel="prefetch" href="/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="stylesheet" href="/css/hexo-theme-yun.css"><script id="yun-config">
-    const Yun = window.Yun || {};
-    window.CONFIG = {"hostname":"self-ferry.github.io","root":"/","title":"1asy的小站","version":"1.3.0","mode":"dark","copycode":true,"anonymous_image":"https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/avatar/none.jpg","say":{"api":"https://v1.hitokoto.cn","hitokoto":true},"fireworks":{"colors":["102, 167, 221","62, 131, 225","33, 78, 194"]}};
-  </script><meta name="description" content="前言 老师怕学生考试挂科，额外安排了一节课讲考试范围和题型（泄题(｀・ω・´)）。就喜欢这样的老师！权当巩固一下咯，仅供自己复习用。仅仅是一些考点。  Python简介Python，读作[‘paɪθɑn],汉语是蟒蛇，Python的logo是两条缠绕在一起的蟒蛇. Python语言是由荷兰程序员Guido van Rossum，独立开发完成初版的。之所以选中Python作为该编程语言的名字，是因为">
-<meta property="og:type" content="article">
-<meta property="og:title" content="python 期末复习">
-<meta property="og:url" content="https://self-ferry.github.io/2020/12/18/python-%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/index.html">
-<meta property="og:site_name" content="1asy">
-<meta property="og:description" content="前言 老师怕学生考试挂科，额外安排了一节课讲考试范围和题型（泄题(｀・ω・´)）。就喜欢这样的老师！权当巩固一下咯，仅供自己复习用。仅仅是一些考点。  Python简介Python，读作[‘paɪθɑn],汉语是蟒蛇，Python的logo是两条缠绕在一起的蟒蛇. Python语言是由荷兰程序员Guido van Rossum，独立开发完成初版的。之所以选中Python作为该编程语言的名字，是因为">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://self-ferry.github.io/2020/12/18/python-%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image001.png">
-<meta property="og:image" content="https://self-ferry.github.io/2020/12/18/python-%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image002.jpg">
-<meta property="og:image" content="https://self-ferry.github.io/2020/12/18/python-%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image001.gif">
-<meta property="og:image" content="https://self-ferry.github.io/2020/12/18/python-%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image003.jpg">
-<meta property="og:image" content="https://self-ferry.github.io/2020/12/18/python-%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image002.png">
-<meta property="og:image" content="https://self-ferry.github.io/2020/12/18/python-%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image003.png">
-<meta property="og:image" content="https://self-ferry.github.io/2020/12/18/python-%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image004.png">
-<meta property="og:image" content="https://self-ferry.github.io/2020/12/18/python-%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image002.gif">
-<meta property="og:image" content="https://self-ferry.github.io/2020/12/18/python-%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/Python%20%E7%9F%A5%E8%AF%86%E7%82%B9.jpg">
-<meta property="article:published_time" content="2020-12-18T08:53:24.000Z">
-<meta property="article:modified_time" content="2020-12-24T12:00:12.643Z">
-<meta property="article:author" content="1asy">
-<meta property="article:tag" content="python">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://self-ferry.github.io/2020/12/18/python-%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/image001.png"><script src="/js/ui/mode.js"></script></head><body><script defer src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script defer src="/js/ui/fireworks.js"></script><canvas class="fireworks"></canvas><canvas id="trianglifyContainer"></canvas><script defer src="https://cdn.jsdelivr.net/npm/trianglify@4/dist/trianglify.bundle.js"></script><script>document.addEventListener("DOMContentLoaded", () => {
-  const pattern = trianglify({
-    width: 800,
-    height: 600,
-    cellSize: 75,
-    palette: ["YlGnBu", "GnBu", "Purples", "Blues"],
-  });
-  const canvasOpts = {
-    applyCssScaling: false
-  }
-  document.body.appendChild(pattern.toCanvas(trianglifyContainer, canvasOpts));
-});</script><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script src="/js/sidebar.js"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="文章目录"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-list-ordered"></use></svg></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="站点概览"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-passport-line"></use></svg></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/about/" title="1asy"><img width="96" loading="lazy" src="/cool.jpg" alt="1asy"></a><div class="site-author-name"><a href="/about/">1asy</a></div><a class="site-name" href="/about/site.html">1asy</a><sub class="site-subtitle">悟已往之不谏 知来者之可追 实迷途其未远 觉今是而昨非</sub><div class="site-desciption"></div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="首页"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-4-line"></use></svg></span></a><div class="site-state-item"><a href="/archives/" title="归档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-archive-line"></use></svg></span><span class="site-state-item-count">28</span></a></div><div class="site-state-item"><a href="/categories/" title="分类"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-2-line"></use></svg></span><span class="site-state-item-count">12</span></a></div><div class="site-state-item"><a href="/tags/" title="标签"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="site-state-item-count">34</span></a></div><a class="site-state-item hty-icon-button" target="_blank" rel="noopener" href="https://yun.yunyoujun.cn" title="文档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-settings-line"></use></svg></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="/atom.xml" title="RSS" target="_blank" style="color:orange"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-rss-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://qm.qq.com/cgi-bin/qm/qr?k=epvxdq1sknJe9JMj6J1LsBw4a6cI_2ln&amp;jump_from=webapi" title="QQ 群 389401003" target="_blank" style="color:#12B7F5"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-qq-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/Self-ferry" title="GitHub" target="_blank" style="color:#6e5494"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://weibo.com/jizhideyunyoujun" title="微博" target="_blank" style="color:#E6162D"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-weibo-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://www.douban.com/people/yunyoujun/" title="豆瓣" target="_blank" style="color:#007722"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-douban-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://music.163.com/#/user/home?id=247102977" title="网易云音乐" target="_blank" style="color:#C20C0C"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-netease-cloud-music-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://www.zhihu.com/people/yunyoujun/" title="知乎" target="_blank" style="color:#0084FF"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-zhihu-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://twitter.com/YunYouJun" title="Twitter" target="_blank" style="color:#1da1f2"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-twitter-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://t.me/elpsycn" title="Telegram Channel" target="_blank" style="color:#0088CC"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-telegram-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="mailto:Self_ferry@163.com" title="E-Mail" target="_blank" style="color:#8E71C1"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-mail-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://travellings.now.sh/" title="Travelling" target="_blank" style="color:var(--hty-text-color)"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-send-plane-2-line"></use></svg></a></div><hr style="margin:0.5rem 1rem"><div class="links"><a class="links-item hty-icon-button" href="/links/" title="我的小伙伴们" style="color:dodgerblue"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-genderless-line"></use></svg></a></div></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E7%AE%80%E4%BB%8B"><span class="toc-number">2.</span> <span class="toc-text">Python简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E8%AF%AD%E8%A8%80%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">3.</span> <span class="toc-text">Python语言的特点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%80%9C%E5%86%85%E7%BD%AE%E7%94%B5%E6%B1%A0%E2%80%9D%EF%BC%8C%E5%A4%A7%E9%87%8F%E7%9A%84%E6%A0%87%E5%87%86%E5%BA%93%E5%92%8C%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93"><span class="toc-number">3.1.</span> <span class="toc-text">“内置电池”，大量的标准库和第三方库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BE%E5%8C%BA%E6%B4%BB%E8%B7%83%EF%BC%8C%E8%B4%A1%E7%8C%AE%E8%80%85%E5%A4%9A%EF%BC%8C%E4%BA%92%E5%B8%AE%E4%BA%92%E5%8A%A9"><span class="toc-number">3.2.</span> <span class="toc-text">社区活跃，贡献者多，互帮互助</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E6%BA%90%E8%AF%AD%E8%A8%80%EF%BC%8C%E5%8F%91%E5%B1%95%E5%8A%A8%E5%8A%9B%E5%B7%A8%E5%A4%A7"><span class="toc-number">3.3.</span> <span class="toc-text">开源语言，发展动力巨大</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E7%9A%84%E5%BA%94%E7%94%A8%E6%96%B9%E5%90%91"><span class="toc-number">4.</span> <span class="toc-text">Python的应用方向</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7"><span class="toc-number">5.</span> <span class="toc-text">Python包管理工具</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#pip%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">5.1.</span> <span class="toc-text">pip的使用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E7%9A%84virtualenv-%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83"><span class="toc-number">6.</span> <span class="toc-text">Python的virtualenv 虚拟环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E5%9F%BA%E7%A1%80"><span class="toc-number">7.</span> <span class="toc-text">Python基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%A9%E8%BF%9B"><span class="toc-number">7.1.</span> <span class="toc-text">缩进</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E9%87%8A"><span class="toc-number">7.2.</span> <span class="toc-text">注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python%E8%87%AA%E5%B8%A6%E7%9A%84%E9%9B%86%E6%88%90%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="toc-number">7.3.</span> <span class="toc-text">Python自带的集成开发环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python%E5%8F%98%E9%87%8F%E7%9A%84%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="toc-number">7.4.</span> <span class="toc-text">Python变量的命名规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-pass-%E8%AF%AD%E5%8F%A5"><span class="toc-number">7.5.</span> <span class="toc-text">Python pass 语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AF%B4Python%E9%87%87%E7%94%A8%E7%9A%84%E6%98%AF%E5%9F%BA%E4%BA%8E%E5%80%BC%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%EF%BC%9F"><span class="toc-number">7.6.</span> <span class="toc-text">为什么说Python采用的是基于值的内存管理模式？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Gossip-%E9%97%B2%E8%81%8A-%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E4%B8%8E%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">7.6.1.</span> <span class="toc-text">Gossip(闲聊)脚本语言与编程语言的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#is-%E4%B8%8E-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">7.7.</span> <span class="toc-text">is 与 &#x3D;&#x3D; 的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">7.8.</span> <span class="toc-text">数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">7.8.1.</span> <span class="toc-text">可变数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%97%E8%A1%A8-list"><span class="toc-number">7.8.1.1.</span> <span class="toc-text">列表(list)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E5%85%B8-dict"><span class="toc-number">7.8.1.2.</span> <span class="toc-text">字典(dict)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">7.8.2.</span> <span class="toc-text">不可变数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%AD%97"><span class="toc-number">7.8.2.1.</span> <span class="toc-text">数字</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">7.8.2.2.</span> <span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%83%E7%BB%84"><span class="toc-number">7.8.2.3.</span> <span class="toc-text">元组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9B%86%E5%90%88"><span class="toc-number">7.8.2.4.</span> <span class="toc-text">集合</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%83%E7%BB%84%E4%B8%8E%E5%88%97%E8%A1%A8%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">7.8.3.</span> <span class="toc-text">元组与列表的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E7%94%A8%E2%80%98-%E2%80%99%E5%92%8C%E2%80%98append%E2%80%99%E5%8C%BA%E5%88%AB"><span class="toc-number">7.8.4.</span> <span class="toc-text">列表用‘+’和‘append’区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%87%E7%89%87"><span class="toc-number">7.9.</span> <span class="toc-text">切片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E5%92%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">7.10.</span> <span class="toc-text">运算符和表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD%E5%92%8C%E5%BE%AA%E7%8E%AF"><span class="toc-number">7.11.</span> <span class="toc-text">条件判断和循环</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD"><span class="toc-number">7.11.1.</span> <span class="toc-text">条件判断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF"><span class="toc-number">7.11.2.</span> <span class="toc-text">循环</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#while-%E5%BE%AA%E7%8E%AF"><span class="toc-number">7.11.2.1.</span> <span class="toc-text">while 循环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#for-%E8%AF%AD%E5%8F%A5"><span class="toc-number">7.11.2.2.</span> <span class="toc-text">for 语句</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#break%E4%B8%8Econtinue"><span class="toc-number">7.11.2.3.</span> <span class="toc-text">break与continue</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E7%BC%96%E7%A0%81"><span class="toc-number">7.12.</span> <span class="toc-text">字符串与编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA"><span class="toc-number">7.13.</span> <span class="toc-text">字符串的格式化输出</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-number">7.13.1.</span> <span class="toc-text">%的用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#format%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-number">7.13.2.</span> <span class="toc-text">format的用法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-number">7.14.</span> <span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0"><span class="toc-number">7.14.1.</span> <span class="toc-text">参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">7.14.2.</span> <span class="toc-text">函数变量的作用域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="toc-number">7.14.3.</span> <span class="toc-text">返回值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%B5%8C%E5%87%BD%E6%95%B0"><span class="toc-number">7.14.4.</span> <span class="toc-text">内嵌函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AD%E5%8C%85-closure"><span class="toc-number">7.14.5.</span> <span class="toc-text">闭包(closure)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0"><span class="toc-number">7.14.6.</span> <span class="toc-text">匿名函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D%E4%B8%A4%E4%B8%AABIF%EF%BC%9Afilter-%E5%92%8Cmap"><span class="toc-number">7.14.7.</span> <span class="toc-text">介绍两个BIF：filter()和map()</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#filter"><span class="toc-number">7.14.7.1.</span> <span class="toc-text">filter()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#map"><span class="toc-number">7.14.7.2.</span> <span class="toc-text">map()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92"><span class="toc-number">7.14.8.</span> <span class="toc-text">递归</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97-%E5%8C%85%E4%BB%A5%E5%8F%8A%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86"><span class="toc-number">7.15.</span> <span class="toc-text">模块&#x2F;包以及文件处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97-%E5%8C%85"><span class="toc-number">7.15.1.</span> <span class="toc-text">模块&#x2F;包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E6%A8%A1%E5%9D%97"><span class="toc-number">7.15.2.</span> <span class="toc-text">导入模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86"><span class="toc-number">7.15.3.</span> <span class="toc-text">文件处理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#sys%E5%92%8Cos%E5%BA%93%E5%A4%8D%E4%B9%A0"><span class="toc-number">8.</span> <span class="toc-text">sys和os库复习</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99"><span class="toc-number">9.</span> <span class="toc-text">文件读写</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%93%E5%BC%80%E6%A8%A1%E5%BC%8F"><span class="toc-number">9.1.</span> <span class="toc-text">打开模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6%E5%92%8C%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E7%9A%84%E5%B7%AE%E5%BC%82%E5%92%8C%E5%8C%BA%E5%88%AB"><span class="toc-number">9.2.</span> <span class="toc-text">文本文件和二进制文件的差异和区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="toc-number">10.</span> <span class="toc-text">异常处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E5%BC%82%E5%B8%B8%E5%9F%BA%E7%B1%BB"><span class="toc-number">10.1.</span> <span class="toc-text">常见的异常基类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F"><span class="toc-number">10.2.</span> <span class="toc-text">异常的处理方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E4%B8%8E%E9%94%99%E8%AF%AF%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">10.3.</span> <span class="toc-text">异常与错误的区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="toc-number">11.</span> <span class="toc-text">Python面向对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%E5%8F%8A%E6%9C%AF%E8%AF%AD%EF%BC%9A"><span class="toc-number">11.1.</span> <span class="toc-text">概念及术语：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E4%B8%8E%E5%AE%9E%E4%BE%8B"><span class="toc-number">11.2.</span> <span class="toc-text">类与实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AD%94%E6%B3%95%E6%96%B9%E6%B3%95"><span class="toc-number">11.3.</span> <span class="toc-text">魔法方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E9%AD%94%E6%B3%95%E6%96%B9%E6%B3%95%E7%9A%84%E5%AE%9E%E4%BE%8B"><span class="toc-number">11.3.1.</span> <span class="toc-text">利用魔法方法的实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97"><span class="toc-number">11.3.2.</span> <span class="toc-text">斐波那契数列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%AE%E5%8A%A9%E8%87%AA%E5%B7%B1%E7%90%86%E8%A7%A3"><span class="toc-number">11.3.3.</span> <span class="toc-text">帮助自己理解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AC%E6%9C%89%E4%B8%8E%E7%A7%81%E6%9C%89"><span class="toc-number">11.4.</span> <span class="toc-text">公有与私有</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E6%9C%89%E4%B8%89%E5%A4%A7%E9%87%8D%E8%A6%81%E7%89%B9%E5%BE%81%EF%BC%9A%E5%B0%81%E8%A3%85%E3%80%81%E7%BB%A7%E6%89%BF%E5%92%8C%E5%A4%9A%E6%80%81"><span class="toc-number">11.5.</span> <span class="toc-text">面向对象编程有三大重要特征：封装、继承和多态</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%81%E8%A3%85"><span class="toc-number">11.5.1.</span> <span class="toc-text">封装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF"><span class="toc-number">11.5.2.</span> <span class="toc-text">继承</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E6%9C%AA%E7%BB%91%E5%AE%9A%E7%9A%84%E7%88%B6%E7%B1%BB%E6%96%B9%E6%B3%95"><span class="toc-number">11.5.2.1.</span> <span class="toc-text">调用未绑定的父类方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#super%E5%87%BD%E6%95%B0"><span class="toc-number">11.5.2.2.</span> <span class="toc-text">super函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E6%80%81"><span class="toc-number">11.5.3.</span> <span class="toc-text">多态</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#property%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="toc-number">11.6.</span> <span class="toc-text">@property装饰器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B"><span class="toc-number">12.</span> <span class="toc-text">Python网络编程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B"><span class="toc-number">13.</span> <span class="toc-text">Python进程与线程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%BF%9B%E7%A8%8B%EF%BC%8C%E4%BB%80%E4%B9%88%E6%98%AF%E7%BA%BF%E7%A8%8B"><span class="toc-number">13.1.</span> <span class="toc-text">什么是进程，什么是线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">13.2.</span> <span class="toc-text">线程与进程的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%BC%98%E7%82%B9"><span class="toc-number">13.3.</span> <span class="toc-text">线程的优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-number">13.4.</span> <span class="toc-text">线程的缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5"><span class="toc-number">13.5.</span> <span class="toc-text">线程同步</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">14.</span> <span class="toc-text">Python正则表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#re%E5%87%BD%E6%95%B0"><span class="toc-number">14.1.</span> <span class="toc-text">re函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E5%A4%A7%E6%90%9C%E7%B4%A2%E5%87%BD%E6%95%B0"><span class="toc-number">14.2.</span> <span class="toc-text">三大搜索函数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E7%88%AC%E8%99%AB"><span class="toc-number">15.</span> <span class="toc-text">Python爬虫</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">15.1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#URL"><span class="toc-number">15.2.</span> <span class="toc-text">URL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97"><span class="toc-number">15.3.</span> <span class="toc-text">模块</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE"><span class="toc-number">16.</span> <span class="toc-text">思维导图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">17.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%94%B6%E9%9B%86%E8%87%AA%E4%BB%A5%E4%B8%8B"><span class="toc-number">18.</span> <span class="toc-text">收集自以下</span></a></li></ol></div></div></div><div class="tag-cloud"><div class="tag-cloud-tags"><a href="/tags/ANSI/" style="font-size: 12px; color: #999">ANSI</a> <a href="/tags/ASCII/" style="font-size: 12px; color: #999">ASCII</a> <a href="/tags/Apeache/" style="font-size: 12px; color: #999">Apeache</a> <a href="/tags/GBK/" style="font-size: 12px; color: #999">GBK</a> <a href="/tags/HTML/" style="font-size: 12px; color: #999">HTML</a> <a href="/tags/Hadoop/" style="font-size: 12px; color: #999">Hadoop</a> <a href="/tags/Linux%E5%91%BD%E4%BB%A4/" style="font-size: 12px; color: #999">Linux命令</a> <a href="/tags/SQLmap/" style="font-size: 12px; color: #999">SQLmap</a> <a href="/tags/SSH%E9%9A%A7%E9%81%93/" style="font-size: 12px; color: #999">SSH隧道</a> <a href="/tags/URL-%E7%BC%96%E7%A0%81-%E8%A7%A3%E7%A0%81/" style="font-size: 12px; color: #999">URL 编码/解码</a> <a href="/tags/UTF-8/" style="font-size: 12px; color: #999">UTF-8</a> <a href="/tags/Unicode/" style="font-size: 12px; color: #999">Unicode</a> <a href="/tags/WindowsPE%E7%BB%93%E6%9E%84/" style="font-size: 12px; color: #999">WindowsPE结构</a> <a href="/tags/guestbook/" style="font-size: 12px; color: #999">guestbook</a> <a href="/tags/http/" style="font-size: 12px; color: #999">http</a> <a href="/tags/markdown-%E5%AD%A6%E4%B9%A0/" style="font-size: 12px; color: #999">markdown 学习</a> <a href="/tags/multiprocessing/" style="font-size: 12px; color: #999">multiprocessing</a> <a href="/tags/my-first-blog/" style="font-size: 12px; color: #999">my first blog</a> <a href="/tags/mysql%E4%B8%BB%E9%94%AE/" style="font-size: 12px; color: #999">mysql主键</a> <a href="/tags/php/" style="font-size: 30px; color: #0078e7">php</a></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="post-block" itemscope itemtype="https://schema.org/Article"><link itemprop="mainEntityOfPage" href="https://Self-ferry.github.io/2020/12/18/python-%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="1asy"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="1asy"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">python 期末复习</h1><div class="post-meta"><div class="post-time" style="display:block"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-line"></use></svg></span> <span class="post-meta-icon-text">发表于</span> <time title="创建时间：2020-12-18 16:53:24" itemprop="dateCreated datePublished" datetime="2020-12-18T16:53:24+08:00">2020-12-18</time><span class="post-meta-divider">-</span><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-2-line"></use></svg></span> <span class="post-meta-icon-text">更新于</span> <time title="修改时间：2020-12-24 20:00:12" itemprop="dateModified" datetime="2020-12-24T20:00:12+08:00">2020-12-24</time></div><span class="post-count"><span class="post-symbolcount"><span class="post-meta-item-icon" title="本文字数"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-file-word-line"></use></svg></span> <span title="本文字数">21.8k</span><span class="post-meta-divider">-</span><span class="post-meta-item-icon" title="阅读时长"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-timer-line"></use></svg></span> <span title="阅读时长">84m</span></span></span><div class="post-classify"><span class="post-category"> <span class="post-meta-item-icon" style="margin-right:3px;"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-line"></use></svg></span><span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category" href="/categories/python/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">python</span></a></span></span><span class="post-tag"><span class="post-meta-divider">-</span><a class="tag" href="/tags/python/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">python</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body" style="--smc-primary:#0078E7;"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="1asy" href="https://self-ferry.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="1asy" href="https://self-ferry.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="1asy" href="https://self-ferry.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="python" />
+
+
+<link rel="canonical" href="https://self-ferry.github.io/2020/12/18/python-%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">
+
+
+
+  <title>
+python 期末复习 - python |
+Yume Shoka = 1asy = 悟已往之不谏 知来者之可追 实迷途其未远 觉今是而昨非</title>
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">python 期末复习
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2020-12-18 16:53:24">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2020-12-18T16:53:24+08:00">2020-12-18</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Yume Shoka</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicitspjpbj20zk0m81ky.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipeyvx1d4j20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giph4fomxoj20zk0m8axp.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclg5ms2rj20zk0m8u0x.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipesx5fdwj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giciub8ja1j20zk0m81ky.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/python/" itemprop="item" rel="index" title="分类于 python"><span itemprop="name">python</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="https://self-ferry.github.io/2020/12/18/python-%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="1asy">
+    <meta itemprop="description" content="悟已往之不谏 知来者之可追 实迷途其未远 觉今是而昨非, ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="1asy">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
 <p>老师怕学生考试挂科，额外安排了一节课讲考试范围和题型（泄题(｀・ω・´)）。就喜欢这样的老师！<br><font color="green">权当巩固一下咯，仅供自己复习用。<br>仅仅是一些考点。</font></p>
 </blockquote>
 <h1 id="Python简介"><a href="#Python简介" class="headerlink" title="Python简介"></a>Python简介</h1><p>Python，读作[‘paɪθɑn],汉语是蟒蛇，Python的logo是两条缠绕在一起的蟒蛇.</p>
@@ -1995,19 +2110,348 @@ AttributeError<span class="token punctuation">:</span> <span class="token string
 <p>这一次总结确实收获不少，充分认识了自己的不足，还有很多需要学习的方面，有机会读读《Python网络编程基础》这本书，觉得会对学习web安全有很大的帮助。</p>
 <h1 id="收集自以下"><a href="#收集自以下" class="headerlink" title="收集自以下"></a>收集自以下</h1><p>很多链接都放在文章中了</p>
 <p><a target="_blank" rel="noopener" href="https://www.liujiangblog.com/course/python/">https://www.liujiangblog.com/course/python/</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/149247533">https://zhuanlan.zhihu.com/p/149247533</a><br><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/1016959663602400">https://www.liaoxuefeng.com/wiki/1016959663602400</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/fat39/p/7159881.html">https://www.cnblogs.com/fat39/p/7159881.html</a></p>
-</div><div id="reward-container"><span class="hty-icon-button button-glow" id="reward-button" title="打赏" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === &quot;none&quot;) ? &quot;block&quot; : &quot;none&quot;;"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-hand-coin-line"></use></svg></span><div id="reward-comment">I'm so cute. Please give me money.</div><div id="qr" style="display:none;"><div style="display:inline-block"><a href="images/reward.jpg"><img loading="lazy" src="/images/reward.jpg" alt="支付宝" title="支付宝"></a><div><span style="color:#00A3EE"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-alipay-line"></use></svg></span></div></div></div></div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>1asy</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="https://self-ferry.github.io/2020/12/18/python-%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" title="python 期末复习">https://self-ferry.github.io/2020/12/18/python-%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均默认采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><svg class="icon"><use xlink:href="#icon-creative-commons-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-by-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-nc-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-sa-line"></use></svg></a> 许可协议。</li></ul></section></article><div class="post-nav"><div class="post-nav-item"><a class="post-nav-prev" href="/2020/12/19/VMnet0%E3%80%81VMnet1%E3%80%81VMnet8/" rel="prev" title="VMnet0、VMnet1、VMnet8"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-left-s-line"></use></svg><span class="post-nav-text">VMnet0、VMnet1、VMnet8</span></a></div><div class="post-nav-item"><a class="post-nav-next" href="/2020/12/11/PHP%E7%95%99%E8%A8%80%E6%9D%BF%E5%B0%8F%E8%AE%B0/" rel="next" title="PHP留言板小记"><span class="post-nav-text">PHP留言板小记</span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-right-s-line"></use></svg></a></div></div></div><div id="comment"><div class="comment-tooltip text-center"><span>点击按钮跳转 GitHub Issues 评论。</span><br><span>若没有本文 Issue，您可以使用 Comment 模版新建。</span><br><a class="hty-button hty-button--raised" id="github-issues" target="_blank" rel="noopener" href="https://github.com/YunYouJun/yunyoujun.github.io/issues?q=is:issue+python 期末复习">GitHub Issues</a></div></div></main><footer class="sidebar-translate" id="footer"><div class="copyright"><span>&copy; 2019 – 2020 </span><span class="with-love" id="animate"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-cloud-line"></use></svg></span><span class="author"> 1asy</span></div><div class="powered"><span>由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v5.2.0</span><span class="footer-separator">|</span><span>主题 - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v1.3.0</span></div><div class="live_time"><span>本博客已萌萌哒地运行</span><span id="display_live_time"></span><span class="moe-text">ヾ(=･ω･=)o</span><script>function blog_live_time() {
-  window.setTimeout(blog_live_time, 1000);
-  const start = new Date('2020-11-16T00:00:00');
-  const now = new Date();
-  const timeDiff = (now.getTime() - start.getTime());
-  const msPerMinute = 60 * 1000;
-  const msPerHour = 60 * msPerMinute;
-  const msPerDay = 24 * msPerHour;
-  const passDay = Math.floor(timeDiff / msPerDay);
-  const passHour = Math.floor((timeDiff % msPerDay) / 60 / 60 / 1000);
-  const passMinute = Math.floor((timeDiff % msPerHour) / 60 / 1000);
-  const passSecond = Math.floor((timeDiff % msPerMinute) / 1000);
-  display_live_time.innerHTML = " " + passDay + " 天 " + passHour + " 小时 " + passMinute + " 分 " + passSecond + " 秒";
-}
-blog_live_time();
-</script></div></footer><a class="hty-icon-button" id="goUp" aria-label="back-to-top" href="#"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-up-s-line"></use></svg><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#0078E7" stroke-width="2" stroke-linecap="round"></circle></svg></a></div><script defer src="/js/utils.js"></script><script defer src="/js/hexo-theme-yun.js"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script></body></html>
+
+      <div class="tags">
+          <a href="/tags/python/" rel="tag"><i class="ic i-tag"></i> python</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2020-12-24 20:00:12" itemprop="dateModified" datetime="2020-12-24T20:00:12+08:00">2020-12-24</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 赞赏</button>
+  <p>请我喝[茶]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="1asy 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="1asy 支付宝">
+        <p>支付宝</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="1asy 贝宝">
+        <p>贝宝</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>1asy <i class="ic i-at"><em>@</em></i>1asy
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="https://self-ferry.github.io/2020/12/18/python-%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" title="python 期末复习">https://self-ferry.github.io/2020/12/18/python-期末复习/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2020/12/11/PHP%E7%95%99%E8%A8%80%E6%9D%BF%E5%B0%8F%E8%AE%B0/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipetlbztpj20zk0m84qp.jpg" title="PHP留言板小记">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> web</span>
+  <h3>PHP留言板小记</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2020/12/19/VMnet0%E3%80%81VMnet1%E3%80%81VMnet8/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicmnywqgpj20zk0m8dwx.jpg" title="VMnet0、VMnet1、VMnet8">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> VMWare</span>
+  <h3>VMnet0、VMnet1、VMnet8</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E7%AE%80%E4%BB%8B"><span class="toc-number">2.</span> <span class="toc-text">Python简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E8%AF%AD%E8%A8%80%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">3.</span> <span class="toc-text">Python语言的特点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%80%9C%E5%86%85%E7%BD%AE%E7%94%B5%E6%B1%A0%E2%80%9D%EF%BC%8C%E5%A4%A7%E9%87%8F%E7%9A%84%E6%A0%87%E5%87%86%E5%BA%93%E5%92%8C%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93"><span class="toc-number">3.1.</span> <span class="toc-text">“内置电池”，大量的标准库和第三方库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BE%E5%8C%BA%E6%B4%BB%E8%B7%83%EF%BC%8C%E8%B4%A1%E7%8C%AE%E8%80%85%E5%A4%9A%EF%BC%8C%E4%BA%92%E5%B8%AE%E4%BA%92%E5%8A%A9"><span class="toc-number">3.2.</span> <span class="toc-text">社区活跃，贡献者多，互帮互助</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E6%BA%90%E8%AF%AD%E8%A8%80%EF%BC%8C%E5%8F%91%E5%B1%95%E5%8A%A8%E5%8A%9B%E5%B7%A8%E5%A4%A7"><span class="toc-number">3.3.</span> <span class="toc-text">开源语言，发展动力巨大</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E7%9A%84%E5%BA%94%E7%94%A8%E6%96%B9%E5%90%91"><span class="toc-number">4.</span> <span class="toc-text">Python的应用方向</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7"><span class="toc-number">5.</span> <span class="toc-text">Python包管理工具</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#pip%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">5.1.</span> <span class="toc-text">pip的使用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E7%9A%84virtualenv-%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83"><span class="toc-number">6.</span> <span class="toc-text">Python的virtualenv 虚拟环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E5%9F%BA%E7%A1%80"><span class="toc-number">7.</span> <span class="toc-text">Python基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%A9%E8%BF%9B"><span class="toc-number">7.1.</span> <span class="toc-text">缩进</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E9%87%8A"><span class="toc-number">7.2.</span> <span class="toc-text">注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python%E8%87%AA%E5%B8%A6%E7%9A%84%E9%9B%86%E6%88%90%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="toc-number">7.3.</span> <span class="toc-text">Python自带的集成开发环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python%E5%8F%98%E9%87%8F%E7%9A%84%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="toc-number">7.4.</span> <span class="toc-text">Python变量的命名规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-pass-%E8%AF%AD%E5%8F%A5"><span class="toc-number">7.5.</span> <span class="toc-text">Python pass 语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AF%B4Python%E9%87%87%E7%94%A8%E7%9A%84%E6%98%AF%E5%9F%BA%E4%BA%8E%E5%80%BC%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%EF%BC%9F"><span class="toc-number">7.6.</span> <span class="toc-text">为什么说Python采用的是基于值的内存管理模式？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Gossip-%E9%97%B2%E8%81%8A-%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E4%B8%8E%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">7.6.1.</span> <span class="toc-text">Gossip(闲聊)脚本语言与编程语言的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#is-%E4%B8%8E-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">7.7.</span> <span class="toc-text">is 与 &#x3D;&#x3D; 的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">7.8.</span> <span class="toc-text">数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">7.8.1.</span> <span class="toc-text">可变数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%97%E8%A1%A8-list"><span class="toc-number">7.8.1.1.</span> <span class="toc-text">列表(list)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E5%85%B8-dict"><span class="toc-number">7.8.1.2.</span> <span class="toc-text">字典(dict)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">7.8.2.</span> <span class="toc-text">不可变数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%AD%97"><span class="toc-number">7.8.2.1.</span> <span class="toc-text">数字</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">7.8.2.2.</span> <span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%83%E7%BB%84"><span class="toc-number">7.8.2.3.</span> <span class="toc-text">元组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9B%86%E5%90%88"><span class="toc-number">7.8.2.4.</span> <span class="toc-text">集合</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%83%E7%BB%84%E4%B8%8E%E5%88%97%E8%A1%A8%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">7.8.3.</span> <span class="toc-text">元组与列表的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E7%94%A8%E2%80%98-%E2%80%99%E5%92%8C%E2%80%98append%E2%80%99%E5%8C%BA%E5%88%AB"><span class="toc-number">7.8.4.</span> <span class="toc-text">列表用‘+’和‘append’区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%87%E7%89%87"><span class="toc-number">7.9.</span> <span class="toc-text">切片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E5%92%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">7.10.</span> <span class="toc-text">运算符和表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD%E5%92%8C%E5%BE%AA%E7%8E%AF"><span class="toc-number">7.11.</span> <span class="toc-text">条件判断和循环</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD"><span class="toc-number">7.11.1.</span> <span class="toc-text">条件判断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF"><span class="toc-number">7.11.2.</span> <span class="toc-text">循环</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#while-%E5%BE%AA%E7%8E%AF"><span class="toc-number">7.11.2.1.</span> <span class="toc-text">while 循环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#for-%E8%AF%AD%E5%8F%A5"><span class="toc-number">7.11.2.2.</span> <span class="toc-text">for 语句</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#break%E4%B8%8Econtinue"><span class="toc-number">7.11.2.3.</span> <span class="toc-text">break与continue</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E7%BC%96%E7%A0%81"><span class="toc-number">7.12.</span> <span class="toc-text">字符串与编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA"><span class="toc-number">7.13.</span> <span class="toc-text">字符串的格式化输出</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-number">7.13.1.</span> <span class="toc-text">%的用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#format%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-number">7.13.2.</span> <span class="toc-text">format的用法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-number">7.14.</span> <span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0"><span class="toc-number">7.14.1.</span> <span class="toc-text">参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">7.14.2.</span> <span class="toc-text">函数变量的作用域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="toc-number">7.14.3.</span> <span class="toc-text">返回值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%B5%8C%E5%87%BD%E6%95%B0"><span class="toc-number">7.14.4.</span> <span class="toc-text">内嵌函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AD%E5%8C%85-closure"><span class="toc-number">7.14.5.</span> <span class="toc-text">闭包(closure)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0"><span class="toc-number">7.14.6.</span> <span class="toc-text">匿名函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D%E4%B8%A4%E4%B8%AABIF%EF%BC%9Afilter-%E5%92%8Cmap"><span class="toc-number">7.14.7.</span> <span class="toc-text">介绍两个BIF：filter()和map()</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#filter"><span class="toc-number">7.14.7.1.</span> <span class="toc-text">filter()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#map"><span class="toc-number">7.14.7.2.</span> <span class="toc-text">map()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92"><span class="toc-number">7.14.8.</span> <span class="toc-text">递归</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97-%E5%8C%85%E4%BB%A5%E5%8F%8A%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86"><span class="toc-number">7.15.</span> <span class="toc-text">模块&#x2F;包以及文件处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97-%E5%8C%85"><span class="toc-number">7.15.1.</span> <span class="toc-text">模块&#x2F;包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E6%A8%A1%E5%9D%97"><span class="toc-number">7.15.2.</span> <span class="toc-text">导入模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86"><span class="toc-number">7.15.3.</span> <span class="toc-text">文件处理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#sys%E5%92%8Cos%E5%BA%93%E5%A4%8D%E4%B9%A0"><span class="toc-number">8.</span> <span class="toc-text">sys和os库复习</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99"><span class="toc-number">9.</span> <span class="toc-text">文件读写</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%93%E5%BC%80%E6%A8%A1%E5%BC%8F"><span class="toc-number">9.1.</span> <span class="toc-text">打开模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6%E5%92%8C%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E7%9A%84%E5%B7%AE%E5%BC%82%E5%92%8C%E5%8C%BA%E5%88%AB"><span class="toc-number">9.2.</span> <span class="toc-text">文本文件和二进制文件的差异和区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="toc-number">10.</span> <span class="toc-text">异常处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E5%BC%82%E5%B8%B8%E5%9F%BA%E7%B1%BB"><span class="toc-number">10.1.</span> <span class="toc-text">常见的异常基类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F"><span class="toc-number">10.2.</span> <span class="toc-text">异常的处理方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E4%B8%8E%E9%94%99%E8%AF%AF%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">10.3.</span> <span class="toc-text">异常与错误的区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="toc-number">11.</span> <span class="toc-text">Python面向对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%E5%8F%8A%E6%9C%AF%E8%AF%AD%EF%BC%9A"><span class="toc-number">11.1.</span> <span class="toc-text">概念及术语：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E4%B8%8E%E5%AE%9E%E4%BE%8B"><span class="toc-number">11.2.</span> <span class="toc-text">类与实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AD%94%E6%B3%95%E6%96%B9%E6%B3%95"><span class="toc-number">11.3.</span> <span class="toc-text">魔法方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E9%AD%94%E6%B3%95%E6%96%B9%E6%B3%95%E7%9A%84%E5%AE%9E%E4%BE%8B"><span class="toc-number">11.3.1.</span> <span class="toc-text">利用魔法方法的实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97"><span class="toc-number">11.3.2.</span> <span class="toc-text">斐波那契数列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%AE%E5%8A%A9%E8%87%AA%E5%B7%B1%E7%90%86%E8%A7%A3"><span class="toc-number">11.3.3.</span> <span class="toc-text">帮助自己理解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AC%E6%9C%89%E4%B8%8E%E7%A7%81%E6%9C%89"><span class="toc-number">11.4.</span> <span class="toc-text">公有与私有</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E6%9C%89%E4%B8%89%E5%A4%A7%E9%87%8D%E8%A6%81%E7%89%B9%E5%BE%81%EF%BC%9A%E5%B0%81%E8%A3%85%E3%80%81%E7%BB%A7%E6%89%BF%E5%92%8C%E5%A4%9A%E6%80%81"><span class="toc-number">11.5.</span> <span class="toc-text">面向对象编程有三大重要特征：封装、继承和多态</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%81%E8%A3%85"><span class="toc-number">11.5.1.</span> <span class="toc-text">封装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF"><span class="toc-number">11.5.2.</span> <span class="toc-text">继承</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E6%9C%AA%E7%BB%91%E5%AE%9A%E7%9A%84%E7%88%B6%E7%B1%BB%E6%96%B9%E6%B3%95"><span class="toc-number">11.5.2.1.</span> <span class="toc-text">调用未绑定的父类方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#super%E5%87%BD%E6%95%B0"><span class="toc-number">11.5.2.2.</span> <span class="toc-text">super函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E6%80%81"><span class="toc-number">11.5.3.</span> <span class="toc-text">多态</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#property%E8%A3%85%E9%A5%B0%E5%99%A8"><span class="toc-number">11.6.</span> <span class="toc-text">@property装饰器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B"><span class="toc-number">12.</span> <span class="toc-text">Python网络编程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B"><span class="toc-number">13.</span> <span class="toc-text">Python进程与线程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%BF%9B%E7%A8%8B%EF%BC%8C%E4%BB%80%E4%B9%88%E6%98%AF%E7%BA%BF%E7%A8%8B"><span class="toc-number">13.1.</span> <span class="toc-text">什么是进程，什么是线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">13.2.</span> <span class="toc-text">线程与进程的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%BC%98%E7%82%B9"><span class="toc-number">13.3.</span> <span class="toc-text">线程的优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-number">13.4.</span> <span class="toc-text">线程的缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5"><span class="toc-number">13.5.</span> <span class="toc-text">线程同步</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">14.</span> <span class="toc-text">Python正则表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#re%E5%87%BD%E6%95%B0"><span class="toc-number">14.1.</span> <span class="toc-text">re函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E5%A4%A7%E6%90%9C%E7%B4%A2%E5%87%BD%E6%95%B0"><span class="toc-number">14.2.</span> <span class="toc-text">三大搜索函数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E7%88%AC%E8%99%AB"><span class="toc-number">15.</span> <span class="toc-text">Python爬虫</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">15.1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#URL"><span class="toc-number">15.2.</span> <span class="toc-text">URL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97"><span class="toc-number">15.3.</span> <span class="toc-text">模块</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE"><span class="toc-number">16.</span> <span class="toc-text">思维导图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">17.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%94%B6%E9%9B%86%E8%87%AA%E4%BB%A5%E4%B8%8B"><span class="toc-number">18.</span> <span class="toc-text">收集自以下</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/2020/11/26/py-socket-experiment/" rel="bookmark" title="py_socket_experiment">py_socket_experiment</a></li><li><a href="/2020/12/02/python%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B/" rel="bookmark" title="python进程线程">python进程线程</a></li><li><a href="/2020/12/07/Python%E4%B8%ADread-%E3%80%81readline-%E5%92%8Creadlines-%E4%B8%89%E8%80%85%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E7%94%A8%E6%B3%95/" rel="bookmark" title="Python中read()、readline()和readlines()三者间的区别和用法">Python中read()、readline()和readlines()三者间的区别和用法</a></li><li class="active"><a href="/2020/12/18/python-%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" rel="bookmark" title="python 期末复习">python 期末复习</a></li><li><a href="/2020/12/28/scrapy%E6%A1%86%E6%9E%B6/" rel="bookmark" title="scrapy框架">scrapy框架</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="1asy"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">1asy</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">29</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">12</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">35</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lvdXJuYW1l" title="https:&#x2F;&#x2F;github.com&#x2F;yourname"><i class="ic i-github"></i></span>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;yourname"><i class="ic i-twitter"></i></span>
+      <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yourname"><i class="ic i-zhihu"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPXlvdXJpZA==" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;yourid"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item weibo" data-url="aHR0cHM6Ly93ZWliby5jb20veW91cm5hbWU=" title="https:&#x2F;&#x2F;weibo.com&#x2F;yourname"><i class="ic i-weibo"></i></span>
+      <span class="exturl item about" data-url="aHR0cHM6Ly9hYm91dC5tZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;about.me&#x2F;yourname"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>首页</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2020/12/11/PHP%E7%95%99%E8%A8%80%E6%9D%BF%E5%B0%8F%E8%AE%B0/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2020/12/19/VMnet0%E3%80%81VMnet1%E3%80%81VMnet8/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/VMWare/" title="分类于 VMWare">VMWare</a>
+</div>
+
+    <span><a href="/2020/12/19/VMnet0%E3%80%81VMnet1%E3%80%81VMnet8/" title="VMnet0、VMnet1、VMnet8">VMnet0、VMnet1、VMnet8</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web/" title="分类于 web">web</a>
+</div>
+
+    <span><a href="/2020/12/09/%E5%88%9D%E5%AD%A6XSS/" title="初学XSS">初学XSS</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/mysql/" title="分类于 mysql">mysql</a>
+</div>
+
+    <span><a href="/2020/12/04/get%E4%B8%80%E4%B8%AAmysql%E7%9F%A5%E8%AF%86/" title="get一个mysql知识">get一个mysql知识</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/python/" title="分类于 python">python</a>
+</div>
+
+    <span><a href="/2020/12/18/python-%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" title="python 期末复习">python 期末复习</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web/" title="分类于 web">web</a>
+</div>
+
+    <span><a href="/2020/11/27/HTML_Refresher/" title="HTML_Refresher">HTML_Refresher</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="分类于 web安全">web安全</a>
+</div>
+
+    <span><a href="/2020/12/02/%E5%88%9D%E5%AD%A6SQLinjection/" title="初学SQLinjection">初学SQLinjection</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/python/" title="分类于 python">python</a>
+</div>
+
+    <span><a href="/2020/12/02/python%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B/" title="python进程线程">python进程线程</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2020/11/16/hello-world/" title="Hello World">Hello World</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/python/" title="分类于 python">python</a>
+</div>
+
+    <span><a href="/2020/12/07/Python%E4%B8%ADread-%E3%80%81readline-%E5%92%8Creadlines-%E4%B8%89%E8%80%85%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E7%94%A8%E6%B3%95/" title="Python中read()、readline()和readlines()三者间的区别和用法">Python中read()、readline()和readlines()三者间的区别和用法</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/BHP/" title="分类于 BHP">BHP</a>
+</div>
+
+    <span><a href="/2020/12/25/BHP%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E4%BA%8C-%E2%80%94%E2%80%94%E5%88%9B%E5%BB%BATCP%E4%BB%A3%E7%90%86/" title="BHP第二章(二)——创建TCP代理">BHP第二章(二)——创建TCP代理</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2020</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">1asy @ Yume Shoka</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2020/12/18/python-期末复习/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script></body>
+</html>
