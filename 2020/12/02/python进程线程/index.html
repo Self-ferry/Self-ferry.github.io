@@ -1,35 +1,159 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#0078E7"><meta name="author" content="1asy"><meta name="copyright" content="1asy"><meta name="generator" content="Hexo 5.2.0"><meta name="theme" content="hexo-theme-yun"><title>python进程线程 | 1asy</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&amp;display=swap" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/star-markdown-css@0.1.22/dist/yun/yun-markdown.min.css"><script src="//at.alicdn.com/t/font_1140697_ed8vp4atwoj.js" async></script><script src="https://cdn.jsdelivr.net/npm/scrollreveal/dist/scrollreveal.min.js" defer></script><script>document.addEventListener("DOMContentLoaded", () => {
-  [".post-card",".post-content img"].forEach((target)=> {
-    ScrollReveal().reveal(target);
-  })
-});
-</script><link id="light-prism-css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism.css" media="(prefers-color-scheme: light)"><link id="dark-prism-css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/prism-tomorrow.css" media="(prefers-color-scheme: dark)"><link rel="shortcut icon" type="image/svg+xml" href="/yun.svg"><link rel="mask-icon" href="/yun.svg" color="#0078E7"><link rel="alternate icon" href="/yun.ico"><link rel="preload" href="/css/hexo-theme-yun.css" as="style"><link rel="preload" href="/js/utils.js" as="script"><link rel="preload" href="/js/hexo-theme-yun.js" as="script"><link rel="prefetch" href="/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="stylesheet" href="/css/hexo-theme-yun.css"><script id="yun-config">
-    const Yun = window.Yun || {};
-    window.CONFIG = {"hostname":"self-ferry.github.io","root":"/","title":"1asy的小站","version":"1.3.0","mode":"dark","copycode":true,"anonymous_image":"https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/avatar/none.jpg","say":{"api":"https://v1.hitokoto.cn","hitokoto":true},"fireworks":{"colors":["102, 167, 221","62, 131, 225","33, 78, 194"]}};
-  </script><meta name="description" content="多进程 多线程">
-<meta property="og:type" content="article">
-<meta property="og:title" content="python进程线程">
-<meta property="og:url" content="https://self-ferry.github.io/2020/12/02/python%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B/index.html">
-<meta property="og:site_name" content="1asy">
-<meta property="og:description" content="多进程 多线程">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-12-02T02:06:57.000Z">
-<meta property="article:modified_time" content="2020-12-02T09:16:01.218Z">
-<meta property="article:author" content="1asy">
-<meta property="article:tag" content="multiprocessing">
-<meta property="article:tag" content="threading">
-<meta name="twitter:card" content="summary"><script src="/js/ui/mode.js"></script></head><body><script defer src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script defer src="/js/ui/fireworks.js"></script><canvas class="fireworks"></canvas><canvas id="trianglifyContainer"></canvas><script defer src="https://cdn.jsdelivr.net/npm/trianglify@4/dist/trianglify.bundle.js"></script><script>document.addEventListener("DOMContentLoaded", () => {
-  const pattern = trianglify({
-    width: 800,
-    height: 600,
-    cellSize: 75,
-    palette: ["YlGnBu", "GnBu", "Purples", "Blues"],
-  });
-  const canvasOpts = {
-    applyCssScaling: false
-  }
-  document.body.appendChild(pattern.toCanvas(trianglifyContainer, canvasOpts));
-});</script><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script src="/js/sidebar.js"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="文章目录"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-list-ordered"></use></svg></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="站点概览"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-passport-line"></use></svg></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/about/" title="1asy"><img width="96" loading="lazy" src="/cool.jpg" alt="1asy"></a><div class="site-author-name"><a href="/about/">1asy</a></div><a class="site-name" href="/about/site.html">1asy</a><sub class="site-subtitle">悟已往之不谏 知来者之可追 实迷途其未远 觉今是而昨非</sub><div class="site-desciption"></div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="首页"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-4-line"></use></svg></span></a><div class="site-state-item"><a href="/archives/" title="归档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-archive-line"></use></svg></span><span class="site-state-item-count">32</span></a></div><div class="site-state-item"><a href="/categories/" title="分类"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-2-line"></use></svg></span><span class="site-state-item-count">12</span></a></div><div class="site-state-item"><a href="/tags/" title="标签"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="site-state-item-count">37</span></a></div><a class="site-state-item hty-icon-button" target="_blank" rel="noopener" href="https://yun.yunyoujun.cn" title="文档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-settings-line"></use></svg></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="/atom.xml" title="RSS" target="_blank" style="color:orange"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-rss-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://qm.qq.com/cgi-bin/qm/qr?k=epvxdq1sknJe9JMj6J1LsBw4a6cI_2ln&amp;jump_from=webapi" title="QQ 群 389401003" target="_blank" style="color:#12B7F5"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-qq-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/Self-ferry" title="GitHub" target="_blank" style="color:#6e5494"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://weibo.com/jizhideyunyoujun" title="微博" target="_blank" style="color:#E6162D"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-weibo-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://www.douban.com/people/yunyoujun/" title="豆瓣" target="_blank" style="color:#007722"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-douban-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://music.163.com/#/user/home?id=247102977" title="网易云音乐" target="_blank" style="color:#C20C0C"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-netease-cloud-music-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://www.zhihu.com/people/yunyoujun/" title="知乎" target="_blank" style="color:#0084FF"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-zhihu-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://twitter.com/YunYouJun" title="Twitter" target="_blank" style="color:#1da1f2"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-twitter-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://t.me/elpsycn" title="Telegram Channel" target="_blank" style="color:#0088CC"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-telegram-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="mailto:Self_ferry@163.com" title="E-Mail" target="_blank" style="color:#8E71C1"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-mail-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://travellings.now.sh/" title="Travelling" target="_blank" style="color:var(--hty-text-color)"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-send-plane-2-line"></use></svg></a></div><hr style="margin:0.5rem 1rem"><div class="links"><a class="links-item hty-icon-button" href="/links/" title="我的小伙伴们" style="color:dodgerblue"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-genderless-line"></use></svg></a></div></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%9A%E8%BF%9B%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">多进程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E6%96%B9%E6%B3%95"><span class="toc-number">2.1.</span> <span class="toc-text">导入方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">2.2.</span> <span class="toc-text">代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-process01"><span class="toc-number">2.2.1.</span> <span class="toc-text">1. process01</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-process02"><span class="toc-number">2.2.2.</span> <span class="toc-text">2. process02</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-process03"><span class="toc-number">2.2.3.</span> <span class="toc-text">3. process03</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-process04"><span class="toc-number">2.2.4.</span> <span class="toc-text">4. process04</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-processpool05"><span class="toc-number">2.2.5.</span> <span class="toc-text">5. processpool05</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-processpool06"><span class="toc-number">2.2.6.</span> <span class="toc-text">6. processpool06</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-queue07"><span class="toc-number">2.2.7.</span> <span class="toc-text">7. queue07</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-process08"><span class="toc-number">2.2.8.</span> <span class="toc-text">8. process08</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">多线程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E6%96%B9%E6%B3%95-1"><span class="toc-number">3.1.</span> <span class="toc-text">导入方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="toc-number">3.2.</span> <span class="toc-text">代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#threading01"><span class="toc-number">3.2.1.</span> <span class="toc-text">threading01</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#threading02"><span class="toc-number">3.2.2.</span> <span class="toc-text">threading02</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#threading03"><span class="toc-number">3.2.3.</span> <span class="toc-text">threading03</span></a></li></ol></li></ol></li></ol></div></div></div><div class="tag-cloud"><div class="tag-cloud-tags"><a href="/tags/ANSI/" style="font-size: 12px; color: #999">ANSI</a> <a href="/tags/ASCII/" style="font-size: 12px; color: #999">ASCII</a> <a href="/tags/Apeache/" style="font-size: 12px; color: #999">Apeache</a> <a href="/tags/GBK/" style="font-size: 12px; color: #999">GBK</a> <a href="/tags/HTML/" style="font-size: 12px; color: #999">HTML</a> <a href="/tags/Hadoop/" style="font-size: 12px; color: #999">Hadoop</a> <a href="/tags/Linux%E5%91%BD%E4%BB%A4/" style="font-size: 12px; color: #999">Linux命令</a> <a href="/tags/SQLmap/" style="font-size: 12px; color: #999">SQLmap</a> <a href="/tags/SSH%E9%9A%A7%E9%81%93/" style="font-size: 12px; color: #999">SSH隧道</a> <a href="/tags/URL-%E7%BC%96%E7%A0%81-%E8%A7%A3%E7%A0%81/" style="font-size: 12px; color: #999">URL 编码/解码</a> <a href="/tags/UTF-8/" style="font-size: 12px; color: #999">UTF-8</a> <a href="/tags/Unicode/" style="font-size: 12px; color: #999">Unicode</a> <a href="/tags/WindowsPE%E7%BB%93%E6%9E%84/" style="font-size: 12px; color: #999">WindowsPE结构</a> <a href="/tags/guestbook/" style="font-size: 12px; color: #999">guestbook</a> <a href="/tags/http/" style="font-size: 12px; color: #999">http</a> <a href="/tags/markdown-%E5%AD%A6%E4%B9%A0/" style="font-size: 12px; color: #999">markdown 学习</a> <a href="/tags/multiprocessing/" style="font-size: 12px; color: #999">multiprocessing</a> <a href="/tags/my-first-blog/" style="font-size: 12px; color: #999">my first blog</a> <a href="/tags/mysql%E4%B8%BB%E9%94%AE/" style="font-size: 12px; color: #999">mysql主键</a> <a href="/tags/payload/" style="font-size: 12px; color: #999">payload</a></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="post-block" itemscope itemtype="https://schema.org/Article"><link itemprop="mainEntityOfPage" href="https://Self-ferry.github.io/2020/12/02/python%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="1asy"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="1asy"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">python进程线程</h1><div class="post-meta"><div class="post-time" style="display:block"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-line"></use></svg></span> <span class="post-meta-icon-text">发表于</span> <time title="创建时间：2020-12-02 10:06:57" itemprop="dateCreated datePublished" datetime="2020-12-02T10:06:57+08:00">2020-12-02</time></div><span class="post-count"><span class="post-symbolcount"><span class="post-meta-item-icon" title="本文字数"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-file-word-line"></use></svg></span> <span title="本文字数">2.6k</span><span class="post-meta-divider">-</span><span class="post-meta-item-icon" title="阅读时长"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-timer-line"></use></svg></span> <span title="阅读时长">11m</span></span></span><div class="post-classify"><span class="post-category"> <span class="post-meta-item-icon" style="margin-right:3px;"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-line"></use></svg></span><span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category" href="/categories/python/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">python</span></a></span></span><span class="post-tag"><span class="post-meta-divider">-</span><a class="tag" href="/tags/multiprocessing/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">multiprocessing</span></a><a class="tag" href="/tags/threading/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">threading</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body" style="--smc-primary:#0078E7;"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="1asy" href="https://self-ferry.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="1asy" href="https://self-ferry.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="1asy" href="https://self-ferry.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="multiprocessing,threading" />
+
+
+<link rel="canonical" href="https://self-ferry.github.io/2020/12/02/python%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B/">
+
+
+
+  <title>
+python进程线程 - python |
+Yume Shoka = 1asy = 悟已往之不谏 知来者之可追 实迷途其未远 觉今是而昨非</title>
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">python进程线程
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2020-12-02 10:06:57">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2020-12-02T10:06:57+08:00">2020-12-02</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Yume Shoka</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicm0n457cj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipewkhf1zj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicli3sbvtj20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclwrdwyaj20zk0m8are.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipevarprfj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicit31ffoj20zk0m8naf.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/python/" itemprop="item" rel="index" title="分类于 python"><span itemprop="name">python</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="https://self-ferry.github.io/2020/12/02/python%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="1asy">
+    <meta itemprop="description" content="悟已往之不谏 知来者之可追 实迷途其未远 觉今是而昨非, ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="1asy">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
 <p>之前学的都快忘掉了，复习一下.emm千峰的教程</p>
 </blockquote>
 <h1 id="多进程"><a href="#多进程" class="headerlink" title="多进程"></a>多进程</h1><p>multiprocessing库</p>
@@ -518,19 +642,348 @@ n <span class="token operator">=</span> <span class="token number">0</span>
 
 <pre class="language-python" data-language="python"><code class="language-python"></code></pre>
 
-<pre class="language-python" data-language="python"><code class="language-python"></code></pre></div><div id="reward-container"><span class="hty-icon-button button-glow" id="reward-button" title="打赏" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === &quot;none&quot;) ? &quot;block&quot; : &quot;none&quot;;"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-hand-coin-line"></use></svg></span><div id="reward-comment">请我喝茶( ^‐^)_且~~</div><div id="qr" style="display:none;"><div style="display:inline-block"><a href="images/reward.jpg"><img loading="lazy" src="/images/reward.jpg" alt="支付宝" title="支付宝"></a><div><span style="color:#00A3EE"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-alipay-line"></use></svg></span></div></div></div></div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>1asy</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="https://self-ferry.github.io/2020/12/02/python%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B/" title="python进程线程">https://self-ferry.github.io/2020/12/02/python%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均默认采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><svg class="icon"><use xlink:href="#icon-creative-commons-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-by-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-nc-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-sa-line"></use></svg></a> 许可协议。</li></ul></section></article><div class="post-nav"><div class="post-nav-item"><a class="post-nav-prev" href="/2020/12/02/%E5%88%9D%E5%AD%A6SQLinjection/" rel="prev" title="初学SQLinjection"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-left-s-line"></use></svg><span class="post-nav-text">初学SQLinjection</span></a></div><div class="post-nav-item"><a class="post-nav-next" href="/2020/12/01/BHP%E7%AC%AC%E4%BA%8C%E7%AB%A0(%E4%B8%80)%E2%80%94%E2%80%94%E5%8F%96%E4%BB%A3NetCat/" rel="next" title="BHP第二章(一)——取代NetCat"><span class="post-nav-text">BHP第二章(一)——取代NetCat</span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-right-s-line"></use></svg></a></div></div></div><div id="comment"><div class="comment-tooltip text-center"><span>点击按钮跳转 GitHub Issues 评论。</span><br><span>若没有本文 Issue，您可以使用 Comment 模版新建。</span><br><a class="hty-button hty-button--raised" id="github-issues" target="_blank" rel="noopener" href="https://github.com/YunYouJun/yunyoujun.github.io/issues?q=is:issue+python进程线程">GitHub Issues</a></div></div></main><footer class="sidebar-translate" id="footer"><div class="copyright"><span>&copy; 2019 – 2021 </span><span class="with-love" id="animate"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-cloud-line"></use></svg></span><span class="author"> 1asy</span></div><div class="powered"><span>由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v5.2.0</span><span class="footer-separator">|</span><span>主题 - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v1.3.0</span></div><div class="live_time"><span>本博客已萌萌哒地运行</span><span id="display_live_time"></span><span class="moe-text">ヾ(=･ω･=)o</span><script>function blog_live_time() {
-  window.setTimeout(blog_live_time, 1000);
-  const start = new Date('2020-11-16T00:00:00');
-  const now = new Date();
-  const timeDiff = (now.getTime() - start.getTime());
-  const msPerMinute = 60 * 1000;
-  const msPerHour = 60 * msPerMinute;
-  const msPerDay = 24 * msPerHour;
-  const passDay = Math.floor(timeDiff / msPerDay);
-  const passHour = Math.floor((timeDiff % msPerDay) / 60 / 60 / 1000);
-  const passMinute = Math.floor((timeDiff % msPerHour) / 60 / 1000);
-  const passSecond = Math.floor((timeDiff % msPerMinute) / 1000);
-  display_live_time.innerHTML = " " + passDay + " 天 " + passHour + " 小时 " + passMinute + " 分 " + passSecond + " 秒";
-}
-blog_live_time();
-</script></div></footer><a class="hty-icon-button" id="goUp" aria-label="back-to-top" href="#"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-up-s-line"></use></svg><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#0078E7" stroke-width="2" stroke-linecap="round"></circle></svg></a></div><script defer src="/js/utils.js"></script><script defer src="/js/hexo-theme-yun.js"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script></body></html>
+<pre class="language-python" data-language="python"><code class="language-python"></code></pre>
+      <div class="tags">
+          <a href="/tags/multiprocessing/" rel="tag"><i class="ic i-tag"></i> multiprocessing</a>
+          <a href="/tags/threading/" rel="tag"><i class="ic i-tag"></i> threading</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2020-12-02 17:16:01" itemprop="dateModified" datetime="2020-12-02T17:16:01+08:00">2020-12-02</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 赞赏</button>
+  <p>请我喝[茶]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="1asy 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="1asy 支付宝">
+        <p>支付宝</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="1asy 贝宝">
+        <p>贝宝</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>1asy <i class="ic i-at"><em>@</em></i>1asy
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="https://self-ferry.github.io/2020/12/02/python%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B/" title="python进程线程">https://self-ferry.github.io/2020/12/02/python进程线程/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2020/12/01/BHP%E7%AC%AC%E4%BA%8C%E7%AB%A0(%E4%B8%80)%E2%80%94%E2%80%94%E5%8F%96%E4%BB%A3NetCat/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipexe4oykj20zk0m87ji.jpg" title="BHP第二章(一)——取代NetCat">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> BHP</span>
+  <h3>BHP第二章(一)——取代NetCat</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2020/12/02/%E5%88%9D%E5%AD%A6SQLinjection/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giciuja1j1j20zk0m8kjl.jpg" title="初学SQLinjection">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> web安全</span>
+  <h3>初学SQLinjection</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%9A%E8%BF%9B%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">多进程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E6%96%B9%E6%B3%95"><span class="toc-number">2.1.</span> <span class="toc-text">导入方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">2.2.</span> <span class="toc-text">代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-process01"><span class="toc-number">2.2.1.</span> <span class="toc-text">1. process01</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-process02"><span class="toc-number">2.2.2.</span> <span class="toc-text">2. process02</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-process03"><span class="toc-number">2.2.3.</span> <span class="toc-text">3. process03</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-process04"><span class="toc-number">2.2.4.</span> <span class="toc-text">4. process04</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-processpool05"><span class="toc-number">2.2.5.</span> <span class="toc-text">5. processpool05</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-processpool06"><span class="toc-number">2.2.6.</span> <span class="toc-text">6. processpool06</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-queue07"><span class="toc-number">2.2.7.</span> <span class="toc-text">7. queue07</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-process08"><span class="toc-number">2.2.8.</span> <span class="toc-text">8. process08</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">多线程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E6%96%B9%E6%B3%95-1"><span class="toc-number">3.1.</span> <span class="toc-text">导入方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="toc-number">3.2.</span> <span class="toc-text">代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#threading01"><span class="toc-number">3.2.1.</span> <span class="toc-text">threading01</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#threading02"><span class="toc-number">3.2.2.</span> <span class="toc-text">threading02</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#threading03"><span class="toc-number">3.2.3.</span> <span class="toc-text">threading03</span></a></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/2020/11/26/py-socket-experiment/" rel="bookmark" title="py_socket_experiment">py_socket_experiment</a></li><li class="active"><a href="/2020/12/02/python%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B/" rel="bookmark" title="python进程线程">python进程线程</a></li><li><a href="/2020/12/07/Python%E4%B8%ADread-%E3%80%81readline-%E5%92%8Creadlines-%E4%B8%89%E8%80%85%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E7%94%A8%E6%B3%95/" rel="bookmark" title="Python中read()、readline()和readlines()三者间的区别和用法">Python中read()、readline()和readlines()三者间的区别和用法</a></li><li><a href="/2020/12/18/python-%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" rel="bookmark" title="python 期末复习">python 期末复习</a></li><li><a href="/2020/12/28/scrapy%E6%A1%86%E6%9E%B6/" rel="bookmark" title="scrapy框架">scrapy框架</a></li><li><a href="/2021/01/12/Python-converts-pictures-into-character-drawings/" rel="bookmark" title="Python converts pictures into character drawings">Python converts pictures into character drawings</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="1asy"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">1asy</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">37</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">13</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">40</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lvdXJuYW1l" title="https:&#x2F;&#x2F;github.com&#x2F;yourname"><i class="ic i-github"></i></span>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;yourname"><i class="ic i-twitter"></i></span>
+      <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yourname"><i class="ic i-zhihu"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPXlvdXJpZA==" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;yourid"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item weibo" data-url="aHR0cHM6Ly93ZWliby5jb20veW91cm5hbWU=" title="https:&#x2F;&#x2F;weibo.com&#x2F;yourname"><i class="ic i-weibo"></i></span>
+      <span class="exturl item about" data-url="aHR0cHM6Ly9hYm91dC5tZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;about.me&#x2F;yourname"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>首页</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2020/12/01/BHP%E7%AC%AC%E4%BA%8C%E7%AB%A0(%E4%B8%80)%E2%80%94%E2%80%94%E5%8F%96%E4%BB%A3NetCat/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2020/12/02/%E5%88%9D%E5%AD%A6SQLinjection/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" title="分类于 网络安全">网络安全</a>
+</div>
+
+    <span><a href="/2021/01/18/Awesome-Red-Teaming/" title="Awesome Red Teaming【转】">Awesome Red Teaming【转】</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/RE-Reverse-Engine/" title="分类于 RE(Reverse Engine)">RE(Reverse Engine)</a>
+</div>
+
+    <span><a href="/2020/11/26/windowsPE/" title="windowsPE">windowsPE</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="分类于 web安全">web安全</a>
+</div>
+
+    <span><a href="/2020/12/07/%E5%86%8D%E5%AD%A6SQLinjection/" title="再学SQLinjection">再学SQLinjection</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/python/" title="分类于 python">python</a>
+</div>
+
+    <span><a href="/2020/12/02/python%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B/" title="python进程线程">python进程线程</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web/" title="分类于 web">web</a>
+</div>
+
+    <span><a href="/2020/12/11/PHP%E7%95%99%E8%A8%80%E6%9D%BF%E5%B0%8F%E8%AE%B0/" title="PHP留言板小记">PHP留言板小记</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2020/11/16/hello-world/" title="Hello World">Hello World</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" title="分类于 网络安全">网络安全</a>
+</div>
+
+    <span><a href="/2021/01/18/redteam-notebook/" title="redteam-notebook【转】">redteam-notebook【转】</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2020/12/31/Linux-Reviewing/" title="Linux-Reviewing">Linux-Reviewing</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Internet/" title="分类于 Internet">Internet</a>
+</div>
+
+    <span><a href="/2020/12/01/url-http/" title="url-http">url-http</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/python/" title="分类于 python">python</a>
+</div>
+
+    <span><a href="/2020/12/07/Python%E4%B8%ADread-%E3%80%81readline-%E5%92%8Creadlines-%E4%B8%89%E8%80%85%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E7%94%A8%E6%B3%95/" title="Python中read()、readline()和readlines()三者间的区别和用法">Python中read()、readline()和readlines()三者间的区别和用法</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">1asy @ Yume Shoka</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2020/12/02/python进程线程/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script></body>
+</html>
