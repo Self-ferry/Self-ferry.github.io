@@ -1,176 +1,18 @@
-
-
-
-
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#FFF">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-
-<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
-  <meta http-equiv="Cache-Control" content="no-transform">
-  <meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-<link rel="alternate" type="application/rss+xml" title="1asy" href="https://self-ferry.github.io/rss.xml" />
-<link rel="alternate" type="application/atom+xml" title="1asy" href="https://self-ferry.github.io/atom.xml" />
-<link rel="alternate" type="application/json" title="1asy" href="https://self-ferry.github.io/feed.json" />
-
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
-
-<link rel="stylesheet" href="/css/app.css?v=0.2.5">
-
-  
-  <meta name="keywords" content="RedTeam" />
-
-
-<link rel="canonical" href="https://self-ferry.github.io/2021/01/18/RedTeamer/">
-
-
-
-  <title>
-红方人员实战手册【转】 - 网络安全 |
-Yume Shoka = 1asy = 悟已往之不谏 知来者之可追 实迷途其未远 觉今是而昨非</title>
-<meta name="generator" content="Hexo 5.2.0"></head>
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div id="loading">
-    <div class="cat">
-      <div class="body"></div>
-      <div class="head">
-        <div class="face"></div>
-      </div>
-      <div class="foot">
-        <div class="tummy-end"></div>
-        <div class="bottom"></div>
-        <div class="legs left"></div>
-        <div class="legs right"></div>
-      </div>
-      <div class="paw">
-        <div class="hands left"></div>
-        <div class="hands right"></div>
-      </div>
-    </div>
-  </div>
-  <div id="container">
-    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="inner">
-        <div id="brand">
-          <div class="pjax">
-          
-  <h1 itemprop="name headline">红方人员实战手册【转】
-  </h1>
-  
-<div class="meta">
-  <span class="item" title="创建时间：2021-01-18 15:13:54">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <span class="text">发表于</span>
-    <time itemprop="dateCreated datePublished" datetime="2021-01-18T15:13:54+08:00">2021-01-18</time>
-  </span>
-</div>
-
-
-          </div>
-        </div>
-        <nav id="nav">
-  <div class="inner">
-    <div class="toggle">
-      <div class="lines" aria-label="切换导航栏">
-        <span class="line"></span>
-        <span class="line"></span>
-        <span class="line"></span>
-      </div>
-    </div>
-    <ul class="menu">
-      <li class="item title"><a href="/" rel="start">Yume Shoka</a></li>
-    </ul>
-    <ul class="right">
-      <li class="item theme">
-        <i class="ic i-sun"></i>
-      </li>
-      <li class="item search">
-        <i class="ic i-search"></i>
-      </li>
-    </ul>
-  </div>
-</nav>
-
-      </div>
-      <div id="imgs" class="pjax">
-        <ul>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicitht3xtj20zk0m8k5v.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicliwyw55j20zk0m8hdt.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclhpw3lwj20zk0m8gvw.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclip4jbpj20zk0m87cv.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipexoj0moj20zk0m8kgu.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclhfehz7j20zk0m8u0x.jpg"></li>
-        </ul>
-      </div>
-    </header>
-    <div id="waves">
-      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
-        <defs>
-          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-        </defs>
-        <g class="parallax">
-          <use xlink:href="#gentle-wave" x="48" y="0" />
-          <use xlink:href="#gentle-wave" x="48" y="3" />
-          <use xlink:href="#gentle-wave" x="48" y="5" />
-          <use xlink:href="#gentle-wave" x="48" y="7" />
-        </g>
-      </svg>
-    </div>
-    <main>
-      <div class="inner">
-        <div id="main" class="pjax">
-          
-  <div class="article wrap">
-    
-<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
-<i class="ic i-home"></i>
-<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
-<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" itemprop="item" rel="index" title="分类于 网络安全"><span itemprop="name">网络安全</span></a>
-<meta itemprop="position" content="1" /></span>
-</div>
-
-    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
-  <link itemprop="mainEntityOfPage" href="https://self-ferry.github.io/2021/01/18/RedTeamer/">
-
-  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="image" content="/images/avatar.jpg">
-    <meta itemprop="name" content="1asy">
-    <meta itemprop="description" content="悟已往之不谏 知来者之可追 实迷途其未远 觉今是而昨非, ">
-  </span>
-
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="1asy">
-  </span>
-
-  <div class="body md" itemprop="articleBody">
-    
-
-    <h1 id="红方人员实战手册"><a href="#红方人员实战手册" class="headerlink" title="红方人员实战手册"></a>红方人员实战手册</h1><h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><pre class="language-none"><code class="language-none">Author : By klion
+<!-- build time:Wed Jan 20 2021 18:07:20 GMT+0800 (中国标准时间) --><!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#FFF"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png"><link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="alternate" type="application/rss+xml" title="1asy" href="https://self-ferry.github.io/rss.xml"><link rel="alternate" type="application/atom+xml" title="1asy" href="https://self-ferry.github.io/atom.xml"><link rel="alternate" type="application/json" title="1asy" href="https://self-ferry.github.io/feed.json"><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext"><link rel="stylesheet" href="/css/app.css?v=0.2.5"><meta name="keywords" content="RedTeam"><link rel="canonical" href="https://self-ferry.github.io/2021/01/18/RedTeamer/"><title>红方人员实战手册【转】 - 网络安全 | Fiction = 1asy = Till I no longer can</title><meta name="generator" content="Hexo 5.3.0"></head><body itemscope itemtype="http://schema.org/WebPage"><div id="loading"><div class="cat"><div class="body"></div><div class="head"><div class="face"></div></div><div class="foot"><div class="tummy-end"></div><div class="bottom"></div><div class="legs left"></div><div class="legs right"></div></div><div class="paw"><div class="hands left"></div><div class="hands right"></div></div></div></div><div id="container"><header id="header" itemscope itemtype="http://schema.org/WPHeader"><div class="inner"><div id="brand"><div class="pjax"><h1 itemprop="name headline">红方人员实战手册【转】</h1><div class="meta"><span class="item" title="创建时间：2021-01-18 15:13:54"><span class="icon"><i class="ic i-calendar"></i> </span><span class="text">发表于</span> <time itemprop="dateCreated datePublished" datetime="2021-01-18T15:13:54+08:00">2021-01-18</time> </span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i> </span><span class="text">本文字数</span> <span>13k</span> <span class="text">字</span> </span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i> </span><span class="text">阅读时长</span> <span>12 分钟</span></span></div></div></div><nav id="nav"><div class="inner"><div class="toggle"><div class="lines" aria-label="切换导航栏"><span class="line"></span> <span class="line"></span> <span class="line"></span></div></div><ul class="menu"><li class="item title"><a href="/" rel="start">Fiction</a></li></ul><ul class="right"><li class="item theme"><i class="ic i-sun"></i></li><li class="item search"><i class="ic i-search"></i></li></ul></div></nav></div><div id="imgs" class="pjax"><ul><li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicm07ih54j20zk0m84qp.jpg"></li><li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicljgocqbj20zk0m8e81.jpg"></li><li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclhfehz7j20zk0m8u0x.jpg"></li><li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclflwv2aj20zk0m84qp.jpg"></li><li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipewf5l51j20zk0m8b29.jpg"></li><li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclffsa1cj20zk0m811l.jpg"></li></ul></div></header><div id="waves"><svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0"/><use xlink:href="#gentle-wave" x="48" y="3"/><use xlink:href="#gentle-wave" x="48" y="5"/><use xlink:href="#gentle-wave" x="48" y="7"/></g></svg></div><main><div class="inner"><div id="main" class="pjax"><div class="article wrap"><div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><i class="ic i-home"></i> <span><a href="/">首页</a></span><i class="ic i-angle-right"></i> <span class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" itemprop="item" rel="index" title="分类于 网络安全"><span itemprop="name">网络安全</span></a><meta itemprop="position" content="1"></span></div><article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN"><link itemprop="mainEntityOfPage" href="https://self-ferry.github.io/2021/01/18/RedTeamer/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="image" content="/images/avatar.jpg"><meta itemprop="name" content="1asy"><meta itemprop="description" content="Till I no longer can, 临渊羡鱼，不如退而结网"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="1asy"></span><div class="body md" itemprop="articleBody"><h1 id="红方人员实战手册"><a class="anchor" href="#红方人员实战手册">#</a> 红方人员实战手册</h1><h2 id="声明"><a class="anchor" href="#声明">#</a> 声明</h2><pre><code>Author : By klion
 Date   : 2020.2.15
 寄语    : 愿 2020 后面的每一天都能一切安好
-</code></pre>
 
-<h2 id="分享初衷"><a href="#分享初衷" class="headerlink" title="分享初衷"></a>分享初衷</h2><pre class="language-none"><code class="language-none">一来, 旨在为 &quot;攻击&quot; &#x2F; &quot;防御&quot;方 提供更加全面实用的参考
+</code></pre><h2 id="分享初衷"><a class="anchor" href="#分享初衷">#</a> 分享初衷</h2><pre><code>一来, 旨在为 &quot;攻击&quot; / &quot;防御&quot;方 提供更加全面实用的参考
 还是那句老闲话 &quot;未知攻焉知防&quot;, 所有单纯去说 &quot;攻&quot; 或者 &quot;防&quot; 的都是耍流氓, 攻守兼备才能把路越走越宽
 
 二来, 也是为秉承共享协作, 希望能为 红队 及 部分实战攻防研究人员 做出自己应有的贡献
 个人一直坚信, 真正的价值来源于实实在在的奉献,与其天天到处嘴炮,不如静下心来多反思下自己,好好踏踏实实做些对大家都有益的事
-</code></pre>
 
-<h2 id="丑话说在前面"><a href="#丑话说在前面" class="headerlink" title="丑话说在前面"></a>丑话说在前面</h2><pre class="language-none"><code class="language-none">严禁任何 个人&#x2F;组织机构 利用以下相关技术去从事任何未经合法授权的 网络入侵攻击破坏或者黑产活动
-严禁任何 个人&#x2F;组织机构 以此来进行任何形式的 商业牟利 或 恶意炒作行为,包括各类非法渗透培训,误人子弟的负面恶意引导等....
+</code></pre><h2 id="丑话说在前面"><a class="anchor" href="#丑话说在前面">#</a> 丑话说在前面</h2><pre><code>严禁任何 个人/组织机构 利用以下相关技术去从事任何未经合法授权的 网络入侵攻击破坏或者黑产活动
+严禁任何 个人/组织机构 以此来进行任何形式的 商业牟利 或 恶意炒作行为,包括各类非法渗透培训,误人子弟的负面恶意引导等....
 严禁一切的恶意传播及非法利用,由此所产生的一切恶果也均由读者自行承担
-</code></pre>
 
-<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><pre class="language-none"><code class="language-none">以下仅针对日常 &quot;红队&quot; 场景, 进行了一次相对全面完整的实战攻击利用技术提炼汇总
+</code></pre><h2 id="说明"><a class="anchor" href="#说明">#</a> 说明</h2><pre><code>以下仅针对日常 &quot;红队&quot; 场景, 进行了一次相对全面完整的实战攻击利用技术提炼汇总
 针对不同的渗透阶段,所可能会用到的一些技术都做了详尽梳理说明 (后面可能还会整理出对应的完整工具链,虽然那不是最主要的)
 由于红队不同于一般的渗透测试, 强调更多的是如何搞进去拿到相应机器权限 或者 实现某特定目的
 而不局限于你一定要在什么时间, 用什么技术 或者 必须通过什么途径去搞,相比传统渗透测试,红队则更趋于真实的入侵活动
@@ -186,12 +28,10 @@ Date   : 2020.2.15
 虽然说短期这种成本代价相对较高, 但长期来看, 是一劳永逸的, 沉淀下来的这些东西最终也会慢慢形成自己产品的核心竞争力和特色
 说白点,这种对抗,本质上拼的还是双方的技术实力,不仅要能在不知觉的情况下搞进去,而且要能无限制加大对方后期的溯源成本
 另外,作为一名合格的攻防人员,工具的熟练掌握仅仅只是极小的一部分,对各种利用原理的深度理解和二次定制能力才是你的核心
-</code></pre>
 
-<h2 id="日常流程简要说明"><a href="#日常流程简要说明" class="headerlink" title="日常流程简要说明"></a>日常流程简要说明</h2><pre class="language-none"><code class="language-none">入口权限 &#x3D;&gt; 内网搜集&#x2F;探测 &#x3D;&gt; 免杀提权[非必须] &#x3D;&gt; 抓取登录凭证 &#x3D;&gt; 跨平台横向 &#x3D;&gt; 入口维持 &#x3D;&gt; 数据回传 &#x3D;&gt; 定期权限维护
-</code></pre>
+</code></pre><h2 id="日常流程简要说明"><a class="anchor" href="#日常流程简要说明">#</a> 日常流程简要说明</h2><pre><code>入口权限 =&gt; 内网搜集/探测 =&gt; 免杀提权[非必须] =&gt; 抓取登录凭证 =&gt; 跨平台横向 =&gt; 入口维持 =&gt; 数据回传 =&gt; 定期权限维护
 
-<h2 id="0x01-入口权限获取-前期侦察，搜集阶段本身就不存在太多可防御的点，非防御重心"><a href="#0x01-入口权限获取-前期侦察，搜集阶段本身就不存在太多可防御的点，非防御重心" class="headerlink" title="0x01 入口权限获取 [ 前期侦察，搜集阶段本身就不存在太多可防御的点，非防御重心 ]"></a>0x01 入口权限获取 [ 前期侦察，搜集阶段本身就不存在太多可防御的点，非防御重心 ]</h2><pre class="language-none"><code class="language-none">绕CDN找出目标所有真实ip段
+</code></pre><h2 id="0x01-入口权限获取-前期侦察搜集阶段本身就不存在太多可防御的点非防御重心"><a class="anchor" href="#0x01-入口权限获取-前期侦察搜集阶段本身就不存在太多可防御的点非防御重心">#</a> 0x01 入口权限获取 [前期侦察，搜集阶段本身就不存在太多可防御的点，非防御重心]</h2><pre><code>绕CDN找出目标所有真实ip段
 找目标的各种Web管理后台登录口
 批量抓取目标所有真实C段 Web banner
 批量对目标所有真实C段 进行基础服务端口扫描探测识别
@@ -200,45 +40,39 @@ Date   : 2020.2.15
 批量对目标所有子域集中进行基础服务端口探测识别
 批量识别目标 所有存活Web站点的Web程序指纹 及其详细版本
 从 Git 中查找目标泄露的各类 敏感文件 及 账号密码,偶尔甚至还能碰到目标不小心泄露的各种云的 &quot;AccessKey&quot;
-从网盘 &#x2F; 百度文库 中查找目标泄露的各类 敏感文件 及 账号密码
+从网盘 / 百度文库 中查找目标泄露的各类 敏感文件 及 账号密码
 从各第三方历史漏洞库中查找目标曾经泄露的 各种敏感账号密码 [ 国内目标很好使 ]
 目标Svn里泄露的各类 敏感文件
 网站目录扫描 [ 查找目标网站泄露的各类敏感文件, 网站备份文件, 敏感配置文件, 源码 , 别人的webshell, 等等等...]
 目标站点自身在前端代码中泄露的各种敏感信息
-fofa &#x2F; shodan &#x2F; bing &#x2F; google  hacking 深度利用
-搜集目标 学生学号 &#x2F; 员工工号 &#x2F; 目标邮箱 [ 并顺手到各个社工库中去批量查询这些邮箱曾经是否泄露过密码 ]
-目标自己对外提供的各种 技术文档 &#x2F; wiki 里泄露的各种账号密码及其它敏感信息
+fofa / shodan / bing / google  hacking 深度利用
+搜集目标 学生学号 / 员工工号 / 目标邮箱 [ 并顺手到各个社工库中去批量查询这些邮箱曾经是否泄露过密码 ]
+目标自己对外提供的各种 技术文档 / wiki 里泄露的各种账号密码及其它敏感信息
 目标微信小程序
 分析目标app Web请求
 借助js探针搜集目标内网信息
-想办法混入目标的各种 内部QQ群 &#x2F; 微信群
+想办法混入目标的各种 内部QQ群 / 微信群
 分析目标直接供应商 [尤其是技术外包]
 根据前面已搜集到的各类信息制作有针对性的弱口令字典
 目标所用 Waf 种类识别 与 绕过
-BypassWAF 文件上传 &#x2F; 读取 &#x2F; 下载
+BypassWAF 文件上传 / 读取 / 下载
    BypassWAF Sql注入
    BypassWAF RCE
    BypassWAF 各类Java Web中间件已知Nday漏洞利用
    BypassWAF Webshell 免杀
 	
 其它更多 , 待补充修正...
-</code></pre>
 
-<h2 id="0x02-入口权限获取-外部防御重心-“重中之重”"><a href="#0x02-入口权限获取-外部防御重心-“重中之重”" class="headerlink" title="0x02 入口权限获取 [ 外部防御重心 ( “重中之重” ) ]"></a>0x02 入口权限获取 [ 外部防御重心 ( “重中之重” ) ]</h2><pre class="language-none"><code class="language-none">此阶段,主要是针对各主流 &quot;中间件 + 开源程序 + Web服务组件&quot; 自身的各种已知Nday漏洞利用
+</code></pre><h2 id="0x02-入口权限获取-外部防御重心-重中之重"><a class="anchor" href="#0x02-入口权限获取-外部防御重心-重中之重">#</a> 0x02 入口权限获取 [外部防御重心 ( &quot;重中之重&quot;) ]</h2><pre><code>此阶段,主要是针对各主流 &quot;中间件 + 开源程序 + Web服务组件&quot; 自身的各种已知Nday漏洞利用
 如下已按 &quot;实际攻击利用的难易程度&quot; 及 &quot;获取到的shell权限高低&quot; 为标准进行了详细排序,由于完全以实战利用为导向
 故,仅仅只挑选了一些相对会经常遇到的,且实战中确实能有效协助快速getshell 的 &quot;中间件&quot; , &quot;开源程序&quot; 及 &quot;web组件&quot;
-</code></pre>
 
-<h2 id="针对各类Java中间件的各种已知Nday漏洞利用"><a href="#针对各类Java中间件的各种已知Nday漏洞利用" class="headerlink" title="针对各类Java中间件的各种已知Nday漏洞利用"></a>针对各类Java中间件的各种已知Nday漏洞利用</h2><pre class="language-none"><code class="language-none">不同于其它脚本类web程序,Java的运行权限通常都比较高,甚至大部分都是直接用root&#x2F;administrator&#x2F;system权限在跑
+</code></pre><h2 id="针对各类java中间件的各种已知nday漏洞利用"><a class="anchor" href="#针对各类java中间件的各种已知nday漏洞利用">#</a> 针对各类 Java 中间件的各种已知 Nday 漏洞利用</h2><pre><code>不同于其它脚本类web程序,Java的运行权限通常都比较高,甚至大部分都是直接用root/administrator/system权限在跑
 所以拿到的shell权限一般也非常高,通常都直接是服务器权限
 尤其是在各种红队场景中,入侵者一般也都会首选这些点,并以此为突破口来获取一个稳定的跳板机入口权限
 关于到底哪些行业特别爱用哪些中间件,这些也应该都是有事先分析梳理汇总好的
-</code></pre>
 
-<ul>
-<li>Struts2</li>
-</ul>
-<pre class="language-none"><code class="language-none">Struts2-005
+</code></pre><ul><li>Struts2</li></ul><pre><code>Struts2-005
 Struts2-008
 Struts2-009
 Struts2-013
@@ -255,12 +89,8 @@ Struts2-048
 Struts2-052
 Struts2-053
 Struts2-057
-</code></pre>
 
-<ul>
-<li>weblogic</li>
-</ul>
-<pre class="language-none"><code class="language-none">CVE-2019-2725
+</code></pre><ul><li>weblogic</li></ul><pre><code>CVE-2019-2725
 CVE-2019-2729
 CVE-2018-3191
 CVE-2018-2628
@@ -276,112 +106,59 @@ CVE-2014-4210
 
 SSRF
 控制台弱口令,部署webshell
-</code></pre>
 
-<ul>
-<li>Jboss</li>
-</ul>
-<pre class="language-none"><code class="language-none">CVE-2015-7501
+</code></pre><ul><li>Jboss</li></ul><pre><code>CVE-2015-7501
 CVE-2017-7504
 CVE-2017-12149
 
 未授权访问,部署webshell
 控制台弱口令,部署webshell
-</code></pre>
 
-<ul>
-<li>wildfly [ jboss 7.x 改名为 wildfly ]</li>
-</ul>
-<pre class="language-none"><code class="language-none">控制台弱口令,部署webshell
-</code></pre>
+</code></pre><ul><li>wildfly [jboss 7.x 改名为 wildfly]</li></ul><pre><code>控制台弱口令,部署webshell
 
-<ul>
-<li>Tomcat</li>
-</ul>
-<pre class="language-none"><code class="language-none">CVE-2016-8735
+</code></pre><ul><li>Tomcat</li></ul><pre><code>CVE-2016-8735
 CVE-2017-12615 [ readonly 实际设为 true的情况较少,稍鸡肋 ]
 CVE-2020-1938 [ AJP协议漏洞, 直接把8009端口暴露在外网的不太多,稍鸡肋 ]
 
 控制台弱口令,部署webshelll [ 注: 7.x版本后,默认加了防爆机制 ]
-</code></pre>
 
-<ul>
-<li>Jekins</li>
-</ul>
-<pre class="language-none"><code class="language-none">CVE-2018-1999002 [任意文件读取]
+</code></pre><ul><li>Jekins</li></ul><pre><code>CVE-2018-1999002 [任意文件读取]
 
 未授权访问,任意命令执行
 控制台弱口令,任意命令执行
-</code></pre>
 
-<ul>
-<li>ElasticSearch</li>
-</ul>
-<pre class="language-none"><code class="language-none">CVE-2014-3120 [专门针对老版本(无沙盒)RCE]
+</code></pre><ul><li>ElasticSearch</li></ul><pre><code>CVE-2014-3120 [专门针对老版本(无沙盒)RCE]
 CVE-2015-1427 [Groovy RCE]
 CVE-2015-3337 [任意文件读取]
 
 未授权访问,敏感信息泄露
-</code></pre>
 
-<ul>
-<li>RabbitMQ</li>
-</ul>
-<pre class="language-none"><code class="language-none">弱口令
-</code></pre>
+</code></pre><ul><li>RabbitMQ</li></ul><pre><code>弱口令
 
-<ul>
-<li>Glassfish</li>
-</ul>
-<pre class="language-none"><code class="language-none">任意文件读取 [ 低版本 ]
+</code></pre><ul><li>Glassfish</li></ul><pre><code>任意文件读取 [ 低版本 ]
 控制台弱口令,部署webshell
-</code></pre>
 
-<ul>
-<li>IBM Websphere</li>
-</ul>
-<pre class="language-none"><code class="language-none">Java 反序列化
+</code></pre><ul><li>IBM Websphere</li></ul><pre><code>Java 反序列化
 控制台弱口令,部署webshell
-</code></pre>
 
-<ul>
-<li>Axis2</li>
-</ul>
-<pre class="language-none"><code class="language-none">任意文件读取
+</code></pre><ul><li>Axis2</li></ul><pre><code>任意文件读取
 目录遍历
-</code></pre>
-<ul>
-<li>Apache ActiveMQ</li>
-</ul>
-<pre class="language-none"><code class="language-none">未授权访问,5.12 之前的版本 fileserver存在 PUT任意写
+
+</code></pre><ul><li>Apache ActiveMQ</li></ul><pre><code>未授权访问,5.12 之前的版本 fileserver存在 PUT任意写
 CVE-2015-5254
-</code></pre>
 
-<ul>
-<li>Apache Solr</li>
-</ul>
-<pre class="language-none"><code class="language-none">CVE-2017-12629
+</code></pre><ul><li>Apache Solr</li></ul><pre><code>CVE-2017-12629
 CVE-2019-0193 [ Apache Solr 5.x - 8.2.0 ]
-</code></pre>
 
-<ul>
-<li>Apache Zookeeper</li>
-</ul>
-<pre class="language-none"><code class="language-none">未授权访问,敏感信息泄露
-</code></pre>
+</code></pre><ul><li>Apache Zookeeper</li></ul><pre><code>未授权访问,敏感信息泄露
 
-<ul>
-<li>Apache Shiro反序列化</li>
-<li>fastjson &lt;= 1.2.47 反序列化利用</li>
-</ul>
-<h2 id="针对各类Windows-php集成环境-由于此类环境拿到的Webshell权限相对较高-所以-通常也是红队人员的首选突破口"><a href="#针对各类Windows-php集成环境-由于此类环境拿到的Webshell权限相对较高-所以-通常也是红队人员的首选突破口" class="headerlink" title="针对各类Windows php集成环境  [ 由于此类环境拿到的Webshell权限相对较高,所以,通常也是红队人员的首选突破口 ]"></a>针对各类Windows php集成环境  [ 由于此类环境拿到的Webshell权限相对较高,所以,通常也是红队人员的首选突破口 ]</h2><pre class="language-none"><code class="language-none">AppServ
+</code></pre><ul><li>Apache Shiro 反序列化</li><li>fastjson &lt;= 1.2.47 反序列化利用</li></ul><h2 id="针对各类windows-php集成环境-由于此类环境拿到的webshell权限相对较高所以通常也是红队人员的首选突破口"><a class="anchor" href="#针对各类windows-php集成环境-由于此类环境拿到的webshell权限相对较高所以通常也是红队人员的首选突破口">#</a> 针对各类 Windows php 集成环境 [由于此类环境拿到的 Webshell 权限相对较高，所以，通常也是红队人员的首选突破口]</h2><pre><code>AppServ
 Xampp
 宝塔
 PhpStudy		
 ......
-</code></pre>
 
-<h2 id="针对各类开源程序的-已知Nday漏洞利用"><a href="#针对各类开源程序的-已知Nday漏洞利用" class="headerlink" title="针对各类开源程序的 已知Nday漏洞利用"></a>针对各类开源程序的 已知Nday漏洞利用</h2><pre class="language-none"><code class="language-none">Dedecms 	后台弱口令,系列已知nday漏洞利用
+</code></pre><h2 id="针对各类开源程序的-已知nday漏洞利用"><a class="anchor" href="#针对各类开源程序的-已知nday漏洞利用">#</a> 针对各类开源程序的 已知 Nday 漏洞利用</h2><pre><code>Dedecms 	后台弱口令,系列已知nday漏洞利用
 thinkphp 5.x 	后台弱口令,系列已知nday漏洞利用
 phpcms 		后台弱口令,系列已知nday漏洞利用
 ecshop 		后台弱口令,系列已知nday漏洞利用
@@ -393,133 +170,64 @@ wordpress 	后台弱口令,系列已知nday漏洞利用
 joomla 		后台弱口令,系列已知nday漏洞利用
 drupal 		CVE-2018-7600 ,后台弱口令,系列已知nday漏洞利用
 ......
-</code></pre>
 
-<h2 id="针对其它各类Web组件的-已知Nday漏洞利用"><a href="#针对其它各类Web组件的-已知Nday漏洞利用" class="headerlink" title="针对其它各类Web组件的 已知Nday漏洞利用"></a>针对其它各类Web组件的 已知Nday漏洞利用</h2><ul>
-<li>IIS 6.0 RCE</li>
-</ul>
-<pre class="language-none"><code class="language-none">短文件漏洞
+</code></pre><h2 id="针对其它各类web组件的-已知nday漏洞利用"><a class="anchor" href="#针对其它各类web组件的-已知nday漏洞利用">#</a> 针对其它各类 Web 组件的 已知 Nday 漏洞利用</h2><ul><li>IIS 6.0 RCE</li></ul><pre><code>短文件漏洞
 PUT 任意写
 Webdav RCE CVE-2017-7269
-</code></pre>
 
-<ul>
-<li>禅道项目管理系统</li>
-</ul>
-<pre class="language-none"><code class="language-none">SQL注入
+</code></pre><ul><li>禅道项目管理系统</li></ul><pre><code>SQL注入
 文件读取
 远程执行
-</code></pre>
 
-<ul>
-<li>通达OA</li>
-</ul>
-<pre class="language-none"><code class="language-none">SQL注入
+</code></pre><ul><li>通达 OA</li></ul><pre><code>SQL注入
 任意上传
-</code></pre>
-<ul>
-<li>Exchange</li>
-</ul>
-<pre class="language-none"><code class="language-none">利用接口进行邮箱用户名枚举
+
+</code></pre><ul><li>Exchange</li></ul><pre><code>利用接口进行邮箱用户名枚举
 针对各个接口的弱口令爆破
 CVE-2020-0688 [ 利用前提是需要先得有任意一个邮箱用户权限 ]
 ....
-</code></pre>
-<ul>
-<li>Zimbra [ XXE + SSRF =&gt; RCE ]</li>
-</ul>
-<pre class="language-none"><code class="language-none">CVE-2013-7091
+
+</code></pre><ul><li>Zimbra [ XXE + SSRF =&gt; RCE ]</li></ul><pre><code>CVE-2013-7091
 CVE-2016-9924
 CVE-2019-9670
-</code></pre>
 
-<ul>
-<li>Citrix</li>
-</ul>
-<pre class="language-none"><code class="language-none">CVE-2019-19781
-</code></pre>
+</code></pre><ul><li>Citrix</li></ul><pre><code>CVE-2019-19781
 
-<ul>
-<li>Jumpserver</li>
-</ul>
-<pre class="language-none"><code class="language-none">身份验证绕过
-</code></pre>
+</code></pre><ul><li>Jumpserver</li></ul><pre><code>身份验证绕过
 
-<ul>
-<li>Zabbix</li>
-</ul>
-<pre class="language-none"><code class="language-none">CVE-2017-2824
+</code></pre><ul><li>Zabbix</li></ul><pre><code>CVE-2017-2824
 SQL注入 [ 2.0 老版本 ]
 控制台弱口令,敏感机器信息泄露
-</code></pre>
 
-<ul>
-<li>Cacti</li>
-</ul>
-<pre class="language-none"><code class="language-none">低版本 SQL注入
+</code></pre><ul><li>Cacti</li></ul><pre><code>低版本 SQL注入
 控制台弱口令
-</code></pre>
 
-<ul>
-<li>Nagios</li>
-</ul>
-<pre class="language-none"><code class="language-none">CVE-2016-9565
+</code></pre><ul><li>Nagios</li></ul><pre><code>CVE-2016-9565
 控制台弱口令
-</code></pre>
 
-<ul>
-<li>Webmin RCE</li>
-</ul>
-<pre class="language-none"><code class="language-none">CVE-2019-15107 
-</code></pre>
+</code></pre><ul><li>Webmin RCE</li></ul><pre><code>CVE-2019-15107 
 
-<ul>
-<li>PHPMailer</li>
-</ul>
-<pre class="language-none"><code class="language-none">CVE-2016-10033
-</code></pre>
+</code></pre><ul><li>PHPMailer</li></ul><pre><code>CVE-2016-10033
 
-<ul>
-<li>泛微OA远程代码执行</li>
-<li>金蝶OA SQL注入</li>
-<li>Coremail 敏感文件泄露</li>
-<li>UEditor 任意文件上传</li>
-<li>OpenSSL心脏滴血抓明文账号密码  [ Heartbleed ]</li>
-<li>破壳漏洞 [ Shellshock ] </li>
-</ul>
-<h2 id="各种能快速getshell的常规基础Web漏洞利用-注-有些漏洞在不审代码的情况下其实是很难有效盲测到的"><a href="#各种能快速getshell的常规基础Web漏洞利用-注-有些漏洞在不审代码的情况下其实是很难有效盲测到的" class="headerlink" title="各种能快速getshell的常规基础Web漏洞利用 [ 注: 有些漏洞在不审代码的情况下其实是很难有效盲测到的 ]"></a>各种能快速getshell的常规基础Web漏洞利用 [ 注: 有些漏洞在不审代码的情况下其实是很难有效盲测到的 ]</h2><pre class="language-none"><code class="language-none">后台弱口令
+</code></pre><ul><li>泛微 OA 远程代码执行</li><li>金蝶 OA SQL 注入</li><li>Coremail 敏感文件泄露</li><li>UEditor 任意文件上传</li><li>OpenSSL 心脏滴血抓明文账号密码 [Heartbleed]</li><li>破壳漏洞 [Shellshock]</li></ul><h2 id="各种能快速getshell的常规基础web漏洞利用-注-有些漏洞在不审代码的情况下其实是很难有效盲测到的"><a class="anchor" href="#各种能快速getshell的常规基础web漏洞利用-注-有些漏洞在不审代码的情况下其实是很难有效盲测到的">#</a> 各种能快速 getshell 的常规基础 Web 漏洞利用 [注：有些漏洞在不审代码的情况下其实是很难有效盲测到的]</h2><pre><code>后台弱口令
 SSRF
 sql注入
 越权
-命令 &#x2F; 代码执行 &#x2F; 反序列化
-任意文件上传 &#x2F; 下载 &#x2F; 读取
+命令 / 代码执行 / 反序列化
+任意文件上传 / 下载 / 读取
 包含
 XSS（实际上,XSS只有在针对某些特定邮箱,手里有浏览器0day时价值才会比较大,红队场景下其实并不是非常致命)
 业务逻辑漏洞
-</code></pre>
 
-<h2 id="针对各类边界网络设备的各种利用-主要是Web管理控制台登录弱口令-及-各类已知nday攻击利用"><a href="#针对各类边界网络设备的各种利用-主要是Web管理控制台登录弱口令-及-各类已知nday攻击利用" class="headerlink" title="针对各类边界网络设备的各种利用,主要是Web管理控制台登录弱口令 及 各类已知nday攻击利用"></a>针对各类边界网络设备的各种利用,主要是Web管理控制台登录弱口令 及 各类已知nday攻击利用</h2><ul>
-<li>Pulse Secure VPN</li>
-</ul>
-<pre class="language-none"><code class="language-none">CVE-2019-11510 [ 任意文件读取 ]
-</code></pre>
-<ul>
-<li>Fortinet VPN</li>
-</ul>
-<pre class="language-none"><code class="language-none">CVE-2018-13379 [ 文件读取 ]
-</code></pre>
-<ul>
-<li>Sangfor Vpn RCE</li>
-</ul>
-<h2 id="0x03-入口权限获取-专门针对各类基础服务端口的各种getshell利用，防御重点-“重中之重”"><a href="#0x03-入口权限获取-专门针对各类基础服务端口的各种getshell利用，防御重点-“重中之重”" class="headerlink" title="0x03 入口权限获取 [ 专门针对各类基础服务端口的各种getshell利用，防御重点 ( “重中之重” ) ]"></a>0x03 入口权限获取 [ 专门针对各类基础服务端口的各种getshell利用，防御重点 ( “重中之重” ) ]</h2><pre class="language-none"><code class="language-none">此处仅仅只挑选了一些实战中真正能协助快速getshell的服务,其它的一些相对边缘性的服务均未提及 
+</code></pre><h2 id="针对各类边界网络设备的各种利用主要是web管理控制台登录弱口令-及-各类已知nday攻击利用"><a class="anchor" href="#针对各类边界网络设备的各种利用主要是web管理控制台登录弱口令-及-各类已知nday攻击利用">#</a> 针对各类边界网络设备的各种利用，主要是 Web 管理控制台登录弱口令 及 各类已知 nday 攻击利用</h2><ul><li>Pulse Secure VPN</li></ul><pre><code>CVE-2019-11510 [ 任意文件读取 ]
+
+</code></pre><ul><li>Fortinet VPN</li></ul><pre><code>CVE-2018-13379 [ 文件读取 ]
+
+</code></pre><ul><li>Sangfor Vpn RCE</li></ul><h2 id="0x03-入口权限获取-专门针对各类基础服务端口的各种getshell利用防御重点-重中之重"><a class="anchor" href="#0x03-入口权限获取-专门针对各类基础服务端口的各种getshell利用防御重点-重中之重">#</a> 0x03 入口权限获取 [专门针对各类基础服务端口的各种 getshell 利用，防御重点 ( &quot;重中之重&quot;) ]</h2><pre><code>此处仅仅只挑选了一些实战中真正能协助快速getshell的服务,其它的一些相对边缘性的服务均未提及 
 同样,已按 &quot;实际攻击利用的难易程度&quot; 及 &quot;获取到的shell权限高低&quot; 为标准进行了详细排序
 如下,就每个端口的具体攻击利用方式,进行了简要说明
-</code></pre>
 
-<ul>
-<li>Top Port List</li>
-</ul>
-<pre class="language-none"><code class="language-none">Mssql 	  [ 默认工作在tcp 1433端口, 弱口令, 敏感账号密码泄露, 提权, 远程执行, 后门植入 ]
+</code></pre><ul><li>Top Port List</li></ul><pre><code>Mssql 	  [ 默认工作在tcp 1433端口, 弱口令, 敏感账号密码泄露, 提权, 远程执行, 后门植入 ]
 SMB       [ 默认工作在tcp 445端口, 弱口令, 远程执行, 后门植入 ]
 WMI       [ 默认工作在tcp 135端口, 弱口令, 远程执行, 后门植入 ]
 WinRM	  [ 默认工作在tcp 5985端口, 此项主要针对某些高版本Windows, 弱口令, 远程执行, 后门植入 ]
@@ -535,30 +243,21 @@ POP3      [ 默认工作在tcp 110端口, 弱口令, 敏感信息泄露 ]
 IMAP      [ 默认工作在tcp 143端口, 弱口令, 敏感信息泄露 ]
 Exchange  [ 默认工作在tcp 443端口, 接口弱口令爆破 eg: Owa,ews,oab,AutoDiscover... pth脱邮件, 敏感信息泄露 ... ]
 VNC       [ 默认工作在tcp 5900端口, 弱口令 ]
-FTP       [ 默认工作在tcp 21端口, 弱口令, 匿名访问&#x2F;可写, 敏感信息泄露 ]
+FTP       [ 默认工作在tcp 21端口, 弱口令, 匿名访问/可写, 敏感信息泄露 ]
 Rsync     [ 默认工作在tcp 873端口, 未授权, 弱口令, 敏感信息泄露 ]
 Mongodb   [ 默认工作在tcp 27017端口, 未授权, 弱口令 ]
 TELNET    [ 默认工作在tcp 23端口, 弱口令, 后门植入 ]
 SVN       [ 默认工作在tcp 3690端口, 弱口令, 敏感信息泄露 ]
 JAVA RMI  [ 默认工作在tcp 1099端口, 可能存在反序列化利用 ]
 CouchDB   [ 默认工作在tcp 5984端口, 未授权访问 ]
-</code></pre>
 
-
-<h2 id="0x04-入口权限获取"><a href="#0x04-入口权限获取" class="headerlink" title="0x04 入口权限获取"></a>0x04 入口权限获取</h2><h2 id="传统钓鱼攻击利用，实际护网场景中用的非常频繁，细节非常多，此处不一一列举，防御重点"><a href="#传统钓鱼攻击利用，实际护网场景中用的非常频繁，细节非常多，此处不一一列举，防御重点" class="headerlink" title="传统钓鱼攻击利用，实际护网场景中用的非常频繁，细节非常多，此处不一一列举，防御重点"></a>传统钓鱼攻击利用，实际护网场景中用的非常频繁，细节非常多，此处不一一列举，防御重点</h2><ul>
-<li>发信前期准备</li>
-</ul>
-<pre class="language-none"><code class="language-none">枚举有效的目标邮箱用户名列表
+</code></pre><h2 id="0x04-入口权限获取"><a class="anchor" href="#0x04-入口权限获取">#</a> 0x04 入口权限获取</h2><h2 id="传统钓鱼攻击利用实际护网场景中用的非常频繁细节非常多此处不一一列举防御重点"><a class="anchor" href="#传统钓鱼攻击利用实际护网场景中用的非常频繁细节非常多此处不一一列举防御重点">#</a> 传统钓鱼攻击利用，实际护网场景中用的非常频繁，细节非常多，此处不一一列举，防御重点</h2><ul><li>发信前期准备</li></ul><pre><code>枚举有效的目标邮箱用户名列表
 批量探测目标邮箱弱口令
 伪造发信人 [ 发信邮服搭建 ]
 钓鱼信 [ 针对不同行业一般也都会事先准备好各种各样的针对性的发信话术模板,以此来提到实际发信成功率 ]
 ......
-</code></pre>
 
-<ul>
-<li>典型投递方式 </li>
-</ul>
-<pre class="language-none"><code class="language-none">第一种,直接给目标发送各种常规木马信 
+</code></pre><ul><li>典型投递方式</li></ul><pre><code>第一种,直接给目标发送各种常规木马信 
 
 传统宏利用
 捆绑
@@ -570,25 +269,18 @@ chm
 OLE
 CVE-2017-11882 [ 利用漏洞触发 ]
 ...
-</code></pre>
 
-
-<pre class="language-none"><code class="language-none">第二种,给目标发送各种钓鱼链接,比如, 利用各种目标登录口的钓鱼页面来窃取各种内网账号密码 
+</code></pre><pre><code>第二种,给目标发送各种钓鱼链接,比如, 利用各种目标登录口的钓鱼页面来窃取各种内网账号密码 
 
 Vpn
 Mail
 OA
 Net ntlm hash [ 远程模板注入,pdf...钓hash,国内ISP过滤SMB流量不适用 ]
 ......
-</code></pre>
 
+</code></pre><h2 id="0x05-主机安全-提权利用防御重点"><a class="anchor" href="#0x05-主机安全-提权利用防御重点">#</a> 0x05 主机安全 [提权利用，防御重点]</h2><pre><code>以下只单独挑了一些在 通用性, 稳定性, 易用性, 实际成功率 都相对较好的洞 和 方式 其它的一些&quot;边缘性&quot;的利用都暂未提及
 
-<h2 id="0x05-主机安全-提权利用，防御重点"><a href="#0x05-主机安全-提权利用，防御重点" class="headerlink" title="0x05 主机安全 [ 提权利用，防御重点 ]"></a>0x05 主机安全 [ 提权利用，防御重点 ]</h2><pre class="language-none"><code class="language-none">以下只单独挑了一些在 通用性, 稳定性, 易用性, 实际成功率 都相对较好的洞 和 方式 其它的一些&quot;边缘性&quot;的利用都暂未提及
-</code></pre>
-<ul>
-<li>Windows 系统漏洞 本地提权 [ 成功的前提是,保证事先已做好各种针对性免杀 ]</li>
-</ul>
-<pre class="language-none"><code class="language-none">BypassUAC [ win7 &#x2F; 8  &#x2F; 8.1 &#x2F; 10 ]
+</code></pre><ul><li>Windows 系统漏洞 本地提权 [成功的前提是，保证事先已做好各种针对性免杀]</li></ul><pre><code>BypassUAC [ win7 / 8  / 8.1 / 10 ]
 MS14-058[KB3000061]				    [重点]
 MS14-068[KB3011780]				    [重点]
 ms15-051[KB3045171]				    [重点]
@@ -601,38 +293,28 @@ cve-2019-0708					    [重点]
 CVE-2019-0803					    [重点]
 CVE-2019-1322 &amp; CVE-2019-1405			    [重点]
 cve-2019-12750 [ 赛门铁克(用的较多)本地提权 ]	    [重点]		
-</code></pre>
-<ul>
-<li>linux 内核漏洞 本地提权 [ linux-exploit-suggester ]</li>
-</ul>
-<pre class="language-none"><code class="language-none">CVE-2016-5195					    [重点]
+
+</code></pre><ul><li>linux 内核漏洞 本地提权 [linux-exploit-suggester]</li></ul><pre><code>CVE-2016-5195					    [重点]
 CVE-2017-16995
 CVE-2019-13272
-</code></pre>
-<ul>
-<li>利用各类第三方服务 / 软件工具提权</li>
-</ul>
-<pre class="language-none"><code class="language-none">Mssql 						    [重点]
+
+</code></pre><ul><li>利用各类第三方服务 / 软件工具提权</li></ul><pre><code>Mssql 						    [重点]
 Oracle         					    [重点]
 Mysql
 各类第三方软件dll劫持 				    [重点]
 suid权限                        
 计划任务
 各种错误服务配置利用
-</code></pre>
 
-<h2 id="0x06-内网安全-敏感信息搜集，防御重点，可在此项严格限制各种系统内置命令执行"><a href="#0x06-内网安全-敏感信息搜集，防御重点，可在此项严格限制各种系统内置命令执行" class="headerlink" title="0x06 内网安全 [ 敏感信息搜集，防御重点，可在此项严格限制各种系统内置命令执行 ]"></a>0x06 内网安全 [ 敏感信息搜集，防御重点，可在此项严格限制各种系统内置命令执行 ]</h2><ul>
-<li>搜集当前已控”跳板机”的各类敏感信息</li>
-</ul>
-<pre class="language-none"><code class="language-none">注: 如下某些操作肯定是需要事先自己想办法先拿到管理权限后才能正常进行的,此处不再赘述
+</code></pre><h2 id="0x06-内网安全-敏感信息搜集防御重点可在此项严格限制各种系统内置命令执行"><a class="anchor" href="#0x06-内网安全-敏感信息搜集防御重点可在此项严格限制各种系统内置命令执行">#</a> 0x06 内网安全 [敏感信息搜集，防御重点，可在此项严格限制各种系统内置命令执行]</h2><ul><li>搜集当前已控 &quot;跳板机&quot; 的各类敏感信息</li></ul><pre><code>注: 如下某些操作肯定是需要事先自己想办法先拿到管理权限后才能正常进行的,此处不再赘述
 
 查看当前shell权限 及 详细系统内核版本
 获取当前系统的 详细ip配置,包括 所在域, ip, 掩码, 网关, 主备 dns ip
 获取当前系统最近的用户登录记录
 获取当前用户的所有命令历史记录 [ 主要针对linux,里面可能包含的有各类敏感账号密码,ip,敏感服务配置... ]
-获取本机所有 服务&#x2F;进程 [包括各个进程的详细权限,也包括目标系统中的可疑恶意进程(有可能是同行的马)]&#x2F;端口&#x2F;网络连接信息
-获取本机所用杀软 &#x2F; 监控种类 [ 后续好针对性的做免杀 ]
-获取本机 rdp &#x2F; ssh 端口开启状态 及 其默认端口号
+获取本机所有 服务/进程 [包括各个进程的详细权限,也包括目标系统中的可疑恶意进程(有可能是同行的马)]/端口/网络连接信息
+获取本机所用杀软 / 监控种类 [ 后续好针对性的做免杀 ]
+获取本机 rdp / ssh 端口开启状态 及 其默认端口号
 获取本机所有用户的rdp外连记录
 获取本机的所有SSH登录记录
 获取当前系统所有登录成功的日志 [ 针对windows ]
@@ -646,9 +328,9 @@ suid权限
 获取当前系统的所有 ipc 连接 及 已启用共享
 获取当前系统的所有挂载[mount]
 获取当前系统的防火墙状态
-获取当前系统所有分区&#x2F;盘符及其详细使用情况
+获取当前系统所有分区/盘符及其详细使用情况
 获取本机的累计开机时长
-获取本机arp &#x2F; dns缓存
+获取本机arp / dns缓存
 获取当前机器环境变量 [ 主要想看看目标机器上有无python,jdk,ruby...等语言的执行环境,后期可设法利用 ]
 获取当前系统所有本地用户及组列表
 获取当前系统host文件内容
@@ -656,16 +338,8 @@ suid权限
 远程截屏捕捉目标用户敏感操作
 
 由于上述大部分的搜集动作都是基于系统内置工具和接口,故,可完全依靠EDR来实时捕捉各类敏感进程上报恶意操作
-</code></pre>
 
-
-<ul>
-<li>利用当前已控 “跳板机”, 分析目标内网大致网络拓扑 及 所有关键性业务机器分布 </li>
-<li>批量抓取内网所有windows机器名 和 所在 “域” / “工作组名” [smb探测扫描]</li>
-<li>针对内网的各种高危敏感服务定位[“安全” 端口扫描 (在避免对方防护报警拦截的情况下进行各种常规服务探测识别)]</li>
-<li>内网批量 Web Banner 抓取,获取关键目标业务系统如下</li>
-</ul>
-<pre class="language-none"><code class="language-none">内网各种文件[共享]服务器
+</code></pre><ul><li>利用当前已控 &quot;跳板机&quot;, 分析目标内网大致网络拓扑 及 所有关键性业务机器分布</li><li>批量抓取内网所有 windows 机器名 和 所在 &quot;域&quot; / &quot;工作组名&quot; [smb 探测扫描]</li><li>针对内网的各种高危敏感服务定位 [&quot;安全&quot; 端口扫描 (在避免对方防护报警拦截的情况下进行各种常规服务探测识别)]</li><li>内网批量 Web Banner 抓取，获取关键目标业务系统如下</li></ul><pre><code>内网各种文件[共享]服务器
 内网各类web服务器  [ 可用于后期留入口 ]
 内网各类数据库服务器
 内网邮件服务器  [ 可用于后期留入口 ]
@@ -677,43 +351,35 @@ suid权限
 内网各类OA,ERP,CRM,SRM,HR系统... 
 内网打印服务器
 内网 MES 系统 
-内网虚拟化服务器 &#x2F; 超融合平台 [Vmware ESX]
+内网虚拟化服务器 / 超融合平台 [Vmware ESX]
 内网堡垒机...
 内网运维,研发 部门员工的机器
 内网路由,交换设备...
 等等等...
 
 针对以上的各种常规内网探测扫描,其实在流量上都会有非常清晰的表现
-通过在一些关键节点设备&#x2F;服务器上部署探针搜集流量
+通过在一些关键节点设备/服务器上部署探针搜集流量
 再配合大数据关联分析查找各种敏感特征,理论上是相对容易发现各类扫描探测痕迹的
-</code></pre>
 
-<ul>
-<li>针对各类已知系统高危RCE漏洞的批量探测识别与利用</li>
-</ul>
-<pre class="language-none"><code class="language-none">MS08-067 [ 其实,某些特殊行业的系统可能非常老,极少更新,故,还是有存在的可能 ]
+</code></pre><ul><li>针对各类已知系统高危 RCE 漏洞的批量探测识别与利用</li></ul><pre><code>MS08-067 [ 其实,某些特殊行业的系统可能非常老,极少更新,故,还是有存在的可能 ]
 MS17-010
 CVE-2019-0708
 
 其实针对此类漏洞的攻击利用识别,就显得比较直白了
 通过深入分析每种漏洞在实际攻击利用过程所产生的一些典型 流量特征 和 系统日志即可大致判断
-</code></pre>
 
-<h2 id="0x07-内网安全-各类敏感凭证-“搜集”-与-“窃取”"><a href="#0x07-内网安全-各类敏感凭证-“搜集”-与-“窃取”" class="headerlink" title="0x07 内网安全  [ 各类敏感凭证 “搜集” 与 “窃取” ]"></a>0x07 内网安全  [ 各类敏感凭证 “搜集” 与 “窃取” ]</h2><ul>
-<li>主动密码搜集 </li>
-</ul>
-<pre class="language-none"><code class="language-none">注:如下某些操作肯定是需要事先自己想办法先拿到管理权限或者在指定用户权限下才能正常进行的
+</code></pre><h2 id="0x07-内网安全-各类敏感凭证-搜集-与-窃取"><a class="anchor" href="#0x07-内网安全-各类敏感凭证-搜集-与-窃取">#</a> 0x07 内网安全 [各类敏感凭证 &quot;搜集&quot; 与 &quot;窃取&quot;]</h2><ul><li>主动密码搜集</li></ul><pre><code>注:如下某些操作肯定是需要事先自己想办法先拿到管理权限或者在指定用户权限下才能正常进行的
 此处不再赘述, 此项非防御重点, 因为压根也不好防
 
 批量抓取当前机器上的 &quot;各类基础服务配置文件中保存的各种账号密码&quot;
    比如,各种数据库连接配置文件,各类服务自身的配置文件(redis,http basic...)...
-想办法 &quot;控制目标 运维管理 &#x2F; 技术人员 的单机,从这些机器上去搜集可能保存着各类敏感网络资产的账号密码表&quot;
+想办法 &quot;控制目标 运维管理 / 技术人员 的单机,从这些机器上去搜集可能保存着各类敏感网络资产的账号密码表&quot;
    比如, *.ls,*.doc,*.docx, *.txt....
 抓取各类 &quot;数据库客户端工具中保存各种数据库连接账号密码
    比如,Navicat,SSMS[MSSQL自带客户端管理工具,里面也可能保存的有密码(加密后的base64)]
 
 抓取当前系统 &quot;注册表中保存的各类账号密码hash&quot; [ Windows ]
-抓取当前系统所有 &quot;本地用户的明文密码&#x2F;hash&quot; [ Windows &amp; linux ]
+抓取当前系统所有 &quot;本地用户的明文密码/hash&quot; [ Windows &amp; linux ]
 抓取当前系统的所有 &quot;用户token&quot; [ Windows ]
 抓取 &quot;windows凭据管理器中保存的各类连接账号密码&quot;
 抓取 &quot;MSTSC 客户端中保存的所有rdp连接账号密码&quot;
@@ -727,30 +393,21 @@ CVE-2019-0708
 抓取各类 &quot;SVN客户端工具中保存的所有连接账号密码及项目地址&quot;
 抓取各类 &quot;VPN客户端工具中保存的各种vpn链接账号密码&quot;
 
-</code></pre>
 
-<ul>
-<li>被动密码搜集 [ 等着管理员自己来送密码 ] </li>
-</ul>
-<pre class="language-none"><code class="language-none">[注: 某些操作肯定是需要事先自己想办法先拿到管理权限后才能正常进行的, 此处不再赘述 , 是防御重点]
+</code></pre><ul><li>被动密码搜集 [等着管理员自己来送密码]</li></ul><pre><code>[注: 某些操作肯定是需要事先自己想办法先拿到管理权限后才能正常进行的, 此处不再赘述 , 是防御重点]
 
-Windows SSP [持久化&#x2F;内存]
-Hook PasswordChangeNotify [持久化&#x2F;内存]
+Windows SSP [持久化/内存]
+Hook PasswordChangeNotify [持久化/内存]
 OWA 登录账号密码截获
 截获mstsc.exe中输入的rdp连接账号密码
 linux 别名记录利用
 本机明文密码嗅探 [ http,ftp,pop3... ]
 传统键盘记录
 windows蓝屏技巧 [ 此操作主要为应对不时之需,比如,搞蓝屏,登管理员登录抓密码 ]
-</code></pre>
 
-<ul>
-<li>Hash爆破:</li>
-</ul>
-<pre class="language-none"><code class="language-none">Hashcat [ 完全拼GPU ] 
-</code></pre>
+</code></pre><ul><li>Hash 爆破:</li></ul><pre><code>Hashcat [ 完全拼GPU ] 
 
-<h2 id="0x08-内网安全-内网常用-“隧道””-“转发””-“代理””-穿透手法-提炼汇总-，防御重点"><a href="#0x08-内网安全-内网常用-“隧道””-“转发””-“代理””-穿透手法-提炼汇总-，防御重点" class="headerlink" title="0x08 内网安全 [ 内网常用 “隧道”” / “转发”” / “代理”” 穿透手法 提炼汇总 ，防御重点 ]"></a>0x08 内网安全 [ 内网常用 “隧道”” / “转发”” / “代理”” 穿透手法 提炼汇总 ，防御重点 ]</h2><pre class="language-none"><code class="language-none">出网流量刺探
+</code></pre><h2 id="0x08-内网安全-内网常用-隧道-转发-代理-穿透手法-提炼汇总-防御重点"><a class="anchor" href="#0x08-内网安全-内网常用-隧道-转发-代理-穿透手法-提炼汇总-防御重点">#</a> 0x08 内网安全 [内网常用 &quot;隧道&quot;&quot; / &quot;转发&quot;&quot; / &quot;代理&quot;&quot; 穿透手法 提炼汇总 ，防御重点]</h2><pre><code>出网流量刺探
 比如,http,dns,以及一些穿透性相对较好的tcp端口... 
 这种操作一般都会配合wmi,smb,ssh远程执行,在内网批量快速识别出能出网的机器
 
@@ -776,12 +433,8 @@ Web端口复用
 
 需要明白的是,在一般的红队场景中
 入侵者为了尽可能躲避各种检测设备的流量解析,很多此类工具都会采用各种各样的方式来加密传输流量,以此来保证自己有更强的穿透性
-</code></pre>
 
-<h2 id="0x09-域内网安全-域内常用攻击手法-域渗透-，提炼汇总，防御重点"><a href="#0x09-域内网安全-域内常用攻击手法-域渗透-，提炼汇总，防御重点" class="headerlink" title="0x09 域内网安全 [ 域内常用攻击手法 ( 域渗透 )，提炼汇总，防御重点 ]"></a>0x09 域内网安全 [ 域内常用攻击手法 ( 域渗透 )，提炼汇总，防御重点 ]</h2><ul>
-<li>针对当前域的一些常规信息搜集[ 其实现实中,只需要一个BloodHound &amp; Pingcastle足矣,就是工具需要自行事先免杀好]</li>
-</ul>
-<pre class="language-none"><code class="language-none">获取当前域内的完整域管列表
+</code></pre><h2 id="0x09-域内网安全-域内常用攻击手法-域渗透-提炼汇总防御重点"><a class="anchor" href="#0x09-域内网安全-域内常用攻击手法-域渗透-提炼汇总防御重点">#</a> 0x09 域内网安全 [域内常用攻击手法 ( 域渗透)，提炼汇总，防御重点 ]</h2><ul><li>针对当前域的一些常规信息搜集 [其实现实中，只需要一个 BloodHound &amp; Pingcastle 足矣，就是工具需要自行事先免杀好]</li></ul><pre><code>获取当前域内的完整域管列表
 获取当前域内的所有域控机器名列表
 获取当前域内的所有DNS服务器机器名列表
 获取当前域内的所有SPN
@@ -793,12 +446,8 @@ Web端口复用
 获取当前域内策略 [ 主要是为了了解密码策略 ]
 获取当前域林
 .......
-</code></pre>
 
-<ul>
-<li>快速获取目标域控权限的一些常规手法</li>
-</ul>
-<pre class="language-none"><code class="language-none">搜集GPP 目录 [ 其中可能保存的有域账号密码,不仅仅是存在XML里的那些,NETLOGON目录中的某些脚本同样也可能保存有账号密码 ] 
+</code></pre><ul><li>快速获取目标域控权限的一些常规手法</li></ul><pre><code>搜集GPP 目录 [ 其中可能保存的有域账号密码,不仅仅是存在XML里的那些,NETLOGON目录中的某些脚本同样也可能保存有账号密码 ] 
 服务票据hash破解(&quot;尤其是域管用户的&quot;) [ kerberoast ]
 批量对域用户进行单密码尝试 [ 喷射,利用ADSI接口,日志id 4771 ]
 Kerberos 委派利用
@@ -811,56 +460,32 @@ SSP 截获关键服务器登录密码
 DNSAdmin 组成员滥用 [ 加载执行恶意dll ]
 LAPS
 MS14-068 [ 如今实际中已很少遇到了 ]
-LLMNR&#x2F;NBNS欺骗  + SMB relay [ 真实在实战中其实用的并不多 ]
-</code></pre>
+LLMNR/NBNS欺骗  + SMB relay [ 真实在实战中其实用的并不多 ]
 
-<ul>
-<li>域内后渗透敏感信息搜集分析</li>
-</ul>
-<pre class="language-none"><code class="language-none">获取所有DNS记录
+</code></pre><ul><li>域内后渗透敏感信息搜集分析</li></ul><pre><code>获取所有DNS记录
 导出当前域的完整LDAP数据库
 提取当前域的ntds.dit [ 域内账号密码数据库 ]
   Dcsync同步
   Volume Shadow Copy Service
-</code></pre>
 
-<ul>
-<li>域内指定用户登录ip定位</li>
-</ul>
-<pre class="language-none"><code class="language-none">利用OWA登录日志
+</code></pre><ul><li>域内指定用户登录 ip 定位</li></ul><pre><code>利用OWA登录日志
 利用域控服务器登录日志
 指定服务银票 [ Silver Ticket ]
 除此之外,就是下面的各类常规横向手法
-</code></pre>
 
-<ul>
-<li>域内指定用户机器定向控制技巧</li>
-</ul>
-<pre class="language-none"><code class="language-none">绑定用户登录脚本
+</code></pre><ul><li>域内指定用户机器定向控制技巧</li></ul><pre><code>绑定用户登录脚本
 利用GPO下发 [实际上,利用GPO能做的事情还非常非常多]
 PTT [ 票据传递 ]
-</code></pre>
 
-<ul>
-<li>针对域管的各种权限维持技巧</li>
-</ul>
-<pre class="language-none"><code class="language-none">金票
+</code></pre><ul><li>针对域管的各种权限维持技巧</li></ul><pre><code>金票
 Skeleton Key
 DSRM密码同步
 OWA后门
 ...
-</code></pre>
 
-<ul>
-<li>域内Exchange 邮件数据脱取</li>
-</ul>
-<pre class="language-none"><code class="language-none">利用Ews接口通过PTH的方式脱邮件
-</code></pre>
+</code></pre><ul><li>域内 Exchange 邮件数据脱取</li></ul><pre><code>利用Ews接口通过PTH的方式脱邮件
 
-<h2 id="0x10-内网安全-跨平台横向渗透-远程执行-，防御重点-“重中之重”"><a href="#0x10-内网安全-跨平台横向渗透-远程执行-，防御重点-“重中之重”" class="headerlink" title="0x10 内网安全 [ 跨平台横向渗透 (远程执行)，防御重点 ( “重中之重” ) ]"></a>0x10 内网安全 [ 跨平台横向渗透 (远程执行)，防御重点 ( “重中之重” ) ]</h2><ul>
-<li>从 Windows平台 横向至  Windows平台</li>
-</ul>
-<pre class="language-none"><code class="language-none">注: 以下某些远程执行方式, 即可直接用明文账号密码 亦可 基于pth来进行, 不局限
+</code></pre><h2 id="0x10-内网安全-跨平台横向渗透-远程执行防御重点-重中之重"><a class="anchor" href="#0x10-内网安全-跨平台横向渗透-远程执行防御重点-重中之重">#</a> 0x10 内网安全 [跨平台横向渗透 (远程执行)，防御重点 ( &quot;重中之重&quot; ) ]</h2><ul><li>从 Windows 平台 横向至 Windows 平台</li></ul><pre><code>注: 以下某些远程执行方式, 即可直接用明文账号密码 亦可 基于pth来进行, 不局限
 
 远程服务管理 [ SCM ]
 远程创建执行计划任务 [ Scheduled Tasks ]
@@ -874,18 +499,10 @@ SMB [ PTH (hash传递) ]
 RDP[MSTSC] 反向渗透 [ 即可用于突破某些隔离, 亦可通过云(Windows vps)直接反控目标管理员个人机 CVE-2019-0887 ]
 利用补丁服务器下发执行
 利用EDR主控端定向下发执行
-</code></pre>
 
-<ul>
-<li>从 Windows平台 横向至 *inux平台</li>
-</ul>
-<pre class="language-none"><code class="language-none">plink 或者 基于Windows SSH库自行开发各种远程执行小工具
-</code></pre>
+</code></pre><ul><li>从 Windows 平台 横向至 *inux 平台</li></ul><pre><code>plink 或者 基于Windows SSH库自行开发各种远程执行小工具
 
-<ul>
-<li>从 *inux平台 横向至 Windows 平台</li>
-</ul>
-<pre class="language-none"><code class="language-none">一般都会将 impacket套件中的各个常用py脚本事先直接打包成可执行文件, 然后丢到目标linux系统中去执行,如下
+</code></pre><ul><li>从 *inux 平台 横向至 Windows 平台</li></ul><pre><code>一般都会将 impacket套件中的各个常用py脚本事先直接打包成可执行文件, 然后丢到目标linux系统中去执行,如下
 wmiexec_linux_x86_64
 smbexec_linux_x86_64
 psexec_linux_x86_64
@@ -893,22 +510,13 @@ atexec_linux_x86_64
 dcomexec_linux_x86_64
 
 另外,还有一些基于go的工具,同样也可以编译成可执行文件之后再丢上去执行
-</code></pre>
 
-<ul>
-<li>从 *inux平台 横向至 *inux 平台</li>
-</ul>
-<pre class="language-none"><code class="language-none">linux 自带的ssh客户端工具套件, 默认就可以用来进行远程执行
-</code></pre>
+</code></pre><ul><li>从 *inux 平台 横向至 *inux 平台</li></ul><pre><code>linux 自带的ssh客户端工具套件, 默认就可以用来进行远程执行
 
-<ul>
-<li>各种远程下载技巧</li>
-</ul>
-<pre class="language-none"><code class="language-none">wget [ win &amp; linux ]
+</code></pre><ul><li>各种远程下载技巧</li></ul><pre><code>wget [ win &amp; linux ]
 curl [ win &amp; linux ]
-</code></pre>
 
-<pre class="language-none"><code class="language-none">之所以没着重提以下这些系统内置的远程下载执行工具,主要还是因为事先已经明确知道
+</code></pre><pre><code>之所以没着重提以下这些系统内置的远程下载执行工具,主要还是因为事先已经明确知道
 某些杀软环境下它肯定会被拦截,所以事先就直接把它弃用了,尤其针对红队这种场景,这些东西根本不在乎多,有一个能用好用的即可
 
 CertUtil.exe
@@ -917,24 +525,16 @@ Regsvr32.exe
 Rundll32.exe
 Powershell.exe
 ......
-</code></pre>
 
-<h2 id="0x11-内网安全-权限维持，防御重点-注-有些细节此处并未展开详细说明"><a href="#0x11-内网安全-权限维持，防御重点-注-有些细节此处并未展开详细说明" class="headerlink" title="0x11 内网安全 [ 权限维持，防御重点 ] [ 注: 有些细节此处并未展开详细说明 ]"></a>0x11 内网安全 [ 权限维持，防御重点 ] [ 注: 有些细节此处并未展开详细说明 ]</h2><ul>
-<li>边界入口权限维持</li>
-</ul>
-<pre class="language-none"><code class="language-none">OWA 登录口 [ 账号密码,webshell ]
+</code></pre><h2 id="0x11-内网安全-权限维持防御重点-注-有些细节此处并未展开详细说明"><a class="anchor" href="#0x11-内网安全-权限维持防御重点-注-有些细节此处并未展开详细说明">#</a> 0x11 内网安全 [权限维持，防御重点] [ 注：有些细节此处并未展开详细说明 ]</h2><ul><li>边界入口权限维持</li></ul><pre><code>OWA 登录口 [ 账号密码,webshell ]
 VPN 登录口 [ 账号密码,shell ]
 其他 MAIL 登录口 [ 账号密码 ]
 边界 Web服务器 [ Webshell 驻留技巧 ]
 边界路由交换设备 [ 账号密码,shell ]
 ...
-</code></pre>
 
-<ul>
-<li>Windows 单机系统维持 [临时]</li>
-</ul>
-<pre class="language-none"><code class="language-none">系统计划任务 [ 高权限&#x2F;低权限 ]
-常规注册表自启动项 [ 用户权限&#x2F;system权限 ]
+</code></pre><ul><li>Windows 单机系统维持 [临时]</li></ul><pre><code>系统计划任务 [ 高权限/低权限 ]
+常规注册表自启动项 [ 用户权限/system权限 ]
 Mssql存储过程 [ 继承服务权限 ]
 WMI
 Winlogon
@@ -944,44 +544,32 @@ MruPidlList
 Mof
 传统远控
 ...
-</code></pre>
 
-
-<ul>
-<li>linux 单机系统维持 [临时]</li>
-</ul>
-<pre class="language-none"><code class="language-none">Patch SSH
+</code></pre><ul><li>linux 单机系统维持 [临时]</li></ul><pre><code>Patch SSH
 替换各类基础服务so [ PAM,Nginx,Rsync ...] 
 系统计划任务
 传统应用层远控
 驱动层远控( 针对特定内核版本 )
-</code></pre>
 
-<h2 id="0x12-痕迹处理"><a href="#0x12-痕迹处理" class="headerlink" title="0x12 痕迹处理"></a>0x12 痕迹处理</h2><pre class="language-none"><code class="language-none">web日志 [ 访问, 错误日志 ]
+</code></pre><h2 id="0x12-痕迹处理"><a class="anchor" href="#0x12-痕迹处理">#</a> 0x12 痕迹处理</h2><pre><code>web日志 [ 访问, 错误日志 ]
 数据库日志 [ 异常连接日志,慢查询日志 ]
 系统各类安全日志 [ ssh,rdp,smb,wmi,powershell....]
 各类邮箱登录日志
 域内敏感攻击利用日志 [ 金票,银票... ]
 此项为专业蓝队范畴,不再赘述
 ......
-</code></pre>
 
-<h2 id="0x13-各类常用-C2-渗透-框架"><a href="#0x13-各类常用-C2-渗透-框架" class="headerlink" title="0x13 各类常用 C2 / 渗透 框架"></a>0x13 各类常用 C2 / 渗透 框架</h2><pre class="language-none"><code class="language-none">CobaltStrike [二次开发]
-  payload(beacon) 逆向&#x2F;改进重写
+</code></pre><h2 id="0x13-各类常用-c2-渗透-框架"><a class="anchor" href="#0x13-各类常用-c2-渗透-框架">#</a> 0x13 各类常用 C2 / 渗透 框架</h2><pre><code>CobaltStrike [二次开发]
+  payload(beacon) 逆向/改进重写
 Metasploit [二次开发]
 ......
-</code></pre>
 
-<h2 id="0x14-各类常用-Webshell管理工具"><a href="#0x14-各类常用-Webshell管理工具" class="headerlink" title="0x14 各类常用 Webshell管理工具"></a>0x14 各类常用 Webshell管理工具</h2><pre class="language-none"><code class="language-none">菜刀	caidao20160622
+</code></pre><h2 id="0x14-各类常用-webshell管理工具"><a class="anchor" href="#0x14-各类常用-webshell管理工具">#</a> 0x14 各类常用 Webshell 管理工具</h2><pre><code>菜刀	caidao20160622
 冰蟹	Behinder_v2.0.1
 蚁剑	AntSword
 ......
-</code></pre>
 
-<h2 id="0x15-免杀-及-各类防火墙对抗"><a href="#0x15-免杀-及-各类防火墙对抗" class="headerlink" title="0x15 免杀 及 各类防火墙对抗"></a>0x15 免杀 及 各类防火墙对抗</h2><ul>
-<li>静态</li>
-</ul>
-<pre class="language-none"><code class="language-none">混淆:
+</code></pre><h2 id="0x15-免杀-及-各类防火墙对抗"><a class="anchor" href="#0x15-免杀-及-各类防火墙对抗">#</a> 0x15 免杀 及 各类防火墙对抗</h2><ul><li>静态</li></ul><pre><code>混淆:
 手工混淆,有源码的情况下,尝试逐个替换可能是关键特征字符串的 命名空间名, 函数名, 变量名, 字符串 等等等....
 工具混淆,针对各种语言的专业混淆工具 [ 有商业版 ]
 ...
@@ -990,12 +578,8 @@ Metasploit [二次开发]
 一些常用公开壳的实际效果可能并不是太好 [ 也有商业壳 ]
 最好的方式还是尝试自己写壳,就是成本较高
 ...
-</code></pre>
 
-<ul>
-<li>动态</li>
-</ul>
-<pre class="language-none"><code class="language-none">反射
+</code></pre><ul><li>动态</li></ul><pre><code>反射
 shellcode 内存加解密执行 ( 对于现在的某些杀软来讲,可能并没什么卵用,别人拦的基本都是你的最终调用 )
 白利用
 ......
@@ -1003,360 +587,12 @@ shellcode 内存加解密执行 ( 对于现在的某些杀软来讲,可能并没
 注:
    理论上, 这些应该也没有什么非常通用的方法
    大多还是事先针对特定的杀软针对性的不停调试分析出它到底怎么拦,怎么查的,然后再针对性的对症下药
-</code></pre>
 
-<ul>
-<li>流量:</li>
-</ul>
-<pre class="language-none"><code class="language-none">域前置[利用大厂cdn]
+</code></pre><ul><li>流量:</li></ul><pre><code>域前置[利用大厂cdn]
 DNS加密隧道
 第三方公共邮箱上线
 第三方网盘上线
 第三方社交网站上线
 第三方匿名社交工具上线[eg: tg机器人,tor...]
-</code></pre>
-      <div class="tags">
-          <a href="/tags/RedTeam/" rel="tag"><i class="ic i-tag"></i> RedTeam</a>
-      </div>
-  </div>
 
-   <footer>
-
-    <div class="meta">
-  <span class="item">
-    <span class="icon">
-      <i class="ic i-calendar-check"></i>
-    </span>
-    <span class="text">更新于</span>
-    <time title="修改时间：2021-01-18 15:57:42" itemprop="dateModified" datetime="2021-01-18T15:57:42+08:00">2021-01-18</time>
-  </span>
-</div>
-
-      
-<div class="reward">
-  <button><i class="ic i-heartbeat"></i> 赞赏</button>
-  <p>请我喝[茶]~(￣▽￣)~*</p>
-  <div id="qr">
-      
-      <div>
-        <img data-src="/images/wechatpay.png" alt="1asy 微信支付">
-        <p>微信支付</p>
-      </div>
-      
-      <div>
-        <img data-src="/images/alipay.png" alt="1asy 支付宝">
-        <p>支付宝</p>
-      </div>
-      
-      <div>
-        <img data-src="/images/paypal.png" alt="1asy 贝宝">
-        <p>贝宝</p>
-      </div>
-  </div>
-</div>
-
-      
-
-<div id="copyright">
-<ul>
-  <li class="author">
-    <strong>本文作者： </strong>1asy <i class="ic i-at"><em>@</em></i>1asy
-  </li>
-  <li class="link">
-    <strong>本文链接：</strong>
-    <a href="https://self-ferry.github.io/2021/01/18/RedTeamer/" title="红方人员实战手册【转】">https://self-ferry.github.io/2021/01/18/RedTeamer/</a>
-  </li>
-  <li class="license">
-    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
-  </li>
-</ul>
-</div>
-
-  </footer>
-
-</article>
-
-  </div>
-  
-
-<div class="post-nav">
-    <div class="item left">
-      
-
-  <a href="/2021/01/18/AD-Attack-Defense/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeybxm1pj20zk0m8niv.jpg" title="Active Directory Kill Chain Attack &amp; Defense【转】">
-  <span class="type">上一篇</span>
-  <span class="category"><i class="ic i-flag"></i> 网络安全</span>
-  <h3>Active Directory Kill Chain Attack & Defense【转】</h3>
-  </a>
-
-    </div>
-    <div class="item right">
-      
-
-  <a href="/2021/01/18/redteam-notebook/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclwuom7cj20zk0m8dvn.jpg" title="redteam-notebook【转】">
-  <span class="type">下一篇</span>
-  <span class="category"><i class="ic i-flag"></i> 网络安全</span>
-  <h3>redteam-notebook【转】</h3>
-  </a>
-
-    </div>
-</div>
-
-  
-  <div class="wrap" id="comments"></div>
-
-
-        </div>
-        <div id="sidebar">
-          
-
-<div class="inner">
-
-  <div class="panels">
-    <div class="inner">
-      <div class="contents panel pjax" data-title="文章目录">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%A2%E6%96%B9%E4%BA%BA%E5%91%98%E5%AE%9E%E6%88%98%E6%89%8B%E5%86%8C"><span class="toc-number">1.</span> <span class="toc-text">红方人员实战手册</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A3%B0%E6%98%8E"><span class="toc-number">1.1.</span> <span class="toc-text">声明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E4%BA%AB%E5%88%9D%E8%A1%B7"><span class="toc-number">1.2.</span> <span class="toc-text">分享初衷</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%91%E8%AF%9D%E8%AF%B4%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="toc-number">1.3.</span> <span class="toc-text">丑话说在前面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B4%E6%98%8E"><span class="toc-number">1.4.</span> <span class="toc-text">说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A5%E5%B8%B8%E6%B5%81%E7%A8%8B%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E"><span class="toc-number">1.5.</span> <span class="toc-text">日常流程简要说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-%E5%85%A5%E5%8F%A3%E6%9D%83%E9%99%90%E8%8E%B7%E5%8F%96-%E5%89%8D%E6%9C%9F%E4%BE%A6%E5%AF%9F%EF%BC%8C%E6%90%9C%E9%9B%86%E9%98%B6%E6%AE%B5%E6%9C%AC%E8%BA%AB%E5%B0%B1%E4%B8%8D%E5%AD%98%E5%9C%A8%E5%A4%AA%E5%A4%9A%E5%8F%AF%E9%98%B2%E5%BE%A1%E7%9A%84%E7%82%B9%EF%BC%8C%E9%9D%9E%E9%98%B2%E5%BE%A1%E9%87%8D%E5%BF%83"><span class="toc-number">1.6.</span> <span class="toc-text">0x01 入口权限获取 [ 前期侦察，搜集阶段本身就不存在太多可防御的点，非防御重心 ]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-%E5%85%A5%E5%8F%A3%E6%9D%83%E9%99%90%E8%8E%B7%E5%8F%96-%E5%A4%96%E9%83%A8%E9%98%B2%E5%BE%A1%E9%87%8D%E5%BF%83-%E2%80%9C%E9%87%8D%E4%B8%AD%E4%B9%8B%E9%87%8D%E2%80%9D"><span class="toc-number">1.7.</span> <span class="toc-text">0x02 入口权限获取 [ 外部防御重心 ( “重中之重” ) ]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E5%90%84%E7%B1%BBJava%E4%B8%AD%E9%97%B4%E4%BB%B6%E7%9A%84%E5%90%84%E7%A7%8D%E5%B7%B2%E7%9F%A5Nday%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-number">1.8.</span> <span class="toc-text">针对各类Java中间件的各种已知Nday漏洞利用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E5%90%84%E7%B1%BBWindows-php%E9%9B%86%E6%88%90%E7%8E%AF%E5%A2%83-%E7%94%B1%E4%BA%8E%E6%AD%A4%E7%B1%BB%E7%8E%AF%E5%A2%83%E6%8B%BF%E5%88%B0%E7%9A%84Webshell%E6%9D%83%E9%99%90%E7%9B%B8%E5%AF%B9%E8%BE%83%E9%AB%98-%E6%89%80%E4%BB%A5-%E9%80%9A%E5%B8%B8%E4%B9%9F%E6%98%AF%E7%BA%A2%E9%98%9F%E4%BA%BA%E5%91%98%E7%9A%84%E9%A6%96%E9%80%89%E7%AA%81%E7%A0%B4%E5%8F%A3"><span class="toc-number">1.9.</span> <span class="toc-text">针对各类Windows php集成环境  [ 由于此类环境拿到的Webshell权限相对较高,所以,通常也是红队人员的首选突破口 ]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E5%90%84%E7%B1%BB%E5%BC%80%E6%BA%90%E7%A8%8B%E5%BA%8F%E7%9A%84-%E5%B7%B2%E7%9F%A5Nday%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-number">1.10.</span> <span class="toc-text">针对各类开源程序的 已知Nday漏洞利用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E5%85%B6%E5%AE%83%E5%90%84%E7%B1%BBWeb%E7%BB%84%E4%BB%B6%E7%9A%84-%E5%B7%B2%E7%9F%A5Nday%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-number">1.11.</span> <span class="toc-text">针对其它各类Web组件的 已知Nday漏洞利用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%84%E7%A7%8D%E8%83%BD%E5%BF%AB%E9%80%9Fgetshell%E7%9A%84%E5%B8%B8%E8%A7%84%E5%9F%BA%E7%A1%80Web%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8-%E6%B3%A8-%E6%9C%89%E4%BA%9B%E6%BC%8F%E6%B4%9E%E5%9C%A8%E4%B8%8D%E5%AE%A1%E4%BB%A3%E7%A0%81%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%E5%85%B6%E5%AE%9E%E6%98%AF%E5%BE%88%E9%9A%BE%E6%9C%89%E6%95%88%E7%9B%B2%E6%B5%8B%E5%88%B0%E7%9A%84"><span class="toc-number">1.12.</span> <span class="toc-text">各种能快速getshell的常规基础Web漏洞利用 [ 注: 有些漏洞在不审代码的情况下其实是很难有效盲测到的 ]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E5%90%84%E7%B1%BB%E8%BE%B9%E7%95%8C%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E7%9A%84%E5%90%84%E7%A7%8D%E5%88%A9%E7%94%A8-%E4%B8%BB%E8%A6%81%E6%98%AFWeb%E7%AE%A1%E7%90%86%E6%8E%A7%E5%88%B6%E5%8F%B0%E7%99%BB%E5%BD%95%E5%BC%B1%E5%8F%A3%E4%BB%A4-%E5%8F%8A-%E5%90%84%E7%B1%BB%E5%B7%B2%E7%9F%A5nday%E6%94%BB%E5%87%BB%E5%88%A9%E7%94%A8"><span class="toc-number">1.13.</span> <span class="toc-text">针对各类边界网络设备的各种利用,主要是Web管理控制台登录弱口令 及 各类已知nday攻击利用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-%E5%85%A5%E5%8F%A3%E6%9D%83%E9%99%90%E8%8E%B7%E5%8F%96-%E4%B8%93%E9%97%A8%E9%92%88%E5%AF%B9%E5%90%84%E7%B1%BB%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%8F%A3%E7%9A%84%E5%90%84%E7%A7%8Dgetshell%E5%88%A9%E7%94%A8%EF%BC%8C%E9%98%B2%E5%BE%A1%E9%87%8D%E7%82%B9-%E2%80%9C%E9%87%8D%E4%B8%AD%E4%B9%8B%E9%87%8D%E2%80%9D"><span class="toc-number">1.14.</span> <span class="toc-text">0x03 入口权限获取 [ 专门针对各类基础服务端口的各种getshell利用，防御重点 ( “重中之重” ) ]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x04-%E5%85%A5%E5%8F%A3%E6%9D%83%E9%99%90%E8%8E%B7%E5%8F%96"><span class="toc-number">1.15.</span> <span class="toc-text">0x04 入口权限获取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%A0%E7%BB%9F%E9%92%93%E9%B1%BC%E6%94%BB%E5%87%BB%E5%88%A9%E7%94%A8%EF%BC%8C%E5%AE%9E%E9%99%85%E6%8A%A4%E7%BD%91%E5%9C%BA%E6%99%AF%E4%B8%AD%E7%94%A8%E7%9A%84%E9%9D%9E%E5%B8%B8%E9%A2%91%E7%B9%81%EF%BC%8C%E7%BB%86%E8%8A%82%E9%9D%9E%E5%B8%B8%E5%A4%9A%EF%BC%8C%E6%AD%A4%E5%A4%84%E4%B8%8D%E4%B8%80%E4%B8%80%E5%88%97%E4%B8%BE%EF%BC%8C%E9%98%B2%E5%BE%A1%E9%87%8D%E7%82%B9"><span class="toc-number">1.16.</span> <span class="toc-text">传统钓鱼攻击利用，实际护网场景中用的非常频繁，细节非常多，此处不一一列举，防御重点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x05-%E4%B8%BB%E6%9C%BA%E5%AE%89%E5%85%A8-%E6%8F%90%E6%9D%83%E5%88%A9%E7%94%A8%EF%BC%8C%E9%98%B2%E5%BE%A1%E9%87%8D%E7%82%B9"><span class="toc-number">1.17.</span> <span class="toc-text">0x05 主机安全 [ 提权利用，防御重点 ]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x06-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8-%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86%EF%BC%8C%E9%98%B2%E5%BE%A1%E9%87%8D%E7%82%B9%EF%BC%8C%E5%8F%AF%E5%9C%A8%E6%AD%A4%E9%A1%B9%E4%B8%A5%E6%A0%BC%E9%99%90%E5%88%B6%E5%90%84%E7%A7%8D%E7%B3%BB%E7%BB%9F%E5%86%85%E7%BD%AE%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-number">1.18.</span> <span class="toc-text">0x06 内网安全 [ 敏感信息搜集，防御重点，可在此项严格限制各种系统内置命令执行 ]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x07-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8-%E5%90%84%E7%B1%BB%E6%95%8F%E6%84%9F%E5%87%AD%E8%AF%81-%E2%80%9C%E6%90%9C%E9%9B%86%E2%80%9D-%E4%B8%8E-%E2%80%9C%E7%AA%83%E5%8F%96%E2%80%9D"><span class="toc-number">1.19.</span> <span class="toc-text">0x07 内网安全  [ 各类敏感凭证 “搜集” 与 “窃取” ]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x08-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8-%E5%86%85%E7%BD%91%E5%B8%B8%E7%94%A8-%E2%80%9C%E9%9A%A7%E9%81%93%E2%80%9D%E2%80%9D-%E2%80%9C%E8%BD%AC%E5%8F%91%E2%80%9D%E2%80%9D-%E2%80%9C%E4%BB%A3%E7%90%86%E2%80%9D%E2%80%9D-%E7%A9%BF%E9%80%8F%E6%89%8B%E6%B3%95-%E6%8F%90%E7%82%BC%E6%B1%87%E6%80%BB-%EF%BC%8C%E9%98%B2%E5%BE%A1%E9%87%8D%E7%82%B9"><span class="toc-number">1.20.</span> <span class="toc-text">0x08 内网安全 [ 内网常用 “隧道”” &#x2F; “转发”” &#x2F; “代理”” 穿透手法 提炼汇总 ，防御重点 ]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x09-%E5%9F%9F%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8-%E5%9F%9F%E5%86%85%E5%B8%B8%E7%94%A8%E6%94%BB%E5%87%BB%E6%89%8B%E6%B3%95-%E5%9F%9F%E6%B8%97%E9%80%8F-%EF%BC%8C%E6%8F%90%E7%82%BC%E6%B1%87%E6%80%BB%EF%BC%8C%E9%98%B2%E5%BE%A1%E9%87%8D%E7%82%B9"><span class="toc-number">1.21.</span> <span class="toc-text">0x09 域内网安全 [ 域内常用攻击手法 ( 域渗透 )，提炼汇总，防御重点 ]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x10-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8-%E8%B7%A8%E5%B9%B3%E5%8F%B0%E6%A8%AA%E5%90%91%E6%B8%97%E9%80%8F-%E8%BF%9C%E7%A8%8B%E6%89%A7%E8%A1%8C-%EF%BC%8C%E9%98%B2%E5%BE%A1%E9%87%8D%E7%82%B9-%E2%80%9C%E9%87%8D%E4%B8%AD%E4%B9%8B%E9%87%8D%E2%80%9D"><span class="toc-number">1.22.</span> <span class="toc-text">0x10 内网安全 [ 跨平台横向渗透 (远程执行)，防御重点 ( “重中之重” ) ]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x11-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8-%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81%EF%BC%8C%E9%98%B2%E5%BE%A1%E9%87%8D%E7%82%B9-%E6%B3%A8-%E6%9C%89%E4%BA%9B%E7%BB%86%E8%8A%82%E6%AD%A4%E5%A4%84%E5%B9%B6%E6%9C%AA%E5%B1%95%E5%BC%80%E8%AF%A6%E7%BB%86%E8%AF%B4%E6%98%8E"><span class="toc-number">1.23.</span> <span class="toc-text">0x11 内网安全 [ 权限维持，防御重点 ] [ 注: 有些细节此处并未展开详细说明 ]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x12-%E7%97%95%E8%BF%B9%E5%A4%84%E7%90%86"><span class="toc-number">1.24.</span> <span class="toc-text">0x12 痕迹处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x13-%E5%90%84%E7%B1%BB%E5%B8%B8%E7%94%A8-C2-%E6%B8%97%E9%80%8F-%E6%A1%86%E6%9E%B6"><span class="toc-number">1.25.</span> <span class="toc-text">0x13 各类常用 C2 &#x2F; 渗透 框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x14-%E5%90%84%E7%B1%BB%E5%B8%B8%E7%94%A8-Webshell%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7"><span class="toc-number">1.26.</span> <span class="toc-text">0x14 各类常用 Webshell管理工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x15-%E5%85%8D%E6%9D%80-%E5%8F%8A-%E5%90%84%E7%B1%BB%E9%98%B2%E7%81%AB%E5%A2%99%E5%AF%B9%E6%8A%97"><span class="toc-number">1.27.</span> <span class="toc-text">0x15 免杀 及 各类防火墙对抗</span></a></li></ol></li></ol>
-      </div>
-      <div class="related panel pjax" data-title="系列文章">
-        <ul>
-          <li><a href="/2021/01/18/Awesome-Red-Teaming/" rel="bookmark" title="Awesome Red Teaming【转】">Awesome Red Teaming【转】</a></li><li><a href="/2021/01/18/AD-Attack-Defense/" rel="bookmark" title="Active Directory Kill Chain Attack & Defense【转】">Active Directory Kill Chain Attack & Defense【转】</a></li><li class="active"><a href="/2021/01/18/RedTeamer/" rel="bookmark" title="红方人员实战手册【转】">红方人员实战手册【转】</a></li><li><a href="/2021/01/18/redteam-notebook/" rel="bookmark" title="redteam-notebook【转】">redteam-notebook【转】</a></li>
-        </ul>
-      </div>
-      <div class="overview panel" data-title="站点概览">
-        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <img class="image" itemprop="image" alt="1asy"
-      data-src="/images/avatar.jpg">
-  <p class="name" itemprop="name">1asy</p>
-  <div class="description" itemprop="description"></div>
-</div>
-
-<nav class="state">
-    <div class="item posts">
-      <a href="/archives/">
-        <span class="count">37</span>
-        <span class="name">文章</span>
-      </a>
-    </div>
-    <div class="item categories">
-      <a href="/categories/">
-        <span class="count">13</span>
-        <span class="name">分类</span>
-      </a>
-    </div>
-    <div class="item tags">
-      <a href="/tags/">
-        <span class="count">40</span>
-        <span class="name">标签</span>
-      </a>
-    </div>
-</nav>
-
-<div class="social">
-      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lvdXJuYW1l" title="https:&#x2F;&#x2F;github.com&#x2F;yourname"><i class="ic i-github"></i></span>
-      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;yourname"><i class="ic i-twitter"></i></span>
-      <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yourname"><i class="ic i-zhihu"></i></span>
-      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPXlvdXJpZA==" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;yourid"><i class="ic i-cloud-music"></i></span>
-      <span class="exturl item weibo" data-url="aHR0cHM6Ly93ZWliby5jb20veW91cm5hbWU=" title="https:&#x2F;&#x2F;weibo.com&#x2F;yourname"><i class="ic i-weibo"></i></span>
-      <span class="exturl item about" data-url="aHR0cHM6Ly9hYm91dC5tZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;about.me&#x2F;yourname"><i class="ic i-address-card"></i></span>
-</div>
-
-<ul class="menu">
-  
-    
-  <li class="item">
-    <a href="/" rel="section"><i class="ic i-home"></i>首页</a>
-  </li>
-
-
-</ul>
-
-      </div>
-    </div>
-  </div>
-
-  <ul id="quick">
-    <li class="prev pjax">
-        <a href="/2021/01/18/AD-Attack-Defense/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
-    </li>
-    <li class="up"><i class="ic i-arrow-up"></i></li>
-    <li class="down"><i class="ic i-arrow-down"></i></li>
-    <li class="next pjax">
-        <a href="/2021/01/18/redteam-notebook/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
-    </li>
-    <li class="percent"></li>
-  </ul>
-</div>
-
-
-        </div>
-        <div class="dimmer"></div>
-      </div>
-    </main>
-    <footer id="footer">
-      <div class="inner">
-        <div class="widgets">
-          
-<div class="rpost pjax">
-  <h2>随机文章</h2>
-  <ul>
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/web/" title="分类于 web">web</a>
-</div>
-
-    <span><a href="/2020/12/09/%E5%88%9D%E5%AD%A6XSS/" title="初学XSS">初学XSS</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/web%E5%AE%89%E5%85%A8/" title="分类于 web安全">web安全</a>
-</div>
-
-    <span><a href="/2020/12/07/%E5%86%8D%E5%AD%A6SQLinjection/" title="再学SQLinjection">再学SQLinjection</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/mysql/" title="分类于 mysql">mysql</a>
-</div>
-
-    <span><a href="/2020/12/04/get%E4%B8%80%E4%B8%AAmysql%E7%9F%A5%E8%AF%86/" title="get一个mysql知识">get一个mysql知识</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/python/" title="分类于 python">python</a>
-</div>
-
-    <span><a href="/2021/01/12/Python-converts-pictures-into-character-drawings/" title="Python converts pictures into character drawings">Python converts pictures into character drawings</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/RE-Reverse-Engine/" title="分类于 RE(Reverse Engine)">RE(Reverse Engine)</a>
-</div>
-
-    <span><a href="/2020/11/26/windowsPE/" title="windowsPE">windowsPE</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/python/" title="分类于 python">python</a>
-</div>
-
-    <span><a href="/2020/12/02/python%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B/" title="python进程线程">python进程线程</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/web%E5%AE%89%E5%85%A8/" title="分类于 web安全">web安全</a>
-</div>
-
-    <span><a href="/2021/01/18/awesome-web-security/" title="Awesome Web Security【转】">Awesome Web Security【转】</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/python/" title="分类于 python">python</a>
-</div>
-
-    <span><a href="/2020/12/18/python-%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" title="python 期末复习">python 期末复习</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/web/" title="分类于 web">web</a>
-</div>
-
-    <span><a href="/2020/12/28/Learning-from-xpath/" title="Learning from xpath">Learning from xpath</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/web%E5%AE%89%E5%85%A8/" title="分类于 web安全">web安全</a>
-</div>
-
-    <span><a href="/2020/12/05/SQLMAP%E6%80%BB%E7%BB%93/" title="SQLMAP总结">SQLMAP总结</a></span>
-  </li>
-
-  </ul>
-</div>
-<div>
-  <h2>最新评论</h2>
-  <ul class="leancloud-recent-comment"></ul>
-</div>
-
-        </div>
-        <div class="status">
-  <div class="copyright">
-    
-    &copy; 2010 – 
-    <span itemprop="copyrightYear">2021</span>
-    <span class="with-love">
-      <i class="ic i-sakura rotate"></i>
-    </span>
-    <span class="author" itemprop="copyrightHolder">1asy @ Yume Shoka</span>
-  </div>
-  <div class="powered-by">
-    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
-  </div>
-</div>
-
-      </div>
-    </footer>
-  </div>
-<script data-config type="text/javascript">
-  var LOCAL = {
-    path: '2021/01/18/RedTeamer/',
-    favicon: {
-      show: "（●´3｀●）やれやれだぜ",
-      hide: "(´Д｀)大変だ！"
-    },
-    search : {
-      placeholder: "文章搜索",
-      empty: "关于 「 ${query} 」，什么也没搜到",
-      stats: "${time} ms 内找到 ${hits} 条结果"
-    },
-    valine: true,fancybox: true,copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
-    ignores : [
-      function(uri) {
-        return uri.includes('#');
-      },
-      function(uri) {
-        return new RegExp(LOCAL.path+"$").test(uri);
-      }
-    ]
-  };
-</script>
-
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
-
-<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
-
-<script src="/js/app.js?v=0.2.5"></script>
-
-
-
-
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script></body>
-</html>
+</code></pre><div class="tags"><a href="/tags/RedTeam/" rel="tag"><i class="ic i-tag"></i> RedTeam</a></div></div><footer><div class="meta"><span class="item"><span class="icon"><i class="ic i-calendar-check"></i> </span><span class="text">更新于</span> <time title="修改时间：2021-01-18 15:57:42" itemprop="dateModified" datetime="2021-01-18T15:57:42+08:00">2021-01-18</time> </span><span id="2021/01/18/RedTeamer/" class="item leancloud_visitors" data-flag-title="红方人员实战手册【转】" title="阅读次数"><span class="icon"><i class="ic i-eye"></i> </span><span class="text">阅读次数</span> <span class="leancloud-visitors-count"></span> <span class="text">次</span></span></div><div class="reward"><button><i class="ic i-heartbeat"></i> 赞赏</button><p>请我喝[茶]~(￣▽￣)~*</p><div id="qr"><div><img data-src="/images/reward.jpg" alt="1asy 支付宝"><p>支付宝</p></div></div></div><div id="copyright"><ul><li class="author"><strong>本文作者： </strong>1asy <i class="ic i-at"><em>@</em></i>1asy</li><li class="link"><strong>本文链接：</strong> <a href="https://self-ferry.github.io/2021/01/18/RedTeamer/" title="红方人员实战手册【转】">https://self-ferry.github.io/2021/01/18/RedTeamer/</a></li><li class="license"><strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li></ul></div></footer></article></div><div class="post-nav"><div class="item left"><a href="/2021/01/18/AD-Attack-Defense/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipey0a334j20zk0m8qpt.jpg" title="Active Directory Kill Chain Attack &amp; Defense【转】"><span class="type">上一篇</span> <span class="category"><i class="ic i-flag"></i> 网络安全</span><h3>Active Directory Kill Chain Attack & Defense【转】</h3></a></div><div class="item right"><a href="/2021/01/18/redteam-notebook/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeyhsblkj20zk0m81kx.jpg" title="redteam-notebook【转】"><span class="type">下一篇</span> <span class="category"><i class="ic i-flag"></i> 网络安全</span><h3>redteam-notebook【转】</h3></a></div></div><div class="wrap" id="comments"></div></div><div id="sidebar"><div class="inner"><div class="panels"><div class="inner"><div class="contents panel pjax" data-title="文章目录"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%A2%E6%96%B9%E4%BA%BA%E5%91%98%E5%AE%9E%E6%88%98%E6%89%8B%E5%86%8C"><span class="toc-number">1.</span> <span class="toc-text">红方人员实战手册</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A3%B0%E6%98%8E"><span class="toc-number">1.1.</span> <span class="toc-text">声明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E4%BA%AB%E5%88%9D%E8%A1%B7"><span class="toc-number">1.2.</span> <span class="toc-text">分享初衷</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%91%E8%AF%9D%E8%AF%B4%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="toc-number">1.3.</span> <span class="toc-text">丑话说在前面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B4%E6%98%8E"><span class="toc-number">1.4.</span> <span class="toc-text">说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A5%E5%B8%B8%E6%B5%81%E7%A8%8B%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E"><span class="toc-number">1.5.</span> <span class="toc-text">日常流程简要说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-%E5%85%A5%E5%8F%A3%E6%9D%83%E9%99%90%E8%8E%B7%E5%8F%96-%E5%89%8D%E6%9C%9F%E4%BE%A6%E5%AF%9F%E6%90%9C%E9%9B%86%E9%98%B6%E6%AE%B5%E6%9C%AC%E8%BA%AB%E5%B0%B1%E4%B8%8D%E5%AD%98%E5%9C%A8%E5%A4%AA%E5%A4%9A%E5%8F%AF%E9%98%B2%E5%BE%A1%E7%9A%84%E7%82%B9%E9%9D%9E%E9%98%B2%E5%BE%A1%E9%87%8D%E5%BF%83"><span class="toc-number">1.6.</span> <span class="toc-text">0x01 入口权限获取 [前期侦察，搜集阶段本身就不存在太多可防御的点，非防御重心]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-%E5%85%A5%E5%8F%A3%E6%9D%83%E9%99%90%E8%8E%B7%E5%8F%96-%E5%A4%96%E9%83%A8%E9%98%B2%E5%BE%A1%E9%87%8D%E5%BF%83-%E9%87%8D%E4%B8%AD%E4%B9%8B%E9%87%8D"><span class="toc-number">1.7.</span> <span class="toc-text">0x02 入口权限获取 [外部防御重心 ( &quot;重中之重&quot;) ]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E5%90%84%E7%B1%BBjava%E4%B8%AD%E9%97%B4%E4%BB%B6%E7%9A%84%E5%90%84%E7%A7%8D%E5%B7%B2%E7%9F%A5nday%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-number">1.8.</span> <span class="toc-text">针对各类 Java 中间件的各种已知 Nday 漏洞利用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E5%90%84%E7%B1%BBwindows-php%E9%9B%86%E6%88%90%E7%8E%AF%E5%A2%83-%E7%94%B1%E4%BA%8E%E6%AD%A4%E7%B1%BB%E7%8E%AF%E5%A2%83%E6%8B%BF%E5%88%B0%E7%9A%84webshell%E6%9D%83%E9%99%90%E7%9B%B8%E5%AF%B9%E8%BE%83%E9%AB%98%E6%89%80%E4%BB%A5%E9%80%9A%E5%B8%B8%E4%B9%9F%E6%98%AF%E7%BA%A2%E9%98%9F%E4%BA%BA%E5%91%98%E7%9A%84%E9%A6%96%E9%80%89%E7%AA%81%E7%A0%B4%E5%8F%A3"><span class="toc-number">1.9.</span> <span class="toc-text">针对各类 Windows php 集成环境 [由于此类环境拿到的 Webshell 权限相对较高，所以，通常也是红队人员的首选突破口]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E5%90%84%E7%B1%BB%E5%BC%80%E6%BA%90%E7%A8%8B%E5%BA%8F%E7%9A%84-%E5%B7%B2%E7%9F%A5nday%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-number">1.10.</span> <span class="toc-text">针对各类开源程序的 已知 Nday 漏洞利用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E5%85%B6%E5%AE%83%E5%90%84%E7%B1%BBweb%E7%BB%84%E4%BB%B6%E7%9A%84-%E5%B7%B2%E7%9F%A5nday%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-number">1.11.</span> <span class="toc-text">针对其它各类 Web 组件的 已知 Nday 漏洞利用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%84%E7%A7%8D%E8%83%BD%E5%BF%AB%E9%80%9Fgetshell%E7%9A%84%E5%B8%B8%E8%A7%84%E5%9F%BA%E7%A1%80web%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8-%E6%B3%A8-%E6%9C%89%E4%BA%9B%E6%BC%8F%E6%B4%9E%E5%9C%A8%E4%B8%8D%E5%AE%A1%E4%BB%A3%E7%A0%81%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%E5%85%B6%E5%AE%9E%E6%98%AF%E5%BE%88%E9%9A%BE%E6%9C%89%E6%95%88%E7%9B%B2%E6%B5%8B%E5%88%B0%E7%9A%84"><span class="toc-number">1.12.</span> <span class="toc-text">各种能快速 getshell 的常规基础 Web 漏洞利用 [注：有些漏洞在不审代码的情况下其实是很难有效盲测到的]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E5%90%84%E7%B1%BB%E8%BE%B9%E7%95%8C%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E7%9A%84%E5%90%84%E7%A7%8D%E5%88%A9%E7%94%A8%E4%B8%BB%E8%A6%81%E6%98%AFweb%E7%AE%A1%E7%90%86%E6%8E%A7%E5%88%B6%E5%8F%B0%E7%99%BB%E5%BD%95%E5%BC%B1%E5%8F%A3%E4%BB%A4-%E5%8F%8A-%E5%90%84%E7%B1%BB%E5%B7%B2%E7%9F%A5nday%E6%94%BB%E5%87%BB%E5%88%A9%E7%94%A8"><span class="toc-number">1.13.</span> <span class="toc-text">针对各类边界网络设备的各种利用，主要是 Web 管理控制台登录弱口令 及 各类已知 nday 攻击利用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-%E5%85%A5%E5%8F%A3%E6%9D%83%E9%99%90%E8%8E%B7%E5%8F%96-%E4%B8%93%E9%97%A8%E9%92%88%E5%AF%B9%E5%90%84%E7%B1%BB%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%8F%A3%E7%9A%84%E5%90%84%E7%A7%8Dgetshell%E5%88%A9%E7%94%A8%E9%98%B2%E5%BE%A1%E9%87%8D%E7%82%B9-%E9%87%8D%E4%B8%AD%E4%B9%8B%E9%87%8D"><span class="toc-number">1.14.</span> <span class="toc-text">0x03 入口权限获取 [专门针对各类基础服务端口的各种 getshell 利用，防御重点 ( &quot;重中之重&quot;) ]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x04-%E5%85%A5%E5%8F%A3%E6%9D%83%E9%99%90%E8%8E%B7%E5%8F%96"><span class="toc-number">1.15.</span> <span class="toc-text">0x04 入口权限获取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%A0%E7%BB%9F%E9%92%93%E9%B1%BC%E6%94%BB%E5%87%BB%E5%88%A9%E7%94%A8%E5%AE%9E%E9%99%85%E6%8A%A4%E7%BD%91%E5%9C%BA%E6%99%AF%E4%B8%AD%E7%94%A8%E7%9A%84%E9%9D%9E%E5%B8%B8%E9%A2%91%E7%B9%81%E7%BB%86%E8%8A%82%E9%9D%9E%E5%B8%B8%E5%A4%9A%E6%AD%A4%E5%A4%84%E4%B8%8D%E4%B8%80%E4%B8%80%E5%88%97%E4%B8%BE%E9%98%B2%E5%BE%A1%E9%87%8D%E7%82%B9"><span class="toc-number">1.16.</span> <span class="toc-text">传统钓鱼攻击利用，实际护网场景中用的非常频繁，细节非常多，此处不一一列举，防御重点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x05-%E4%B8%BB%E6%9C%BA%E5%AE%89%E5%85%A8-%E6%8F%90%E6%9D%83%E5%88%A9%E7%94%A8%E9%98%B2%E5%BE%A1%E9%87%8D%E7%82%B9"><span class="toc-number">1.17.</span> <span class="toc-text">0x05 主机安全 [提权利用，防御重点]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x06-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8-%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86%E9%98%B2%E5%BE%A1%E9%87%8D%E7%82%B9%E5%8F%AF%E5%9C%A8%E6%AD%A4%E9%A1%B9%E4%B8%A5%E6%A0%BC%E9%99%90%E5%88%B6%E5%90%84%E7%A7%8D%E7%B3%BB%E7%BB%9F%E5%86%85%E7%BD%AE%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-number">1.18.</span> <span class="toc-text">0x06 内网安全 [敏感信息搜集，防御重点，可在此项严格限制各种系统内置命令执行]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x07-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8-%E5%90%84%E7%B1%BB%E6%95%8F%E6%84%9F%E5%87%AD%E8%AF%81-%E6%90%9C%E9%9B%86-%E4%B8%8E-%E7%AA%83%E5%8F%96"><span class="toc-number">1.19.</span> <span class="toc-text">0x07 内网安全 [各类敏感凭证 &quot;搜集&quot; 与 &quot;窃取&quot;]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x08-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8-%E5%86%85%E7%BD%91%E5%B8%B8%E7%94%A8-%E9%9A%A7%E9%81%93-%E8%BD%AC%E5%8F%91-%E4%BB%A3%E7%90%86-%E7%A9%BF%E9%80%8F%E6%89%8B%E6%B3%95-%E6%8F%90%E7%82%BC%E6%B1%87%E6%80%BB-%E9%98%B2%E5%BE%A1%E9%87%8D%E7%82%B9"><span class="toc-number">1.20.</span> <span class="toc-text">0x08 内网安全 [内网常用 &quot;隧道&quot;&quot; &#x2F; &quot;转发&quot;&quot; &#x2F; &quot;代理&quot;&quot; 穿透手法 提炼汇总 ，防御重点]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x09-%E5%9F%9F%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8-%E5%9F%9F%E5%86%85%E5%B8%B8%E7%94%A8%E6%94%BB%E5%87%BB%E6%89%8B%E6%B3%95-%E5%9F%9F%E6%B8%97%E9%80%8F-%E6%8F%90%E7%82%BC%E6%B1%87%E6%80%BB%E9%98%B2%E5%BE%A1%E9%87%8D%E7%82%B9"><span class="toc-number">1.21.</span> <span class="toc-text">0x09 域内网安全 [域内常用攻击手法 ( 域渗透)，提炼汇总，防御重点 ]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x10-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8-%E8%B7%A8%E5%B9%B3%E5%8F%B0%E6%A8%AA%E5%90%91%E6%B8%97%E9%80%8F-%E8%BF%9C%E7%A8%8B%E6%89%A7%E8%A1%8C%E9%98%B2%E5%BE%A1%E9%87%8D%E7%82%B9-%E9%87%8D%E4%B8%AD%E4%B9%8B%E9%87%8D"><span class="toc-number">1.22.</span> <span class="toc-text">0x10 内网安全 [跨平台横向渗透 (远程执行)，防御重点 ( &quot;重中之重&quot; ) ]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x11-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8-%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81%E9%98%B2%E5%BE%A1%E9%87%8D%E7%82%B9-%E6%B3%A8-%E6%9C%89%E4%BA%9B%E7%BB%86%E8%8A%82%E6%AD%A4%E5%A4%84%E5%B9%B6%E6%9C%AA%E5%B1%95%E5%BC%80%E8%AF%A6%E7%BB%86%E8%AF%B4%E6%98%8E"><span class="toc-number">1.23.</span> <span class="toc-text">0x11 内网安全 [权限维持，防御重点] [ 注：有些细节此处并未展开详细说明 ]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x12-%E7%97%95%E8%BF%B9%E5%A4%84%E7%90%86"><span class="toc-number">1.24.</span> <span class="toc-text">0x12 痕迹处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x13-%E5%90%84%E7%B1%BB%E5%B8%B8%E7%94%A8-c2-%E6%B8%97%E9%80%8F-%E6%A1%86%E6%9E%B6"><span class="toc-number">1.25.</span> <span class="toc-text">0x13 各类常用 C2 &#x2F; 渗透 框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x14-%E5%90%84%E7%B1%BB%E5%B8%B8%E7%94%A8-webshell%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7"><span class="toc-number">1.26.</span> <span class="toc-text">0x14 各类常用 Webshell 管理工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x15-%E5%85%8D%E6%9D%80-%E5%8F%8A-%E5%90%84%E7%B1%BB%E9%98%B2%E7%81%AB%E5%A2%99%E5%AF%B9%E6%8A%97"><span class="toc-number">1.27.</span> <span class="toc-text">0x15 免杀 及 各类防火墙对抗</span></a></li></ol></li></ol></div><div class="related panel pjax" data-title="系列文章"><ul><li><a href="/2021/01/18/Awesome-Red-Teaming/" rel="bookmark" title="Awesome Red Teaming【转】">Awesome Red Teaming【转】</a></li><li><a href="/2021/01/18/AD-Attack-Defense/" rel="bookmark" title="Active Directory Kill Chain Attack & Defense【转】">Active Directory Kill Chain Attack & Defense【转】</a></li><li class="active"><a href="/2021/01/18/RedTeamer/" rel="bookmark" title="红方人员实战手册【转】">红方人员实战手册【转】</a></li><li><a href="/2021/01/18/redteam-notebook/" rel="bookmark" title="redteam-notebook【转】">redteam-notebook【转】</a></li></ul></div><div class="overview panel" data-title="站点概览"><div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person"><img class="image" itemprop="image" alt="1asy" data-src="/images/avatar.jpg"><p class="name" itemprop="name">1asy</p><div class="description" itemprop="description">临渊羡鱼，不如退而结网</div></div><nav class="state"><div class="item posts"><a href="/archives/"><span class="count">39</span> <span class="name">文章</span></a></div><div class="item categories"><a href="/categories/"><span class="count">14</span> <span class="name">分类</span></a></div><div class="item tags"><a href="/tags/"><span class="count">45</span> <span class="name">标签</span></a></div></nav><div class="social"><span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NlbGYtZmVycnk=" title="https:&#x2F;&#x2F;github.com&#x2F;self-ferry"><i class="ic i-github"></i></span> <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;yourname"><i class="ic i-twitter"></i></span> <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yourname"><i class="ic i-zhihu"></i></span> <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPTMwNzQ1MzU2OA==" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;307453568"><i class="ic i-cloud-music"></i></span> <span class="exturl item weibo" data-url="aHR0cHM6Ly93ZWliby5jb20veW91cm5hbWU=" title="https:&#x2F;&#x2F;weibo.com&#x2F;yourname"><i class="ic i-weibo"></i></span> <span class="exturl item about" data-url="aHR0cHM6Ly9hYm91dC5tZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;about.me&#x2F;yourname"><i class="ic i-address-card"></i></span></div><ul class="menu"><li class="item"><a href="/" rel="section"><i class="ic i-home"></i>首页</a></li><li class="item"><a href="/about/" rel="section"><i class="ic i-user"></i>关于</a></li><li class="item dropdown"><a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a><ul class="submenu"><li class="item"><a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a></li><li class="item"><a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a></li><li class="item"><a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a></li><li class="item"><a href="/friends/" rel="section"><i class="ic i-heart"></i>friends</a></li><li class="item"><a href="/links/" rel="section"><i class="ic i-magic"></i>links</a></li></ul></li></ul></div></div></div><ul id="quick"><li class="prev pjax"><a href="/2021/01/18/AD-Attack-Defense/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a></li><li class="up"><i class="ic i-arrow-up"></i></li><li class="down"><i class="ic i-arrow-down"></i></li><li class="next pjax"><a href="/2021/01/18/redteam-notebook/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a></li><li class="percent"></li></ul></div></div><div class="dimmer"></div></div></main><footer id="footer"><div class="inner"><div class="widgets"><div class="rpost pjax"><h2>随机文章</h2><ul><li class="item"><div class="breadcrumb"><a href="/categories/web/" title="分类于 web">web</a></div><span><a href="/2020/12/11/PHP%E7%95%99%E8%A8%80%E6%9D%BF%E5%B0%8F%E8%AE%B0/" title="PHP留言板小记">PHP留言板小记</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" title="分类于 网络安全">网络安全</a></div><span><a href="/2021/01/18/AD-Attack-Defense/" title="Active Directory Kill Chain Attack &amp; Defense【转】">Active Directory Kill Chain Attack & Defense【转】</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/Black-Hat-python/" title="分类于 BHP">BHP</a></div><span><a href="/2020/12/01/BHP%E7%AC%AC%E4%BA%8C%E7%AB%A0(%E4%B8%80)%E2%80%94%E2%80%94%E5%8F%96%E4%BB%A3NetCat/" title="BHP第二章(一)——取代NetCat">BHP第二章(一)——取代NetCat</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/web-security/" title="分类于 web安全">web安全</a></div><span><a href="/2020/12/05/SQLMAP%E6%80%BB%E7%BB%93/" title="SQLMAP总结">SQLMAP总结</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/python/" title="分类于 python">python</a></div><span><a href="/2020/12/07/Python%E4%B8%ADread-%E3%80%81readline-%E5%92%8Creadlines-%E4%B8%89%E8%80%85%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E7%94%A8%E6%B3%95/" title="Python中read()、readline()和readlines()三者间的区别和用法">Python中read()、readline()和readlines()三者间的区别和用法</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/web-security/" title="分类于 web安全">web安全</a></div><span><a href="/2021/01/20/web%E6%BC%8F%E6%B4%9E-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" title="web漏洞-文件包含">web漏洞-文件包含</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/mysql/" title="分类于 mysql">mysql</a></div><span><a href="/2020/12/04/get%E4%B8%80%E4%B8%AAmysql%E7%9F%A5%E8%AF%86/" title="get一个mysql知识">get一个mysql知识</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/web-security/" title="分类于 web安全">web安全</a></div><span><a href="/2020/12/07/%E5%86%8D%E5%AD%A6SQLinjection/" title="再学SQLinjection">再学SQLinjection</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/web-security/" title="分类于 web安全">web安全</a></div><span><a href="/2021/01/18/awesome-web-security/" title="Awesome Web Security【转】">Awesome Web Security【转】</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/python/" title="分类于 python">python</a></div><span><a href="/2020/11/26/py-socket-experiment/" title="py_socket_experiment">py_socket_experiment</a></span></li></ul></div><div><h2>最新评论</h2><ul class="leancloud-recent-comment"></ul></div></div><div class="status"><div class="copyright">&copy; 2010 – <span itemprop="copyrightYear">2021</span> <span class="with-love"><i class="ic i-sakura rotate"></i> </span><span class="author" itemprop="copyrightHolder">1asy @ Fiction</span></div><div class="count"><span class="post-meta-item-icon"><i class="ic i-chart-area"></i> </span><span title="站点总字数">354k 字</span> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="ic i-coffee"></i> </span><span title="站点阅读时长">5:22</span></div><div class="powered-by">基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span></div></div></div></footer></div><script data-config type="text/javascript">var LOCAL={path:"2021/01/18/RedTeamer/",favicon:{show:"（●´3｀●）やれやれだぜ",hide:"(´Д｀)大変だ！"},search:{placeholder:"文章搜索",empty:"关于 「 ${query} 」，什么也没搜到",stats:"${time} ms 内找到 ${hits} 条结果"},valine:!0,fancybox:!0,copyright:'复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',ignores:[function(e){return e.includes("#")},function(e){return new RegExp(LOCAL.path+"$").test(e)}]}</script><script src="https://cdn.polyfill.io/v2/polyfill.js"></script><script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script><script src="/js/app.js?v=0.2.5"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({pluginRootPath:"live2dw/",pluginJsPath:"lib/",pluginModelPath:"assets/",tagMode:!1,debug:!1,model:{scale:1,hHeadPos:.5,vHeadPos:.618,jsonPath:"/live2dw/assets/koharu.model.json"},display:{superSample:2,width:150,height:300,position:"right",hOffset:0,vOffset:-20},mobile:{show:!0,scale:.5},react:{opacityDefault:.7,opacityOnHover:.8},log:!1})</script></body></html><!-- rebuild by hrmmi -->
