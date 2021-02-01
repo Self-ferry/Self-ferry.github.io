@@ -8,8 +8,106 @@
     <author>
       <name>1asy</name>
     </author>
-    <updated>2021-01-27T15:43:48.000Z</updated>
+    <updated>2021-02-01T11:54:22.000Z</updated>
     <category term="学习" />
+    <entry>
+        <id>https://self-ferry.github.io/2021/02/01/web%E6%BC%8F%E6%B4%9E-SSRF/</id>
+        <title>web漏洞-SSRF</title>
+        <link rel="alternate" href="https://self-ferry.github.io/2021/02/01/web%E6%BC%8F%E6%B4%9E-SSRF/"/>
+        <content type="html">&lt;p&gt;&lt;span class=&#34;label success&#34;&gt;✔️嘘，请安静&lt;/span&gt;&lt;/p&gt;
+&lt;div class=&#34;media-container&#34;&gt;&lt;div class=&#34;player&#34; data-type=&#34;audio&#34; data-src=&#39;[{&#34;title&#34;:&#34;列表 1&#34;,&#34;list&#34;:[&#34;https://music.163.com/#/song?id=1355292203&#34;]}]&#39;&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h1 id=&#34;&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#&#34;&gt;#&lt;/a&gt; &lt;/h1&gt;
+</content>
+        <category term="web安全" scheme="https://self-ferry.github.io/categories/web-security/" />
+        <category term="SSRF" scheme="https://self-ferry.github.io/tags/SSRF/" />
+        <updated>2021-02-01T11:54:22.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://self-ferry.github.io/2021/02/01/web%E6%BC%8F%E6%B4%9E-CSRF/</id>
+        <title>web漏洞-CSRF</title>
+        <link rel="alternate" href="https://self-ferry.github.io/2021/02/01/web%E6%BC%8F%E6%B4%9E-CSRF/"/>
+        <content type="html">&lt;p&gt;&lt;span class=&#34;label success&#34;&gt;✔️嘘，请安静&lt;/span&gt;&lt;/p&gt;
+&lt;div class=&#34;media-container&#34;&gt;&lt;div class=&#34;player&#34; data-type=&#34;audio&#34; data-src=&#39;[{&#34;title&#34;:&#34;列表 1&#34;,&#34;list&#34;:[&#34;https://music.163.com/#/song?id=1334246005&#34;]}]&#39;&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h1 id=&#34;csrf概念&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#csrf概念&#34;&gt;#&lt;/a&gt; CSRF 概念&lt;/h1&gt;
+&lt;p&gt;CSRF 跨站点请求伪造 (Cross—Site Request Forgery)，跟 XSS 攻击一样，存在巨大的危害性，你可以这样来理解：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;攻击者盗用了你的身份，以你的名义发送恶意请求，对服务器来说这个请求是完全合法的，但是却完成了攻击者所期望的一个操作，比如以你的名义发送邮件、发消息，盗取你的账号，添加系统管理员，甚至于购买商品、虚拟货币转账等。 如下：其中 Web A 为存在 CSRF 漏洞的网站，Web B 为攻击者构建的恶意网站，User C 为 Web A 网站的合法用户。尽管听起来跟 XSS 跨站脚本攻击有点相似，但事实上 CSRF 与 XSS 差别很大，XSS 利用的是站点内的信任用户，而 CSRF 则是通过伪装来自受信任用户的请求来利用受信任的网站。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;csrf攻击示意图&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#csrf攻击示意图&#34;&gt;#&lt;/a&gt; CSRF 攻击示意图&lt;/h1&gt;
+&lt;p&gt;&lt;img data-src=&#34;image001.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;首先用户 C 浏览并登录了受信任站点 A；&lt;br /&gt;
+登录信息验证通过以后，站点 A 会在返回给浏览器的信息中带上已登录的 cookie，cookie 信息会在浏览器端保存一定时间（根据服务端设置而定）；&lt;br /&gt;
+完成这一步以后，用户在没有登出（清除站点 A 的 cookie）站点 A 的情况下，访问恶意站点 B；&lt;br /&gt;
+这时恶意站点 B 的某个页面向站点 A 发起请求，而这个请求会带上浏览器端所保存的站点 A 的 cookie；&lt;br /&gt;
+站点 A 根据请求所带的 cookie，判断此请求为用户 C 所发送的。&lt;br /&gt;
+因此，站点 A 会报据用户 C 的权限来处理恶意站点 B 所发起的请求，而这个请求可能以用户 C 的身份发送 邮件、短信、消息，以及进行转账支付等操作，这样恶意站点 B 就达到了伪造用户 C 请求站点 A 的目的。&lt;br /&gt;
+受害者只需要做下面两件事情，攻击者就能够完成 CSRF 攻击：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;登录受信任站点 A，并在本地生成 cookie；&lt;/li&gt;
+&lt;li&gt;在不登出站点 A（清除站点 A 的 cookie）的情况下，访问恶意站点 B。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;很多情况下所谓的恶意站点，很有可能是一个存在其他漏洞（如 XSS）的受信任且被很多人访问的站点，这样，普通用户可能在不知不觉中便成为了受害者。&lt;/p&gt;
+&lt;h1 id=&#34;csrf漏洞检测&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#csrf漏洞检测&#34;&gt;#&lt;/a&gt; CSRF 漏洞检测：&lt;/h1&gt;
+&lt;p&gt;检测 CSRF 漏洞是一项比较繁琐的工作，最简单的方法就是抓取一个正常请求的数据包，去掉 Referer 字段后再重新提交，如果该提交还有效，那么基本上可以确定存在 CSRF 漏洞。&lt;/p&gt;
+&lt;p&gt;随着对 CSRF 漏洞研究的不断深入，不断涌现出一些专门针对 CSRF 漏洞进行检测的工具，如 CSRFTester，CSRF Request Builder 等。&lt;/p&gt;
+&lt;p&gt;以 CSRFTester 工具为例，CSRF 漏洞检测工具的测试原理如下：使用 CSRFTester 进行测试时，首先需要抓取我们在浏览器中访问过的所有链接以及所有的表单等信息，然后通过在 CSRFTester 中修改相应的表单等信息，重新提交，这相当于一次伪造客户端请求。如果修改后的测试请求成功被网站服务器接受，则说明存在 CSRF 漏洞，当然此款工具也可以被用来进行 CSRF 攻击。&lt;/p&gt;
+&lt;p&gt;客户端访问服务器时没有同服务器做安全验证&lt;/p&gt;
+&lt;p&gt;一切 http 参数可控&lt;/p&gt;
+&lt;p&gt;详细 CSRF 检测见&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxOTAxMTIyL2FydGljbGUvZGV0YWlscy8xMDY0MDg3MTQ=&#34;&gt; https://blog.csdn.net/qq_41901122/article/details/106408714&lt;/span&gt;&lt;/p&gt;
+&lt;h1 id=&#34;防御csrf攻击&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#防御csrf攻击&#34;&gt;#&lt;/a&gt; 防御 CSRF 攻击&lt;/h1&gt;
+&lt;h2 id=&#34;尽量使用post限制get&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#尽量使用post限制get&#34;&gt;#&lt;/a&gt; 尽量使用 POST，限制 GET&lt;/h2&gt;
+&lt;p&gt;GET 接口太容易被拿来做 CSRF 攻击，看上面示例就知道，只要构造一个 img 标签，而 img 标签又是不能过滤的数据。接口最好限制为 POST 使用，GET 则无效，降低攻击风险。&lt;br /&gt;
+当然 POST 并不是万无一失，攻击者只要构造一个 form 就可以，但需要在第三方页面做，这样就增加暴露的可能性。&lt;/p&gt;
+&lt;h2 id=&#34;将cookie设置为httponly&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#将cookie设置为httponly&#34;&gt;#&lt;/a&gt; 将 cookie 设置为 HttpOnly&lt;/h2&gt;
+&lt;p&gt;CRSF 攻击很大程度上是利用了浏览器的 cookie，为了防止站内的 XSS 漏洞盗取 cookie, 需要在 cookie 中设置 “HttpOnly” 属性，这样通过程序（如 JavaScript 脚本、Applet 等）就无法读取到 cookie 信息，避免了攻击者伪造 cookie 的情况出现。&lt;br /&gt;
+在 Java 的 Servlet 的 API 中设置 cookie 为 HttpOnly 的代码如下：&lt;br /&gt;
+ &lt;code&gt;response.setHeader( &amp;quot;Set-Cookie&amp;quot;, &amp;quot;cookiename=cookievalue;HttpOnly&amp;quot;);&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;增加token&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#增加token&#34;&gt;#&lt;/a&gt; 增加 token&lt;/h2&gt;
+&lt;p&gt;CSRF 攻击之所以能够成功，是因为攻击者可以伪造用户的请求，该请求中所有的用户验证信息都存在于 cookie 中，因此攻击者可以在不知道用户验证信息的情况下直接利用用户的 cookie 来通过安全验证。由此可知，抵御 CSRF 攻击的关键在于：在请求中放入攻击者所不能伪造的信息，并且该信总不存在于 cookie 之中。鉴于此，系统开发人员可以在 HTTP 请求中以参数的形式加入一个随机产生的 token，并在服务端进行 token 校验，如果请求中没有 token 或者 token 内容不正确，则认为是 CSRF 攻击而拒绝该请求。&lt;br /&gt;
+假设请求通过 POST 方式提交，则可以在相应的表单中增加一个隐藏域：&lt;br /&gt;
+ &lt;code&gt;&amp;lt;input type=&amp;quot;hidden&amp;quot; name=&amp;quot;_toicen&amp;quot; value=&amp;quot;tokenvalue&amp;quot;/&amp;gt;&lt;/code&gt; &lt;br /&gt;
+token 的值通过服务端生成，表单提交后 token 的值通过 POST 请求与参数一同带到服务端，每次会话可以使用相同的 token，会话过期，则 token 失效，攻击者因无法获取到 token，也就无法伪造请求。&lt;br /&gt;
+在 session 中添加 token 的实现代码：&lt;/p&gt;
+&lt;figure class=&#34;highlight php&#34;&gt;&lt;figcaption data-lang=&#34;PHP&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;HttpSession session &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; request&lt;span class=&#34;token operator&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;getSession&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword type-declaration&#34;&gt;Object&lt;/span&gt; token &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; session&lt;span class=&#34;token operator&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;getAttribute&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string double-quoted-string&#34;&gt;&#34;_token&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;token &lt;span class=&#34;token operator&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;token constant&#34;&gt;null&lt;/span&gt; &lt;span class=&#34;token constant&#34;&gt;I&lt;/span&gt; &lt;span class=&#34;token constant&#34;&gt;I&lt;/span&gt; &lt;span class=&#34;token string double-quoted-string&#34;&gt;&#34;&#34;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;equals&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;token&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    session&lt;span class=&#34;token operator&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;setAttribute&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string double-quoted-string&#34;&gt;&#34;_token&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token constant&#34;&gt;UUID&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;.&lt;/span&gt;randomUUIDO &lt;span class=&#34;token operator&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;toString&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h2 id=&#34;通过referer识别&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#通过referer识别&#34;&gt;#&lt;/a&gt; 通过 Referer 识别&lt;/h2&gt;
+&lt;p&gt;根据 HTTP 协议，在 HTTP 头中有一个字段叫 Referer，它记录了该 HTTP 请求的来源地址。在通常情况下，访问一个安全受限的页面的请求都来自于同一个网站。比如某银行的转账是通过用户访问 &lt;code&gt;http://www.xxx.com/transfer.do&lt;/code&gt;  页面完成的，用户必须先登录 &lt;code&gt;www.xxx.com&lt;/code&gt; ，然后通过单击页面上的提交按钮来触发转账事件。当用户提交请求时，该转账请求的 Referer 值就会是&lt;br /&gt;
+提交按钮所在页面的 URL（本例为 &lt;code&gt;www.xxx. com/transfer.do&lt;/code&gt; ）。如果攻击者要对银行网站实施 CSRF 攻击，他只能在其他网站构造请求，当用户通过其他网站发送请求到银行时，该请求的 Referer 的值是其他网站的地址，而不是银行转账页面的地址。因此，要防御 CSRF 攻击，银行网站只需要对于每一个转账请求验证其 Referer 值即可，如果是以 &lt;code&gt;www.xx.om&lt;/code&gt;  域名开头的地址，则说明该请求是来自银行网站自己的请求，是合法的；如果 Referer 是其他网站，就有可能是 CSRF 攻击，则拒绝该请求。&lt;br /&gt;
+取得 HTTP 请求 Referer：&lt;br /&gt;
+ &lt;code&gt;String referer = request.getHeader(&amp;quot;Referer&amp;quot;);&lt;/code&gt;&lt;/p&gt;
+&lt;h1 id=&#34;csrf-绕过referer技巧&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#csrf-绕过referer技巧&#34;&gt;#&lt;/a&gt; CSRF-- 绕过 Referer 技巧&lt;/h1&gt;
+&lt;p&gt;CSRF 遇到 Referer 绕过的情况，有条件限制，不一定所有的 Refere 验证就可以绕过&lt;/p&gt;
+&lt;h2 id=&#34;referer条件为空条件时&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#referer条件为空条件时&#34;&gt;#&lt;/a&gt; referer 条件为空条件时&lt;/h2&gt;
+&lt;p&gt;解决方案:&lt;/p&gt;
+&lt;p&gt;利用 &lt;code&gt;ftp://, http://, https://, file://, javascript:, data: &lt;/code&gt; &lt;br /&gt;
+这个时候浏览器地址栏是 &lt;code&gt;file://&lt;/code&gt;  开头的，如果这个 HTML 页面向任何 http 站点提交请求的话，这些请求的 Referer 都是空的。&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;label&#34;&gt;例:&lt;/span&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;利用 data: 协议&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&#34;highlight html&#34;&gt;&lt;figcaption data-lang=&#34;HTML&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;html&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;body&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;iframe&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;data:text/html;base64,PGZvcm0gbWV0aG9kPXBvc3QgYWN0aW9uPWh0dHA6Ly9hLmIuY29tL2Q+PGlucHV0IHR5cGU9dGV4dCBuYW1lPSdpZCcgdmFsdWU9JzEyMycvPjwvZm9ybT48c2NyaXB0PmRvY3VtZW50LmZvcm1zWzBdLnN1Ym1pdCgpOzwvc2NyaXB0Pg==&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;body&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;html&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;bese64 编码 解码即可看到代码&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;利用 https 协议&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;https 向 http 跳转的时候 Referer 为空&lt;br /&gt;
+拿一个 https 的 webshell&lt;br /&gt;
+ &lt;code&gt;&amp;lt;iframe src=&amp;quot;https://xxxxx.xxxxx/attack.php&amp;quot;&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;attack.php 写上 CSRF 攻击代码&lt;/p&gt;
+&lt;h2 id=&#34;判断referer是某域情况下绕过&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#判断referer是某域情况下绕过&#34;&gt;#&lt;/a&gt; 判断 Referer 是某域情况下绕过&lt;/h2&gt;
+&lt;p&gt;比如你找的 csrf 是 &lt;code&gt;http://xxx.com&lt;/code&gt;  验证的 referer 是验证的 &lt;code&gt;*.http://xx.com&lt;/code&gt;  可以找个二级域名 之后 &lt;code&gt;&amp;lt;img &amp;quot;csrf地址&amp;quot;&amp;gt;&lt;/code&gt;  之后在把文章地址发出去 就可以伪造。&lt;/p&gt;
+&lt;h2 id=&#34;判断referer是否存在某关键字&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#判断referer是否存在某关键字&#34;&gt;#&lt;/a&gt; 判断 referer 是否存在某关键字&lt;/h2&gt;
+&lt;p&gt;referer 判断存在不存在 &lt;code&gt;http://google.com&lt;/code&gt;  这个关键词&lt;/p&gt;
+&lt;p&gt;在网站新建一个 &lt;code&gt;http://google.com&lt;/code&gt;  目录 把 CSRF 存放在 &lt;code&gt;http://google.com&lt;/code&gt;  目录，即可绕过&lt;/p&gt;
+&lt;h2 id=&#34;判断referer是否含有某域名&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#判断referer是否含有某域名&#34;&gt;#&lt;/a&gt; 判断 referer 是否含有某域名&lt;/h2&gt;
+&lt;p&gt;判断了 Referer 开头是否以 &lt;code&gt;http://126.com&lt;/code&gt;  以及 126 子域名 不验证根域名为 &lt;code&gt;http://126.com&lt;/code&gt;  那么我这里可以构造子域名 &lt;code&gt;http://x.126.com.xxx.com&lt;/code&gt;  作为蠕虫传播的载体服务器，即可绕过。&lt;/p&gt;
+&lt;h1 id=&#34;reference&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#reference&#34;&gt;#&lt;/a&gt; Reference&lt;/h1&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC82NzQwOGQ3M2M2NmQ=&#34;&gt;https://www.jianshu.com/p/67408d73c66d&lt;/span&gt;&lt;br /&gt;
+&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNjA2OTczL2FydGljbGUvZGV0YWlscy84NjUwNDc0Nw==&#34;&gt;https://blog.csdn.net/qq_41606973/article/details/86504747&lt;/span&gt;&lt;br /&gt;
+&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRjaGF0LmNzZG4ubmV0L2FjdGl2aXR5LzVhMGJhMzQ3ZTFmNzU1NTcxNDgzZWE1YQ==&#34;&gt;https://gitchat.csdn.net/activity/5a0ba347e1f755571483ea5a&lt;/span&gt;&lt;br /&gt;
+&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vRmx1b3Jlc2NlbmNlLXRqeS9wLzYxMDAzMTAuaHRtbA==&#34;&gt;https://www.cnblogs.com/Fluorescence-tjy/p/6100310.html&lt;/span&gt;&lt;/p&gt;
+</content>
+        <category term="web安全" scheme="https://self-ferry.github.io/categories/web-security/" />
+        <category term="CSRF" scheme="https://self-ferry.github.io/tags/CSRF/" />
+        <updated>2021-02-01T11:53:47.000Z</updated>
+    </entry>
     <entry>
         <id>https://self-ferry.github.io/2021/01/27/BHP%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%88%E4%B8%89%EF%BC%89-SSH%E4%B8%8ESSH%E9%9A%A7%E9%81%93/</id>
         <title>BHP第二章（三）-SSH与SSH隧道</title>
@@ -280,9 +378,11 @@ allow_url_include = On（是否允许 include/require 远程文件）&lt;/p&gt;
 &lt;h2 id=&#34;phpinput&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#phpinput&#34;&gt;#&lt;/a&gt; php://input&lt;/h2&gt;
 &lt;p&gt;php://input 是个可以访问请求的原始数据的只读流。因为它不依赖于特定的 php.ini 指令。&lt;br /&gt;
 &lt;span class=&#34;label warning&#34;&gt;注：enctype=”multipart/form-data” 的时候 php://input 是无效的。&lt;/span&gt;&lt;/p&gt;
-&lt;h3 id=&#34;简单栗子&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#简单栗子&#34;&gt;#&lt;/a&gt; 简单栗子&lt;/h3&gt;
+&lt;h3 id=&#34;phpinput-读取post数据&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#phpinput-读取post数据&#34;&gt;#&lt;/a&gt; php://input （读取 POST 数据）&lt;/h3&gt;
+&lt;p&gt;碰到 file_get_contents () 就要想到用 php://input 绕过，因为 php 伪协议也是可以利用 http 协议的，即可以使用 POST 方式传数据，具体函数意义下一项；&lt;/p&gt;
 &lt;p&gt;测试代码&lt;/p&gt;
-&lt;figure class=&#34;highlight php&#34;&gt;&lt;figcaption data-lang=&#34;PHP&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token php language-php&#34;&gt;&lt;span class=&#34;token delimiter important&#34;&gt;&amp;lt;?php&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;file_get_contents&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string double-quoted-string&#34;&gt;&#34;php://input&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token delimiter important&#34;&gt;?&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;&lt;span class=&#34;label&#34;&gt;结果&lt;/span&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight php&#34;&gt;&lt;figcaption data-lang=&#34;PHP&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;# 1.php文件&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token php language-php&#34;&gt;&lt;span class=&#34;token delimiter important&#34;&gt;&amp;lt;?php&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;file_get_contents&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string double-quoted-string&#34;&gt;&#34;php://input&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token delimiter important&#34;&gt;?&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;访问 &lt;code&gt;http://192.168.199.130/1.php&lt;/code&gt; burp 抓包，添加 post 数据。&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;label&#34;&gt;结果&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img data-src=&#34;image021.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 &lt;h3 id=&#34;phpinput写马&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#phpinput写马&#34;&gt;#&lt;/a&gt; php://input 写马&lt;/h3&gt;
 &lt;p&gt;测试代码&lt;/p&gt;
@@ -6124,155 +6224,5 @@ kali 上显示的信息&lt;br /&gt;
         <category term="Linux" scheme="https://self-ferry.github.io/categories/Linux/" />
         <category term="Linux命令" scheme="https://self-ferry.github.io/tags/Linux%E5%91%BD%E4%BB%A4/" />
         <updated>2020-12-20T14:57:06.000Z</updated>
-    </entry>
-    <entry>
-        <id>https://self-ferry.github.io/2020/12/19/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0/</id>
-        <title>大数据学习</title>
-        <link rel="alternate" href="https://self-ferry.github.io/2020/12/19/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0/"/>
-        <content type="html">&lt;h1 id=&#34;前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#前言&#34;&gt;#&lt;/a&gt; 前言&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;p&gt;复习大数据 ing！！老师不靠谱，只能自己来了。踩坑 ing&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&#34;防火墙&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#防火墙&#34;&gt;#&lt;/a&gt; 防火墙&lt;/h1&gt;
-&lt;p&gt;参考自博客园的一位前辈。要搭建四台集群 Linux 虚拟机，下载的 Linux 版本为 centos 7 系列，装完才知道相比于 centos 6 做了很大的改动，很多命令都不一样了，例如：系统服务都用 systemctl 命令来开启 service，它是 CentOS7 的服务管理中主要的工具，融合了之前 service 和 chkconfig 的功能，据说，systemctl 与以往启动系统服务使用 /etc/init.d 脚本的方式相比，大幅提高了系统服务的执行效率。由于在配置集群时，很多问题都是因为防火墙导致，需要经常配置，所以特别把防火墙的操作命令记录下来。&lt;/p&gt;
-&lt;h2 id=&#34;一-防火墙的开启-关闭-禁用命令&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-防火墙的开启-关闭-禁用命令&#34;&gt;#&lt;/a&gt; 一、防火墙的开启、关闭、禁用命令&lt;/h2&gt;
-&lt;p&gt;（1）设置开机启用防火墙：systemctl enable firewalld.service&lt;/p&gt;
-&lt;p&gt;（2）设置开机禁用防火墙：systemctl disable firewalld.service&lt;/p&gt;
-&lt;p&gt;（3）启动防火墙：systemctl start firewalld&lt;/p&gt;
-&lt;p&gt;（4）关闭防火墙：systemctl stop firewalld&lt;/p&gt;
-&lt;p&gt;（5）检查防火墙状态：systemctl status firewalld&lt;/p&gt;
-&lt;h2 id=&#34;二-使用firewall-cmd配置端口&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#二-使用firewall-cmd配置端口&#34;&gt;#&lt;/a&gt; 二、使用 firewall-cmd 配置端口&lt;/h2&gt;
-&lt;p&gt;（1）查看防火墙状态：firewall-cmd --state&lt;/p&gt;
-&lt;p&gt;（2）重新加载配置：firewall-cmd --reload&lt;/p&gt;
-&lt;p&gt;（3）查看开放的端口：firewall-cmd --list-ports&lt;/p&gt;
-&lt;p&gt;（4）开启防火墙端口：firewall-cmd --zone=public --add-port=9200/tcp --permanent&lt;/p&gt;
-&lt;p&gt;命令含义：&lt;/p&gt;
-&lt;p&gt;–zone #作用域&lt;/p&gt;
-&lt;p&gt;–add-port=9200/tcp #添加端口，格式为：端口 / 通讯协议&lt;/p&gt;
-&lt;p&gt;–permanent #永久生效，没有此参数重启后失效&lt;/p&gt;
-&lt;p&gt;注意：添加端口后，必须用命令 firewall-cmd --reload 重新加载一遍才会生效&lt;/p&gt;
-&lt;p&gt;（5）关闭防火墙端口：firewall-cmd --zone=public --remove-port=9200/tcp --permanent&lt;/p&gt;
-&lt;p&gt;参考自&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vbWFyc28vYXJjaGl2ZS8yMDE4LzAxLzA2LzgyMTQ5MjcuaHRtbA==&#34;&gt; https://www.cnblogs.com/marso/archive/2018/01/06/8214927.html&lt;/span&gt;&lt;/p&gt;
-&lt;h1 id=&#34;ssh公钥登陆&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#ssh公钥登陆&#34;&gt;#&lt;/a&gt; SSH 公钥登陆&lt;/h1&gt;
-&lt;p&gt;Hadoop 集群之间的交互是不用密码的，否则如果每次都必须输入密码会非常麻烦。SSH 还提供了公钥登陆，可以省去输入密码的步骤。&lt;/p&gt;
-&lt;p&gt;所谓 “公钥登陆”，原理很简单，就是用户将自己的公钥存储在远程主机上。登陆的时候，远程主机会向用户发送一段水机字符串，用户用自己的私钥加密后，再发回去。远程主机用事先储存的公钥进行解密，如果成功就证明用户是可信的，直接允许登陆 shell，不再要求密码。&lt;/p&gt;
-&lt;p&gt;这种方法要求用户必须提供自己的公钥。如果没有现成的，可以直接用 ssh-keygen 生成一个。建议直接用创建的 Hadoop 用户进行设置，因为设置只对当前用户用户，一般 Hadoop 主程序是那个用户，就对那个用户进行 SSH 设置。&lt;/p&gt;
-&lt;p&gt;参考自 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xhc3R5aG0vYXJ0aWNsZS9kZXRhaWxzLzEwOTcwMjg2Mw==&#34;&gt;hadoop 集群配置 ssh 免密登录的方法&lt;/span&gt;&lt;br /&gt;
-&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vc2hpcmVlbmxlZTR0ZXN0aW5nL3AvMTAzNjYwNjEuaHRtbA==&#34;&gt; Hadoop 集群配置免密 SSH 登录方法&lt;/span&gt;&lt;br /&gt;
-&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdWt1YW43My9hcnRpY2xlL2RldGFpbHMvNzgwOTAyNDQ=&#34;&gt; ssh-copy-id 命令详解 &amp;amp; 使用 ssh-keygen 和 ssh-copy-id 三步实现 SSH 无密码登录&lt;/span&gt;&lt;/p&gt;
-&lt;h2 id=&#34;hadoop集群配置免密ssh登录方法&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#hadoop集群配置免密ssh登录方法&#34;&gt;#&lt;/a&gt; Hadoop 集群配置免密 SSH 登录方法&lt;/h2&gt;
-&lt;p&gt;Hadoop 集群包含 1 个主节点和 3 个从节点，需要实现各节点之间的免密码登录，下面介绍具体的实现方法。&lt;/p&gt;
-&lt;h3 id=&#34;hadoop集群环境&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#hadoop集群环境&#34;&gt;#&lt;/a&gt; Hadoop 集群环境&lt;/h3&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&#34;text-align:right&#34;&gt;节点名称&lt;/th&gt;
-&lt;th style=&#34;text-align:right&#34;&gt;节点 IP&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;node&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;192.168.10.100&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;node1&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;192.168.10.101&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;node2&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;192.168.10.102&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;node3&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;192.168.10.103&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h3 id=&#34;免密登录原理&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#免密登录原理&#34;&gt;#&lt;/a&gt; 免密登录原理&lt;/h3&gt;
-&lt;p&gt;每台主机 authorized_keys 文件里面包含的主机（ssh 密钥），该主机都能无密码登录，所以只要每台主机的 authorized_keys 文件里面都放入其他主机（需要无密码登录的主机）的 ssh 密钥就行了&lt;/p&gt;
-&lt;h3 id=&#34;实现方法&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#实现方法&#34;&gt;#&lt;/a&gt; 实现方法&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;配置每个节点的 hosts 文件。在 hosts 文件里新增以下内容。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;span&gt;h&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;#vi /etc/hosts&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token number&#34;&gt;192.168&lt;/span&gt;.10.100 node&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token number&#34;&gt;192.168&lt;/span&gt;.10.101 node1&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token number&#34;&gt;192.168&lt;/span&gt;.10.102 node2&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token number&#34;&gt;192.168&lt;/span&gt;.10.103 node3&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;每个节点生成 ssh 密钥。这里以 node 主机举例。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;span&gt;h&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;root@node ~&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token comment&#34;&gt;# ssh-keygen -t rsa&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Generating public/private rsa key pair.&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Enter &lt;span class=&#34;token function&#34;&gt;file&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;which&lt;/span&gt; to save the key &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;/root/.ssh/id_rsa&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;: &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Created directory &lt;span class=&#34;token string&#34;&gt;&#39;/root/.ssh&#39;&lt;/span&gt;&lt;span class=&#34;token builtin class-name&#34;&gt;.&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Enter passphrase &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;empty &lt;span class=&#34;token keyword&#34;&gt;for&lt;/span&gt; no passphrase&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;: &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Enter same passphrase again: &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Your identification has been saved &lt;span class=&#34;token keyword&#34;&gt;in&lt;/span&gt; /root/.ssh/id_rsa.&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Your public key has been saved &lt;span class=&#34;token keyword&#34;&gt;in&lt;/span&gt; /root/.ssh/id_rsa.pub.&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;..&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;..&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;..&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;..&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;..&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;..&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;..&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;..&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;..&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;..&lt;/span&gt;.&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;root@node .ssh&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token comment&#34;&gt;# ls&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;id_rsa  id_rsa.pub&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;执行命令后会在～目录下生成.ssh 文件夹，里面包含 id_rsa 和 id_rsa.pub 两个文件。&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;&lt;strong&gt;注：使用 ssh-keygen -t rsa -P &#39;&#39; -f ~/.ssh/id_rsa 命令可避免上述交互式操作。&lt;/strong&gt;&lt;/em&gt;&lt;br /&gt;
-&lt;font color=&#34;red&#34;&gt;用完这个命令后我是出现了点小问题，什么让输入密钥以解锁私钥。输入什么都不行&lt;/font&gt;&lt;/p&gt;
-&lt;ol start=&#34;3&#34;&gt;
-&lt;li&gt;将公钥拷贝到要免密登录的目标机器上&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;em&gt;&lt;strong&gt;此例是在节点 node 上&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;span&gt;h&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;root@node .ssh&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token comment&#34;&gt;# ssh-copy-id node1&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;/usr/bin/ssh-copy-id: INFO: attempting to log &lt;span class=&#34;token keyword&#34;&gt;in&lt;/span&gt; with the new key&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;s&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;, to filter out any that are already installed&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;/usr/bin/ssh-copy-id: INFO: &lt;span class=&#34;token number&#34;&gt;1&lt;/span&gt; key&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;s&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; remain to be installed -- &lt;span class=&#34;token keyword&#34;&gt;if&lt;/span&gt; you are prompted now it is to &lt;span class=&#34;token function&#34;&gt;install&lt;/span&gt; the new keys&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;root@node&lt;span class=&#34;token punctuation&#34;&gt;\&lt;/span&gt;&#39;s password: &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Number of key&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;s&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; added: &lt;span class=&#34;token number&#34;&gt;1&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Now try logging into the machine, with:   &lt;span class=&#34;token string&#34;&gt;&#34;ssh &#39;node&#39;&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;and check to &lt;span class=&#34;token function&#34;&gt;make&lt;/span&gt; sure that only the key&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;s&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; you wanted were added.&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;root@node .ssh&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token comment&#34;&gt;#&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;然后再依次执行以下命令&lt;/p&gt;
-&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;span&gt;h&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;root@node .ssh&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token comment&#34;&gt;# ssh-copy-id node2&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;root@node .ssh&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token comment&#34;&gt;# ssh-copy-id node3&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;此时节点 node 可以无密码登陆 node1、node2、node3 了。&lt;br /&gt;
-但 node1、node2、node3 还不能无密码登陆 node 与其他节点，还需要在 node1、node2、node3 上依次执行步骤 2~3&lt;br /&gt;
- 这里以 node1 为例。只写命令了。&lt;/p&gt;
-&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;span&gt;h&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;root@node1 ~&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token comment&#34;&gt;# ssh-keygen -t rsa&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;root@node1 ~&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token comment&#34;&gt;# ssh-copy-id node&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;root@node1 ~&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token comment&#34;&gt;# ssh-copy-id node2&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;root@node1 ~&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token comment&#34;&gt;# ssh-copy-id node3&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;其他两个节点配置命令类似。&lt;/p&gt;
-&lt;ol start=&#34;4&#34;&gt;
-&lt;li&gt;.ssh 文件夹下（~/.ssh）的文件功能解释&lt;br /&gt;
- known_hosts 记录 ssh 访问过计算机的公钥 (public key)&lt;br /&gt;
- id_rsa 生成的私钥&lt;br /&gt;
- id_rsa.pub 生成的公钥&lt;br /&gt;
- authorized_keys 存放授权过的无密登录服务器公钥&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id=&#34;hadoop的启动和测试&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#hadoop的启动和测试&#34;&gt;#&lt;/a&gt; Hadoop 的启动和测试&lt;/h1&gt;
-&lt;h2 id=&#34;格式化文件系统&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#格式化文件系统&#34;&gt;#&lt;/a&gt; 格式化文件系统&lt;/h2&gt;
-&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;root@node bin&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token comment&#34;&gt;# hdfs namenode -format&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;./hdfs:行201: /usr/local/jdk1.8//bin/java: 没有那个文件或目录&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;root@node bin&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token comment&#34;&gt;#&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;离谱呀，吐了呀！！&lt;br /&gt;
-跟着这破书没有一步不报错！！&lt;/p&gt;
-&lt;p&gt;SHUTDOWN_MSG: Shutting down NameNode at node/192.168.10.100&lt;/p&gt;
-&lt;p&gt;node3: /root/hadoop/hadoop-2.2.0/bin/hdfs: 行 201: /usr/local/jdk1.8//bin/java: 没有那个文件或目录&lt;br /&gt;
- node1: /root/hadoop/hadoop-2.2.0/bin/hdfs: 行 201: /usr/local/jdk1.8//bin/java: 没有那个文件或目录&lt;br /&gt;
- node2: /root/hadoop/hadoop-2.2.0/bin/hdfs: 行 201: /usr/local/jdk1.8//bin/java: 没有那个文件或目录&lt;/p&gt;
-&lt;p&gt;经历了大量的错误！！一个接一个的那种。&lt;br /&gt;
-搞了一下午。&lt;br /&gt;
-一个晚上。不知道哪里错了，NameNode 就是不启动。&lt;/p&gt;
-&lt;p&gt;踏遍百度～&lt;br /&gt;
- 搞到 10 点总算好了&lt;/p&gt;
-&lt;p&gt;一直没法访问 &lt;code&gt;http://node:8088&lt;/code&gt; ，有个好心的网友把他的 Hadoop 给我发了过来，我又看了看 yarn-site-xml 文件里的配置信息，才发现原来是多打了一个 s &lt;span class=&#34;spoiler&#34; title=&#34;你知道得太多了&#34;&gt;我 GIAO&lt;/span&gt;!&lt;/p&gt;
-&lt;h2 id=&#34;管理jobhistory-server&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#管理jobhistory-server&#34;&gt;#&lt;/a&gt; 管理 JobHistory Server&lt;/h2&gt;
-&lt;p&gt;启动 JobHistory Server， 通过 Web 控制台查看集群计算的任务信息，执行如下命令：&lt;br /&gt;
- &lt;code&gt;mr-jobhistory-daemon.sh  start historyserver&lt;/code&gt; &lt;br /&gt;
- 访问 &lt;code&gt;http://node:19888/&lt;/code&gt;  可以查看任务执行历史消息。&lt;/p&gt;
-&lt;p&gt;JobHistory Server 是个后台进程，不使用的情况下可以关闭以节约资源，终止 JobHistory Server 执行如下命令： &lt;code&gt;mr-jobhistory-daemon.sh  stop historyserver&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&#34;集群验证&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#集群验证&#34;&gt;#&lt;/a&gt; 集群验证&lt;/h2&gt;
-&lt;p&gt;使用 Hadoop 自带的 WordCount 例子进行集群验证。这个例子为 &lt;code&gt;/share/Hadoop/mapreduce.hadoop-mapreduce-examples-2.2.0.jar&lt;/code&gt; , 下面的命令都会在本书后面章节讲到，可以先不用理会具体意思。&lt;/p&gt;
-&lt;p&gt;首先在 HDFS 上创建目录，执行命令：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-hadoop&#34;&gt;hdfs dfs -mkdir -p /data/wordcount
-hdfs dfs -mkdir -p /output/
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;目录 /data/wordcount 用来存储 Hadoop 自带的 WordCount 例子的数据文件运行这个 MapReduce 任务的结果输出到 /output/wordcount 目录中。&lt;/p&gt;
-&lt;p&gt;将本地文件上传到 HDFS 中（这里上传一个配置文件），执行如下命令：&lt;br /&gt;
- &lt;code&gt;[root@node ~]# hdfs dfs -put /root/hadoop/hadoop-2.2.0/etc/hadoop/core-site.xml  /data/wordcount/&lt;/code&gt; &lt;br /&gt;
- 可以查看上传后的文件情况，执行如下命令：&lt;br /&gt;
- &lt;code&gt;hdfs dfs -ls /data/wordcount&lt;/code&gt; &lt;br /&gt;
- 下面运行 WordCount 案例，执行如下命令：&lt;br /&gt;
- &lt;code&gt; &lt;/code&gt; &lt;br /&gt;
-学不下去咯&lt;/p&gt;
-</content>
-        <category term="大数据" scheme="https://self-ferry.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" />
-        <category term="Hadoop" scheme="https://self-ferry.github.io/tags/Hadoop/" />
-        <updated>2020-12-19T12:27:20.000Z</updated>
-    </entry>
-    <entry>
-        <id>https://self-ferry.github.io/2020/12/19/VMnet0%E3%80%81VMnet1%E3%80%81VMnet8/</id>
-        <title>VMnet0、VMnet1、VMnet8</title>
-        <link rel="alternate" href="https://self-ferry.github.io/2020/12/19/VMnet0%E3%80%81VMnet1%E3%80%81VMnet8/"/>
-        <content type="html">&lt;h1 id=&#34;前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#前言&#34;&gt;#&lt;/a&gt; 前言&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;p&gt;复习大数据 ing！ 看到书上有 VMnet0、VMnet1、VMnet8 的解释。想着就记下来吧。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&#34;正文&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#正文&#34;&gt;#&lt;/a&gt; 正文&lt;/h1&gt;
-&lt;font color=&#34;#00CED1&#34;&gt;
-&lt;p&gt;主机上安装 VMware Workstation 或 VMware Server 的时候，默认会安装三块虚拟网卡，这三块虚拟网卡分别是 VMnet0、VMnet1 与 VMnet8。&lt;br /&gt;
-其中&lt;font color=&#34;red&#34;&gt;VMnet0&lt;/font&gt;的网络属性为 “&lt;font color=&#34;red&#34;&gt;物理网卡&lt;/font&gt;”,&lt;br /&gt;
-&lt;font color=&#34;red&#34;&gt;VMnet1 与 VMnet8&lt;/font&gt;的网络属性为 “&lt;font color=&#34;red&#34;&gt;虚拟网卡&lt;/font&gt;”。&lt;/p&gt;
-&lt;p&gt;在默认情况下，&lt;font color=&#34;red&#34;&gt;VMnet1&lt;/font&gt;虚拟网卡的定义是 “&lt;font color=&#34;red&#34;&gt;仅主机虚拟网络&lt;/font&gt;”，&lt;font color=&#34;red&#34;&gt;VMnet8&lt;/font&gt;虚拟网卡的定义是 “&lt;font color=&#34;red&#34;&gt;NAT 网络&lt;/font&gt;”，同时，主机的物理网卡被定义为 “&lt;font color=&#34;red&#34;&gt;桥接网络&lt;/font&gt;”，主机物理网卡也可以称为 VMnet0.&lt;br /&gt;
-&lt;/font&gt;&lt;/p&gt;
-</content>
-        <category term="VMWare" scheme="https://self-ferry.github.io/categories/VMWare/" />
-        <category term="虚拟网卡" scheme="https://self-ferry.github.io/tags/%E8%99%9A%E6%8B%9F%E7%BD%91%E5%8D%A1/" />
-        <updated>2020-12-19T11:50:34.000Z</updated>
     </entry>
 </feed>
