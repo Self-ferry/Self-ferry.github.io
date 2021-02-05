@@ -8,15 +8,191 @@
     <author>
       <name>1asy</name>
     </author>
-    <updated>2021-02-01T11:54:22.000Z</updated>
+    <updated>2021-02-05T12:59:31.000Z</updated>
     <category term="学习" />
+    <entry>
+        <id>https://self-ferry.github.io/2021/02/05/python%E6%A8%A1%E5%9D%97%E7%9A%84%E5%86%85%E7%BD%AE%E5%B1%9E%E6%80%A7/</id>
+        <title>python模块的内置属性</title>
+        <link rel="alternate" href="https://self-ferry.github.io/2021/02/05/python%E6%A8%A1%E5%9D%97%E7%9A%84%E5%86%85%E7%BD%AE%E5%B1%9E%E6%80%A7/"/>
+        <content type="html">&lt;p&gt;&lt;span class=&#34;label success&#34;&gt;✔️嘘，请安静&lt;/span&gt;&lt;/p&gt;
+&lt;div class=&#34;media-container&#34;&gt;&lt;div class=&#34;player&#34; data-type=&#34;audio&#34; data-src=&#39;[{&#34;title&#34;:&#34;列表 1&#34;,&#34;list&#34;:[&#34;https://music.163.com/#/song?id=532950140&#34;]}]&#39;&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h1 id=&#34;模块的内置属性&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#模块的内置属性&#34;&gt;#&lt;/a&gt; 模块的内置属性&lt;/h1&gt;
+&lt;p&gt;对于任何一个 python 文件来说，当 python 解释器运行一个 py 文件，会自动将一些内容加载到内置的属性中；一个模块我们可以看做是一个比类更大的对象。&lt;/p&gt;
+&lt;h2 id=&#34;查看内置属性&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查看内置属性&#34;&gt;#&lt;/a&gt; 查看内置属性&lt;/h2&gt;
+&lt;p&gt;我们可以通过 dir () 方法获取该模块所有的显式或隐式属性。&lt;br /&gt;
+附上 dir () 的介绍：&lt;br /&gt;
+&lt;img data-src=&#34;image001.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# -*- coding:utf-8 -*-&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token triple-quoted-string string&#34;&gt;&#39;&#39;&#39;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;doc......&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&#39;&#39;&#39;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;import&lt;/span&gt; os&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;var &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token boolean&#34;&gt;None&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Test&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;object&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;pass&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;if&lt;/span&gt; __name__ &lt;span class=&#34;token operator&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;__main__&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;dir&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;15&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;16&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;####### 输出结果 #######&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;17&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;Test&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#39;__annotations__&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#39;__builtins__&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#39;__cached__&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#39;__doc__&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#39;__file__&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#39;__loader__&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#39;__name__&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#39;__package__&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#39;__spec__&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#39;os&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#39;var&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;div class=&#34;note warning&#34;&gt;
+&lt;p&gt;这里有些内容不确定：&lt;br /&gt;
+《python 网络编程从入门到精通》这本书上写原话是&lt;br /&gt;
+ &lt;code&gt;可以看到隐式属性有[&#39;Test&#39;, &#39;__annotations__&#39;, &#39;__builtins__&#39;, &#39;__cached__&#39;, &#39;__doc__&#39;, &#39;__file__&#39;, &#39;__loader__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;__spec__&#39;, &#39;os&#39;, &#39;var&#39;]&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;而在网上的&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vY3dwLWJnL3AvOTg1NjMzOS5odG1s&#34;&gt; https://www.cnblogs.com/cwp-bg/p/9856339.html&lt;/span&gt; 博客中这样写的&lt;br /&gt;
+ &lt;code&gt;可看到隐式的属性有__annotations__,__builtins__,__cached__,__annotations__,__doc__,__file__,__loader__,__name__;&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;我们打印一下每个魔法属性：&lt;/p&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token triple-quoted-string string&#34;&gt;&#39;&#39;&#39;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;doc......&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&#39;&#39;&#39;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;import&lt;/span&gt; os&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;var &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token boolean&#34;&gt;None&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Test&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token builtin&#34;&gt;object&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;pass&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;if&lt;/span&gt; __name__ &lt;span class=&#34;token operator&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;__main__&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token comment&#34;&gt;# print(dir())&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;__name__&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;15&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;__annotations__&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;16&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;__builtins__&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;17&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;__cached__&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;18&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;__doc__&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;19&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;__file__&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;20&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;__loader__&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;21&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;__package__&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;22&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;__spec__&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;23&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;24&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;######### 输出结果 ###############&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;25&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;__main__&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;26&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;27&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token operator&#34;&gt;&amp;lt;&lt;/span&gt;module &lt;span class=&#34;token string&#34;&gt;&#39;builtins&#39;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;built&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;in&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;28&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token boolean&#34;&gt;None&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;29&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;30&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;doc&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;31&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;32&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;G&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;Text_Files&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;py&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;1.&lt;/span&gt;py&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;33&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token operator&#34;&gt;&amp;lt;&lt;/span&gt;_frozen_importlib_external&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;SourceFileLoader &lt;span class=&#34;token builtin&#34;&gt;object&lt;/span&gt; at &lt;span class=&#34;token number&#34;&gt;0x0000018C7E37F8B0&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;34&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token boolean&#34;&gt;None&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;35&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token boolean&#34;&gt;None&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;36&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;37&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;## 空行是打印时就有的&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;38&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;39&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# 其中__name__、__doc__、__file__、__package__是可以直接使用的，其它的内置属性一般不允许直接使用。&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h2 id=&#34;内置魔法属性&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#内置魔法属性&#34;&gt;#&lt;/a&gt; 内置魔法属性&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;_&lt;em&gt;name&lt;/em&gt;_&lt;br /&gt;
+该属性代表当前模块的名字，每个 py 文件默认的属性，如果当前模块是主程序，值为 “&lt;strong&gt;main&lt;/strong&gt;”，如果不是主程序，值为模块名。这个属性经常用来区分主程序和作为被导入模块的程序。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;_&lt;em&gt;builtins&lt;/em&gt;_&lt;br /&gt;
+该属性代表内置模块 builtins，即所有的内建函数、内置类型、内置异常等；在 python 执行一个 py 文件时，会将内置模块赋值给这个属性；如果不是主程序，那么这个属性是一个 builtins 模块所有方法的字典。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;_&lt;em&gt;doc&lt;/em&gt;_&lt;br /&gt;
+模块的说明文档，py 文件初始化时，将文件开始的说明字符串赋值给这个属性。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;_&lt;em&gt;file&lt;/em&gt;_&lt;br /&gt;
+该属性代表文件的绝对路径，任何一个模块使用这个属性就可获得本模块的绝对路径；但是该属性只在 windows 环境下可用，在 linux 环境下不可用。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;_&lt;em&gt;cached&lt;/em&gt;_&lt;br /&gt;
+缓存文件，如果是主程序，那么该属性为 None，其他模块的该属性指向该模块的 pyc 字节文件，这样在 py 文件不发生修改的情况下可以减少编译的时间，更快地加载上下文环境。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;_&lt;em&gt;annotations&lt;/em&gt;_&lt;br /&gt;
+该属性对于模块文件来说，没有开放给用户使用；但对于函数来说，这个方法用来记录参数的类型和返回值。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;get_sum&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;x&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;y&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; x &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; y&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;get_sum&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;__annotations__&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token comment&#34;&gt;#输出结果 &amp;#123;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;get_sum&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;x&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; y&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token builtin&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;&gt;&lt;/span&gt; &lt;span class=&#34;token builtin&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; x &lt;span class=&#34;token operator&#34;&gt;+&lt;/span&gt; y&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;get_sum&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;__annotations__&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token comment&#34;&gt;# &amp;#123;&#39;y&#39;: &amp;lt;class &#39;int&#39;&gt;, &#39;return&#39;: &amp;lt;class &#39;int&#39;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;函数的参数和返回值如果在定义的时候指定了类型，那么它们就会以键值对的形式记录到函数的__annotations__属性中，但对于匿名函数来说，这个属性是不存在的。&lt;/p&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;_&lt;em&gt;loader&lt;/em&gt;_&lt;br /&gt;
+该属性 py3.3 之前没有，引用了本模块的加载器对象，即该模块的上下文是由这个加载器加载到内存中的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;_&lt;em&gt;package&lt;/em&gt;_&lt;br /&gt;
+该属性是一个文件是否是包的标志，在主程序中该属性的值永远是 None，不要使用它；当一个包被导入到主程序中，该包的__package__属性为包的名字。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# test&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;__init__&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;py&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# main.py&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;import&lt;/span&gt; test&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;test&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;__package__&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token comment&#34;&gt;# test&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;ol start=&#34;9&#34;&gt;
+&lt;li&gt;&lt;em&gt;spec&lt;/em&gt;&lt;br /&gt;
+ 该属性记录一个模块的详细信息，是一个 ModuleSpec 对象，&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;其他魔法属性&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#其他魔法属性&#34;&gt;#&lt;/a&gt; 其他魔法属性&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;em&gt;author&lt;/em&gt;&lt;br /&gt;
+ 该属性用来定义模块的作者信息，可以是字符串，也可以是列表、字典等数据结构。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# 可以在 python 文件中加入&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;__author__ &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;auth&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;1asy&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;bg&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#39;https://self-ferry.github.io/&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# 或&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;__author__ &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#39;1asy&#39;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;&lt;em&gt;all&lt;/em&gt;&lt;br /&gt;
+ 该属性不是模块默认的，需要手动定义，它的功能有二：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;记录一个模块有哪些重要的、对外开发的类、方法或变量等，或记录一个包哪些对外开放的模块；&lt;/p&gt;
+&lt;p&gt;限制导入，当使用 &lt;code&gt;“from xxx import *”&lt;/code&gt;  形式导入时，实际导入的只有__all__属性中的同名的对象而不是所有，但对于 &lt;code&gt;“from xxx import xxx”&lt;/code&gt;  指定了具体的名字则 all 属性被忽略。&lt;/p&gt;
+&lt;h2 id=&#34;魔法方法&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#魔法方法&#34;&gt;#&lt;/a&gt; 魔法方法&lt;/h2&gt;
+&lt;h3 id=&#34;_import_&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#_import_&#34;&gt;#&lt;/a&gt; _&lt;em&gt;import&lt;/em&gt;_&lt;/h3&gt;
+&lt;p&gt;该魔法方法是 import 触发，即 &lt;code&gt;import os &lt;/code&gt; 相当于 &lt;code&gt;os = __import__(&#39;os&#39;)&lt;/code&gt; ，也可以直接使用，主要用于模块延迟加载，或重载模块。&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;label&#34;&gt;参数：&lt;/span&gt;&lt;br /&gt;
+name: 模块的名字；&lt;br /&gt;
+global: 包含全局变量的字典，采用默认值 global ()&lt;br /&gt;
+ local: 包含局部变量的字典，采用默认值 local ()&lt;br /&gt;
+ fromlist: 被导入的子模块的名称&lt;br /&gt;
+ level: 指定使用绝对导入还是相对导入，0 表示只执行绝对导入。&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;label&#34;&gt;实例&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;这段代码能在 Linux 下调用 shell&lt;/p&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;loader&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;a&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; b&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; c&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    a &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token builtin&#34;&gt;__import__&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;a&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token builtin&#34;&gt;getattr&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;a&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; b&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;c&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;if&lt;/span&gt; __name__ &lt;span class=&#34;token operator&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;__main__&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    loader&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;os&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;system&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;/bin/sh&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;__import__函数返回的是一个变量，代表一个模块，所有后续方法的调用都要在这个变量的基础上。&lt;/p&gt;
+&lt;h1 id=&#34;reference&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#reference&#34;&gt;#&lt;/a&gt; Reference&lt;/h1&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vY3dwLWJnL3AvOTg1NjMzOS5odG1s&#34;&gt;https://www.cnblogs.com/cwp-bg/p/9856339.html&lt;/span&gt;&lt;/p&gt;
+</content>
+        <category term="python" scheme="https://self-ferry.github.io/categories/python/" />
+        <category term="python内置属性" scheme="https://self-ferry.github.io/tags/python%E5%86%85%E7%BD%AE%E5%B1%9E%E6%80%A7/" />
+        <updated>2021-02-05T12:59:31.000Z</updated>
+    </entry>
     <entry>
         <id>https://self-ferry.github.io/2021/02/01/web%E6%BC%8F%E6%B4%9E-SSRF/</id>
         <title>web漏洞-SSRF</title>
         <link rel="alternate" href="https://self-ferry.github.io/2021/02/01/web%E6%BC%8F%E6%B4%9E-SSRF/"/>
         <content type="html">&lt;p&gt;&lt;span class=&#34;label success&#34;&gt;✔️嘘，请安静&lt;/span&gt;&lt;/p&gt;
 &lt;div class=&#34;media-container&#34;&gt;&lt;div class=&#34;player&#34; data-type=&#34;audio&#34; data-src=&#39;[{&#34;title&#34;:&#34;列表 1&#34;,&#34;list&#34;:[&#34;https://music.163.com/#/song?id=1355292203&#34;]}]&#39;&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;h1 id=&#34;&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#&#34;&gt;#&lt;/a&gt; &lt;/h1&gt;
+&lt;h1 id=&#34;ssrf的定义与成因&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#ssrf的定义与成因&#34;&gt;#&lt;/a&gt; SSRF 的定义与成因&lt;/h1&gt;
+&lt;p&gt;SSRF (Server-Side Request Forgery: 服务器端请求伪造) 是一种由攻击者构造形成由服务端发起请求的一个安全漏洞。一般情况下，SSRF 攻击的目标是从外网无法访问的内部系统。（正是因为它是由服务端发起的，所以它能够请求到与它相连而与外网隔离的内部系统）&lt;/p&gt;
+&lt;p&gt;SSRF 形成的原因大都是由于服务端提供了从其他服务器应用获取数据的功能且没有对目标地址做过滤与限制。比如从指定 URL 地址获取网页文本内容，加载指定地址的图片，下载等等。&lt;/p&gt;
+&lt;p&gt;注释：除了 http/https 等方式可以造成 ssrf，类似 tcp connect 方式也可以探测内网一些 ip 的端口是否开发服务，只不过危害比较小而已。&lt;/p&gt;
+&lt;h1 id=&#34;可能出现的地方&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#可能出现的地方&#34;&gt;#&lt;/a&gt; 可能出现的地方&lt;/h1&gt;
+&lt;p&gt;1. 社交分享功能：获取超链接的标题等内容进行显示&lt;/p&gt;
+&lt;p&gt;2. 转码服务：通过 URL 地址把原地址的网页内容调优使其适合手机屏幕浏览&lt;/p&gt;
+&lt;p&gt;3. 在线翻译：给网址翻译对应网页的内容&lt;/p&gt;
+&lt;p&gt;4. 图片加载 / 下载：例如富文本编辑器中的点击下载图片到本地；通过 URL 地址加载或下载图片&lt;/p&gt;
+&lt;p&gt;5. 图片 / 文章收藏功能：主要其会取 URL 地址中 title 以及文本的内容作为显示以求一个好的用具体验&lt;/p&gt;
+&lt;p&gt;6. 云服务厂商：它会远程执行一些命令来判断网站是否存活等，所以如果可以捕获相应的信息，就可以进行 ssrf 测试&lt;/p&gt;
+&lt;p&gt;7. 网站采集，网站抓取的地方：一些网站会针对你输入的 url 进行一些信息采集工作&lt;/p&gt;
+&lt;p&gt;8. 数据库内置功能：数据库的比如 mongodb 的 copyDatabase 函数&lt;/p&gt;
+&lt;p&gt;9. 邮件系统：比如接收邮件服务器地址&lt;/p&gt;
+&lt;p&gt;10. 编码处理，属性信息处理，文件处理：比如 ffpmg，ImageMagick，docx，pdf，xml 处理器等&lt;/p&gt;
+&lt;p&gt;11. 未公开的 api 实现以及其他扩展调用 URL 的功能：可以利用 google 语法加上这些关键字去寻找 SSRF 漏洞&lt;/p&gt;
+&lt;p&gt;一些的 url 中的关键字：share、wap、url、link、src、source、target、u、3g、display、sourceURl、imageURL、domain……&lt;/p&gt;
+&lt;p&gt;12. 从远程服务器请求资源（upload from url 如 discuz！；import &amp;amp; expost rss feed 如 web blog；使用了 xml 引擎对象的地方 如 wordpress xmlrpc.php）&lt;/p&gt;
+&lt;h1 id=&#34;漏洞验证&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#漏洞验证&#34;&gt;#&lt;/a&gt; 漏洞验证&lt;/h1&gt;
+&lt;p&gt;1. 排除法：浏览器 f12 查看源代码看是否是在本地进行了请求&lt;/p&gt;
+&lt;p&gt;比如：该资源地址类型为  &lt;code&gt;http://www.xxx.com/a.php?image=（地址）&lt;/code&gt; 的就可能存在 SSRF 漏洞&lt;/p&gt;
+&lt;p&gt;2.dnslog 等工具进行测试，看是否被访问&lt;/p&gt;
+&lt;p&gt;-- 可以在盲打后台用例中将当前准备请求的 uri 和参数编码成 base64，这样盲打后台解码后就知道是哪台机器哪个 cgi 触发的请求。&lt;/p&gt;
+&lt;p&gt;3. 抓包分析发送的请求是不是由服务器的发送的，如果不是客户端发出的请求，则有可能是，接着找存在 HTTP 服务的内网地址&lt;/p&gt;
+&lt;p&gt;-- 从漏洞平台中的历史漏洞寻找泄漏的存在 web 应用内网地址&lt;/p&gt;
+&lt;p&gt;-- 通过二级域名暴力猜解工具模糊猜测内网地址&lt;/p&gt;
+&lt;p&gt;4. 直接返回的 Banner、title、content 等信息&lt;/p&gt;
+&lt;p&gt;5. 留意 bool 型 SSRF&lt;/p&gt;
+&lt;h1 id=&#34;利用方式&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#利用方式&#34;&gt;#&lt;/a&gt; 利用方式&lt;/h1&gt;
+&lt;p&gt;1. 让服务端去访问相应的网址&lt;/p&gt;
+&lt;p&gt;2. 让服务端去访问自己所处内网的一些指纹文件来判断是否存在相应的 cms&lt;/p&gt;
+&lt;p&gt;3. 可以使用 file、dict、gopher [11]、ftp 协议进行请求访问相应的文件&lt;/p&gt;
+&lt;p&gt;4. 攻击内网 web 应用（可以向内部任意主机的任意端口发送精心构造的数据包 {payload}）&lt;/p&gt;
+&lt;p&gt;5. 攻击内网应用程序（利用跨协议通信技术）&lt;/p&gt;
+&lt;p&gt;6. 判断内网主机是否存活：方法是访问看是否有端口开放&lt;/p&gt;
+&lt;p&gt;7.DoS 攻击（请求大文件，始终保持连接 keep-alive always）&lt;/p&gt;
+&lt;h1 id=&#34;绕过限制方法&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#绕过限制方法&#34;&gt;#&lt;/a&gt; 绕过限制方法&lt;/h1&gt;
+&lt;p&gt;详细绕过参考 -----&amp;gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuc2VjcHVsc2UuY29tL2FyY2hpdmVzLzY1ODMyLmh0bWw=&#34;&gt;https://www.secpulse.com/archives/65832.html&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;1. &lt;code&gt;http://xxxx.com@www.baidu.com/&lt;/code&gt;  与 &lt;code&gt;http://www.baidu.com/&lt;/code&gt;  请求时是相同的&lt;/p&gt;
+&lt;p&gt;2. 各种 IP 地址的进制转换&lt;/p&gt;
+&lt;p&gt;可以是十六进制，八进制等。&lt;br /&gt;
+115.239.210.26  &amp;gt;&amp;gt;&amp;gt;  16373751032&lt;br /&gt;
+ 首先把这四段数字给分别转成 16 进制，结果：73 ef d2 1a&lt;br /&gt;
+ 然后把 73efd21a 这十六进制一起转换成 8 进制&lt;br /&gt;
+记得访问的时候加 0 表示使用八进制 (可以是一个 0 也可以是多个 0 跟 XSS 中多加几个 0 来绕过过滤一样)，十六进制加 0x&lt;/p&gt;
+&lt;p&gt;127.0.0.1 =&amp;gt; 2130706433&lt;br /&gt;
+&lt;img data-src=&#34;image001.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;3.URL 跳转绕过： &lt;code&gt;http://www.hackersb.cn/redirect.php?url=http://192.168.0.1/&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;4. 短网址绕过  &lt;code&gt;http://t.cn/RwbLKDx&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;短网址原理请参考&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3d3dy52ZXJ5aXRtYW4uY29tLzIwMTkvMTEvMjQvJUU3JTlGJUFEJUU1JTlDJUIwJUU1JTlEJTgwJUU1JThFJTlGJUU3JTkwJTg2Lw==&#34;&gt; http://www.veryitman.com/2019/11/24 / 短地址原理 /&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;5.xip.io 来绕过： &lt;code&gt;http://xxx.192.168.0.1.xip.io/ == 192.168.0.1 (xxx 任意）&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;指向任意 ip 的域名：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3hpcC5pbw==&#34;&gt;xip.io&lt;/span&gt; (37signals 开发实现的定制 DNS 服务)&lt;/p&gt;
+&lt;p&gt;6. 限制了子网段，可以加 :80 端口绕过。 &lt;code&gt;http://tieba.baidu.com/f/commit/share/openShareApi?url=http://10.42.7.78:80&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;7. 探测内网域名，或者将自己的域名解析到内网 ip&lt;/p&gt;
+&lt;p&gt;8. 例如  &lt;code&gt;http://10.153.138.81/ts.php&lt;/code&gt;  , 修复时容易出现的获取 host 时以 / 分割来确定 host，&lt;/p&gt;
+&lt;p&gt;但这样可以用  &lt;code&gt;http://abc@10.153.138.81/&lt;/code&gt;  绕过&lt;/p&gt;
+&lt;p&gt;9. 利用 Enclosed alphanumerics&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-txt&#34;&gt;利用Enclosed alphanumerics
+ⓔⓧⓐⓜⓟⓛⓔ.ⓒⓞⓜ  &amp;gt;&amp;gt;&amp;gt;  example.com
+List:
+① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮ ⑯ ⑰ ⑱ ⑲ ⑳ 
+⑴ ⑵ ⑶ ⑷ ⑸ ⑹ ⑺ ⑻ ⑼ ⑽ ⑾ ⑿ ⒀ ⒁ ⒂ ⒃ ⒄ ⒅ ⒆ ⒇ 
+⒈ ⒉ ⒊ ⒋ ⒌ ⒍ ⒎ ⒏ ⒐ ⒑ ⒒ ⒓ ⒔ ⒕ ⒖ ⒗ ⒘ ⒙ ⒚ ⒛ 
+⒜ ⒝ ⒞ ⒟ ⒠ ⒡ ⒢ ⒣ ⒤ ⒥ ⒦ ⒧ ⒨ ⒩ ⒪ ⒫ ⒬ ⒭ ⒮ ⒯ ⒰ ⒱ ⒲ ⒳ ⒴ ⒵ 
+Ⓐ Ⓑ Ⓒ Ⓓ Ⓔ Ⓕ Ⓖ Ⓗ Ⓘ Ⓙ Ⓚ Ⓛ Ⓜ Ⓝ Ⓞ Ⓟ Ⓠ Ⓡ Ⓢ Ⓣ Ⓤ Ⓥ Ⓦ Ⓧ Ⓨ Ⓩ 
+ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ ⓚ ⓛ ⓜ ⓝ ⓞ ⓟ ⓠ ⓡ ⓢ ⓣ ⓤ ⓥ ⓦ ⓧ ⓨ ⓩ 
+⓪ ⓫ ⓬ ⓭ ⓮ ⓯ ⓰ ⓱ ⓲ ⓳ ⓴ 
+⓵ ⓶ ⓷ ⓸ ⓹ ⓺ ⓻ ⓼ ⓽ ⓾ ⓿
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;漏洞示例&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#漏洞示例&#34;&gt;#&lt;/a&gt; 漏洞示例&lt;/h1&gt;
+&lt;p&gt;1.Wordpress3.5.1 以下版本 xmlrpc.php pingback 的缺陷与 ssrf&lt;/p&gt;
+&lt;p&gt;2.discuz！的 ssrf （利用 php 的 header 函数来绕过，其实就是 302 跳转实现协议转换）&lt;/p&gt;
+&lt;p&gt;3.weblogic 的 ssrf&lt;/p&gt;
+&lt;p&gt;.....&lt;/p&gt;
+&lt;h1 id=&#34;漏洞修复&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#漏洞修复&#34;&gt;#&lt;/a&gt; 漏洞修复&lt;/h1&gt;
+&lt;p&gt;1. 禁止跳转&lt;/p&gt;
+&lt;p&gt;2. 过滤返回信息，验证远程服务器对请求的响应是比较容易的方法。如果 web 应用是去获取某一种类型的文件。那么在把返回结果展示给用户之前先验证返回的信息是否符合标准。&lt;/p&gt;
+&lt;p&gt;3. 禁用不需要的协议，仅仅允许 http 和 https 请求。可以防止类似于 file://, gopher://, ftp:// 等引起的问题&lt;/p&gt;
+&lt;p&gt;4. 设置 URL 白名单或者限制内网 IP（使用 gethostbyname () 判断是否为内网 IP）&lt;/p&gt;
+&lt;p&gt;5. 限制请求的端口为 http 常用的端口，比如 80、443、8080、8090&lt;/p&gt;
+&lt;p&gt;6. 统一错误信息，避免用户可以根据错误信息来判断远端服务器的端口状态。&lt;/p&gt;
+&lt;h1 id=&#34;reference&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#reference&#34;&gt;#&lt;/a&gt; Reference&lt;/h1&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly94ei5hbGl5dW4uY29tL3QvMjExNQ==&#34;&gt;https://xz.aliyun.com/t/2115&lt;/span&gt;&lt;br /&gt;
+&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL2JvYmFvLjM2MC5jbi9sZWFybmluZy9kZXRhaWwvMjQwLmh0bWw=&#34;&gt;http://bobao.360.cn/learning/detail/240.html&lt;/span&gt;&lt;br /&gt;
+&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuc2VjcHVsc2UuY29tL2FyY2hpdmVzLzY1ODMyLmh0bWw=&#34;&gt;https://www.secpulse.com/archives/65832.html&lt;/span&gt;&lt;/p&gt;
 </content>
         <category term="web安全" scheme="https://self-ferry.github.io/categories/web-security/" />
         <category term="SSRF" scheme="https://self-ferry.github.io/tags/SSRF/" />
@@ -6202,27 +6378,5 @@ kali 上显示的信息&lt;br /&gt;
         <category term="BHP" scheme="https://self-ferry.github.io/categories/Black-Hat-python/" />
         <category term="python" scheme="https://self-ferry.github.io/tags/python/" />
         <updated>2020-12-25T01:12:58.000Z</updated>
-    </entry>
-    <entry>
-        <id>https://self-ferry.github.io/2020/12/20/linux%E5%91%BD%E4%BB%A4scp--%E8%BF%9C%E7%A8%8B%E6%8B%B7%E8%B4%9D%E6%96%87%E4%BB%B6%E3%80%90%E8%BD%AC%E3%80%91/</id>
-        <title>linux命令scp--远程拷贝文件【转】</title>
-        <link rel="alternate" href="https://self-ferry.github.io/2020/12/20/linux%E5%91%BD%E4%BB%A4scp--%E8%BF%9C%E7%A8%8B%E6%8B%B7%E8%B4%9D%E6%96%87%E4%BB%B6%E3%80%90%E8%BD%AC%E3%80%91/"/>
-        <content type="html">&lt;p&gt;转载自&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3lha3NheW9vLmJsb2cuNTFjdG8uY29tLzUxMDkzOC8xNzU3MTk=&#34;&gt; http://yaksayoo.blog.51cto.com/510938/175719&lt;/span&gt;&lt;/p&gt;
-&lt;h1 id=&#34;linux下scp的用法&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#linux下scp的用法&#34;&gt;#&lt;/a&gt; Linux 下 scp 的用法&lt;/h1&gt;
-&lt;p&gt;scp 就是 secure copy，一个在 linux 下用来进行远程拷贝文件的命令。&lt;br /&gt;
-有时我们需要获得远程服务器上的某个文件，该服务器既没有配置 ftp 服务器，也没有做共享，无法通过常规途径获得文件时，只需要通过简单的 scp 命令便可达到目的。&lt;/p&gt;
-&lt;h1 id=&#34;一-将本机文件复制到远程服务器上&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-将本机文件复制到远程服务器上&#34;&gt;#&lt;/a&gt; 一、将本机文件复制到远程服务器上&lt;/h1&gt;
-&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;#scp /home/administrator/news.txt root@192.168.6.129:/etc/squid&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;/home/administrator/      本地文件的绝对路径&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;news.txt                          要复制到服务器上的本地文件&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;root                                 通过root用户登录到远程服务器（也可以使用其他拥有同等权限的用户）&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token number&#34;&gt;192.168&lt;/span&gt;.6.129                远程服务器的ip地址（也可以使用域名或机器名）&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;/etc/squid                       将本地文件复制到位于远程服务器上的路径&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;如图通过 root 用户登录远程服务器，输入 yes 表示同意建立 ssh 连接&lt;/p&gt;
-&lt;p&gt;按提示输入 root 用户的密码&lt;/p&gt;
-&lt;p&gt;如图所示建立连接后开始传输文件，显示百分比、实际时间和传送速度等信息&lt;/p&gt;
-&lt;h1 id=&#34;二-将远程服务器上的文件复制到本机&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#二-将远程服务器上的文件复制到本机&#34;&gt;#&lt;/a&gt; 二、将远程服务器上的文件复制到本机&lt;/h1&gt;
-&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;#scp remote@www.abc.com:/usr/local/sin.sh /home/administrator&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;remote                       通过remote用户登录到远程服务器（也可以使用其他拥有同等权限的用户）&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;www.abc.com              远程服务器的域名（当然也可以使用该服务器ip地址）&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;/usr/local/sin.sh           欲复制到本机的位于远程服务器上的文件&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;/home/administrator  将远程文件复制到本地的绝对路径&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;注意两点：&lt;br /&gt;
-1. 如果远程服务器防火墙有特殊限制，scp 便要走特殊端口，具体用什么端口视情况而定，命令格式如下：&lt;br /&gt;
- &lt;code&gt;#scp -p 4588 remote@www.abc.com:/usr/local/sin.sh /home/administrator&lt;/code&gt; &lt;br /&gt;
-2. 使用 scp 要注意所使用的用户是否具有可读取远程服务器相应文件的权限。&lt;/p&gt;
-</content>
-        <category term="Linux" scheme="https://self-ferry.github.io/categories/Linux/" />
-        <category term="Linux命令" scheme="https://self-ferry.github.io/tags/Linux%E5%91%BD%E4%BB%A4/" />
-        <updated>2020-12-20T14:57:06.000Z</updated>
     </entry>
 </feed>
