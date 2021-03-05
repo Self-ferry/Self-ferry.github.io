@@ -628,9 +628,19 @@ tar -cf all.tar *.jpg  #将所有.jpg 的文件打成一个名为 all.tar 的包
 &lt;p&gt;查看压缩文件中包含的文件:&lt;br /&gt;
  &lt;code&gt;unzip-l abc.zip&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;gzip&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#gzip&#34;&gt;#&lt;/a&gt; gzip&lt;/h2&gt;
-&lt;p&gt;1.tar 调用 gzipgzip 是 GNU 组织开发的一个压缩程序，.gz 结尾的文件就是 gzip 压缩的结果。与 gzip 相对的解压程序是 gunzip.&lt;br /&gt;
-tar 中使用 - z 这个参数来调用 gzip 常用命令:&lt;br /&gt;
-tar-czf all.tar.gz xjpg #将所有.jpg 的文件打成一个 tar 包，并且将其用 gzip 压缩，生成一个 gzip 压缩过的包 all.tar.gztar-xzf all.tar.gz# 将包 all.tar.z 解开&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;tar 调用 gzipgzip 是 GNU 组织开发的一个压缩程序，.gz 结尾的文件就是 gzip 压缩的结果。与 gzip 相对的解压程序是 gunzip.&lt;br /&gt;
+tar 中使用 - z 这个参数来调用 gzip 常用命令:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;tar-czf all.tar.gz *.jpg&lt;/code&gt;   #将所有.jpg 的文件打成一个 tar 包，并且将其用 gzip 压缩，生成一个 gzip 压缩过的包 all.tar.gz&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;tar-xzf all.tar.gz&lt;/code&gt;   #将包 all.tar.z 解开&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;tar 调用 bzip2bzip2 是一个压缩能力更强的压缩程序，.bz2 结尾的文件就是 bzip2 压缩的结果。与 bzip2 相对的解压程序是 bunzip&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;tar 中使用 - j 这个参数来调用 bzip2&lt;/p&gt;
+&lt;p&gt;常用命令:&lt;/p&gt;
+&lt;p&gt;tar -cjfall.tar.bz2 *.jpg #将所有.jpg 的文件打成一个 tar 包，并且将其用 bzip2 压缩，生成一个 bzip2 压缩过的包，包名为 all.tar.bz2&lt;/p&gt;
+&lt;p&gt;tar -xjf all.tar.bz2  #将上面产生的包解开&lt;/p&gt;
 </content>
         <category term="Linux" scheme="https://self-ferry.github.io/categories/Linux/" />
         <category term="Linux" scheme="https://self-ferry.github.io/tags/Linux/" />
