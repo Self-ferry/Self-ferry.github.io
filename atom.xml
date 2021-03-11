@@ -15,8 +15,14 @@
         <title>web漏洞-业务逻辑漏洞</title>
         <link rel="alternate" href="https://self-ferry.github.io/2021/03/09/web%E6%BC%8F%E6%B4%9E-%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9E/"/>
         <content type="html">&lt;p&gt;&lt;span class=&#34;label success&#34;&gt;✔️来首音乐吧&lt;/span&gt;&lt;/p&gt;
-&lt;div class=&#34;media-container&#34;&gt;&lt;div class=&#34;player&#34; data-type=&#34;audio&#34; data-src=&#39;[{&#34;title&#34;:&#34;列表 1&#34;,&#34;list&#34;:[&#34;https://music.163.com/#/song?id=&#34;]}]&#39;&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;h1 id=&#34;&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#&#34;&gt;#&lt;/a&gt; &lt;/h1&gt;
+&lt;div class=&#34;media-container&#34;&gt;&lt;div class=&#34;player&#34; data-type=&#34;audio&#34; data-src=&#39;[{&#34;title&#34;:&#34;列表 1&#34;,&#34;list&#34;:[&#34;https://music.163.com/#/song?id=491097414&#34;]}]&#39;&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h1 id=&#34;前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#前言&#34;&gt;#&lt;/a&gt; 前言&lt;/h1&gt;
+&lt;p&gt;又要鸽了 0，有事情要忙。&lt;/p&gt;
+&lt;h1 id=&#34;reference&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#reference&#34;&gt;#&lt;/a&gt; Reference&lt;/h1&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuZnJlZWJ1Zi5jb20vYXJ0aWNsZXMvd2ViLzE5NTgzNy5odG1s&#34;&gt;逻辑漏洞挖掘初步总结篇&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vWC1jYWlqaS9wLzExMjA5OTYzLmh0bWw=&#34;&gt;Web 安全测试中常见逻辑漏洞解析（实战篇）&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTI5OTE2OTIvYXJ0aWNsZS9kZXRhaWxzLzgyOTUzMjEz&#34;&gt;常见逻辑漏洞&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;挖掘出属于自己的思维的逻辑漏洞。&lt;/p&gt;
 </content>
         <updated>2021-03-09T08:15:23.000Z</updated>
     </entry>
