@@ -10,9 +10,262 @@
         </author>
         <description>临渊羡鱼，不如退而结网</description>
         <language>zh-CN</language>
-        <pubDate>Tue, 30 Mar 2021 22:32:27 +0800</pubDate>
-        <lastBuildDate>Tue, 30 Mar 2021 22:32:27 +0800</lastBuildDate>
+        <pubDate>Tue, 20 Apr 2021 22:26:01 +0800</pubDate>
+        <lastBuildDate>Tue, 20 Apr 2021 22:26:01 +0800</lastBuildDate>
         <category term="学习" />
+        <item>
+            <guid isPermalink="true">https://self-ferry.github.io/2021/04/20/Linux%E4%B8%AD%E7%9A%84su%E4%B8%8Esu-%E5%91%BD%E4%BB%A4%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
+            <title>Linux中的su与su -命令的区别</title>
+            <link>https://self-ferry.github.io/2021/04/20/Linux%E4%B8%AD%E7%9A%84su%E4%B8%8Esu-%E5%91%BD%E4%BB%A4%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
+            <category term="LInux" scheme="https://self-ferry.github.io/categories/LInux/" />
+            <category term="Linux" scheme="https://self-ferry.github.io/tags/Linux/" />
+            <pubDate>Tue, 20 Apr 2021 22:26:01 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;reference&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#reference&#34;&gt;#&lt;/a&gt; Reference&lt;/h1&gt;
+&lt;p&gt;详情见&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3d3dy5oYTk3LmNvbS80MDAxLmh0bWw=&#34;&gt; http://www.ha97.com/4001.html&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;区别&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#区别&#34;&gt;#&lt;/a&gt; 区别&lt;/h2&gt;
+&lt;p&gt;su 命令和 su - 命令最大的本质区别就是：前者只是切换了 root 身份，但 Shell 环境仍然是普通用户的 Shell；而后者连用户和 Shell 环境一起切换成 root 身份了。只有切换了 Shell 环境才不会出现 PATH 环境变量错误。su 切换成 root 用户以后，pwd 一下，发现工作目录仍然是普通用户的工作目录；而用 su - 命令切换以后，工作目录变成 root 的工作目录了。用 echo $PATH 命令看一下 su 和 su - 以后的环境变量有何不同。以此类推，要从当前用户切换到其它用户也一样，应该使用 su - 命令。&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://self-ferry.github.io/2021/04/20/Linux%E9%85%8D%E7%BD%AEvsftp/</guid>
+            <title>Linux配置vsftp</title>
+            <link>https://self-ferry.github.io/2021/04/20/Linux%E9%85%8D%E7%BD%AEvsftp/</link>
+            <category term="Linux" scheme="https://self-ferry.github.io/categories/Linux/" />
+            <category term="CentOS7配置vsftp" scheme="https://self-ferry.github.io/tags/CentOS7%E9%85%8D%E7%BD%AEvsftp/" />
+            <pubDate>Tue, 20 Apr 2021 10:41:51 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#前言&#34;&gt;#&lt;/a&gt; 前言&lt;/h1&gt;
+&lt;p&gt;Linux 网络服务课的作业。虽然简单，但也让我踩了不少坑，记个笔记吧。&lt;br /&gt;
+作业的内容是可以匿名上传或删除文件就可。&lt;/p&gt;
+&lt;h1 id=&#34;正文&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#正文&#34;&gt;#&lt;/a&gt; 正文&lt;/h1&gt;
+&lt;p&gt;先换个 yum 的源，下载的快一点。&lt;br /&gt;
+ &lt;code&gt;wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;换源前也可以先备份一下。&lt;br /&gt;
+这里的详细内容可以参考&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d1ZGluYW5peWEvYXJ0aWNsZS9kZXRhaWxzLzEwNTc1ODczOQ==&#34;&gt; https://blog.csdn.net/wudinaniya/article/details/105758739&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;下载vsftp&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#下载vsftp&#34;&gt;#&lt;/a&gt; 下载 vsftp&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;yum -y install vsftpd&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;查看是否安装成功&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查看是否安装成功&#34;&gt;#&lt;/a&gt; 查看是否安装成功&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;rpm -qa|grep vsftpd&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;关闭一切墙策略selinux&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#关闭一切墙策略selinux&#34;&gt;#&lt;/a&gt; 关闭一切墙 | 策略 | SELINUX&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;systemctl stop firewalld&lt;/code&gt; &lt;br /&gt;
+ &lt;code&gt;iptables -F&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;关闭 SELINUX，有两种方法：&lt;br /&gt;
+临时关闭：&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;root@localhost ~&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token comment&#34;&gt;# getenforce&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Enforcing&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;root@localhost ~&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token comment&#34;&gt;# setenforce 0&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;root@localhost ~&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token comment&#34;&gt;# getenforce&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Permissive&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;永久关闭：&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;root@localhost ~&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token comment&#34;&gt;# vim /etc/sysconfig/selinux&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token assign-left variable&#34;&gt;SELINUX&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;enforcing 改为 &lt;span class=&#34;token assign-left variable&#34;&gt;SELINUX&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;disabled&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;重启服务 reboot&lt;/p&gt;
+&lt;h2 id=&#34;修改vsftpdconfig&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#修改vsftpdconfig&#34;&gt;#&lt;/a&gt; 修改 vsftpd.config&lt;/h2&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;修改配置文件 /etc/vsftpd.conf&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token assign-left variable&#34;&gt;anonymous_enable&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;YES  &lt;span class=&#34;token comment&#34;&gt;# 允许匿名访问&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token assign-left variable&#34;&gt;write_enable&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;YES  &lt;span class=&#34;token comment&#34;&gt;# 允许写文件&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token assign-left variable&#34;&gt;anon_upload_enable&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;YES  &lt;span class=&#34;token comment&#34;&gt;# 允许匿名用户上传文件&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token assign-left variable&#34;&gt;anon_mkdir_write_enable&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;YES  &lt;span class=&#34;token comment&#34;&gt;# 允许匿名用户创建目录和写权限&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token assign-left variable&#34;&gt;anon_other_write_enable&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;YES  &lt;span class=&#34;token comment&#34;&gt;# 允许匿名用户删除、重命名等其它权限  这个在配置文件里默认找不到&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h2 id=&#34;这里附上详细的vsftpconfig配置&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#这里附上详细的vsftpconfig配置&#34;&gt;#&lt;/a&gt; 这里附上详细的 vsftp.config 配置&lt;/h2&gt;
+&lt;p&gt;vsftpd 的配置文件在为 vsftpd.conf，一般在 /etc/vsftpd/ 目录下。&lt;/p&gt;
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;属性&lt;/th&gt;
+        &lt;th&gt;属性值&lt;/th&gt;
+        &lt;th align=&#34;left&#34;&gt;含义&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;anonymous_enable&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否允许匿名用户（anonymous）登录 &lt;code&gt;FTP&lt;/code&gt;，如果该设置被注释，则默认允许&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;local_enable&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否允许本地系统用户登录&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;write_enable&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否开启任何形式的 &lt;code&gt;FTP&lt;/code&gt; 写入命令，上传文件&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;local_umask&lt;/td&gt;
+        &lt;td&gt;xxx&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;本地用户的 &lt;code&gt;umask&lt;/code&gt; 设置，如果注释该设置则默认为 &lt;code&gt;077&lt;/code&gt;，但一般都设置成 &lt;code&gt;022&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;anon_upload_enable&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否允许匿名用户上传文件，如果要设置为允许，则需要先开启 &lt;code&gt;write_enable&lt;/code&gt;，否则无效，此外对应目录还要具有写权限&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;anon_mkdir_write_enable&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否允许匿名用户创建新目录&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;dirmessage_enable&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;当进入某个目录时，发送信息提示给远程用户&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;xferlog_enable&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否开启 上传/下载 的日志记录&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;connect_from_port_20&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否使用 &lt;code&gt;20&lt;/code&gt; 端口来连接 &lt;code&gt;FTP&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;chown_uploads&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;匿名上传的文件是否由某一指定用户 &lt;code&gt;chown_username&lt;/code&gt; 所有&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;chown_username&lt;/td&gt;
+        &lt;td&gt;有效用户名&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;匿名上传的文件由该设定用户所有&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;xferlog_file&lt;/td&gt;
+        &lt;td&gt;有效路径&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;设置日志文件的保存位置，默认为 &lt;code&gt;/var/log/xferlog&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;xferlog_std_format&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否使用标准的 &lt;code&gt;ftpd xferlog&lt;/code&gt;日志格式，该格式日志默认保存在 &lt;code&gt;/var/log/xferlog&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;idle_session_timeout&lt;/td&gt;
+        &lt;td&gt;数值&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;设置空闲连接的超时时间，单位 秒&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;data_connection_timeout&lt;/td&gt;
+        &lt;td&gt;数值&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;设置等待数据传输的最大时间，单位 秒（&lt;code&gt;data_connection_timeout&lt;/code&gt; 与 &lt;code&gt;idle_session_timeout&lt;/code&gt;
+            在同一时间只有一个有效）
+        &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;nopriv_user&lt;/td&gt;
+        &lt;td&gt;有效用户名&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;指定一个非特权用户，用于运行 &lt;code&gt;vsftpd&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;async_abor_enable&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否支持异步 &lt;code&gt;ABOR&lt;/code&gt; 请求&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;ascii_upload_enable&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否开启 &lt;code&gt;ASCII&lt;/code&gt; 模式进行文件上传，一般不开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;ascii_download_enable&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否开启 &lt;code&gt;ASCII&lt;/code&gt; 模式进行文件下载，一般不开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;ftpd_banner&lt;/td&gt;
+        &lt;td&gt;…&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;自定义登录标语&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;deny_email_enable&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;如果匿名登录，则会要求输入 email 地址，如果不希望一些 email 地址具有登录权限，则可以开启此项，并在 &lt;code&gt;banned_email_file&lt;/code&gt;
+            指定的文件中写入对应的 email 地址
+        &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;banned_email_file&lt;/td&gt;
+        &lt;td&gt;有效文件&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;当开启 &lt;code&gt;deny_email_enable&lt;/code&gt; 时，需要通过此项指定一个保存登录无效 email 的文件&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;chroot_local_user&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否将所有用户限制在主目录，当为 &lt;code&gt;NO&lt;/code&gt; 时， &lt;code&gt;FTP&lt;/code&gt; 用户可以切换到其他目录&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;chroot_list_enable&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否启用限制用户的名单列表&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;chroot_list_file&lt;/td&gt;
+        &lt;td&gt;有效文件&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;用户列表，其作用与 &lt;code&gt;chroot_local_user&lt;/code&gt; 和 &lt;code&gt;chroot_local_user&lt;/code&gt; 的组合有关，详见下表&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;allow_writeable_chroot&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否允许用户对 ftp 根目录具有写权限，如果设置成不允许而目录实际上却具备写权限，则会报错&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;ls_recurse_enable&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否允许 &lt;code&gt;ls -R&lt;/code&gt; 指令来递归查询，递归查询比较耗资源&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;listen&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;如果为 &lt;code&gt;YES&lt;/code&gt;，&lt;code&gt;vsftpd&lt;/code&gt; 将以独立模式运行并监听 &lt;code&gt;IPv4&lt;/code&gt; 的套接字，处理相关连接请求（该指令不能与
+            &lt;code&gt;listen_ipv6&lt;/code&gt; 一起使用）
+        &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;listen_ipv6&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否允许监听 &lt;code&gt;IPv6&lt;/code&gt; 套接字&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;pam_service_name&lt;/td&gt;
+        &lt;td&gt;…&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;设置 &lt;code&gt;PAM&lt;/code&gt; 外挂模块提供的认证服务所使用的配置文件名 ，即 &lt;code&gt;/etc/pam.d/vsftpd&lt;/code&gt; 文件，此文件中 &lt;code&gt;file=/etc/vsftpd/ftpusers&lt;/code&gt;
+            字段，说明了 &lt;code&gt;PAM&lt;/code&gt; 模块能抵挡的帐号内容来自文件 &lt;code&gt;/etc/vsftpd/ftpusers&lt;/code&gt; 中
+        &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;userlist_enable&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否启用 &lt;code&gt;user_list&lt;/code&gt; 文件来控制用户登录&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;userlist_deny&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否拒绝 &lt;code&gt;user_list&lt;/code&gt; 中的用户登录，此属性设置需在 &lt;code&gt;userlist_enable = YES&lt;/code&gt; 时才有效&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;tcp_wrappers&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否使用 &lt;code&gt;tcp_wrappers&lt;/code&gt; 作为主机访问控制方式&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;max_clients&lt;/td&gt;
+        &lt;td&gt;数值&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;同一时间允许的最大连接数&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;max_per_ip&lt;/td&gt;
+        &lt;td&gt;数值&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;同一个IP客户端连接的最大值&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;local_root&lt;/td&gt;
+        &lt;td&gt;有效目录&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;系统用户登录后的根目录&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;anon_root&lt;/td&gt;
+        &lt;td&gt;有效目录&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;匿名用户登录后的根目录&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;user_config_dir&lt;/td&gt;
+        &lt;td&gt;有效目录&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;用户单独配置文件存放目录，该目录下用户的文件名就是对应用户名&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;以上搞完之后还要把ftp目录的权限给更改&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#以上搞完之后还要把ftp目录的权限给更改&#34;&gt;#&lt;/a&gt; 以上搞完之后还要把 ftp 目录的权限给更改&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;chmod 777 /var/ftp/pub&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;这里只能更改 ftp 目录下的子目录的权限。这就是个坑，当更改 /etc/ftp/ 这个目录的权限时，都没法登陆这个 ftp 服务器了。&lt;br /&gt;
+当然是可以更改 ftp 下的目录的，在 vsftpd.config 中配置。&lt;/p&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">https://self-ferry.github.io/2021/03/30/win32%EF%BC%88%E4%BA%8C%EF%BC%89%E4%BA%8B%E4%BB%B6%E6%B6%88%E6%81%AF/</guid>
             <title>win32（二）事件消息</title>
@@ -2040,199 +2293,6 @@ token 的值通过服务端生成，表单提交后 token 的值通过 POST 请�
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;
 
 &lt;/code&gt;&lt;/pre&gt;
- ]]></description>
-        </item>
-        <item>
-            <guid isPermalink="true">https://self-ferry.github.io/2021/01/22/apache%E8%AE%BF%E9%97%AE%E6%97%A5%E5%BF%97%E8%AF%A6%E8%A7%A3%E3%80%90%E8%BD%AC%E3%80%91/</guid>
-            <title>apache访问日志详解【转】</title>
-            <link>https://self-ferry.github.io/2021/01/22/apache%E8%AE%BF%E9%97%AE%E6%97%A5%E5%BF%97%E8%AF%A6%E8%A7%A3%E3%80%90%E8%BD%AC%E3%80%91/</link>
-            <category term="web" scheme="https://self-ferry.github.io/categories/web/" />
-            <category term="apache" scheme="https://self-ferry.github.io/tags/apache/" />
-            <category term="log" scheme="https://self-ferry.github.io/tags/log/" />
-            <pubDate>Fri, 22 Jan 2021 22:37:03 +0800</pubDate>
-            <description><![CDATA[ &lt;h1 id=&#34;正文&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#正文&#34;&gt;#&lt;/a&gt; 正文&lt;/h1&gt;
-&lt;p&gt;&lt;span class=&#34;label dergous&#34;&gt;源自：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vdG91Y2gtcHJjL3AvMTI3NTYxODkuaHRtbA==&#34;&gt;https://www.cnblogs.com/touch-prc/p/12756189.html&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;h2 id=&#34;路径&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#路径&#34;&gt;#&lt;/a&gt; 路径&lt;/h2&gt;
-&lt;p&gt;windows : 默认或者自定义 Apache 的安装路径 \logs\access.log|error.log|install|ssl_request.log&lt;/p&gt;
-&lt;p&gt;linux:/usr/local/apache/logs/access_log|error_log&lt;/p&gt;
-&lt;h2 id=&#34;apache访问日志格式&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#apache访问日志格式&#34;&gt;#&lt;/a&gt; Apache 访问日志格式&lt;/h2&gt;
-&lt;p&gt;192.168.106.128 - - [01/Apr/2020:10:37:19 +0800] &amp;quot;GET /HTTP/1.1&amp;quot; 200 45&lt;/p&gt;
-&lt;p&gt;各字段代表的内容如下：&lt;/p&gt;
-&lt;p&gt;192.168.106.128   ---------- 远程主机的 ip 地址，表明访问网站的是谁。&lt;/p&gt;
-&lt;p&gt;空白 -                       ---------- 为了避免用户的邮箱被垃圾邮件骚扰，就用 - 代替&lt;/p&gt;
-&lt;p&gt;空白 -                       ---------- 用于记录浏览者进行身份验证时提供的名字&lt;/p&gt;
-&lt;p&gt;[01/Apr/2020:10:37:19 +0800] --------- 请求的时间。时间信息最后的 + 0800 是服务器所在时区未于 UTC 之后的 8 小时&lt;/p&gt;
-&lt;p&gt;GET /HTTP/1.1                  ---------- 请求的方法 + 资源 + 协议，该项信息的典型格式是 method resource protocol&lt;/p&gt;
-&lt;p&gt;200                          -------- 状态码，即请求是否成功或者遇到了什么问题。200 为成功响应请求，一切正常&lt;/p&gt;
-&lt;p&gt;45                           ----------  发送的字节数&lt;/p&gt;
-&lt;h2 id=&#34;配置apache访问日志格式命令及参数&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#配置apache访问日志格式命令及参数&#34;&gt;#&lt;/a&gt; 配置 Apache 访问日志格式命令及参数&lt;/h2&gt;
-&lt;p&gt;LogFormat 指令：定义格式并为格式指定一个名字&lt;/p&gt;
-&lt;p&gt;CustomLog 指令：设置日志文件并指明日志文件所用的格式&lt;/p&gt;
-&lt;p&gt;LogFormat &amp;quot;% h % l % u % t&amp;quot;% r&amp;quot;%&amp;gt;s % b&amp;quot; common   定义格式和名字&lt;/p&gt;
-&lt;p&gt;CustomLog &amp;quot;logs/access.log&amp;quot; common    普通文件记录&lt;/p&gt;
-&lt;table style=&#34;height: 41px; width: 452px&#34; border=&#34;0&#34;&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align: center&#34;&gt;%h&lt;/td&gt;
-&lt;td style=&#34;text-align: center&#34;&gt;%i&lt;/td&gt;
-&lt;td style=&#34;text-align: center&#34;&gt;%t&lt;/td&gt;
-&lt;td style=&#34;text-align: center&#34;&gt;%u&lt;/td&gt;
-&lt;td style=&#34;text-align: center&#34;&gt;%r&lt;/td&gt;
-&lt;td style=&#34;text-align: center&#34;&gt;%b&lt;/td&gt;
-&lt;td style=&#34;text-align: center&#34;&gt;%&amp;gt;s&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align: center&#34;&gt;远端主机&lt;/td&gt;
-&lt;td style=&#34;text-align: center&#34;&gt;远端登录名&lt;/td&gt;
-&lt;td style=&#34;text-align: center&#34;&gt;远端用户名&lt;/td&gt;
-&lt;td style=&#34;text-align: center&#34;&gt;时间&lt;/td&gt;
-&lt;td style=&#34;text-align: center&#34;&gt;请求第一行&lt;/td&gt;
-&lt;td style=&#34;text-align: center&#34;&gt;传输字节数&lt;/td&gt;
-&lt;td style=&#34;text-align: center&#34;&gt;状态&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt;
-&lt;p&gt;LogFormat &amp;quot;%h %l %u %t &amp;quot;%r&amp;quot; %&amp;gt;s %b &amp;quot;%{Referer}i&amp;quot; &amp;quot;%{User-Agent}i&amp;quot;&amp;quot; combined&lt;/p&gt;
-&lt;p&gt;CustomLog logs/access_log combined 复合日志记录&lt;/p&gt;
-&lt;table border=&#34;0&#34; align=&#34;left&#34;&gt;
-&lt;tr&gt;
-&lt;td&gt;%{Referer}i\&lt;/td&gt;
-&lt;td style=&#34;text-align: center&#34;&gt;\&#34;%{User-Agent}i\&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;请求来源&lt;/td&gt;
-&lt;td&gt;客户端浏览器提供的浏览器识别信息&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt;
-&lt;h2 id=&#34;apache错误日志格式&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#apache错误日志格式&#34;&gt;#&lt;/a&gt; Apache 错误日志格式&lt;/h2&gt;
-&lt;p&gt;错误日志无论在格式上还是在内容上都和访问日志不同。错误日志和访问日志一样提供丰富的信息，我们可以利用这些信息分析服务器的运行情况、哪里出现了问题。错误日志记录了服务器运行期间遇到的各种错误，以及一些普通的诊断信息，比如服务器何时启动、何时关闭等。我们可以设置日志文件记录信息级别的高低，控制日志文件记录信息的数量和类型。这是通过 LogLevel 指令设置的，该指令默认设置的级别是 error，即记录称得上错误的事件。有关该指令中允许设置的各种选项的完整清单，请参见 http://www.apache.org/docs/mod/core.html#loglevel 的 Apache 文档。在日志文件中的内容分属两类：文档错误和 CGI 错误。错误日志中偶尔也会出现配置错误，另外还有前面提到的服务器启动和关闭信息。&lt;/p&gt;
-&lt;h3 id=&#34;1文档错误&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1文档错误&#34;&gt;#&lt;/a&gt; （1）文档错误&lt;/h3&gt;
-&lt;p&gt;[Fri Mar 30 14:45:09 2018] [error] [client 192.168.115.120]&lt;/p&gt;
-&lt;p&gt;user &lt;span class=&#34;exturl&#34; data-url=&#34;bWFpbHRvOmNldmFwaUBzaW5nLmNvbQ==&#34;&gt;cevapi@sing.com&lt;/span&gt; : authentication failure for &amp;quot;/cgi-bin/hivpoo/cook.py&amp;quot; : password mismatch&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;错误发生的日期和时间&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;错误的级别或严重性&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;导致错误的 IP 地址&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;错误信息本身。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;2cgi错误&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#2cgi错误&#34;&gt;#&lt;/a&gt; （2）CGI 错误&lt;/h3&gt;
-&lt;p&gt;错误日志最主要的用途或许是诊断行为异常的 CGI 程序。为了进一步分析和处理方便，CGI 程序输出到 STDERR（Standard Error，标准错误设备）的所有内容都将直接进入错误日志。这意味着，任何编写良好的 CGI 程序，如果出现了问题，错误日志就会告诉我们有关问题的详细信息。CGI 程序错误输出到错误日志也有它的缺点，错误日志中将出现许多没有标准格式的内容，这使得用错误日志自动分析程序从中分析出有用的信息变得相当困难。&lt;/p&gt;
- ]]></description>
-        </item>
-        <item>
-            <guid isPermalink="true">https://self-ferry.github.io/2021/01/20/%E3%80%8A%E5%8A%A0%E5%AF%86%E4%B8%8E%E8%A7%A3%E5%AF%86%E3%80%8B%E7%AC%AC%E4%B8%80%E7%AB%A0/</guid>
-            <title>《加密与解密》第一章</title>
-            <link>https://self-ferry.github.io/2021/01/20/%E3%80%8A%E5%8A%A0%E5%AF%86%E4%B8%8E%E8%A7%A3%E5%AF%86%E3%80%8B%E7%AC%AC%E4%B8%80%E7%AB%A0/</link>
-            <category term="加密与解密" scheme="https://self-ferry.github.io/categories/encryption-and-decryption/" />
-            <category term="win32api" scheme="https://self-ferry.github.io/tags/win32api/" />
-            <category term="WOW64" scheme="https://self-ferry.github.io/tags/WOW64/" />
-            <category term="windows消息机制" scheme="https://self-ferry.github.io/tags/windows%E6%B6%88%E6%81%AF%E6%9C%BA%E5%88%B6/" />
-            <category term="虚拟内存" scheme="https://self-ferry.github.io/tags/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/" />
-            <pubDate>Wed, 20 Jan 2021 12:24:48 +0800</pubDate>
-            <description><![CDATA[ &lt;p&gt;&lt;span class=&#34;label success&#34;&gt;✔️来首音乐吧&lt;/span&gt;&lt;/p&gt;
-&lt;div class=&#34;media-container&#34;&gt;&lt;div class=&#34;player&#34; data-type=&#34;audio&#34; data-src=&#39;[{&#34;title&#34;:&#34;列表 1&#34;,&#34;list&#34;:[&#34;https://music.163.com/#/song?id=486999662&#34;]}]&#39;&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;h1 id=&#34;windows操作系统&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#windows操作系统&#34;&gt;#&lt;/a&gt; Windows 操作系统&lt;/h1&gt;
-&lt;p&gt;本书研究 Windows 平台上的加密与解密，因此要求读者必须对操作系统有所了解。建议读者阅读 Windows 操作系统原理方面的书籍，这对深入理解本书的后续内容很有帮助。&lt;/p&gt;
-&lt;h2 id=&#34;win32-api函数&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#win32-api函数&#34;&gt;#&lt;/a&gt; Win32 API 函数&lt;/h2&gt;
-&lt;p&gt;现在很多讲程序设计的书都基于 MFC 库和 OWL 库的 Windows 设计，对 Windows 实现细节鲜有讨论，而调试程序是要和系统底层打交道的，所以有必要掌握一些 API 函数的知识。&lt;/p&gt;
-&lt;p&gt;对初学者来说，API 函数也许是一个时常耳闻却感觉有些神秘的东西。 API 的英文全称为 &amp;quot;Application Programming Interface&amp;quot; (应用程序编程接口), 要想理解这个定义，需要追溯操作系统的发展历史。 当 Windows 操作系统开始占据主导地位的时候，开发 Windows 平台上的应用程序成为人们的需要。 而在 Windows 程序设计发展的初期，Windows 程序员能够使用的编程工具只有 API 函数。这些函数提供应用程序运行所需要的窗口管理、图形设备接口、内存管理等服务功能。 这些功能以函数库的形式组织在一起，形成了 Windows 应用程序编程接口，简称 &amp;quot;Win API&amp;quot;, Win API 子系统负责将 API 调用转换成 Windows 操作系统的系统服务调用。 所以，可以认为 API 函数是整个 Windows 框架的基石，它的下面是 Windows 操作系统核心，它的上面则是 Windows 应用程序，如图 1.3 所示。 应用程序开发人员看到的 Windows 操作系统实际上就是 Win API, Windows 操作系统的其他部分对开发人员来说是完全透明的。&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;image001.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;用于 16 位 Windows 的 API (Windows 1.0~Windows 3.1) 称作 &amp;quot;Win16&amp;quot;, 用于 32 位 Windows 的 API ( Windows 9x/NT/2000/XP/7/10 ) 称作 &amp;quot;Win32&amp;quot;, 64 位 Windows API 的名称和功能基本没有变化，还是使用 Win32 的函数名，只不过是用 64 位代码实现的。 API 函数调用在从 Win16 到 Win32 的转变中保持兼容，并在数量和功能上不断增强 - Windows 1.0 只支持不到 450 个函数调用，现在已有几千个函数了。&lt;/p&gt;
-&lt;p&gt;所有 32 位 Windows 都支持 Win16 API (以确保与旧的应用程序兼容) 和 Win32 API (以运行新的应用程序), 非常有趣的是，Windows NT/2000/xP/7 与 Windows 9x 的工作方式不同。 在 WindowsNT/2000XKP/7 中，Winl6 函数调用通过一个转换层转换为 Win32 函数调用，然后被操作系统处理。在 Windows 9x 中，该操作正好相反，Win32 函数调用通过转换层转换为 Win16 函数调用，再由操作系统进行处理。&lt;/p&gt;
-&lt;p&gt;Windows 运转的核心是动态链接。 Windows 提供了丰富的应用程序可利用的函数调用，这些函数采用动态链接库 (DLL) 实现。 在 Windows 9x 中，DLL 通常位于 1WINDOWSYSTEM 子目录中。在 Windows NT72000/XP/7 中，DLL 通常位于系统安装目录的 SYSTEM 和 SYSTEM32 子目录中。&lt;/p&gt;
-&lt;p&gt;在早期，Windows 的主要部分只需要在 3 个动态链接库中实现，它们分别代表 Windows 的 3 个主要子系统，叫作 Kernel, User 和 GDI。&lt;br /&gt;
-- Kerel (由 KERNEL32.DLL 实现): 操作系统核心功能服务，包括进程与线程控制、内存管理、文件访问等。&lt;br /&gt;
-- User (由 USER32.DL. 实现): 负责处理用户接口，包括键盘和鼠标输入、窗口和菜单管理等。&lt;br /&gt;
-- GDI (由 GD132.DLL 实现): 图形设备接口，允许程序在屏幕和打印机上显示文本和图形。&lt;/p&gt;
-&lt;p&gt;除了上述模块，Windows 提供了其他 DLL 以支持更多的功能，包括对象安全性、注册表操作 (ADVAPI32. DLL)、通用控件 (COMCTL.32.DL)、公共对话框 (COMDLG32. DLL )、用户界面外壳 SHELL32.DLL) 和网络 (NETAPI32. DLL)。&lt;/p&gt;
-&lt;p&gt;虽然 Win API 是一个基于 C 语言的接口，但是 Win API 中的函数可以由用不同语言编写的程序调用，因此，我们只要在调用时遵循调用的规范即可。&lt;/p&gt;
-&lt;p&gt;Unicode 影响着计算机工业的每个部分，对操作系统和编程语言的影响最大。 NT 系统是使用 Unicode 标准字符集重新开发的，其系统核心完全是用 Unicode 函数工作的。 如果希望调用一个 Windows 函数并向它传递一个 ANSI 字符串，系统会先将 ANSI 字符串转换成 Unicode 字符串，再将 Unicode 字符串传递给操作系统。 相反，如果希望函数返回 ANSI 字符串，系统会先将 Unicode 字符串转换成 ANSI 字符串，然后将结果返回应用程序。 也就是说，在 NT 架构下，Win32 API 能接受 Unicode 和 ASCI 两种字符集，而其内核只能使用 Unicode 字符集。 尽管这些操作对用户来说都是透明的，但字符串的转换需要占用系统资源。&lt;/p&gt;
-&lt;p&gt;在 Win32 API 函数字符集中，&amp;quot;A&amp;quot; 表示 ANSI, &amp;quot;W&amp;quot; 表示 Widechars (即 Unicode), 前者就是通常使用的单字节方式；后者是宽字节方式，以便处理双字节字符。 每个以字符串为参数的 Win32 函数在操作系统中都有这两种方式的版本。 例如，在编程时使用 MessageBox 函数，而在 USER32.DLL 中却没有 32 位 MessageBox 函数的人口。 实际上有两个人口，一个名为 &amp;quot;MessageBoxA&amp;quot; ( ANSI 版), 另一个名为 &amp;quot;MessageBoxW&amp;quot; (宽字符版)。 幸运的是，程序员通常不必关心这个问题，只需要在编程时使用 MessageBox 函数，开发工具的编译模块就会根据设置来决定是采用 MessageBoxA 还是 MessageBoxW。&lt;/p&gt;
-&lt;p&gt;这里以 MessageBox 函数为例讨论一下。 此函数用于在 USER32.DLL 用户模块中创建和显示信息框，函数原型如下。&lt;/p&gt;
-&lt;figure class=&#34;highlight c&#34;&gt;&lt;figcaption data-lang=&#34;c&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;MessageBox&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt; &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;HWND hWnd&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;        &lt;span class=&#34;token comment&#34;&gt;// 父窗口句柄 &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;LPCTSTR IpText&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;    &lt;span class=&#34;token comment&#34;&gt;// 消息框文本地址 &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;LPCTSTR IpCaption&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;  &lt;span class=&#34;token comment&#34;&gt;// 消息框标题地址 &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;UINT uType          &lt;span class=&#34;token comment&#34;&gt;// 消息框样式&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;看一看 Windows 2000 里 MessageBoxA 函数的内部结构，具体如下。&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;int MessageBoxA( 
-MessageBoxExA &amp;#123;   //调用MessageBoxExA函数 
-MBTоWCSEx()        //将MessageBoxA消息框的主体文字转换成Unicode字符串 
-MBToWCSEx()       //将MessageBoxA消息框标题栏上的文字转换成Unicode字符串 
-MessageBoxExW( )  //调用MessageBoxExw函数 
-HeapFree ( ) //释放内存
-&amp;#125;
-);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;这个结果表明，MessageBoxExA 函数其实是一个替换翻译层，用于分配内存，并将 ANSI 字符串转换成 Unicode 字符串，系统最终调用 Unicode 版的 MessageBoxExW 函数执行。 当 Message BoxW 函数返回时，它便释放内存缓存。 在这个过程中，系统必须执行这些额外的转换操作，因此，ANSI 版的应用程序需要更多的内存及更多的 CPU 资源，而 Unicode 版的程序在 NT 架构下的执行效率高了很多。&lt;/p&gt;
-&lt;p&gt;Win32 程序大量调用系统提供的 API 函数，而 Win32 平台上的调试器 (例如 ollybg 等) 恰好有针对 API 函数设置断点的强大功能，因此，掌握常见 API 函数的用法会给程序的跟踪调试带来极大的方便 (详细的 Win32 API 参考文档可以从 MSDN 网站获得), 建议读者掌握一定的 Win32 编程知识 (可参考《Windows 程序设计》一书), 这对合理选择 API 函数有很大的帮助。&lt;/p&gt;
-&lt;h2 id=&#34;wow64&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#wow64&#34;&gt;#&lt;/a&gt; WOW64&lt;/h2&gt;
-&lt;p&gt;wow64 (Windows-on-Windows 64-bit) 是 64 位 Windows 操作系统的子系统，可以使大多数 32 位应用程序在不进行修改的情况下运行在 64 位操作系统上。&lt;/p&gt;
-&lt;p&gt;64 位的 Windows, 除了带有 64 位操作系统应有的系统文件，还带有 32 位操作系统应有的系统文件。Windows 的 64 位系统文件都放在一个叫作 &amp;quot;System32&amp;quot; 的文件夹中，\Windows\System32 文件夹中包含原生的 64 位映像文件。为了兼容 32 位操作系统，还增加了 \Windows\SysWOW64 文件夹，其中存储了 32 位的系统文件。&lt;/p&gt;
-&lt;p&gt;64 位应用程序会加载 System32 目录下 64 位的 kernel32.dll, user32.dll 和 ntdll.dll。当 32 位应用程序加载时，wow64 建立 32 位 ntdl.da 所要求的启动环境，将 CPU 模式切换至 32 位，并开始执行 32 位加载器，就如同该进程运行在原生的 32 位系统上一样。wow64 会对 32 位 ntdll.dl 的调用重定向 ntdll.dl (64 位), 而不是发出原生的 32 位系统调用指令。wow64 转换到原生的 64 位模式，捕获与系统调用有关的参数，发出对应的原生 64 位系统调用。当原生的系统调用返回时，wow64 在返回 32 位模式之前将所有输出参数从 64 位转换成 32 位。&lt;/p&gt;
-&lt;p&gt;wow64 既不支持 16 位应用程序的执行 (32 位 Windows 支持 16 位应用程序的执行), 也不支持加载 32 位内核模式的设备驱动程序。wow64 进程只能加载 32 位的 DLL, 不能加载原生的 64 位 DLL。类似的，原生的 64 位进程不能加载 32 位的 DLL。&lt;/p&gt;
-&lt;h2 id=&#34;windows消息机制&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#windows消息机制&#34;&gt;#&lt;/a&gt; Windows 消息机制&lt;/h2&gt;
-&lt;p&gt;Windows 是一个消息 (Message) 驱动式系统。Windows 消息提供在应用程序与应用程序之间、应用程序与 Windows 系统之间进行通信的手段。应用程序想要实现的功能由消息触发，通过对消息的响应和处理完成。&lt;br /&gt;
-Windows 系统中有两种消息队列：一种是系统消息队列；另一种是应用程序消息队列。计算机的所有输入设备由 Windows 监控。当一个事件发生时，Windows 先将输入的消息放入系统消息队列，再将输入的消息复制到相应的应用程序队列中，应用程序中的消息循环在它的消息队列中检索每个消息并发送给相应的窗口函数。一个事件从发生到到达处理它的窗口函数必须经历上述过程。值得注意的是消息的非抢先性，即不论事件的急与缓，总是按到达的先后排队 (一些系统消息除外), 而这可能导致一些外部实时事件得不到及时的处理。&lt;/p&gt;
-&lt;p&gt;因为 Windows 本身是由消息驱动的，所以在调试程序时跟踪一个消息会得到相当底层的答案。&lt;/p&gt;
-&lt;p&gt;下面将常用的 Windows 消息函数列出，以供参考。&lt;br /&gt;
-(1) SendMessage 函数调用一个窗口的窗口函数，将一条消息发给那个窗口。除非消息处理完毕，否则该函数不会返回。该函数示例如下。&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;LRESULT SendMessage ( 
-HWND hWnd,         //目的窗口的句柄 
-UINT Msg,           //消息标识符 
-WPARAM wParam,   //消息的WPARAM域 
-LPARAM 1Param //消息的LPARAM域
-&amp;#125; ;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;返回值：由具体的消息决定。如果消息投递成功，则返回 &amp;quot;TRUE&amp;quot; (非零)。&lt;/p&gt;
-&lt;p&gt;(2) WM-COMMAND 消息当用户从菜单或按钮中选择一条命令或者一个控件时该消息被发送给它的父窗口，或者当一个快捷键被释放时发送，示例如下。Visual C++ 的 WINUSER.H 文件定义，WM_COMMAND 消息所对应的十六进制数是 0111h。&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;WM_COMMAND 
-    wNotifyCode = HIWORD (WParam);   //通告代码 
-    wID = LOWORD (wParam);   //菜单条目、控件或快捷键的标识符 
-    hwndctl = (HWND) IParam; //按件句柄
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;返回值：如果应用程序处理这条消息，则返回值为零。&lt;/p&gt;
-&lt;p&gt;(3) WM_DESTROY 消息当一个窗口被销毁时发送该消息。该消息的十六进制数是 02h, 没有参数。&lt;/p&gt;
-&lt;p&gt;返回值：如果应用程序处理这条消息，则返回值为零。&lt;/p&gt;
-&lt;p&gt;(4) WM-GETTEXT 消息应用程序发送一条 WM_GETTEXT 消息，将一个对应窗口的文本复制到一个由呼叫程序提供的缓冲区中，示例如下。WM_GETTEXT 消息的十六进制数是 0Dh。&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;WM GETTEXT
-    wParam = (WPARAM) cchTextMax;  //需要复制的字符数
-    lParam = (LPARAM) IpszText;   //接收文本的缓冲区地址
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;返回值：被复制的字符数。&lt;/p&gt;
-&lt;p&gt;(5) wMLQUTT 消息当应用程序调用 PostQuitMessage 函数时，生成 WM-QUIT 消息，示例如下。WM_QUTT 消息的十六进制数是 012h&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;WM QUIT
-nExitCode = (int) wParam;//退出代码
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;返回值：这条消息没有返回值。&lt;/p&gt;
-&lt;p&gt;(6) WM_LBUTTONDOWN 消息当光标停在一个窗口的客户区且用户按下鼠标左键时，wMLBUTTONDOWN 消息将被发送，示例如下。如果鼠标动作未被捕获，这条消息将被发送给光标下的窗口；否则，将被发送给已经捕获鼠标动作的窗口。WM_LBUTTONDOWN 消息的十六进制数是 0201h。&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;WM LBUTTONDOWN 
-fwKeys = wParam;                //key旗标 
-xPos = LOWORD (IParam);  //光标的水平位置 
-yPos = HIWORD (IParam);  //光标的垂直位置
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;虚拟内存&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#虚拟内存&#34;&gt;#&lt;/a&gt; 虚拟内存&lt;/h2&gt;
-&lt;p&gt;在默认情况下，32 位 Windows 操作系统的地址空间在 4GB 以内。Win32 的平坦内存模式使每个进程都拥有自己的虚拟空间。对 32 位进程来说，这个地址空间是 4CB, 因为 32 位指针拥有 00000000h~FFFFFFFFh 任何值。此时，程序的代码和数据都放在同一地址空间中，不必区分代码段和数据段。&lt;/p&gt;
-&lt;p&gt;虚拟内存 (Virtual Memory) 不是真正的内存，它通过映射 (Map) 的方法使可用虚拟地址 ( VirtualAddress ) 达到 4GB, 每个应用程序可以获得 2GB 的虚拟地址，剩下的 2GB 留给操作系统自用。在 Windows NT 中，应用程序甚至可以获得 3GB 的虚拟地址。&lt;/p&gt;
-&lt;p&gt;Windows 是一个分时的多任务操作系统，CPU 时间在被分成一个个时间片后分配给不同的程序。在一个时间片里，与这个程序的执行无关的内容不会映射到线性地址中。因此，每个程序都有自己的 4GB 寻址空间，互不干扰。在物理内存中，操作系统和系统 DLL. 代码需要供每个应用程序调用，所以它们在任意时刻必须被映射。用户的 EXE 程序只在自己所属的时间片内被映射，用户 DLL 则有选择地被映射。&lt;/p&gt;
-&lt;p&gt;简单地说，虚拟内存的实现方法和过程如下。&lt;/p&gt;
-&lt;p&gt;①当一个应用程序启动时，操作系统就创建一个进程，并给该进程分配 2CB 的虚拟地址 (不是内存，只是地址)。&lt;/p&gt;
-&lt;p&gt;②虚拟内存管理器将应用程序的代码映射到那个应用程序的虚拟地址中的某个位置，并把当前需要的代码读入物理地址 (注意：虚拟地址与应用程序代码在物理内存中的位置是没有关系的)。&lt;/p&gt;
-&lt;p&gt;③如果使用 DLL, DLL 也会被映射到进程的虚拟地址空间中，在需要的时候才会被读入物理内存。&lt;/p&gt;
-&lt;p&gt;④其他项目 (数据、堆栈等) 的空间是从物理内存中分配的，并被映射到虚拟地址空间中。&lt;/p&gt;
-&lt;p&gt;⑤应用程序通过使用其虚拟地址空间中的地址开始执行。然后，虚拟内存管理器把每次内存访问映射到物理位置。&lt;/p&gt;
-&lt;p&gt;看不明白上面的步骤也不要紧，但要明白以下几点。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;应用程序不会直接访问物理地址。&lt;/li&gt;
-&lt;li&gt;虚拟内存管理器通过虚拟地址的访问请求来控制所有的物理地址访问。&lt;/li&gt;
-&lt;li&gt;每个应用程序都有独立的 4GB 寻址空间，不同应用程序的地址空间是彼此隔离的。&lt;/li&gt;
-&lt;li&gt;DLL 程序没有 “私有” 空间，它们总是被映射到其他应用程序的地址空间中，作为其他应用程序的一部分运行。其原因是：如果 DLL 不与其他程序处于同一个地址空间，应用程序就无法调用它。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;使用虚拟内存的好处是：简化了内存的管理，弥补了物理内存的不足，可以防止多任务环境下应用程序之间的冲突。&lt;br /&gt;
-64 位 Windows 操作系统提供了 16TB 的有效寻址空间，其中的一半可用于用户模式的应用程序。&lt;/p&gt;
-&lt;h1 id=&#34;反思&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#反思&#34;&gt;#&lt;/a&gt; 反思&lt;/h1&gt;
-&lt;p&gt;不会的太多了，明天开始还是接着看视频吧。初学者不知道重点在哪。脑壳痛，giao!&lt;/p&gt;
  ]]></description>
         </item>
     </channel>
