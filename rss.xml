@@ -10,9 +10,17 @@
         </author>
         <description>临渊羡鱼，不如退而结网</description>
         <language>zh-CN</language>
-        <pubDate>Tue, 04 May 2021 04:49:52 +0800</pubDate>
-        <lastBuildDate>Tue, 04 May 2021 04:49:52 +0800</lastBuildDate>
+        <pubDate>Thu, 06 May 2021 14:23:36 +0800</pubDate>
+        <lastBuildDate>Thu, 06 May 2021 14:23:36 +0800</lastBuildDate>
         <category term="学习" />
+        <item>
+            <guid isPermalink="true">https://self-ferry.github.io/2021/05/06/%E9%9D%99%E6%80%81%E3%80%81%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93/</guid>
+            <title>静态、动态链接库</title>
+            <link>https://self-ferry.github.io/2021/05/06/%E9%9D%99%E6%80%81%E3%80%81%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93/</link>
+            <pubDate>Thu, 06 May 2021 14:23:36 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#&#34;&gt;#&lt;/a&gt; &lt;/h1&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">https://self-ferry.github.io/2021/05/04/%E6%96%B0%E5%A2%9E%E8%8A%82/</guid>
             <title>新增节</title>
@@ -2020,51 +2028,6 @@ tar 中使用 - z 这个参数来调用 gzip 常用命令:&lt;/li&gt;
 &lt;p&gt;常用命令:&lt;/p&gt;
 &lt;p&gt;tar -cjfall.tar.bz2 *.jpg #将所有.jpg 的文件打成一个 tar 包，并且将其用 bzip2 压缩，生成一个 bzip2 压缩过的包，包名为 all.tar.bz2&lt;/p&gt;
 &lt;p&gt;tar -xjf all.tar.bz2  #将上面产生的包解开&lt;/p&gt;
- ]]></description>
-        </item>
-        <item>
-            <guid isPermalink="true">https://self-ferry.github.io/2021/02/07/%E5%88%9D%E8%AF%86python%E6%B5%8B%E8%AF%95%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/</guid>
-            <title>初识python测试驱动开发</title>
-            <link>https://self-ferry.github.io/2021/02/07/%E5%88%9D%E8%AF%86python%E6%B5%8B%E8%AF%95%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/</link>
-            <pubDate>Sun, 07 Feb 2021 20:20:18 +0800</pubDate>
-            <description><![CDATA[ &lt;p&gt;&lt;span class=&#34;label success&#34;&gt;✔️Music！&lt;/span&gt;&lt;/p&gt;
-&lt;div class=&#34;media-container&#34;&gt;&lt;div class=&#34;player&#34; data-type=&#34;audio&#34; data-src=&#39;[{&#34;title&#34;:&#34;列表 1&#34;,&#34;list&#34;:[&#34;https://music.163.com/#/song?id=1384407086&#34;]}]&#39;&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;h1 id=&#34;导读&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#导读&#34;&gt;#&lt;/a&gt; 导读&lt;/h1&gt;
-&lt;p&gt;本章主要介绍敏捷开发模式。敏捷开发是 20 世纪 90 年代兴起的一种新型软件开发方法，能快速应对需求的变化。他需要分析人员与程序开发人员紧密协作，采用面对面的有效沟通方式频繁交付新的软件版本。测试驱动是敏捷开发的重要组成部分，python 是敏捷开发项目常采用的一种语言。本章重点介绍测试驱动开发的特点、步骤和环境建立，以及 Python 单元测试，doctest 和 Epydoc 的使用。&lt;/p&gt;
-&lt;h1 id=&#34;正文&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#正文&#34;&gt;#&lt;/a&gt; 正文&lt;/h1&gt;
-&lt;h2 id=&#34;测试驱动开发&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#测试驱动开发&#34;&gt;#&lt;/a&gt; 测试驱动开发&lt;/h2&gt;
-&lt;p&gt;测试驱动开发 (Test-Driven-Development)，简称 TDD，是一种有别于传统开发的新型开发方法。它要求在编写某个功能的代码之前先编写测试代码，让后编写是测试通过的代码，通过测试来推动整个开发的进行。这有助于编写简洁可用和高质量的代码，以便加速开发进程。&lt;/p&gt;
-&lt;h3 id=&#34;测试驱动开发模式tdd&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#测试驱动开发模式tdd&#34;&gt;#&lt;/a&gt; 测试驱动开发模式 (TDD)&lt;/h3&gt;
-&lt;p&gt;当下科技高速发展，软件规模越来越大，软件开发人员也越来越多，因此软件开发过程必须要有知道开发的软件模式。一些小项目也许可以采用边做边改的开发模式，项目一旦做大，这样的开发模式就不能满足需求了。&lt;/p&gt;
-&lt;p&gt;瀑布模型作为传统的开发模式，曾一度受到追捧，它将软件生命周期划外为制定计划，需求分析、软件设计、程序开发、软件测试和运行维护六个阶段，这六个阶段的各项活动严格按照线性方式进行，每一个阶段的工作成果都需要进行验证，验证通过才能进入下一阶段，否则返回修改。&lt;/p&gt;
-&lt;p&gt;传统的开发模型除了瀑布模型外，还有造代模型、快速原型模型、增量模型、螺旋模型，但这些模型都有自身的缺点，如何适应瞬息万变的需求变化，如何高效地实施软件开发，是每个软件行业人员必须思考的问题。&lt;/p&gt;
-&lt;p&gt;敏捷开发在这样的环境下应运而生，它是一种以人为核心、迭代、循序渐进的开发方法，开发过程中，软件项目的构建被切分成多个子项目，各个子项目既相对独立又相互联系，可以分别完成，开发过程中软件一直处于可使用状态。&lt;/p&gt;
-&lt;p&gt;测试驱动开发模式 TDD 是敏捷开发的重要组成部分，也是一种设计方法论，其基本思想就是在开发某个功能代码前，先编写测试代码，然后编写功能代码并用测试代码进行验证，如此循环直到完成全部功能的开发。&lt;/p&gt;
-&lt;p&gt;测试模型中的 V 模型和 X 模型都是 TDD 的最好体现方式，V 模型如图所示：&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;image001.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;V 模型在开发的各个阶段，包括需求分析、概要设计、详细设计、编码过程中都考虑相对应的测试工作，完成相关的测试用例设计和测试脚本编写。&lt;/p&gt;
-&lt;p&gt;X 模型是对详细阶段和编码阶段进行建模，针对某个功能进行对应的测试驱动开发。X 模型的左侧描述的是针对单独程序片段所进行的相互分离的编码和测试，此后进行频繁的集成，通过集成最终成为可执行的程序，然后再对这些可执行程序进行测试. X 模型还定位了探索性测试，这是不进行事先计划的特殊类型的测试，这一方式往往能帮助有经验的测试人员在测试计划之外发现更多的软件错误。&lt;/p&gt;
-&lt;p&gt;X 模型如图所示&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;image002.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;TDD 的优点：节省了调试程序及挑错的时间，在任意一个开发节点都可以拿出一个可以使用含少量 bug 并具有一定功能和能够发布的产品。&lt;br /&gt;
-TDD 的缺点：增加代码量，测试代码是系统代码的两倍或更多倍。&lt;/p&gt;
-&lt;h3 id=&#34;tdd使用步骤&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#tdd使用步骤&#34;&gt;#&lt;/a&gt; TDD 使用步骤&lt;/h3&gt;
-&lt;p&gt;TDD 在满足软件开发目标的同时，也要实现代码的简单整洁。&lt;br /&gt;
-在明确软件需求后，对一个新功能的开发过程包括以下步骤，如图 4-3 所示。&lt;br /&gt;
-步骤 01: 明确当前代码要完成的功能。可以记录成一个列表，必要时需写相关接口。&lt;br /&gt;
-步骤 02: 快速新增对要完成功能的测试。&lt;br /&gt;
-步骤 03 : 运行测试，判断测试代码是否通过，通过则执行步骤 06, 不通过则执行步骤 04。&lt;br /&gt;
-步骤 04: 编写对应的功能代码。&lt;br /&gt;
-步骤 05 : 重新运行测试，保证全部通过。&lt;br /&gt;
-步骤 06: 对代码进行重构，优化代码结构。&lt;br /&gt;
-步骤 07: 循环完成所有功能的开发。&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;image003.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;h3 id=&#34;tips&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#tips&#34;&gt;#&lt;/a&gt; Tips&lt;/h3&gt;
-&lt;p&gt;要完成一个系统，代码的功能点可能很多，需求也可能随时变化，任何阶段想添加功能，都应吧相关的功能点加到测试列表中，避免疏漏。&lt;/p&gt;
-&lt;h2 id=&#34;unittest测试框架&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#unittest测试框架&#34;&gt;#&lt;/a&gt; unittest 测试框架&lt;/h2&gt;
-&lt;h1 id=&#34;reference&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#reference&#34;&gt;#&lt;/a&gt; Reference&lt;/h1&gt;
-&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20veW91bGl4aXNoaS9hcnRpY2xlcy8zNTUxOTkyLmh0bWw=&#34;&gt;https://www.cnblogs.com/youlixishi/articles/3551992.html&lt;/span&gt;&lt;br /&gt;
-《python 网络编程从入门到精通》&lt;/p&gt;
  ]]></description>
         </item>
     </channel>
