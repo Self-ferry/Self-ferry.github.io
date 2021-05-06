@@ -17,6 +17,9 @@
             <guid isPermalink="true">https://self-ferry.github.io/2021/05/06/%E9%9D%99%E6%80%81%E3%80%81%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93/</guid>
             <title>静态、动态链接库</title>
             <link>https://self-ferry.github.io/2021/05/06/%E9%9D%99%E6%80%81%E3%80%81%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93/</link>
+            <category term="WindowsPE" scheme="https://self-ferry.github.io/categories/WindowsPE/" />
+            <category term="静态链接库" scheme="https://self-ferry.github.io/tags/%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93/" />
+            <category term="动态链接库" scheme="https://self-ferry.github.io/tags/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93/" />
             <pubDate>Thu, 06 May 2021 14:23:36 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#&#34;&gt;#&lt;/a&gt; &lt;/h1&gt;
  ]]></description>
@@ -80,6 +83,7 @@
 &lt;h1 id=&#34;reference&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#reference&#34;&gt;#&lt;/a&gt; Reference&lt;/h1&gt;
 &lt;p&gt;很详细：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vd3VtYWMvcC81Mjc0NTU5Lmh0bWw=&#34;&gt;https://www.cnblogs.com/wumac/p/5274559.html&lt;/span&gt;&lt;br /&gt;
  有详细实操步骤：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vaUJpbmFyeS9wLzk3Mzc3MTkuaHRtbA==&#34;&gt;https://www.cnblogs.com/iBinary/p/9737719.html&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;实操了一篇还行。&lt;/p&gt;
  ]]></description>
         </item>
         <item>
