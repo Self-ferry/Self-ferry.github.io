@@ -15,13 +15,195 @@
         <category term="学习" />
         <item>
             <guid isPermalink="true">https://self-ferry.github.io/2021/05/06/%E9%9D%99%E6%80%81%E3%80%81%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93/</guid>
-            <title>静态、动态链接库</title>
+            <title>静态、动态链接库、句柄</title>
             <link>https://self-ferry.github.io/2021/05/06/%E9%9D%99%E6%80%81%E3%80%81%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93/</link>
             <category term="WindowsPE" scheme="https://self-ferry.github.io/categories/WindowsPE/" />
             <category term="静态链接库" scheme="https://self-ferry.github.io/tags/%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93/" />
             <category term="动态链接库" scheme="https://self-ferry.github.io/tags/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93/" />
+            <category term="句柄" scheme="https://self-ferry.github.io/tags/%E5%8F%A5%E6%9F%84/" />
             <pubDate>Thu, 06 May 2021 14:23:36 +0800</pubDate>
-            <description><![CDATA[ &lt;h1 id=&#34;&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#&#34;&gt;#&lt;/a&gt; &lt;/h1&gt;
+            <description><![CDATA[ &lt;h1 id=&#34;库的介绍&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#库的介绍&#34;&gt;#&lt;/a&gt; 库的介绍&lt;/h1&gt;
+&lt;p&gt;库是写好的现有的，成熟的，可以复用的代码。现实中每个程序都要依赖很多基础的底层库，不可能每个人的代码都从零开始，因此库的存在意义非同寻常。&lt;/p&gt;
+&lt;p&gt;本质上来说库是一种可执行代码的二进制形式，可以被操作系统载入内存执行。&lt;br /&gt;
+库有两种：静态库（.a、.lib）和动态库（.so、.dll）&lt;br /&gt;
+windows 上对应的是.lib .dll&lt;br /&gt;
+linux 上对应的是.a .so&lt;/p&gt;
+&lt;p&gt;超详细内容:&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20va2luZy1scHMvcC83NzU3OTE5Lmh0bWw=&#34;&gt;https://www.cnblogs.com/king-lps/p/7757919.html&lt;/span&gt;&lt;/p&gt;
+&lt;h1 id=&#34;代码复用的实现&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#代码复用的实现&#34;&gt;#&lt;/a&gt; 代码复用的实现&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;静态链接库&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;动态链接库&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用.def 导出&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;静态链接库&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#静态链接库&#34;&gt;#&lt;/a&gt; 静态链接库&lt;/h1&gt;
+&lt;p&gt;例子为滴水逆向教程中的。&lt;/p&gt;
+&lt;h2 id=&#34;vc60创建静态链接库&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#vc60创建静态链接库&#34;&gt;#&lt;/a&gt; VC6.0 创建静态链接库&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;在 VC6 中创建项目：Win32 Static Library&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img data-src=&#34;image001.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;在项目中创建两个文件：xxx.h 和 xxx.cpp&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;xxx.h 文件：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;#if !defined(AFX_TEST_H__DB32E837_3E66_4BE7_B873_C079BC621AF0__INCLUDED_)
+#define AFX_TEST_H__DB32E837_3E66_4BE7_B873_C079BC621AF0__INCLUDED_
+
+#if _MSC_VER &amp;gt; 1000
+#pragma once
+#endif // _MSC_VER &amp;gt; 1000
+
+
+int Plus(int x, int y);
+int Sub(int x, int y);
+int Mul(int x, int y);
+int Div(int x, int y);
+
+
+#endif
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;xxx.cpp 文件：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;int Plus(int x, int y)
+&amp;#123;
+  return x+y;
+&amp;#125;
+int Sub(int x, int y)
+&amp;#123;
+  return x-y;
+&amp;#125;
+int Mul(int x, int y)
+&amp;#123;
+    return x*y;
+&amp;#125;
+int Div(int x, int y)
+&amp;#123;
+  return x/y;
+&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;编译&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;使用静态链接库&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#使用静态链接库&#34;&gt;#&lt;/a&gt; 使用静态链接库&lt;/h2&gt;
+&lt;p&gt;方式一：&lt;/p&gt;
+&lt;p&gt;将 xxx.h 和 xxx.lib 复制到要使用的项目中&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image003.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;在需要使用的文件中包含：#include &amp;quot;xxx.h&amp;quot;&lt;/p&gt;
+&lt;p&gt;在需要使用的文件中包含：#pragma comment (lib, &amp;quot;xxx.lib&amp;quot;)&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image004.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;方式二：&lt;/p&gt;
+&lt;p&gt;将 xxx.h 和 xxx.lib 复制到要使用的项目中&lt;/p&gt;
+&lt;p&gt;在需要使用的文件中包含：#include &amp;quot;xxx.h&amp;quot;&lt;/p&gt;
+&lt;p&gt;需要让编译器自己 LINK&amp;quot;lib 库&amp;quot;&lt;br /&gt;
+&lt;img data-src=&#34;image005.png&#34; alt=&#34;&#34; /&gt;&lt;br /&gt;
+&lt;img data-src=&#34;image006.png&#34; alt=&#34;&#34; /&gt;&lt;br /&gt;
+&lt;img data-src=&#34;image007.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;动态链接库&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#动态链接库&#34;&gt;#&lt;/a&gt; 动态链接库&lt;/h1&gt;
+&lt;h2 id=&#34;创建dll&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#创建dll&#34;&gt;#&lt;/a&gt; 创建 DLL&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;在 VC6 中创建项目：win32 Dynamic-link library&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;源文件中：&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;int __stdcall Plus(int x,int y)
+&amp;#123;
+  return x+y;
+&amp;#125;
+int __stdcall Sub(int x,int y)
+&amp;#123;
+  return x-y;
+&amp;#125;
+int __stdcall Mul(int x,int y)
+&amp;#123;
+  return x*y;
+&amp;#125;
+int __stdcall Div(int x,int y)
+&amp;#123;
+  return x/y;
+&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;头文件中&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;extern &amp;quot;C&amp;quot; _declspec(dllexport) __stdcall int Plus (int x,int y);
+extern &amp;quot;C&amp;quot; _declspec(dllexport) __stdcall int Sub (int x,int y);
+extern &amp;quot;C&amp;quot; _declspec(dllexport) __stdcall int Mul (int x,int y);
+extern &amp;quot;C&amp;quot; _declspec(dllexport) __stdcall int Div (int x,int y);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;编译&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;说明:&lt;/p&gt;
+&lt;p&gt;1、extern 表示这是个全局函数，可以供各个其他的函数调用；&lt;/p&gt;
+&lt;p&gt;2、&amp;quot;C&amp;quot; 按照 C 语言的方式进行编译、链接； __declspec (dllexport) 告诉编译器此函数为导出函数；__stdcall 是为了保持导出与导入时函数调用规则一致，要么都加，要么都不加。&lt;/p&gt;
+&lt;h2 id=&#34;使用dll&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#使用dll&#34;&gt;#&lt;/a&gt; 使用 DLL&lt;/h2&gt;
+&lt;h3 id=&#34;方式一隐式连接&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#方式一隐式连接&#34;&gt;#&lt;/a&gt; 方式一：隐式连接&lt;/h3&gt;
+&lt;p&gt;步骤 1：将 *.dll  *.lib 放到工程目录下面&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image008.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;步骤 2：将 #pragma comment (lib,&amp;quot;DLL 名.lib&amp;quot;) 添加到调用文件中&lt;/p&gt;
+&lt;p&gt;步骤 3：加入函数的声明&lt;/p&gt;
+&lt;p&gt;extern &amp;quot;C&amp;quot; __declspec(dllimport) __stdcall int Plus (int x,int y);&lt;br /&gt;
+extern &amp;quot;C&amp;quot; __declspec(dllimport) __stdcall int Sub (int x,int y);&lt;br /&gt;
+extern &amp;quot;C&amp;quot; __declspec(dllimport) __stdcall int Mul (int x,int y);&lt;br /&gt;
+extern &amp;quot;C&amp;quot; __declspec(dllimport) __stdcall int Div (int x,int y);&lt;/p&gt;
+&lt;p&gt;说明：&lt;/p&gt;
+&lt;p&gt;__declspec (dllimport) 告诉编译器此函数为导入函数；&lt;/p&gt;
+&lt;p&gt;结果：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image009.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;方式二显示连接&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#方式二显示连接&#34;&gt;#&lt;/a&gt; 方式二：显示连接&lt;/h3&gt;
+&lt;p&gt;步骤 1：	// 定义函数指针&lt;br /&gt;
+ typedef int (__stdcall *lpPlus)(int,int);&lt;br /&gt;
+typedef int (__stdcall *lpSub)(int,int);&lt;br /&gt;
+typedef int (__stdcall *lpMul)(int,int);&lt;br /&gt;
+typedef int (__stdcall *lpDiv)(int,int);&lt;/p&gt;
+&lt;p&gt;步骤 2：  // 声明函数指针变量&lt;br /&gt;
+ lpPlus myPlus;&lt;br /&gt;
+lpSub mySub;&lt;br /&gt;
+lpMul myMul;&lt;br /&gt;
+lpDiv myDiv;&lt;/p&gt;
+&lt;p&gt;步骤 3：  //	// 动态加载 dll 到内存中&lt;br /&gt;
+ HINSTANCE   hModule = LoadLibrary (&amp;quot;Dll 名.dll&amp;quot;);&lt;/p&gt;
+&lt;p&gt;步骤 4：  // 获取函数地址	&lt;br /&gt;
+myPlus = (lpPlus) GetProcAddress (hModule,   &amp;quot;函数名&amp;quot;);&lt;br /&gt;
+mySub = (lpSub) GetProcAddress (hModule,   &amp;quot;函数名&amp;quot;);&lt;br /&gt;
+myMul = (lpMul) GetProcAddress (hModule,   &amp;quot;函数名&amp;quot;);&lt;br /&gt;
+myDiv = (lpDiv) GetProcAddress (hModule,   &amp;quot;函数名&amp;quot;);&lt;/p&gt;
+&lt;p&gt;步骤 5：	// 调用函数&lt;br /&gt;
+ int a = myPlus (10,2);&lt;br /&gt;
+int b = mySub(10,2);&lt;br /&gt;
+int c = myMul(10,2);&lt;br /&gt;
+int d = myDiv(10,2);&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;label danger&#34;&gt;💔注意&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;关于在 DLL 中的函数名&lt;/mark&gt;&lt;/p&gt;
+&lt;p&gt;其实取决于函数名是否更改的关键在于 两个函数转变字__stdcall 和__cdecl&lt;br /&gt;
+ 如果你用了__stdcall 那 dll 中的函数就会在函数名前加 &amp;quot;-&amp;quot;, 函数名后加 &amp;quot;@x&amp;quot;&lt;br /&gt;
+ 而__cdecl 则不会将函数改名，因为__cdecl 是函数缺省的状态，所以只要将&lt;br /&gt;
+__stdcall 在你的函数声明中去掉就可以了，更详细的区别可以参阅 msdn 中&lt;br /&gt;
+的内容。&lt;/p&gt;
+&lt;p&gt;结果：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image010.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;句柄&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#句柄&#34;&gt;#&lt;/a&gt; 句柄&lt;/h1&gt;
+&lt;p&gt;Handle 是代表系统的内核对象，如文件句柄，线程句柄，进程句柄。&lt;/p&gt;
+&lt;p&gt;HMODULE 是代表应用程序载入的模块&lt;/p&gt;
+&lt;p&gt;HINSTANCE 在 win32 下与 HMODULE 是相同的东西 Win16 遗留&lt;/p&gt;
+&lt;p&gt;HWND 是窗口句柄&lt;/p&gt;
+&lt;p&gt;其实就是一个无符号整型 (四个字节),Windows 之所以这样设计有 2 个目的：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;可读性更好&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;避免在无意中进行运算&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
  ]]></description>
         </item>
         <item>
