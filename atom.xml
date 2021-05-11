@@ -8,17 +8,34 @@
     <author>
       <name>1asy</name>
     </author>
-    <updated>2021-05-08T13:50:11.000Z</updated>
+    <updated>2021-05-10T11:21:34.000Z</updated>
     <category term="学习" />
+    <entry>
+        <id>https://self-ferry.github.io/2021/05/10/Linux%E9%85%8D%E7%BD%AENginx%E6%9C%8D%E5%8A%A1/</id>
+        <title>Linux配置Nginx服务</title>
+        <link rel="alternate" href="https://self-ferry.github.io/2021/05/10/Linux%E9%85%8D%E7%BD%AENginx%E6%9C%8D%E5%8A%A1/"/>
+        <content type="html">&lt;h1 id=&#34;前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#前言&#34;&gt;#&lt;/a&gt; 前言&lt;/h1&gt;
+&lt;p&gt;Linux 作业： 1. 配置能加载静态文件和图片  2.Nginx 能加载 php 文件&lt;/p&gt;
+&lt;h1 id=&#34;nginx简介&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#nginx简介&#34;&gt;#&lt;/a&gt; Nginx 简介&lt;/h1&gt;
+&lt;p&gt;Nginx (engine x) 是一个高性能的 HTTP 和反向代理 web 服务器，同时也提供了 IMAP/POP3/SMTP 服务。Nginx 是由伊戈尔・赛索耶夫为俄罗斯访问量第二的 Rambler.ru 站点（俄文：Рамблер）开发的，第一个公开版本 0.1.0 发布于 2004 年 10 月 4 日。&lt;br /&gt;
+其将源代码以类 BSD 许可证的形式发布，因它的稳定性、丰富的功能集、示例配置文件和低系统资源的消耗而闻名。2011 年 6 月 1 日，nginx 1.0.4 发布。&lt;br /&gt;
+Nginx 是一款轻量级的 Web 服务器 / 反向代理服务器及电子邮件（IMAP/POP3）代理服务器，在 BSD-like 协议下发行。其特点是占有内存少，并发能力强，事实上 nginx 的并发能力在同类型的网页服务器中表现较好，中国大陆使用 nginx 网站用户有：百度、京东、新浪、网易、腾讯、淘宝等&lt;/p&gt;
+&lt;h1 id=&#34;安装nginx&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#安装nginx&#34;&gt;#&lt;/a&gt; 安装 Nginx&lt;/h1&gt;
+&lt;p&gt;因为上次作业是配置 LAMP 环境，所以先卸载一下 Apache 和 PHP。&lt;/p&gt;
+</content>
+        <category term="Linux" scheme="https://self-ferry.github.io/categories/Linux/" />
+        <category term="Nginx" scheme="https://self-ferry.github.io/tags/Nginx/" />
+        <updated>2021-05-10T11:21:34.000Z</updated>
+    </entry>
     <entry>
         <id>https://self-ferry.github.io/2021/05/08/%E9%87%8D%E5%AE%9A%E4%BD%8D%E8%A1%A8/</id>
         <title>重定位表</title>
         <link rel="alternate" href="https://self-ferry.github.io/2021/05/08/%E9%87%8D%E5%AE%9A%E4%BD%8D%E8%A1%A8/"/>
         <content type="html">&lt;h1 id=&#34;程序加载的过程&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#程序加载的过程&#34;&gt;#&lt;/a&gt; 程序加载的过程&lt;/h1&gt;
+&lt;p&gt;程序从 FileBuffer 转换成 ImageBuffer.&lt;/p&gt;
 &lt;p&gt;&lt;img data-src=&#34;image001.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;特别说明：&lt;/p&gt;
-&lt;p&gt;1、一般情况下，EXE 都是可以按照 ImageBase 的地址进行加载的。因为 Exe 拥有自己独立的 4GB 的虚拟内存空间&lt;br /&gt;
-但 DLL 不是  DLL 是有 EXE 使用它，才加载到相关 EXE 的进程空间的.&lt;/p&gt;
+&lt;p&gt;1、由于一般情况.exe 运行时被第一个加载，所以 exe 文件一般没有重定位表，但是不代表所有 exe 都没有重定位表.&lt;/p&gt;
 &lt;p&gt;2、为了提高搜索的速度，模块间地址也是要对齐的 模块地址对齐为 10000H 也就是 64K&lt;/p&gt;
 &lt;h1 id=&#34;何为重定位&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#何为重定位&#34;&gt;#&lt;/a&gt; 何为重定位&lt;/h1&gt;
 &lt;p&gt;重定位的意思就是修正偏移的意思。如一个地址位 0x401234 ,Imagebase = 0x400000 . 那么 RVA 就是 1234.  如果 Imagebase 变了成了 0x300000, 那么修正之后就是 ImageBase + RVA = 0X300000+1234 = 0x301234&lt;/p&gt;
@@ -55,14 +72,23 @@
 本例中应该把 0x200000 加给原来的指针值，0x404002, 并将 0x604002 写回原处。&lt;/p&gt;
 &lt;h1 id=&#34;重定位表解析&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#重定位表解析&#34;&gt;#&lt;/a&gt; 重定位表解析&lt;/h1&gt;
 &lt;p&gt;数据目录项的第 6 个结构，就是重定位表.&lt;/p&gt;
-&lt;figure class=&#34;highlight cpp&#34;&gt;&lt;figcaption data-lang=&#34;C++&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;_IMAGE_DATA_DIRECTORY&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    DWORD   VirtualAddress&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    DWORD   Size&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt; IMAGE_DATA_DIRECTORY&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt;PIMAGE_DATA_DIRECTORY&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;// 上面 VirtualAddress 存储的地址 指向的就是_IMAGE_BASE_RELOCATION 结构体&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;_IMAGE_BASE_RELOCATION&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    DWORD   VirtualAddress&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    DWORD   SizeOfBlock&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;          &lt;span class=&#34;token comment&#34;&gt;//// 存储的值以字节为单位，字节多大。表示了一个重定位块有多大&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt; IMAGE_BASE_RELOCATION&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;typedef&lt;/span&gt; IMAGE_BASE_RELOCATION ，&lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt; PIMAGE_BASE_RELOCATION&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;看着重定位表就两个成员。其实非常复杂。我们设 VirtualAddress 为 X 设 SizeofBlock 为 Y&lt;/p&gt;
+&lt;figure class=&#34;highlight cpp&#34;&gt;&lt;figcaption data-lang=&#34;C++&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;_IMAGE_DATA_DIRECTORY&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    DWORD   VirtualAddress&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    DWORD   Size&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt; IMAGE_DATA_DIRECTORY&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt;PIMAGE_DATA_DIRECTORY&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;// 上面 VirtualAddress 存储的地址 指向的就是_IMAGE_BASE_RELOCATION 结构体&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;_IMAGE_BASE_RELOCATION&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    DWORD   VirtualAddress&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    DWORD   SizeOfBlock&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;          &lt;span class=&#34;token comment&#34;&gt;// 表示了一个重定位块有多大&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt; IMAGE_BASE_RELOCATION&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;typedef&lt;/span&gt; IMAGE_BASE_RELOCATION ，&lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt; PIMAGE_BASE_RELOCATION&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;看着重定位表就两个成员。其实非常复杂。我们设 VirtualAddress 为 X 设 SizeofBlock 为 Y&lt;/p&gt;
 &lt;p&gt;如下图所示，一个格子为 1 个字节.&lt;/p&gt;
 &lt;p&gt;&lt;img data-src=&#34;image004.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;第一行四个字节为 X, 也就是 Virtualaddress。&lt;br /&gt;
 第二行则是 Y，SizeOfBlock 的值。&lt;/p&gt;
+&lt;p&gt;我们知道一个 PE 文件需要很多地方进行重定位的。比如记录重定位块多大的 SizeOfBlock 的大小为 16. 也就是两个重定位块，那么第一个重定位表的大小就是如下图&lt;/p&gt;
 &lt;p&gt;&lt;img data-src=&#34;image005.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;第二个重定位表如果 SzieofBlock 大小为 20 个字节。那么重定位表大小就是 20 个字节&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image007.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;由于重定位表的 SizeOfBlock 大小不确定，新的 Block 的重定位信息的结构体接着上一个 Block4 字节对齐后开始，而当出现一个_IMAGE_BASE_RELOCATION 结构体的值全为 0 时，表明重定位表结束。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image008.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;=========&lt;/p&gt;
-&lt;p&gt;解析说明：&lt;/p&gt;
+&lt;p&gt;在 SizeBlock 后面紧跟着的就是一个 TypeOffset 数组，一个大小是 2 字节，其中高 4 位代表修正的类型，低 16 位是修正的偏移。它的大小与 VirtualAddress 相加就是要修正的 RVA 地址。当出现一个_IMAGE_BASE_RELOCATION 结构体的值全为 0 时，表明重定位表结束。&lt;/p&gt;
+&lt;p&gt;TypeOffset 高 4 位的可能取值：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image009.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;在网上也找到了另一版本的重定位表结构&lt;/p&gt;
+&lt;figure class=&#34;highlight cpp&#34;&gt;&lt;figcaption data-lang=&#34;C++&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;_IMAGE_BASE_RELOCATION&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    DWORD VirtualAddress&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    DWORD SizeOfBlock&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    WORD TypeOffset&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;IMAGE_BASE_RELOCATION&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;解析说明：&lt;/p&gt;
 &lt;p&gt;1、通过 IMAGE_DATA_DIRECTORY 结构的 VirtualAddress&lt;br /&gt;
  属性 找到第一个 IMAGE_BASE_RELOCATION&lt;/p&gt;
 &lt;p&gt;2、判断一共有几块数据：&lt;/p&gt;
@@ -82,7 +108,9 @@
 &lt;p&gt;当前块的总大小&lt;/p&gt;
 &lt;p&gt;具体项的数量 = (SizeOfBlock - 8)/2&lt;/p&gt;
 &lt;h1 id=&#34;reference&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#reference&#34;&gt;#&lt;/a&gt; Reference&lt;/h1&gt;
-&lt;p&gt;推荐超详细的一篇：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vaUJpbmFyeS9wLzk3NDI2NzAuaHRtbA==&#34;&gt;https://www.cnblogs.com/iBinary/p/9742670.html&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;推荐超详细的一篇：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vaUJpbmFyeS9wLzk3NDI2NzAuaHRtbA==&#34;&gt;https://www.cnblogs.com/iBinary/p/9742670.html&lt;/span&gt;&lt;br /&gt;
+&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Fwb2xsb25fa3JqL2FydGljbGUvZGV0YWlscy83NzM3MDQ1Mg==&#34;&gt;https://blog.csdn.net/Apollon_krj/article/details/77370452&lt;/span&gt;&lt;br /&gt;
+&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwODkwNzU2L2FydGljbGUvZGV0YWlscy85MDA4MDg4MA==&#34;&gt;https://blog.csdn.net/qq_40890756/article/details/90080880&lt;/span&gt;&lt;/p&gt;
 </content>
         <category term="WindowsPE" scheme="https://self-ferry.github.io/categories/WindowsPE/" />
         <category term="重定位表" scheme="https://self-ferry.github.io/tags/%E9%87%8D%E5%AE%9A%E4%BD%8D%E8%A1%A8/" />
@@ -1542,172 +1570,5 @@ NumPy 源代码：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRo
 &lt;p&gt;挖掘出属于自己思维的逻辑漏洞。&lt;/p&gt;
 </content>
         <updated>2021-03-09T08:15:23.000Z</updated>
-    </entry>
-    <entry>
-        <id>https://self-ferry.github.io/2021/03/09/Nmap%E9%80%9F%E6%9F%A5%E6%89%8B%E5%86%8C/</id>
-        <title>Nmap速查手册</title>
-        <link rel="alternate" href="https://self-ferry.github.io/2021/03/09/Nmap%E9%80%9F%E6%9F%A5%E6%89%8B%E5%86%8C/"/>
-        <content type="html">&lt;p&gt;&lt;span class=&#34;label success&#34;&gt;✔️来首音乐吧&lt;/span&gt;&lt;/p&gt;
-&lt;div class=&#34;media-container&#34;&gt;&lt;div class=&#34;player&#34; data-type=&#34;audio&#34; data-src=&#39;[{&#34;title&#34;:&#34;列表 1&#34;,&#34;list&#34;:[&#34;https://music.163.com/#/song?id=30621618&#34;]}]&#39;&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;h1 id=&#34;reference&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#reference&#34;&gt;#&lt;/a&gt; Reference&lt;/h1&gt;
-&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuMmN0by5jb20vQXJ0aWNsZS8yMDE0MTIvMzYyMTg4Lmh0bWw=&#34;&gt;https://www.2cto.com/Article/201412/362188.html&lt;/span&gt;&lt;/p&gt;
-&lt;h1 id=&#34;nmap-简介&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#nmap-简介&#34;&gt;#&lt;/a&gt; Nmap 简介&lt;/h1&gt;
-&lt;p&gt;Nmap 是 Network Mapper 的简称&lt;br /&gt;
- Nmap 是一款开源免费的网络发现（Network Discovery）和安全审计（Security Auditing）工具&lt;br /&gt;
- 1997 年由 Fyodor 创建&lt;/p&gt;
-&lt;p&gt;Nmap 四项基本功能：&lt;/p&gt;
-&lt;p&gt;1. 主机发现（Host Discovery）&lt;br /&gt;
-2. 端口扫描（Port Scanning）&lt;br /&gt;
-3. 版本侦测（Version Detection）&lt;br /&gt;
-4. 操作系统侦测（Operating System Detection）&lt;/p&gt;
-&lt;p&gt;这四项功能之间，又存在大致的依赖关系（通常情况下的顺序关系，但特殊应用另外考虑），首先需要进行主机发现，随&lt;br /&gt;
-后确定端口状况，然后确定端口上运行具体应用程序与版本信息，然后可以进行操作系统的侦测。而在四项基本功能的基&lt;br /&gt;
-础上，Nmap 提供防火墙与 IDS（IntrusionDetection System, 入侵检测系统）的规避技巧，可以综合应用到四个基本功&lt;br /&gt;
-能的各个阶段；另外 Nmap 提供强大的 NSE（Nmap Scripting Language）脚本引擎功能，脚本可以对基本功能进行补充&lt;br /&gt;
-和扩展。&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;label info&#34;&gt;大致功能为:&lt;/span&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;主机存活检测&lt;/li&gt;
-&lt;li&gt;端口探测&lt;/li&gt;
-&lt;li&gt;服务识别&lt;/li&gt;
-&lt;li&gt;操作系统识别&lt;/li&gt;
-&lt;li&gt;硬件地址检测&lt;/li&gt;
-&lt;li&gt;服务版本识别&lt;/li&gt;
-&lt;li&gt;漏洞扫描，使用 nmap 自带脚本&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id=&#34;nmap参数详解&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#nmap参数详解&#34;&gt;#&lt;/a&gt; Nmap 参数详解&lt;/h1&gt;
-&lt;h2 id=&#34;nmap支持主机名ip网段的表示方式&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#nmap支持主机名ip网段的表示方式&#34;&gt;#&lt;/a&gt; Nmap 支持主机名，ip, 网段的表示方式&lt;/h2&gt;
-&lt;p&gt;例如:blah.highon.coffee, &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL25hbXAub3JnLzI0&#34;&gt;namp.org/24&lt;/span&gt;, 192.168.0.1;10.0.0-25.1-254&lt;/p&gt;
-&lt;p&gt;-iL filename                    从文件中读取待检测的目标，文件中的表示方法支持机名，ip, 网段&lt;br /&gt;
- - iR hostnum                     随机选取，进行扫描。如果 - iR 指定为 0, 则是无休止的扫描&lt;br /&gt;
- --exclude host1 [, host2]        从扫描任务中需要排除的主机&lt;br /&gt;
- --exculdefile exclude_file      排除文件中的 IP, 格式和 - iL 指定扫描文件的格式相同&lt;/p&gt;
-&lt;h2 id=&#34;0x00-主机发现&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#0x00-主机发现&#34;&gt;#&lt;/a&gt; 0x00 主机发现&lt;/h2&gt;
-&lt;p&gt;-sL                     仅仅是显示，扫描的 IP 数目，不会进行任何扫描&lt;br /&gt;
- - sn                     ping 扫描，即主机发现&lt;br /&gt;
- - Pn                     不检测主机存活&lt;br /&gt;
- - PS/PA/PU/PY [portlist]  TCP SYN Ping/TCP ACK Ping/UDP Ping 发现&lt;br /&gt;
- - PE/PP/PM               使用 ICMP echo, timestamp and netmask 请求包发现主机&lt;br /&gt;
- - PO [prococol list]      使用 IP 协议包探测对方主机是否开启&lt;br /&gt;
- - n/-R                   不对 IP 进行域名反向解析 / 为所有的 IP 都进行域名的反响解析&lt;/p&gt;
-&lt;h2 id=&#34;0x01-扫描技巧&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#0x01-扫描技巧&#34;&gt;#&lt;/a&gt; 0x01 扫描技巧&lt;/h2&gt;
-&lt;p&gt;-sS/sT/sA/sW/sM                 TCP SYN/TCP connect ()/ACK/TCP 窗口扫描 / TCP Maimon 扫描&lt;br /&gt;
- - sU                             UDP 扫描&lt;br /&gt;
- - sN/sF/sX                       TCP Null，FIN，and Xmas 扫描&lt;br /&gt;
- --scanflags                     自定义 TCP 包中的 flags&lt;br /&gt;
--sI zombie host[:probeport]     Idlescan&lt;br /&gt;
--sY/sZ                          SCTP INIT/COOKIE-ECHO 扫描&lt;br /&gt;
- - sO                             使用 IP protocol 扫描确定目标机支持的协议类型&lt;br /&gt;
- - b “FTP relay host” 使用 FTP bounce scan&lt;/p&gt;
-&lt;h2 id=&#34;0x02-指定端口和扫描顺序&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#0x02-指定端口和扫描顺序&#34;&gt;#&lt;/a&gt; 0x02 指定端口和扫描顺序&lt;/h2&gt;
-&lt;p&gt;-p                      特定的端口 -p80,443 或者 -p1-65535&lt;br /&gt;
--p U:PORT               扫描 udp 的某个端口，-p U:53&lt;br /&gt;
--F                      快速扫描模式，比默认的扫描端口还少&lt;br /&gt;
- - r                      不随机扫描端口，默认是随机扫描的&lt;br /&gt;
- --top-ports &amp;quot;number&amp;quot;    扫描开放概率最高的 number 个端口，出现的概率需要参考 nmap-services 文件，ubuntu 中该文件位于 /usr/share/nmap.nmap 默认扫前 1000 个&lt;br /&gt;
- --port-ratio &amp;quot;ratio&amp;quot;    扫描指定频率以上的端口&lt;/p&gt;
-&lt;h2 id=&#34;0x03-服务版本识别&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#0x03-服务版本识别&#34;&gt;#&lt;/a&gt; 0x03 服务版本识别&lt;/h2&gt;
-&lt;p&gt;-sV                             开放版本探测，可以直接使用 - A 同时打开操作系统探测和版本探测&lt;br /&gt;
- --version-intensity &amp;quot;level&amp;quot;     设置版本扫描强度，强度水平说明了应该使用哪些探测报文。数值越高，服务越有可能被正确识别。默认是 7&lt;br /&gt;
---version-light                 打开轻量级模式，为 --version-intensity 2 的别名&lt;br /&gt;
- --version-all                   尝试所有探测，为 --version-intensity 9 的别名&lt;br /&gt;
- --version-trace                 显示出详细的版本侦测过程信息&lt;/p&gt;
-&lt;h2 id=&#34;0x04-脚本扫描&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#0x04-脚本扫描&#34;&gt;#&lt;/a&gt; 0x04 脚本扫描&lt;/h2&gt;
-&lt;p&gt;-sC                             根据端口识别的服务，调用默认脚本&lt;br /&gt;
- --script=”Lua scripts”          调用的脚本名&lt;br /&gt;
- --script-args=n1=v1,[n2=v2]     调用的脚本传递的参数&lt;br /&gt;
- --script-args-file=filename     使用文本传递参数&lt;br /&gt;
- --script-trace                  显示所有发送和接收到的数据&lt;br /&gt;
- --script-updatedb               更新脚本的数据库&lt;br /&gt;
- --script-help=”Lua script”      显示指定脚本的帮助&lt;/p&gt;
-&lt;h2 id=&#34;0x05-os识别&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#0x05-os识别&#34;&gt;#&lt;/a&gt; 0x05 OS 识别&lt;/h2&gt;
-&lt;p&gt;-O              启用操作系统检测，-A 来同时启用操作系统检测和版本检测&lt;br /&gt;
- --osscan-limit  针对指定的目标进行操作系统检测 (至少需确知该主机分别有一个 open 和 closed 的端口)&lt;br /&gt;
---osscan-guess  推测操作系统检测结果，当 Nmap 无法确定所检测的操作系统时，会尽可能地提供最相近的匹配，Nmap 默认进行这种匹配&lt;/p&gt;
-&lt;h2 id=&#34;0x06-防火墙ids躲避和欺骗&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#0x06-防火墙ids躲避和欺骗&#34;&gt;#&lt;/a&gt; 0x06 防火墙 / IDS 躲避和欺骗&lt;/h2&gt;
-&lt;p&gt;-f; --mtu value                 指定使用分片、指定数据包的 MTU.&lt;br /&gt;
--D decoy1,decoy2,ME             使用诱饵隐蔽扫描&lt;br /&gt;
- - S IP-ADDRESS                   源地址欺骗&lt;br /&gt;
- - e interface                    使用指定的接口&lt;br /&gt;
- - g/--source-port PROTNUM       使用指定源端口&lt;br /&gt;
- --proxies url1,[url2],...       使用 HTTP 或者 SOCKS4 的代理&lt;/p&gt;
-&lt;p&gt;--data-length NUM               填充随机数据让数据包长度达到 NUM&lt;br /&gt;
---ip-options OPTIONS            使用指定的 IP 选项来发送数据包&lt;br /&gt;
- --ttl VALUE                     设置 IP time-to-live 域&lt;br /&gt;
- --spoof-mac ADDR/PREFIX/VEBDOR  MAC 地址伪装&lt;br /&gt;
- --badsum                        使用错误的 checksum 来发送数据包&lt;/p&gt;
-&lt;h2 id=&#34;0x07-输出&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#0x07-输出&#34;&gt;#&lt;/a&gt; 0x07 输出&lt;/h2&gt;
-&lt;p&gt;-oN                     将标准输出直接写入指定的文件&lt;br /&gt;
- - oX                     输出 xml 文件&lt;br /&gt;
- - oS                     将所有的输出都改为大写&lt;br /&gt;
- - oG                     输出便于通过 bash 或者 perl 处理的格式，非 xml&lt;br /&gt;
--oA BASENAME            可将扫描结果以标准格式、XML 格式和 Grep 格式一次性输出&lt;br /&gt;
- - v                      提高输出信息的详细度&lt;br /&gt;
- - d level                设置 debug 级别，最高是 9&lt;br /&gt;
---reason                显示端口处于带确认状态的原因&lt;br /&gt;
- --open                  只输出端口状态为 open 的端口&lt;br /&gt;
- --packet-trace          显示所有发送或者接收到的数据包&lt;br /&gt;
- --iflist                显示路由信息和接口，便于调试&lt;br /&gt;
- --log-errors            把日志等级为 errors/warings 的日志输出&lt;br /&gt;
- --append-output         追加到指定的文件&lt;br /&gt;
- --resume FILENAME       恢复已停止的扫描&lt;br /&gt;
- --stylesheet PATH/URL   设置 XSL 样式表，转换 XML 输出&lt;br /&gt;
- --webxml                从 namp.org 得到 XML 的样式&lt;br /&gt;
- --no-sytlesheet         忽略 XML 声明的 XSL 样式表&lt;/p&gt;
-&lt;h2 id=&#34;0x08-其他选项&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#0x08-其他选项&#34;&gt;#&lt;/a&gt; 0x08 其他选项&lt;/h2&gt;
-&lt;p&gt;-6                      开启 IPv6&lt;br /&gt;
--A                      OS 识别，版本探测，脚本扫描和 traceroute&lt;br /&gt;
---datedir DIRNAME       说明用户 Nmap 数据文件位置&lt;br /&gt;
- --send-eth /--send-ip  使用原以太网帧发送 / 在原 IP 层发送&lt;br /&gt;
- --privileged            假定用户具有全部权限&lt;br /&gt;
- --unprovoleged          假定用户不具有全部权限，创建原始套接字需要 root 权限&lt;br /&gt;
- - V                      打印版本信息&lt;br /&gt;
- - h                      输出帮助&lt;/p&gt;
-&lt;h1 id=&#34;nmap-例子&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#nmap-例子&#34;&gt;#&lt;/a&gt; nmap 例子&lt;/h1&gt;
-&lt;p&gt;使用 ping 检测 10.0.0.0/24 这个网段&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;nmap -sP 10.0.0.0/24&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;使用 SYN 的方法对全端口进行扫描，在 aggressive (4) 的时间模板下，同时对开放的端口进行端口识别&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;nmap -p1-65535 -sV -sS -T4 target&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;PS: -T 代表的是扫描的时候，一些控制选项 (TCP 的延迟时间，探测报文之间的间隔等) 的集合，具体的 man nmap 一下就知道了&lt;/p&gt;
-&lt;p&gt;使用 SYN 扫描，在 aggressive (4) 的时间模板下，探测操作系统的类型和版本，还有显示 traceroute 的结果，结果输出较为详细&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;nmap -v -sS -A -T4 target&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;使用 SYN 扫描，在 insane (5) 的时间模板下，探测操作系统的类型和版本，还有显示 traceroute 的结果，结果输出较为详细&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;nmap -v -sS -A -T5 target&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;使用 SYN 扫描，在 insane (5) 的时间模板下，探测操作系统的类型，还有显示 traceroute 的结果，操作系统的类型，结果输出较为详细&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;nmap -v -sV -O -sS -T5 target&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;使用 SYN 的方法对全端口进行扫描，同时对开放的端口进行端口识别，在 aggressive (4) 的时间模板下，探测操作系统的类型还有显示 traceroute 的结果，结果输出较为详细&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;nmap -v -p 1-65535 -sV -O -sS -T4 target&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;用 SYN 的方法对全端口进行扫描，同时对开放的端口进行端口识别，在 insane (5) 的时间模板下，探测操作系统的类型，还有显示 traceroute 的结果，结果输出较为详细&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;nmap -v -p 1-65535 -sV -O -sS -T5 target&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;从文件中读取需要扫描的 IP 列表&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;nmap -iL ip-address.txt&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Nmap 输出格式&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;扫描的结果输出到屏幕，同时会存储一份到 grep-output.txt&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;code&gt;nmap -sV -p 139,445 -oG grep-output.txt 10.0.1.0/24&lt;/code&gt;&lt;/p&gt;
-&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;扫描结果输出为 html&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;code&gt;nmap -sS -sV -T5 10.0.1.99 --webxml -oX - | xsltproc --output file.html&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Nmap 扫描 Netbios&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;在子网中发现开放 netbios 的 IP&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;code&gt;nmap -sV -v -p139,445 10.0.0.1/24&lt;/code&gt;&lt;/p&gt;
-&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;扫描指定 netbios 的名称&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;code&gt;nmap -sU --script nbstat.nse -p 137 target&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;扫描指定的目标，同时检测相关漏洞&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;nmap --script-args=unsafe=1 --script smb-check-vulns.nse -p 445 target&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;将 nmap 的 80 端口的扫描结果，通过管道交给 nikto 进行扫描&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Nmap Nikto Scan nmap -p80 10.0.1.0/24 -oG - | nikto.pl -h -&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;将 nmap 的 80,443 端口的扫描结果，通过管道交给 nikto 进行扫描&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;nmap -p80,443 10.0.1.0/24 -oG - | nikto.pl -h -&lt;/code&gt;&lt;/p&gt;
-</content>
-        <category term="web安全" scheme="https://self-ferry.github.io/categories/web-security/" />
-        <category term="Nmap" scheme="https://self-ferry.github.io/tags/Nmap/" />
-        <updated>2021-03-09T08:14:20.000Z</updated>
     </entry>
 </feed>
