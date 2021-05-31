@@ -8,8 +8,42 @@
     <author>
       <name>1asy</name>
     </author>
-    <updated>2021-05-26T11:49:21.000Z</updated>
+    <updated>2021-05-31T12:05:41.000Z</updated>
     <category term="学习" />
+    <entry>
+        <id>https://self-ferry.github.io/2021/05/31/Win%E4%BA%92%E6%96%A5%E4%BD%93/</id>
+        <title>Win互斥体</title>
+        <link rel="alternate" href="https://self-ferry.github.io/2021/05/31/Win%E4%BA%92%E6%96%A5%E4%BD%93/"/>
+        <content type="html">&lt;h1 id=&#34;&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#&#34;&gt;#&lt;/a&gt; &lt;/h1&gt;
+</content>
+        <category term="Win32编程" scheme="https://self-ferry.github.io/categories/Win32%E7%BC%96%E7%A8%8B/" />
+        <category term="Win互斥体" scheme="https://self-ferry.github.io/tags/Win%E4%BA%92%E6%96%A5%E4%BD%93/" />
+        <updated>2021-05-31T12:05:41.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://self-ferry.github.io/2021/05/31/Win%E4%B8%B4%E7%95%8C%E5%8C%BA/</id>
+        <title>Win临界区</title>
+        <link rel="alternate" href="https://self-ferry.github.io/2021/05/31/Win%E4%B8%B4%E7%95%8C%E5%8C%BA/"/>
+        <content type="html">&lt;h1 id=&#34;临界区&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#临界区&#34;&gt;#&lt;/a&gt; 临界区&lt;/h1&gt;
+&lt;h2 id=&#34;线程安全问题&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#线程安全问题&#34;&gt;#&lt;/a&gt; 线程安全问题&lt;/h2&gt;
+&lt;p&gt;每个线程都有自己的栈，而局部变量是存储在栈中的，这就意味着每个线程都有一份自己的 “局部变量 &amp;quot;, 如果线程仅仅使用 “局部变量” 那么就不存在线程安全问题。那如果多个线程共用 - 一个全局变量呢？&lt;/p&gt;
+&lt;h2 id=&#34;解决方法&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#解决方法&#34;&gt;#&lt;/a&gt; 解决方法&lt;/h2&gt;
+&lt;p&gt;&lt;img data-src=&#34;image001.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;临界区实现之线程锁&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#临界区实现之线程锁&#34;&gt;#&lt;/a&gt; 临界区实现之线程锁&lt;/h2&gt;
+&lt;p&gt;&amp;lt;1&amp;gt; 创建全局变量&lt;br /&gt;
+ &lt;code&gt;CRITICAL_SECTION cs;&lt;/code&gt; &lt;br /&gt;
+&amp;lt;2&amp;gt; 初始化全局变量&lt;br /&gt;
+ &lt;code&gt;InitializeCriticalSection(&amp;amp;cs);&lt;/code&gt; &lt;br /&gt;
+&amp;lt;3&amp;gt; 实现临界区&lt;br /&gt;
+ &lt;code&gt;EnterCriticalSection(&amp;amp;cs);&lt;/code&gt; &lt;br /&gt;
+&amp;lt;4&amp;gt; 使用临界资源&lt;br /&gt;
+ &lt;code&gt;LeaveCriticalSection(&amp;amp;cs);&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;示例&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#示例&#34;&gt;#&lt;/a&gt; 示例&lt;/h2&gt;
+&lt;figure class=&#34;highlight cpp&#34;&gt;&lt;figcaption data-lang=&#34;C++&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token macro property&#34;&gt;&lt;span class=&#34;token directive-hash&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;token directive keyword&#34;&gt;include&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&amp;lt;stdio.h&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token macro property&#34;&gt;&lt;span class=&#34;token directive-hash&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;token directive keyword&#34;&gt;include&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&amp;lt;stdlib.h&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token macro property&#34;&gt;&lt;span class=&#34;token directive-hash&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;token directive keyword&#34;&gt;include&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&amp;lt;windows.h&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; g_dwTickets &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;CRITICAL_SECTION cs&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;   &lt;span class=&#34;token comment&#34;&gt;// 创建全局变量&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;DWORD WINAPI &lt;span class=&#34;token function&#34;&gt;MyFirstThreadProc&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;LPVOID lpParameter&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token function&#34;&gt;EnterCriticalSection&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;&amp;amp;&lt;/span&gt;cs&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;     &lt;span class=&#34;token comment&#34;&gt;// 实现临界区&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token keyword&#34;&gt;while&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;g_dwTickets &lt;span class=&#34;token operator&#34;&gt;&gt;&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token function&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;还有：%d张票\n&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; g_dwTickets&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		g_dwTickets&lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;15&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token function&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;卖出一张，还有：%d张票\n&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; g_dwTickets&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;16&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;17&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;18&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token function&#34;&gt;LeaveCriticalSection&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;&amp;amp;&lt;/span&gt;cs&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;    &lt;span class=&#34;token comment&#34;&gt;// 使用临界资源&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;19&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;20&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;21&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;22&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; argc&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;char&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt; argv&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;23&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;24&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	HANDLE arrThread&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;25&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;26&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token function&#34;&gt;InitializeCriticalSection&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;&amp;amp;&lt;/span&gt;cs&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;   &lt;span class=&#34;token comment&#34;&gt;// 初始化全局变量&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;27&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;28&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	arrThread&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;CreateThread&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token constant&#34;&gt;NULL&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; MyFirstThreadProc&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token constant&#34;&gt;NULL&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token constant&#34;&gt;NULL&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;29&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	arrThread&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;CreateThread&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token constant&#34;&gt;NULL&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; MyFirstThreadProc&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token constant&#34;&gt;NULL&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token constant&#34;&gt;NULL&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;30&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;31&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token function&#34;&gt;WaitForMultipleObjects&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; arrThread&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; TRUE&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; INFINITE&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;32&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;33&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token function&#34;&gt;CloseHandle&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;arrThread&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;34&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token function&#34;&gt;CloseHandle&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;arrThread&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;35&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;36&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;37&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
+        <category term="Win32编程" scheme="https://self-ferry.github.io/categories/Win32%E7%BC%96%E7%A8%8B/" />
+        <category term="Win临界区" scheme="https://self-ferry.github.io/tags/Win%E4%B8%B4%E7%95%8C%E5%8C%BA/" />
+        <updated>2021-05-31T12:05:19.000Z</updated>
+    </entry>
     <entry>
         <id>https://self-ferry.github.io/2021/05/26/Win%E7%BA%BF%E7%A8%8B/</id>
         <title>Win线程</title>
@@ -14802,58 +14836,5 @@ nop 指令实际上是 xchg eax,eax 的一个谓名字&lt;/p&gt;
         <category term="汇编" scheme="https://self-ferry.github.io/categories/%E6%B1%87%E7%BC%96/" />
         <category term="x86汇编指令" scheme="https://self-ferry.github.io/tags/x86%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4/" />
         <updated>2021-03-24T12:19:17.000Z</updated>
-    </entry>
-    <entry>
-        <id>https://self-ferry.github.io/2021/03/24/%E5%AF%86%E7%A0%81%E5%AD%A6%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80/</id>
-        <title>密码学数论基础</title>
-        <link rel="alternate" href="https://self-ferry.github.io/2021/03/24/%E5%AF%86%E7%A0%81%E5%AD%A6%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80/"/>
-        <content type="html">&lt;h1 id=&#34;数论基础&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#数论基础&#34;&gt;#&lt;/a&gt; 数论基础&lt;/h1&gt;
-&lt;h2 id=&#34;整除性和带余除法&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#整除性和带余除法&#34;&gt;#&lt;/a&gt; 整除性和带余除法&lt;/h2&gt;
-&lt;h2 id=&#34;整除性&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#整除性&#34;&gt;#&lt;/a&gt; 整除性&lt;/h2&gt;
-&lt;p&gt;&lt;span class=&#34;label&#34;&gt;定义：&lt;/span&gt;&lt;br /&gt;
-a、b 是两个整数，b≠0 ，如果存在一个整数 m 使等式 a=m*b 成立，则称 b 整除 a，记为 b|a,a 是被除数，b 是除数。&lt;/p&gt;
-&lt;p&gt;a/b 记为 b|a a 除以 b 记为 b 整除 a&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;label&#34;&gt;性质：&lt;/span&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;若 a|1， 则 a=±1。&lt;/li&gt;
-&lt;li&gt;若 a|b 且 b|a，则 a=±b。&lt;/li&gt;
-&lt;li&gt;任何不等于零的数整除 0。&lt;/li&gt;
-&lt;li&gt;若 a|b 且 b|c，则 a|c。&lt;br /&gt;
- &lt;code&gt;11|66 且 66|198 =&amp;gt; 11|198&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;对任意整数 m，n，若 b|g 且 b|h，则可得出 b|（mg+nh）。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;之所以得出最后一条结论，是因为：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;若 b|g，存在 g1，使得 g 可以表示为 g=b*g1&lt;/li&gt;
-&lt;li&gt;若 b|h, 则存在 h1，使得还可以表示为 h=b*h1&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;所以：&lt;br /&gt;
- &lt;code&gt;mg + nh = mbg1 + nbh1 = b * (mg1 + nh1)&lt;/code&gt; &lt;br /&gt;
- 得出 b 整除 mg+nh。&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;label&#34;&gt;例题&lt;/span&gt;&lt;br /&gt;
-&lt;img data-src=&#34;image001.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;h3 id=&#34;带余除法&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#带余除法&#34;&gt;#&lt;/a&gt; 带余除法&lt;/h3&gt;
-&lt;p&gt;对给定的任意一个正整数 n 和任意非负整数 a, 若用 n 除 a, 得到整数商 q 和整数余数 r, 则满足以下关系式:&lt;br /&gt;
- &lt;code&gt;a = qn + r, 0 ≤ r &amp;lt; n; q = |(a|b)|&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&#34;欧几里得算法&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#欧几里得算法&#34;&gt;#&lt;/a&gt; 欧几里得算法&lt;/h2&gt;
-&lt;h3 id=&#34;最大公约数&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#最大公约数&#34;&gt;#&lt;/a&gt; 最大公约数&lt;/h3&gt;
-&lt;p&gt;最大公约数，也称最大公因数、最大公因子，指两个或多个整数共有约数中最大的一个。&lt;/p&gt;
-&lt;p&gt;对于整数 a,b,m, 若满足 a=mb, 则称非零整数 b 是 a 的一个因子。我们用 gcd (a,b) 来表示 a 的最大公因子。a 和 b 的最大公因子是能同时整除 a 和 b 的最大整数。另外，定义 gcd (0,0)=0。&lt;br /&gt;
-更正式的描述是，正整数 c 称为 a 和 b 的最大公因子，如果&lt;br /&gt;
- (1) c 是 a 和 b 的因子。&lt;br /&gt;
-(2) a、b 的因子都是 c 的一个因子。&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;image002.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-</content>
-        <category term="密码编码学与网络安全" scheme="https://self-ferry.github.io/categories/%E5%AF%86%E7%A0%81%E7%BC%96%E7%A0%81%E5%AD%A6%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" />
-        <category term="数论基础" scheme="https://self-ferry.github.io/tags/%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80/" />
-        <updated>2021-03-24T06:19:48.000Z</updated>
-    </entry>
-    <entry>
-        <id>https://self-ferry.github.io/2021/03/23/%E6%95%B0%E7%BB%84%E4%B8%8E%E7%9F%A9%E9%98%B5/</id>
-        <title>数组与矩阵</title>
-        <link rel="alternate" href="https://self-ferry.github.io/2021/03/23/%E6%95%B0%E7%BB%84%E4%B8%8E%E7%9F%A9%E9%98%B5/"/>
-        <content type="html">&lt;h1 id=&#34;&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#&#34;&gt;#&lt;/a&gt; &lt;/h1&gt;
-</content>
-        <updated>2021-03-23T11:09:25.000Z</updated>
     </entry>
 </feed>
