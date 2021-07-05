@@ -99,253 +99,6 @@ Boss 直聘&lt;br /&gt;
         <updated>2021-06-18T23:52:01.000Z</updated>
     </entry>
     <entry>
-        <id>https://self-ferry.github.io/2021/06/15/%E4%B9%9D%E3%80%81%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E4%B9%8B%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/</id>
-        <title>九、存储管理之虚拟内存</title>
-        <link rel="alternate" href="https://self-ferry.github.io/2021/06/15/%E4%B9%9D%E3%80%81%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E4%B9%8B%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/"/>
-        <content type="html">&lt;h1 id=&#34;&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#&#34;&gt;#&lt;/a&gt; &lt;/h1&gt;
-</content>
-        <category term="计算机操作系统" scheme="https://self-ferry.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" />
-        <updated>2021-06-15T08:03:03.000Z</updated>
-    </entry>
-    <entry>
-        <id>https://self-ferry.github.io/2021/06/15/%E5%85%AB%E3%80%81%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E4%B9%8B%E6%AE%B5%E9%A1%B5%E5%BC%8F%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86/</id>
-        <title>八、存储管理之段页式存储管理</title>
-        <link rel="alternate" href="https://self-ferry.github.io/2021/06/15/%E5%85%AB%E3%80%81%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E4%B9%8B%E6%AE%B5%E9%A1%B5%E5%BC%8F%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86/"/>
-        <content type="html">&lt;h1 id=&#34;&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#&#34;&gt;#&lt;/a&gt; &lt;/h1&gt;
-</content>
-        <category term="计算机操作系统" scheme="https://self-ferry.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" />
-        <updated>2021-06-15T08:02:45.000Z</updated>
-    </entry>
-    <entry>
-        <id>https://self-ferry.github.io/2021/06/15/%E4%B8%83%E3%80%81%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E4%B9%8B%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E4%B8%8E%E5%9B%9E%E6%94%B6/</id>
-        <title>七、存储管理之内存分配与回收</title>
-        <link rel="alternate" href="https://self-ferry.github.io/2021/06/15/%E4%B8%83%E3%80%81%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E4%B9%8B%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E4%B8%8E%E5%9B%9E%E6%94%B6/"/>
-        <content type="html">&lt;h1 id=&#34;&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#&#34;&gt;#&lt;/a&gt; &lt;/h1&gt;
-</content>
-        <category term="计算机操作系统" scheme="https://self-ferry.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" />
-        <updated>2021-06-15T08:02:07.000Z</updated>
-    </entry>
-    <entry>
-        <id>https://self-ferry.github.io/2021/06/15/%E5%85%AD%E3%80%81%E4%BD%9C%E4%B8%9A%E7%AE%A1%E7%90%86%E4%B9%8B%E6%AD%BB%E9%94%81/</id>
-        <title>六、作业管理之死锁</title>
-        <link rel="alternate" href="https://self-ferry.github.io/2021/06/15/%E5%85%AD%E3%80%81%E4%BD%9C%E4%B8%9A%E7%AE%A1%E7%90%86%E4%B9%8B%E6%AD%BB%E9%94%81/"/>
-        <content type="html">&lt;h1 id=&#34;&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#&#34;&gt;#&lt;/a&gt; &lt;/h1&gt;
-</content>
-        <category term="计算机操作系统" scheme="https://self-ferry.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" />
-        <updated>2021-06-15T08:00:32.000Z</updated>
-    </entry>
-    <entry>
-        <id>https://self-ferry.github.io/2021/06/15/%E4%BA%94%E3%80%81%E4%BD%9C%E4%B8%9A%E7%AE%A1%E7%90%86%E4%B9%8B%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/</id>
-        <title>五、作业管理之进程调度</title>
-        <link rel="alternate" href="https://self-ferry.github.io/2021/06/15/%E4%BA%94%E3%80%81%E4%BD%9C%E4%B8%9A%E7%AE%A1%E7%90%86%E4%B9%8B%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/"/>
-        <content type="html">&lt;h1 id=&#34;&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#&#34;&gt;#&lt;/a&gt; &lt;/h1&gt;
-</content>
-        <category term="计算机操作系统" scheme="https://self-ferry.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" />
-        <updated>2021-06-15T07:59:55.000Z</updated>
-    </entry>
-    <entry>
-        <id>https://self-ferry.github.io/2021/06/15/%E5%9B%9B%E3%80%81%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86%E4%B9%8B%E5%90%8C%E6%AD%A5/</id>
-        <title>四、进程管理之同步</title>
-        <link rel="alternate" href="https://self-ferry.github.io/2021/06/15/%E5%9B%9B%E3%80%81%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86%E4%B9%8B%E5%90%8C%E6%AD%A5/"/>
-        <content type="html">&lt;h1 id=&#34;为什么需要进程间同步&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#为什么需要进程间同步&#34;&gt;#&lt;/a&gt; 为什么需要进程间同步&lt;/h1&gt;
-&lt;p&gt;在多道程序环境下，程序是并发执行的，不同进程之间存在着不同的相互制约关系，为了协调进程之间的相互制约关系，引入了进程同步的概念。在操作系统中，要对并发进程进行同步的原因是并发进程是异步的，由此会产生对共享变量或数据结构等资源不正确的访问次序，从而造成进程每次执行的结果不一致。&lt;/p&gt;
-&lt;p&gt;为了杜绝这种差错，必须对进程的执行次序进行协调，保证诸进程能按次序执行。&lt;/p&gt;
-&lt;h1 id=&#34;进程同步相关概念&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#进程同步相关概念&#34;&gt;#&lt;/a&gt; 进程同步相关概念&lt;/h1&gt;
-&lt;h2 id=&#34;临界资源&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#临界资源&#34;&gt;#&lt;/a&gt; 临界资源&lt;/h2&gt;
-&lt;p&gt;一次仅允许一个进程使用的资源称为临界资源，如打印机、公用队列等。对临界资源的访问必须互斥地进行。在每个进程中，访问临界资源的那段代码称为临界区。&lt;br /&gt;
-临界资源的访问分为 4 个部分：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;进入区：检查可否进入临界区，若可以进入，则设置标志。&lt;/li&gt;
-&lt;li&gt;临界区：进程中访问临界资源的那段代码，又称临界段。&lt;/li&gt;
-&lt;li&gt;退出区：清除标志。&lt;/li&gt;
-&lt;li&gt;剩余区：代码中的其他部分。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;同步&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#同步&#34;&gt;#&lt;/a&gt; 同步&lt;/h2&gt;
-&lt;p&gt;同步又称直接制约关系。是指为了完成某个任务而建立的两个或多个进程，这些进程需要协调工作次序，它们的制约关系源自它们之间的相互合作。&lt;/p&gt;
-&lt;p&gt;例：读进程和写进程对同一段缓冲区的读和写。&lt;/p&gt;
-&lt;h2 id=&#34;同步机制&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#同步机制&#34;&gt;#&lt;/a&gt; 同步机制&lt;/h2&gt;
-&lt;p&gt;同步机制应该遵循以下准则：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;空闲让进。临界区空闲可以允许进程进入。&lt;/li&gt;
-&lt;li&gt;忙则等待。已有进程进入临界区则其他进程必须等待。&lt;/li&gt;
-&lt;li&gt;有限等待。对请求访问的进程，保证在有限时间内进入临界区。&lt;/li&gt;
-&lt;li&gt;让权等待。当进程不能进入临界区应立即释放处理器。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;互斥&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#互斥&#34;&gt;#&lt;/a&gt; 互斥&lt;/h2&gt;
-&lt;p&gt;互斥又称间接制约关系。当一个进程进入临界区使用临界资源时，另一个进程必须等待。&lt;br /&gt;
-例：访问打印机。&lt;/p&gt;
-</content>
-        <category term="计算机操作系统" scheme="https://self-ferry.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" />
-        <category term="进程同步" scheme="https://self-ferry.github.io/tags/%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/" />
-        <category term="临界资源" scheme="https://self-ferry.github.io/tags/%E4%B8%B4%E7%95%8C%E8%B5%84%E6%BA%90/" />
-        <category term="生产者-消费者问题" scheme="https://self-ferry.github.io/tags/%E7%94%9F%E4%BA%A7%E8%80%85-%E6%B6%88%E8%B4%B9%E8%80%85%E9%97%AE%E9%A2%98/" />
-        <updated>2021-06-15T07:59:29.000Z</updated>
-    </entry>
-    <entry>
-        <id>https://self-ferry.github.io/2021/06/15/%E4%B8%89%E3%80%81%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86%E4%B9%8B%E4%BA%94%E7%8A%B6%E6%80%81%E6%A8%A1%E5%9E%8B/</id>
-        <title>三、进程管理之五状态模型</title>
-        <link rel="alternate" href="https://self-ferry.github.io/2021/06/15/%E4%B8%89%E3%80%81%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86%E4%B9%8B%E4%BA%94%E7%8A%B6%E6%80%81%E6%A8%A1%E5%9E%8B/"/>
-        <content type="html">&lt;h1 id=&#34;进程的五种状态&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#进程的五种状态&#34;&gt;#&lt;/a&gt; 进程的五种状态&lt;/h1&gt;
-&lt;p&gt;&lt;img data-src=&#34;image004.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;h2 id=&#34;就绪状态&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#就绪状态&#34;&gt;#&lt;/a&gt; 就绪状态&lt;/h2&gt;
-&lt;p&gt;◆ 当进程被分配到除 CPU 以外所有必要的资源后&lt;br /&gt;
-◆ 只要再获得 CPU 的使用权，就可以立即运行&lt;br /&gt;
-◆ 其他资源都准备好、只差 CPU 资源的状态为就绪状态&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;image002.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;h2 id=&#34;执行状态&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#执行状态&#34;&gt;#&lt;/a&gt; 执行状态&lt;/h2&gt;
-&lt;p&gt;◆ 进程获得 CPU，其程序正在执行称为执行状态&lt;br /&gt;
-◆ 在单处理机中，在某个时刻只能有一个进程是处于执行状态&lt;/p&gt;
-&lt;h2 id=&#34;阻塞状态&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#阻塞状态&#34;&gt;#&lt;/a&gt; 阻塞状态&lt;/h2&gt;
-&lt;p&gt;◆ 进程因某种原因如：其他设备未就绪而无法继续执行&lt;br /&gt;
-◆ 从而放弃 CPU 的状态称为阻塞状态&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;image003.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;h2 id=&#34;创建状态&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#创建状态&#34;&gt;#&lt;/a&gt; 创建状态&lt;/h2&gt;
-&lt;p&gt;创建进程时拥有 PCB 但其他资源尚未就绪的状态称为创建状态&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;image005.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;h2 id=&#34;终止状态&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#终止状态&#34;&gt;#&lt;/a&gt; 终止状态&lt;/h2&gt;
-&lt;p&gt;进程结束由系统清理或者归还 PCB 的状态称为终止状态&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;image006.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-</content>
-        <category term="计算机操作系统" scheme="https://self-ferry.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" />
-        <category term="进程五状态" scheme="https://self-ferry.github.io/tags/%E8%BF%9B%E7%A8%8B%E4%BA%94%E7%8A%B6%E6%80%81/" />
-        <updated>2021-06-15T07:58:47.000Z</updated>
-    </entry>
-    <entry>
-        <id>https://self-ferry.github.io/2021/06/15/%E4%BA%8C%E3%80%81%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86%E4%B9%8B%E8%BF%9B%E7%A8%8B%E5%AE%9E%E4%BD%93/</id>
-        <title>二、进程管理之进程实体</title>
-        <link rel="alternate" href="https://self-ferry.github.io/2021/06/15/%E4%BA%8C%E3%80%81%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86%E4%B9%8B%E8%BF%9B%E7%A8%8B%E5%AE%9E%E4%BD%93/"/>
-        <content type="html">&lt;h1 id=&#34;进程是什么&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#进程是什么&#34;&gt;#&lt;/a&gt; 进程是什么？&lt;/h1&gt;
-&lt;p&gt;为什么需要进程？&lt;/p&gt;
-&lt;p&gt;进程属于在 CPU 和系统资源等方面提供的抽象，能够有效提高 CPU 的利用率。&lt;/p&gt;
-&lt;p&gt;程序并不能单独运行，只有将程序装载到内存中，系统为它分配资源才能运行，而这种执行的程序就称之为进程。程序和进程的区别就在于：程序是指令的集合，它是进程运行的静态描述文本；进程是程序的一次执行活动，属于动态概念。&lt;/p&gt;
-&lt;p&gt;在多道编程中，我们允许多个程序同时加载到内存中，在操作系统的调度下，可以实现并发地执行。这是这样的设计，大大提高了 CPU 的利用率。进程的出现让每个用户感觉到自己独享 CPU，因此，进程就是为了在 CPU 上实现多道编程而提出的。&lt;/p&gt;
-&lt;h1 id=&#34;进程实体&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#进程实体&#34;&gt;#&lt;/a&gt; 进程实体&lt;/h1&gt;
-&lt;h2 id=&#34;进程在主存中的状态&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#进程在主存中的状态&#34;&gt;#&lt;/a&gt; 进程在主存中的状态&lt;/h2&gt;
-&lt;p&gt;&lt;img data-src=&#34;image001.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;标识符唯一标记一个进程，用于区别其他进程  &lt;code&gt;pid&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;标记进程的进程状态，如：运行态&lt;/li&gt;
-&lt;li&gt;进程即将被执行的下一条指令的地址&lt;/li&gt;
-&lt;li&gt;程序代码、进程数据相关指针&lt;/li&gt;
-&lt;li&gt;进程执行时处理器存储的数据&lt;/li&gt;
-&lt;li&gt;被进程 IO 操作所占用的文件列表&lt;/li&gt;
-&lt;li&gt;使用处理器时间、时钟数总和等&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;img data-src=&#34;image002.png&#34; alt=&#34;&#34; /&gt;&lt;br /&gt;
-&lt;img data-src=&#34;image003.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;h1 id=&#34;进程与线程&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#进程与线程&#34;&gt;#&lt;/a&gt; 进程与线程&lt;/h1&gt;
-&lt;p&gt;&lt;img data-src=&#34;image004.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;进程是系统进行资源分配和调度的基本单位&lt;/p&gt;
-&lt;h2 id=&#34;线程&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#线程&#34;&gt;#&lt;/a&gt; 线程&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;线程是操作系统进行运行调度的最小单位&lt;/li&gt;
-&lt;li&gt;包含在进程之中，是进程中实际运行工作的单位&lt;/li&gt;
-&lt;li&gt;一个进程可以并发多个线程，每个线程执行不同的任务&lt;/li&gt;
-&lt;li&gt;进程的线程共享进程资源&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;img data-src=&#34;image005.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-</content>
-        <category term="计算机操作系统" scheme="https://self-ferry.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" />
-        <category term="进程实体" scheme="https://self-ferry.github.io/tags/%E8%BF%9B%E7%A8%8B%E5%AE%9E%E4%BD%93/" />
-        <category term="进程与线程" scheme="https://self-ferry.github.io/tags/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/" />
-        <updated>2021-06-15T06:15:49.000Z</updated>
-    </entry>
-    <entry>
-        <id>https://self-ferry.github.io/2021/06/15/%E4%B8%80%E3%80%81%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/</id>
-        <title>一、操作系统概论</title>
-        <link rel="alternate" href="https://self-ferry.github.io/2021/06/15/%E4%B8%80%E3%80%81%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/"/>
-        <content type="html">&lt;h1 id=&#34;导学&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#导学&#34;&gt;#&lt;/a&gt; 导学&lt;/h1&gt;
-&lt;h2 id=&#34;操作系统的演进&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#操作系统的演进&#34;&gt;#&lt;/a&gt; 操作系统的演进&lt;/h2&gt;
-&lt;p&gt;&lt;img data-src=&#34;image001.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;h2 id=&#34;多道程序设计&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#多道程序设计&#34;&gt;#&lt;/a&gt; 多道程序设计&lt;/h2&gt;
-&lt;p&gt;&lt;img data-src=&#34;image002.png&#34; alt=&#34;&#34; /&gt;&lt;br /&gt;
-&lt;img data-src=&#34;image003.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;h1 id=&#34;什么是操作系统&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#什么是操作系统&#34;&gt;#&lt;/a&gt; 什么是操作系统&lt;/h1&gt;
-&lt;p&gt;管理硬件、提供用户交互的软件系统&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;image004.png&#34; alt=&#34;&#34; /&gt;&lt;br /&gt;
-&lt;img data-src=&#34;image005.png&#34; alt=&#34;&#34; /&gt;&lt;br /&gt;
-&lt;img data-src=&#34;image006.png&#34; alt=&#34;&#34; /&gt;&lt;br /&gt;
-&lt;img data-src=&#34;image007.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;基于 Android 与 Linux 进行优化的操作系统。&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;image008.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;让我们拭目以待的华为的鸿蒙系统&lt;/p&gt;
-&lt;h1 id=&#34;为什么需要操作系统&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#为什么需要操作系统&#34;&gt;#&lt;/a&gt; 为什么需要操作系统&lt;/h1&gt;
-&lt;p&gt;&lt;img data-src=&#34;image009.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;h1 id=&#34;操作系统的基本功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#操作系统的基本功能&#34;&gt;#&lt;/a&gt; 操作系统的基本功能&lt;/h1&gt;
-&lt;p&gt;&lt;img data-src=&#34;image010.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;img data-src=&#34;image011.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;img data-src=&#34;image012.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;img data-src=&#34;image013.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;h1 id=&#34;操作系统相关概念&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#操作系统相关概念&#34;&gt;#&lt;/a&gt; 操作系统相关概念&lt;/h1&gt;
-&lt;h2 id=&#34;并发性&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#并发性&#34;&gt;#&lt;/a&gt; 并发性&lt;/h2&gt;
-&lt;p&gt;&lt;img data-src=&#34;image014.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;img data-src=&#34;image015.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;并行与并发在计算机中的体现&lt;br /&gt;
-单处理器只有并发&lt;/p&gt;
-&lt;p&gt;双处理器，每一个时刻都是两个程序并行运行的，对于双处理器，我们主要强调的是并行的概念&lt;br /&gt;
-如果我们强调双处理器里的每一个核的话，主要是强调并发的概念&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;image016.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;h2 id=&#34;共享性&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#共享性&#34;&gt;#&lt;/a&gt; 共享性&lt;/h2&gt;
-&lt;p&gt;&lt;img data-src=&#34;image017.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;img data-src=&#34;image018.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;img data-src=&#34;image019.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;img data-src=&#34;image020.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;h2 id=&#34;虚拟性&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#虚拟性&#34;&gt;#&lt;/a&gt; 虚拟性&lt;/h2&gt;
-&lt;p&gt;&lt;img data-src=&#34;image021.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;img data-src=&#34;image022.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;img data-src=&#34;image022.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;img data-src=&#34;image023.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;img data-src=&#34;image024.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;img data-src=&#34;image025.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;h2 id=&#34;异步性&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#异步性&#34;&gt;#&lt;/a&gt; 异步性&lt;/h2&gt;
-&lt;p&gt;&lt;img data-src=&#34;image026.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;img data-src=&#34;image027.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;h2 id=&#34;关于同步和异步的笔记&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#关于同步和异步的笔记&#34;&gt;#&lt;/a&gt; 关于同步和异步的笔记&lt;/h2&gt;
-&lt;p&gt;1. 同步和异步&lt;br /&gt;
-同步和异步关注的是消息通信机制&lt;br /&gt;
-所谓同步，就是在发出一个&lt;em&gt;调用&lt;/em&gt;时，没得到结果之前，该&lt;em&gt;调用&lt;/em&gt;就不返回。但是一旦调用返回就得到返回值了，&lt;em&gt;调用者&lt;/em&gt;主动等待这个&lt;em&gt;调用&lt;/em&gt;的结果&lt;/p&gt;
-&lt;p&gt;所谓异步，就是在发出一个&lt;em&gt;调用&lt;/em&gt;时，这个&lt;em&gt;调用&lt;/em&gt;就直接返回了，不管返回有没有结果。当一个异步过程调用发出后，&lt;em&gt;被调用者&lt;/em&gt;通过状态，通知来通知&lt;em&gt;调用者&lt;/em&gt;，或者通过回调函数处理这个调用&lt;/p&gt;
-&lt;p&gt;2. 阻塞和非阻塞&lt;br /&gt;
-阻塞和非阻塞关注的是程序在等待调用结果时的状态&lt;br /&gt;
-阻塞调用是指调用结果返回之前，当前线程会被挂起。调用线程只有在得到结果之后才返回&lt;br /&gt;
-非阻塞调用是指在不能立即得到结果之前，该调用不会阻塞当前线程&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;label info&#34;&gt;网络上的例子&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;老张爱喝茶，废话不说，煮开水。&lt;/p&gt;
-&lt;p&gt;出场人物：老张，水壶两把（普通水壶，简称水壶；会响的水壶，简称响水壶）。&lt;/p&gt;
-&lt;p&gt;1 老张把水壶放到火上，立等水开。（同步阻塞）；立等就是阻塞了老张去干别的事，老张得一直主动的看着水开没，这就是同步&lt;/p&gt;
-&lt;p&gt;2 老张把水壶放到火上，去客厅看电视，时不时去厨房看看水开没有。（同步非阻塞）；老张去看电视了，这就是非阻塞了，但是老张还是得关注着水开没，这也就是同步了&lt;/p&gt;
-&lt;p&gt;3 老张把响水壶放到火上，立等水开。（异步阻塞）；立等就是阻塞了老张去干别的事，但是老张不用时刻关注水开没，因为水开了，响水壶会提醒他，这就是异步了&lt;/p&gt;
-&lt;p&gt;4 老张把响水壶放到火上，去客厅看电视，水壶响之前不再去看它了，响了再去拿壶。（异步非阻塞）；老张去看电视了，这就是非阻塞了，而且，等水开了，响水壶会提醒他，这就是异步了&lt;/p&gt;
-&lt;p&gt;所谓同步异步，只是对于水壶而言。普通水壶，同步；响水壶，异步。对应的也就是消息通信机制&lt;/p&gt;
-&lt;p&gt;虽然都能干活，但响水壶可以在自己完工之后，提示老张水开了。这是普通水壶所不能及的。同步只能让调用者去轮询自己（情况 2 中），造成老张效率的低下。&lt;/p&gt;
-&lt;p&gt;所谓阻塞非阻塞，仅仅对于老张而言。立等的老张，阻塞；对应的也就是程序等待结果时的状态&lt;/p&gt;
-&lt;p&gt;看电视的老张，非阻塞。&lt;/p&gt;
-&lt;p&gt;情况 1 和情况 3 中老张就是阻塞的，媳妇喊他都不知道。虽然 3 中响水壶是异步的，可对于立等的老张没有太大的意义。所以一般异步是配合非阻塞使用的，这样才能发挥异步的效用。&lt;/p&gt;
-</content>
-        <category term="计算机操作系统" scheme="https://self-ferry.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" />
-        <category term="多道程序设计" scheme="https://self-ferry.github.io/tags/%E5%A4%9A%E9%81%93%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" />
-        <category term="并发性" scheme="https://self-ferry.github.io/tags/%E5%B9%B6%E5%8F%91%E6%80%A7/" />
-        <category term="共享性" scheme="https://self-ferry.github.io/tags/%E5%85%B1%E4%BA%AB%E6%80%A7/" />
-        <category term="虚拟性" scheme="https://self-ferry.github.io/tags/%E8%99%9A%E6%8B%9F%E6%80%A7/" />
-        <category term="异步性" scheme="https://self-ferry.github.io/tags/%E5%BC%82%E6%AD%A5%E6%80%A7/" />
-        <updated>2021-06-15T04:51:56.000Z</updated>
-    </entry>
-    <entry>
         <id>https://self-ferry.github.io/2021/06/03/Win%E4%BA%8B%E4%BB%B6/</id>
         <title>Win事件与线程同步</title>
         <link rel="alternate" href="https://self-ferry.github.io/2021/06/03/Win%E4%BA%8B%E4%BB%B6/"/>
@@ -14049,5 +13802,906 @@ NumberOfFunction 的值并不准确，它的计算结果为： &lt;code&gt;最�
         <category term="WindowsPE" scheme="https://self-ferry.github.io/categories/WindowsPE/" />
         <category term="导出表" scheme="https://self-ferry.github.io/tags/%E5%AF%BC%E5%87%BA%E8%A1%A8/" />
         <updated>2021-05-07T12:23:07.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://self-ferry.github.io/2021/05/06/%E9%9D%99%E6%80%81%E3%80%81%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93%E3%80%81%E5%8F%A5%E6%9F%84/</id>
+        <title>静态、动态链接库、句柄</title>
+        <link rel="alternate" href="https://self-ferry.github.io/2021/05/06/%E9%9D%99%E6%80%81%E3%80%81%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93%E3%80%81%E5%8F%A5%E6%9F%84/"/>
+        <content type="html">&lt;h1 id=&#34;库的介绍&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#库的介绍&#34;&gt;#&lt;/a&gt; 库的介绍&lt;/h1&gt;
+&lt;p&gt;库是写好的现有的，成熟的，可以复用的代码。现实中每个程序都要依赖很多基础的底层库，不可能每个人的代码都从零开始，因此库的存在意义非同寻常。&lt;/p&gt;
+&lt;p&gt;本质上来说库是一种可执行代码的二进制形式，可以被操作系统载入内存执行。&lt;br /&gt;
+库有两种：静态库（.a、.lib）和动态库（.so、.dll）&lt;br /&gt;
+windows 上对应的是.lib .dll&lt;br /&gt;
+linux 上对应的是.a .so&lt;/p&gt;
+&lt;p&gt;超详细内容:&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20va2luZy1scHMvcC83NzU3OTE5Lmh0bWw=&#34;&gt;https://www.cnblogs.com/king-lps/p/7757919.html&lt;/span&gt;&lt;/p&gt;
+&lt;h1 id=&#34;代码复用的实现&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#代码复用的实现&#34;&gt;#&lt;/a&gt; 代码复用的实现&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;静态链接库&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;动态链接库&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用.def 导出&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;静态链接库&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#静态链接库&#34;&gt;#&lt;/a&gt; 静态链接库&lt;/h1&gt;
+&lt;p&gt;例子为滴水逆向教程中的。&lt;/p&gt;
+&lt;h2 id=&#34;vc60创建静态链接库&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#vc60创建静态链接库&#34;&gt;#&lt;/a&gt; VC6.0 创建静态链接库&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;在 VC6 中创建项目：Win32 Static Library&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img data-src=&#34;image001.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;在项目中创建两个文件：xxx.h 和 xxx.cpp&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;xxx.h 文件：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;#if !defined(AFX_TEST_H__DB32E837_3E66_4BE7_B873_C079BC621AF0__INCLUDED_)
+#define AFX_TEST_H__DB32E837_3E66_4BE7_B873_C079BC621AF0__INCLUDED_
+
+#if _MSC_VER &amp;gt; 1000
+#pragma once
+#endif // _MSC_VER &amp;gt; 1000
+
+
+int Plus(int x, int y);
+int Sub(int x, int y);
+int Mul(int x, int y);
+int Div(int x, int y);
+
+
+#endif
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;xxx.cpp 文件：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;int Plus(int x, int y)
+&amp;#123;
+  return x+y;
+&amp;#125;
+int Sub(int x, int y)
+&amp;#123;
+  return x-y;
+&amp;#125;
+int Mul(int x, int y)
+&amp;#123;
+    return x*y;
+&amp;#125;
+int Div(int x, int y)
+&amp;#123;
+  return x/y;
+&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;编译&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;使用静态链接库&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#使用静态链接库&#34;&gt;#&lt;/a&gt; 使用静态链接库&lt;/h2&gt;
+&lt;p&gt;方式一：&lt;/p&gt;
+&lt;p&gt;将 xxx.h 和 xxx.lib 复制到要使用的项目中&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image003.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;在需要使用的文件中包含：#include &amp;quot;xxx.h&amp;quot;&lt;/p&gt;
+&lt;p&gt;在需要使用的文件中包含：#pragma comment (lib, &amp;quot;xxx.lib&amp;quot;)&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image004.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;方式二：&lt;/p&gt;
+&lt;p&gt;将 xxx.h 和 xxx.lib 复制到要使用的项目中&lt;/p&gt;
+&lt;p&gt;在需要使用的文件中包含：#include &amp;quot;xxx.h&amp;quot;&lt;/p&gt;
+&lt;p&gt;需要让编译器自己 LINK&amp;quot;lib 库&amp;quot;&lt;br /&gt;
+&lt;img data-src=&#34;image005.png&#34; alt=&#34;&#34; /&gt;&lt;br /&gt;
+&lt;img data-src=&#34;image006.png&#34; alt=&#34;&#34; /&gt;&lt;br /&gt;
+&lt;img data-src=&#34;image007.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;动态链接库&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#动态链接库&#34;&gt;#&lt;/a&gt; 动态链接库&lt;/h1&gt;
+&lt;h2 id=&#34;创建dll&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#创建dll&#34;&gt;#&lt;/a&gt; 创建 DLL&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;在 VC6 中创建项目：win32 Dynamic-link library&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;源文件中：&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;int __stdcall Plus(int x,int y)
+&amp;#123;
+  return x+y;
+&amp;#125;
+int __stdcall Sub(int x,int y)
+&amp;#123;
+  return x-y;
+&amp;#125;
+int __stdcall Mul(int x,int y)
+&amp;#123;
+  return x*y;
+&amp;#125;
+int __stdcall Div(int x,int y)
+&amp;#123;
+  return x/y;
+&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;头文件中&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;extern &amp;quot;C&amp;quot; _declspec(dllexport) __stdcall int Plus (int x,int y);
+extern &amp;quot;C&amp;quot; _declspec(dllexport) __stdcall int Sub (int x,int y);
+extern &amp;quot;C&amp;quot; _declspec(dllexport) __stdcall int Mul (int x,int y);
+extern &amp;quot;C&amp;quot; _declspec(dllexport) __stdcall int Div (int x,int y);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;编译&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;说明:&lt;/p&gt;
+&lt;p&gt;1、extern 表示这是个全局函数，可以供各个其他的函数调用；&lt;/p&gt;
+&lt;p&gt;2、&amp;quot;C&amp;quot; 按照 C 语言的方式进行编译、链接； __declspec (dllexport) 告诉编译器此函数为导出函数；__stdcall 是为了保持导出与导入时函数调用规则一致，要么都加，要么都不加。&lt;/p&gt;
+&lt;h2 id=&#34;使用dll&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#使用dll&#34;&gt;#&lt;/a&gt; 使用 DLL&lt;/h2&gt;
+&lt;h3 id=&#34;方式一隐式连接&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#方式一隐式连接&#34;&gt;#&lt;/a&gt; 方式一：隐式连接&lt;/h3&gt;
+&lt;p&gt;步骤 1：将 *.dll  *.lib 放到工程目录下面&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image008.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;步骤 2：将 #pragma comment (lib,&amp;quot;DLL 名.lib&amp;quot;) 添加到调用文件中&lt;/p&gt;
+&lt;p&gt;步骤 3：加入函数的声明&lt;/p&gt;
+&lt;figure class=&#34;highlight cpp&#34;&gt;&lt;figcaption data-lang=&#34;C++&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;extern&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;C&#34;&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;__declspec&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;dllimport&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; __stdcall &lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;Plus&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; x&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; y&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;extern&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;C&#34;&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;__declspec&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;dllimport&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; __stdcall &lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;Sub&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; x&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; y&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;extern&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;C&#34;&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;__declspec&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;dllimport&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; __stdcall &lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;Mul&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; x&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; y&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;extern&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;C&#34;&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;__declspec&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;dllimport&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; __stdcall &lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;Div&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; x&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; y&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;说明：&lt;/p&gt;
+&lt;p&gt;__declspec (dllimport) 告诉编译器此函数为导入函数；&lt;/p&gt;
+&lt;p&gt;结果：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image009.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;方式二显示连接&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#方式二显示连接&#34;&gt;#&lt;/a&gt; 方式二：显示连接&lt;/h3&gt;
+&lt;p&gt;步骤 1：	// 定义函数指针&lt;/p&gt;
+&lt;figure class=&#34;highlight cpp&#34;&gt;&lt;figcaption data-lang=&#34;C++&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;__stdcall &lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt;lpPlus&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token keyword&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;__stdcall &lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt;lpSub&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token keyword&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;__stdcall &lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt;lpMul&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token keyword&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;__stdcall &lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt;lpDiv&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;步骤 2：  // 声明函数指针变量&lt;/p&gt;
+&lt;figure class=&#34;highlight cpp&#34;&gt;&lt;figcaption data-lang=&#34;C++&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;lpPlus myPlus&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;lpSub mySub&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;lpMul myMul&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;lpDiv myDiv&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;步骤 3：  //	// 动态加载 dll 到内存中&lt;/p&gt;
+&lt;figure class=&#34;highlight cpp&#34;&gt;&lt;figcaption data-lang=&#34;C++&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;HINSTANCE   hModule &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;LoadLibrary&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;Dll名.dll&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;步骤 4：  // 获取函数地址&lt;/p&gt;
+&lt;figure class=&#34;highlight cpp&#34;&gt;&lt;figcaption data-lang=&#34;C++&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;myPlus &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;lpPlus&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;GetProcAddress&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;hModule&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;   &lt;span class=&#34;token string&#34;&gt;&#34;函数名&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	mySub &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;lpSub&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;GetProcAddress&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;hModule&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;   &lt;span class=&#34;token string&#34;&gt;&#34;函数名&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	myMul &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;lpMul&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;GetProcAddress&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;hModule&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;   &lt;span class=&#34;token string&#34;&gt;&#34;函数名&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	myDiv &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;lpDiv&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;GetProcAddress&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;hModule&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;   &lt;span class=&#34;token string&#34;&gt;&#34;函数名&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;步骤 5：	// 调用函数&lt;/p&gt;
+&lt;figure class=&#34;highlight cpp&#34;&gt;&lt;figcaption data-lang=&#34;C++&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; a &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;myPlus&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; b &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;mySub&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; c &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;myMul&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; d &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;myDiv&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;&lt;span class=&#34;label danger&#34;&gt;💔注意&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;关于在 DLL 中的函数名&lt;/mark&gt;&lt;/p&gt;
+&lt;p&gt;其实取决于函数名是否更改的关键在于 两个函数转变字__stdcall 和__cdecl&lt;br /&gt;
+ 如果你用了__stdcall 那 dll 中的函数就会在函数名前加 &amp;quot;-&amp;quot;, 函数名后加 &amp;quot;@x&amp;quot;&lt;br /&gt;
+ 而__cdecl 则不会将函数改名，因为__cdecl 是函数缺省的状态，所以只要将&lt;br /&gt;
+__stdcall 在你的函数声明中去掉就可以了，更详细的区别可以参阅 msdn 中&lt;br /&gt;
+的内容。&lt;/p&gt;
+&lt;p&gt;结果：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image010.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;句柄&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#句柄&#34;&gt;#&lt;/a&gt; 句柄&lt;/h1&gt;
+&lt;p&gt;Handle 是代表系统的内核对象，如文件句柄，线程句柄，进程句柄。&lt;/p&gt;
+&lt;p&gt;HMODULE 是代表应用程序载入的模块&lt;/p&gt;
+&lt;p&gt;HINSTANCE 在 win32 下与 HMODULE 是相同的东西 Win16 遗留&lt;/p&gt;
+&lt;p&gt;HWND 是窗口句柄&lt;/p&gt;
+&lt;p&gt;其实就是一个无符号整型 (四个字节),Windows 之所以这样设计有 2 个目的：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;可读性更好&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;避免在无意中进行运算&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+        <category term="WindowsPE" scheme="https://self-ferry.github.io/categories/WindowsPE/" />
+        <category term="静态链接库" scheme="https://self-ferry.github.io/tags/%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93/" />
+        <category term="动态链接库" scheme="https://self-ferry.github.io/tags/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93/" />
+        <category term="句柄" scheme="https://self-ferry.github.io/tags/%E5%8F%A5%E6%9F%84/" />
+        <updated>2021-05-06T06:23:36.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://self-ferry.github.io/2021/05/04/%E6%96%B0%E5%A2%9E%E8%8A%82/</id>
+        <title>新增节</title>
+        <link rel="alternate" href="https://self-ferry.github.io/2021/05/04/%E6%96%B0%E5%A2%9E%E8%8A%82/"/>
+        <content type="html">&lt;h1 id=&#34;为什么新增节以及新增节的步骤&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#为什么新增节以及新增节的步骤&#34;&gt;#&lt;/a&gt; 为什么新增节。以及新增节的步骤&lt;/h1&gt;
+&lt;p&gt;我们的 PE 文件在空白区可以添加代码，但是这样是由一个弊端的，因为你的空白区节属性可能是只读的不能执行，如果你修改了属性。那么程序就可能出现问题，所以新增一个节可以实现我们的代码。&lt;/p&gt;
+&lt;h1 id=&#34;新增节的步骤&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#新增节的步骤&#34;&gt;#&lt;/a&gt; 新增节的步骤&lt;/h1&gt;
+&lt;p&gt;1. 在最后一个节位置添加一个节。如果没有空白位置。自己需要给扩展头扩大。并且自己修正节的偏移.&lt;/p&gt;
+&lt;p&gt;2. 修改文件头中节表个数.&lt;/p&gt;
+&lt;p&gt;3. 添加的新节表修改节表的属性 【节.VirtualAddress】 . 这个成员指定了这个节在内存哪里展开。所以需要修改.&lt;/p&gt;
+&lt;p&gt;4. 修改节表文件偏移  【节.PointerToRawData】   我们指定了内存中从哪里展开节。那么也需要指定这个节在文件中在哪里展开&lt;/p&gt;
+&lt;p&gt;5. 修改节表中的 节数据对齐后的大小 【节.SizeofRawData】  我们新增的节。自己需要在 PE 文件添加一段节数据。数据的大小按照文件对齐添加。并且填写到这个成员中.&lt;/p&gt;
+&lt;p&gt;6. 修改扩展头的 PE 镜像大小. 【sizeofImage】 这个成员才是关键。如果不按照内存对齐修改镜像大小。那么我们的节就不会映射到内存中。或者 PE 文件根本无法执行.&lt;/p&gt;
+&lt;h1 id=&#34;总结&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#总结&#34;&gt;#&lt;/a&gt; 总结&lt;/h1&gt;
+&lt;p&gt;在 PE 中，新增节，添加代码&lt;/p&gt;
+&lt;h2 id=&#34;一-先判断节表后是否有空闲位置添加节表信息必须多出两个节表位置最后以零结尾&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-先判断节表后是否有空闲位置添加节表信息必须多出两个节表位置最后以零结尾&#34;&gt;#&lt;/a&gt; 一、先判断节表后是否有空闲位置，添加节表信息，必须多出两个节表位置，最后以零结尾。&lt;/h2&gt;
+&lt;h2 id=&#34;二-新增节后需要修改以下信息&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#二-新增节后需要修改以下信息&#34;&gt;#&lt;/a&gt; 二、新增节后，需要修改以下信息&lt;/h2&gt;
+&lt;p&gt;1、添加一个新节，可以复制一份，最好是拥有可执行属性的节，如.text。&lt;/p&gt;
+&lt;p&gt;2、在节表区，新增节的后面，填充一个节，用零填充。&lt;/p&gt;
+&lt;p&gt;3、修改标准 PE 头中节的数量。&lt;/p&gt;
+&lt;p&gt;4、修改 SizeOfImage 的大小。&lt;/p&gt;
+&lt;p&gt;5、在原有数据的后面，新增一个节的数据（内存对齐的整倍数）。&lt;/p&gt;
+&lt;p&gt;6、修正新增节表的属性。&lt;/p&gt;
+&lt;h2 id=&#34;三-新节各个属性修改说明&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#三-新节各个属性修改说明&#34;&gt;#&lt;/a&gt; 三、新节各个属性修改说明&lt;/h2&gt;
+&lt;p&gt;1、Name: 名字随便修改，不能超过八个字节。&lt;/p&gt;
+&lt;p&gt;2、VirtualSize: 申请的新节空间大小，比如 1000&lt;/p&gt;
+&lt;p&gt;3、VirtualAddress: 等于上一个节的 VirtualAddress  +  SizeOfRawData&lt;/p&gt;
+&lt;p&gt;4、SizeOfRawData：设置可以和 VirtualSize 一样，比如 1000&lt;/p&gt;
+&lt;p&gt;5、PointerToRawData：等于上一个节的 PointerToRawData+  SizeOfRawData&lt;/p&gt;
+&lt;p&gt;6、PointerToRelocation：设置成零&lt;/p&gt;
+&lt;p&gt;7、PointerToLineNumbers：设置成零&lt;/p&gt;
+&lt;p&gt;8、NumberOfLineRelocations：设置成零&lt;/p&gt;
+&lt;p&gt;9、NumberOfLineNumbers：设置成零&lt;/p&gt;
+&lt;p&gt;10、Characteristics：块属性 0x20000060  可以取上一个节表和本节表的属性值，进行异或  如 x|y&lt;/p&gt;
+&lt;h2 id=&#34;标志属性块-常用特征值对照表&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#标志属性块-常用特征值对照表&#34;&gt;#&lt;/a&gt; 标志 (属性块) 常用特征值对照表：&lt;/h2&gt;
+&lt;p&gt;[值：00000020h] [IMAGE_SCN_CNT_CODE                // Section contains code.(包含可执行代码)]&lt;/p&gt;
+&lt;p&gt;[值：00000040h] [IMAGE_SCN_CNT_INITIALIZED_DATA    // Section contains initialized data.(该块包含已初始化的数据)]&lt;/p&gt;
+&lt;p&gt;[值：00000080h] [IMAGE_SCN_CNT_UNINITIALIZED_DATA  // Section contains uninitialized data.(该块包含未初始化的数据)]&lt;/p&gt;
+&lt;p&gt;[值：00000200h] [IMAGE_SCN_LNK_INFO                // Section contains comments or some other type of information.]&lt;/p&gt;
+&lt;p&gt;[值：00000800h] [IMAGE_SCN_LNK_REMOVE              // Section contents will not become part of image.]&lt;/p&gt;
+&lt;p&gt;[值：00001000h] [IMAGE_SCN_LNK_COMDAT              // Section contents comdat.]&lt;/p&gt;
+&lt;p&gt;[值：00004000h] [IMAGE_SCN_NO_DEFER_SPEC_EXC       // Reset speculative exceptions handling bits in the TLB entries for this section.]&lt;/p&gt;
+&lt;p&gt;[值：00008000h] [IMAGE_SCN_GPREL                   // Section content can be accessed relative to GP.]&lt;/p&gt;
+&lt;p&gt;[值：00500000h] [IMAGE_SCN_ALIGN_16BYTES           // Default alignment if no others are specified.]&lt;/p&gt;
+&lt;p&gt;[值：01000000h] [IMAGE_SCN_LNK_NRELOC_OVFL         // Section contains extended relocations.]&lt;/p&gt;
+&lt;p&gt;[值：02000000h] [IMAGE_SCN_MEM_DISCARDABLE         // Section can be discarded.]&lt;/p&gt;
+&lt;p&gt;[值：04000000h] [IMAGE_SCN_MEM_NOT_CACHED          // Section is not cachable.]&lt;/p&gt;
+&lt;p&gt;[值：08000000h] [IMAGE_SCN_MEM_NOT_PAGED           // Section is not pageable.]&lt;/p&gt;
+&lt;p&gt;[值：10000000h] [IMAGE_SCN_MEM_SHARED              // Section is shareable (该块为共享块).]&lt;/p&gt;
+&lt;p&gt;[值：20000000h] [IMAGE_SCN_MEM_EXECUTE             // Section is executable.(该块可执行)]&lt;/p&gt;
+&lt;p&gt;[值：40000000h] [IMAGE_SCN_MEM_READ                // Section is readable.(该块可读)]&lt;/p&gt;
+&lt;p&gt;[值：80000000h] [IMAGE_SCN_MEM_WRITE               // Section is writeable.(该块可写)]&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h1 id=&#34;reference&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#reference&#34;&gt;#&lt;/a&gt; Reference&lt;/h1&gt;
+&lt;p&gt;很详细：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vd3VtYWMvcC81Mjc0NTU5Lmh0bWw=&#34;&gt;https://www.cnblogs.com/wumac/p/5274559.html&lt;/span&gt;&lt;br /&gt;
+ 有详细实操步骤：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vaUJpbmFyeS9wLzk3Mzc3MTkuaHRtbA==&#34;&gt;https://www.cnblogs.com/iBinary/p/9737719.html&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;实操了一下还行。&lt;/p&gt;
+</content>
+        <category term="WindowsPE" scheme="https://self-ferry.github.io/categories/WindowsPE/" />
+        <category term="新增节" scheme="https://self-ferry.github.io/tags/%E6%96%B0%E5%A2%9E%E8%8A%82/" />
+        <updated>2021-05-03T20:49:52.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://self-ferry.github.io/2021/05/02/%E6%89%A9%E5%A4%A7%E8%8A%82/</id>
+        <title>扩大节</title>
+        <link rel="alternate" href="https://self-ferry.github.io/2021/05/02/%E6%89%A9%E5%A4%A7%E8%8A%82/"/>
+        <content type="html">&lt;h1 id=&#34;为什么扩大节&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#为什么扩大节&#34;&gt;#&lt;/a&gt; 为什么扩大节？&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;我们可以在任意空白区添加自己的代码，但如果添加的代码比较多，空白区不够怎么办？&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;上面我们讲了，空白区添加我们的代码。但是有的时候。我们的空白区不够了怎么办。所以需要进行扩大节.&lt;/p&gt;
+&lt;p&gt;扩大节其实很简单。修改节数据对齐后的大小即可。并且在 PE 文件中添加 0 数据进行填充即可.&lt;/p&gt;
+&lt;p&gt;首先看一下我们的节表&lt;/p&gt;
+&lt;figure class=&#34;highlight c&#34;&gt;&lt;figcaption data-lang=&#34;c&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;_IMAGE_SECTION_HEADER&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    BYTE    Name&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;IMAGE_SIZEOF_SHORT_NAME&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;token comment&#34;&gt;//8 个字节名字。自己可以起。编译器也可以给定。不重要.&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;union&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            DWORD   PhysicalAddress&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;       &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            DWORD   VirtualSize&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;           &lt;span class=&#34;token comment&#34;&gt;// 节数据没有对齐后的大小。也就是没有对齐。节数据有多大.&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt; Misc&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    DWORD   VirtualAddress&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;　　　　　　　　　　&lt;span class=&#34;token comment&#34;&gt;// 加载到内存中的第一个字节的地址。也就是虚拟地址。节在内存中哪里开始。内存中的 VA + ImageBase 才是真正的节开始位置&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    DWORD   SizeOfRawData&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;　　　　　　　　　　 &lt;span class=&#34;token comment&#34;&gt;// 修改这个属性的值，即可扩大节。并且在 PE 文件中添加相应的 0 数据进行填充.&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    DWORD   PointerToRawData&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;　　　　　　　　  &lt;span class=&#34;token comment&#34;&gt;// 在文件中的偏移。是文件对齐成员倍数.&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    DWORD   PointerToRelocations&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;           &lt;span class=&#34;token comment&#34;&gt;// 一下都是调试相关.&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    DWORD   PointerToLinenumbers&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;           &lt;span class=&#34;token comment&#34;&gt;//&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    WORD    NumberOfRelocations&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    WORD    NumberOfLinenumbers&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    DWORD   Characteristics&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;　　　　　　　　　　&lt;span class=&#34;token comment&#34;&gt;// 节的属性&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;15&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt; IMAGE_SECTION_HEADER&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt;PIMAGE_SECTION_HEADER&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h1 id=&#34;扩大哪一个节呢&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#扩大哪一个节呢&#34;&gt;#&lt;/a&gt; 扩大哪一个节呢？&lt;/h1&gt;
+&lt;p&gt;&lt;img data-src=&#34;image001.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;若是扩大前面几个节，则后面的节都要改动。所以一般扩大最后一个节。&lt;/p&gt;
+&lt;h1 id=&#34;扩大节的步骤&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#扩大节的步骤&#34;&gt;#&lt;/a&gt; 扩大节的步骤&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;分配一块新的空间，大小为 &lt;code&gt;S&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;将最后一个节的 SizeOfRawData 和 VirtualSize 改为 N&lt;br /&gt;
+ &lt;code&gt;N = (SizeOfRawData或者VirtualSize内存对齐后的值) + S&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改 SizeOflmage 大小&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;推荐&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#推荐&#34;&gt;#&lt;/a&gt; 推荐&lt;/h1&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vaUJpbmFyeS9wLzk3MzUyNzYuaHRtbA==&#34;&gt;https://www.cnblogs.com/iBinary/p/9735276.html&lt;/span&gt;&lt;/p&gt;
+</content>
+        <category term="WindowsPE" scheme="https://self-ferry.github.io/categories/WindowsPE/" />
+        <category term="扩大节" scheme="https://self-ferry.github.io/tags/%E6%89%A9%E5%A4%A7%E8%8A%82/" />
+        <updated>2021-05-02T09:26:17.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://self-ferry.github.io/2021/05/02/%E5%9C%A8%E7%A9%BA%E7%99%BD%E5%8C%BA%E6%B7%BB%E5%8A%A0%E4%BB%A3%E7%A0%81/</id>
+        <title>在空白区添加代码</title>
+        <link rel="alternate" href="https://self-ferry.github.io/2021/05/02/%E5%9C%A8%E7%A9%BA%E7%99%BD%E5%8C%BA%E6%B7%BB%E5%8A%A0%E4%BB%A3%E7%A0%81/"/>
+        <content type="html">&lt;h1 id=&#34;在代码空白区添加代码手动&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#在代码空白区添加代码手动&#34;&gt;#&lt;/a&gt; 在代码空白区添加代码 (手动)&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;添加的是硬编码&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;1、获取 MessageBox 地址，构造 ShellCode 代码&lt;/p&gt;
+&lt;p&gt;2、E8 E9 计算公式&lt;/p&gt;
+&lt;p&gt;3、在代码区手动添加代码&lt;/p&gt;
+&lt;p&gt;4、修改入口地址，指向 ShellCode&lt;br /&gt;
+ 入口地址:xxxx&lt;/p&gt;
+&lt;p&gt;call 0x12345678 			Call 0x77E5425F&lt;/p&gt;
+&lt;p&gt;E8 53 FE FF FF&lt;/p&gt;
+&lt;p&gt;jmp 0x2345678&lt;/p&gt;
+&lt;p&gt;E9 2B 2B 00 00&lt;/p&gt;
+&lt;p&gt;真正要跳转的地址 = E8 这条指令的下一行地址 + X&lt;/p&gt;
+&lt;p&gt;X = 真正要跳转的地址 - E8 这条指令的下一行地址&lt;/p&gt;
+&lt;p&gt;X = 00401050 - 004011FD&lt;/p&gt;
+&lt;p&gt;X = 00403b80 - 00401055&lt;/p&gt;
+&lt;p&gt;要跳转的地方 = E8 当前的地址 + 5 + X&lt;/p&gt;
+&lt;p&gt;X = 要跳转的地址 - (E8 的地址 + 5)&lt;/p&gt;
+&lt;p&gt;6A 00 6A 00 6A 00 6A 00 E8 00 00 00 00 E9 00 00 00 00&lt;/p&gt;
+&lt;h1 id=&#34;实战&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#实战&#34;&gt;#&lt;/a&gt; 实战&lt;/h1&gt;
+&lt;p&gt;OD 查找 MessageBox 位置。&lt;/p&gt;
+&lt;p&gt;显示模块窗口。&lt;/p&gt;
+&lt;p&gt;找到 USER32.dll, 双击进入后， &lt;code&gt;Ctrl+N&lt;/code&gt;  打开当前模块的名称（标签）列表。在里面查找 MessageBox。&lt;/p&gt;
+&lt;p&gt;MessageBox:0x76321930&lt;br /&gt;
+MessageBox - ImageBase -508 - 5 =  75F2 1423&lt;br /&gt;
+401000&lt;br /&gt;
+3F FAEE&lt;br /&gt;
+6A 00 6A 00 6A 00 6A 00 E8 23 14 F2 75 E9 EE FA 3F 00&lt;br /&gt;
+00007FFDA9672180&lt;/p&gt;
+&lt;p&gt;成功了，开始时失败了好多次，原因为：在 xp 虚拟机中寻找的 MessageBox 函数地址在 win10 物理中中用了，当然不行了……&lt;/p&gt;
+</content>
+        <category term="WindowsPE" scheme="https://self-ferry.github.io/categories/WindowsPE/" />
+        <category term="空白区添加代码" scheme="https://self-ferry.github.io/tags/%E7%A9%BA%E7%99%BD%E5%8C%BA%E6%B7%BB%E5%8A%A0%E4%BB%A3%E7%A0%81/" />
+        <updated>2021-05-02T08:58:55.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://self-ferry.github.io/2021/05/02/RVA%E4%B8%8EFOA%E8%BD%AC%E6%8D%A2/</id>
+        <title>RVA与FOA转换</title>
+        <link rel="alternate" href="https://self-ferry.github.io/2021/05/02/RVA%E4%B8%8EFOA%E8%BD%AC%E6%8D%A2/"/>
+        <content type="html">&lt;h1 id=&#34;引出问题&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#引出问题&#34;&gt;#&lt;/a&gt; 引出问题&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;如果想改变一个全区变量的初始值，该怎么做？&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;如果一个变量有值，那这个值是存储在 PE 中的。&lt;/p&gt;
+&lt;p&gt;有一个小细节：定义一个变量，当它加载在内存中的时候才会有默认初始值的。在 C 中定义一个整型变量，不给它赋值打印它，默认是为 0 的。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;面临的问题是什么？&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image001.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;转换&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#转换&#34;&gt;#&lt;/a&gt; 转换&lt;/h1&gt;
+&lt;p&gt;&lt;span class=&#34;label&#34;&gt;RVA: 相对虚拟地址&lt;/span&gt;&lt;br /&gt;
+&lt;span class=&#34;label&#34;&gt; FOA: 文件偏移地址&lt;/span&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;RVA TO FOA&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;即我们现在知道内存状态下的偏移，需要找到文件状态下的偏移。&lt;br /&gt;
+步骤如下图：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image002.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;step1：内存中的地址减去内存基址得到偏移，即 RVA。&lt;br /&gt;
+step2：循环遍历节表中各个节的信息，判断在哪个节中。（需要满足：内存偏移 + 节数据没对齐的大小 &amp;gt; image_panyi &amp;gt; 内存偏移）&lt;br /&gt;
+step3: 找出在哪个节后，减去该节在内存中的偏移（VirturalAddress）得到在该节中的相对偏移。&lt;br /&gt;
+step4: 上一步得到的该节的相对偏移 + 该节在文件中的偏移 (PointToRawData)，即得到 FOA&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;FOA TO RVA&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;现在我们已经知道如何从内存中的偏移转化为文件中的偏移。现在是它的逆过程&lt;br /&gt;
+ step1: 文件中的地址减去文件基址，得到在文件中的偏移，即 FOA。&lt;br /&gt;
+step2: 循环遍历节表中各个节的信息，判断在哪个节中。（文件对齐 + 文件偏移 &amp;gt; file_panyi &amp;gt; 文件偏移）&lt;br /&gt;
+step3: 找出在哪个节后，减去该节在文件中的偏移（VirturalAddress）得到在该节中的相对偏移。&lt;br /&gt;
+step4: 上一步得到的该节的相对偏移 + 该节在内存中的偏移 (VirtualAddress)，即得到 RVA。&lt;/p&gt;
+&lt;h1 id=&#34;总结&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#总结&#34;&gt;#&lt;/a&gt; 总结&lt;/h1&gt;
+&lt;p&gt;RVA 转换 FOA，在以后的破解或者保护中只是基本功而已！基础要打牢。&lt;/p&gt;
+&lt;h1 id=&#34;reference&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#reference&#34;&gt;#&lt;/a&gt; Reference&lt;/h1&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3oxNzgwNTAwODc3NS9hcnRpY2xlL2RldGFpbHMvMTA1Mzc0NTAz&#34;&gt;https://blog.csdn.net/z17805008775/article/details/105374503&lt;/span&gt;&lt;/p&gt;
+&lt;h1 id=&#34;碰到的问题&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#碰到的问题&#34;&gt;#&lt;/a&gt; 碰到的问题&lt;/h1&gt;
+&lt;p&gt;2021 年 5 月 12 日 14:08:06&lt;/p&gt;
+&lt;h1 id=&#34;前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#前言&#34;&gt;#&lt;/a&gt; 前言&lt;/h1&gt;
+&lt;p&gt;学到重定位表了，发现文件的内存对齐与文件对齐都一样，可偏偏重定位表中的 VirtualAddress (RVA) 0x37000 转换为 FOA 为 0x35000？？？？&lt;br /&gt;
+于是下定决心搞定它&lt;/p&gt;
+&lt;h1 id=&#34;原因&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#原因&#34;&gt;#&lt;/a&gt; 原因&lt;/h1&gt;
+&lt;p&gt;是由于节的 VirtualSize&amp;gt;SizeOfRawData, 则即使文件的内存对齐与文件对齐都相同，节在内存中对齐后的大小和在文件中对齐后的大小也会不同。进而偏移地址也就不同。&lt;br /&gt;
+而我对 RVA 和 FOA 转换错误的认为只要 内存对齐与文件对齐相等，则 RVA 一定等于 ROA。&lt;/p&gt;
+</content>
+        <category term="WindowsPE" scheme="https://self-ferry.github.io/categories/WindowsPE/" />
+        <category term="RVA与FOA" scheme="https://self-ferry.github.io/tags/RVA%E4%B8%8EFOA/" />
+        <updated>2021-05-02T08:05:32.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://self-ferry.github.io/2021/04/25/C%E3%80%81C-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
+        <title>C、C++学习笔记</title>
+        <link rel="alternate" href="https://self-ferry.github.io/2021/04/25/C%E3%80%81C-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+        <content type="html">&lt;h1 id=&#34;&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#&#34;&gt;#&lt;/a&gt; &lt;/h1&gt;
+</content>
+        <updated>2021-04-25T08:49:55.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://self-ferry.github.io/2021/04/20/Linux%E4%B8%AD%E7%9A%84su%E4%B8%8Esu-%E5%91%BD%E4%BB%A4%E7%9A%84%E5%8C%BA%E5%88%AB/</id>
+        <title>Linux中的su与su -命令的区别</title>
+        <link rel="alternate" href="https://self-ferry.github.io/2021/04/20/Linux%E4%B8%AD%E7%9A%84su%E4%B8%8Esu-%E5%91%BD%E4%BB%A4%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+        <content type="html">&lt;h1 id=&#34;reference&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#reference&#34;&gt;#&lt;/a&gt; Reference&lt;/h1&gt;
+&lt;p&gt;详情见&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3d3dy5oYTk3LmNvbS80MDAxLmh0bWw=&#34;&gt; http://www.ha97.com/4001.html&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;区别&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#区别&#34;&gt;#&lt;/a&gt; 区别&lt;/h2&gt;
+&lt;p&gt;su 命令和 su - 命令最大的本质区别就是：前者只是切换了 root 身份，但 Shell 环境仍然是普通用户的 Shell；而后者连用户和 Shell 环境一起切换成 root 身份了。只有切换了 Shell 环境才不会出现 PATH 环境变量错误。su 切换成 root 用户以后，pwd 一下，发现工作目录仍然是普通用户的工作目录；而用 su - 命令切换以后，工作目录变成 root 的工作目录了。用 echo $PATH 命令看一下 su 和 su - 以后的环境变量有何不同。以此类推，要从当前用户切换到其它用户也一样，应该使用 su - 命令。&lt;/p&gt;
+</content>
+        <category term="Linux" scheme="https://self-ferry.github.io/categories/Linux/" />
+        <category term="Linux" scheme="https://self-ferry.github.io/tags/Linux/" />
+        <updated>2021-04-20T14:26:01.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://self-ferry.github.io/2021/04/20/Linux%E9%85%8D%E7%BD%AEvsftp/</id>
+        <title>Linux配置vsftp</title>
+        <link rel="alternate" href="https://self-ferry.github.io/2021/04/20/Linux%E9%85%8D%E7%BD%AEvsftp/"/>
+        <content type="html">&lt;h1 id=&#34;前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#前言&#34;&gt;#&lt;/a&gt; 前言&lt;/h1&gt;
+&lt;p&gt;Linux 网络服务课的作业。虽然简单，但也让我踩了不少坑，记个笔记吧。&lt;br /&gt;
+作业的内容是可以匿名上传或删除文件就可。&lt;/p&gt;
+&lt;h1 id=&#34;正文&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#正文&#34;&gt;#&lt;/a&gt; 正文&lt;/h1&gt;
+&lt;p&gt;先换个 yum 的源，下载的快一点。&lt;br /&gt;
+ &lt;code&gt;wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;换源前也可以先备份一下。&lt;br /&gt;
+这里的详细内容可以参考&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d1ZGluYW5peWEvYXJ0aWNsZS9kZXRhaWxzLzEwNTc1ODczOQ==&#34;&gt; https://blog.csdn.net/wudinaniya/article/details/105758739&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;下载vsftp&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#下载vsftp&#34;&gt;#&lt;/a&gt; 下载 vsftp&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;yum -y install vsftpd&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;查看是否安装成功&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查看是否安装成功&#34;&gt;#&lt;/a&gt; 查看是否安装成功&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;rpm -qa|grep vsftpd&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;关闭一切墙策略selinux&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#关闭一切墙策略selinux&#34;&gt;#&lt;/a&gt; 关闭一切墙 | 策略 | SELINUX&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;systemctl stop firewalld&lt;/code&gt; &lt;br /&gt;
+ &lt;code&gt;iptables -F&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;关闭 SELINUX，有两种方法：&lt;br /&gt;
+临时关闭：&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;root@localhost ~&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token comment&#34;&gt;# getenforce&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Enforcing&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;root@localhost ~&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token comment&#34;&gt;# setenforce 0&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;root@localhost ~&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token comment&#34;&gt;# getenforce&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Permissive&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;永久关闭：&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;root@localhost ~&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token comment&#34;&gt;# vim /etc/sysconfig/selinux&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token assign-left variable&#34;&gt;SELINUX&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;enforcing 改为 &lt;span class=&#34;token assign-left variable&#34;&gt;SELINUX&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;disabled&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;重启服务 reboot&lt;/p&gt;
+&lt;h2 id=&#34;修改vsftpdconfig&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#修改vsftpdconfig&#34;&gt;#&lt;/a&gt; 修改 vsftpd.config&lt;/h2&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;修改配置文件 /etc/vsftpd.conf&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token assign-left variable&#34;&gt;anonymous_enable&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;YES  &lt;span class=&#34;token comment&#34;&gt;# 允许匿名访问&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token assign-left variable&#34;&gt;write_enable&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;YES  &lt;span class=&#34;token comment&#34;&gt;# 允许写文件&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token assign-left variable&#34;&gt;anon_upload_enable&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;YES  &lt;span class=&#34;token comment&#34;&gt;# 允许匿名用户上传文件&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token assign-left variable&#34;&gt;anon_mkdir_write_enable&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;YES  &lt;span class=&#34;token comment&#34;&gt;# 允许匿名用户创建目录和写权限&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token assign-left variable&#34;&gt;anon_other_write_enable&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;YES  &lt;span class=&#34;token comment&#34;&gt;# 允许匿名用户删除、重命名等其它权限  这个在配置文件里默认找不到&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h2 id=&#34;这里附上详细的vsftpconfig配置&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#这里附上详细的vsftpconfig配置&#34;&gt;#&lt;/a&gt; 这里附上详细的 vsftp.config 配置&lt;/h2&gt;
+&lt;p&gt;vsftpd 的配置文件在为 vsftpd.conf，一般在 /etc/vsftpd/ 目录下。&lt;/p&gt;
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;属性&lt;/th&gt;
+        &lt;th&gt;属性值&lt;/th&gt;
+        &lt;th align=&#34;left&#34;&gt;含义&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;anonymous_enable&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否允许匿名用户（anonymous）登录 &lt;code&gt;FTP&lt;/code&gt;，如果该设置被注释，则默认允许&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;local_enable&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否允许本地系统用户登录&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;write_enable&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否开启任何形式的 &lt;code&gt;FTP&lt;/code&gt; 写入命令，上传文件&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;local_umask&lt;/td&gt;
+        &lt;td&gt;xxx&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;本地用户的 &lt;code&gt;umask&lt;/code&gt; 设置，如果注释该设置则默认为 &lt;code&gt;077&lt;/code&gt;，但一般都设置成 &lt;code&gt;022&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;anon_upload_enable&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否允许匿名用户上传文件，如果要设置为允许，则需要先开启 &lt;code&gt;write_enable&lt;/code&gt;，否则无效，此外对应目录还要具有写权限&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;anon_mkdir_write_enable&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否允许匿名用户创建新目录&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;dirmessage_enable&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;当进入某个目录时，发送信息提示给远程用户&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;xferlog_enable&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否开启 上传/下载 的日志记录&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;connect_from_port_20&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否使用 &lt;code&gt;20&lt;/code&gt; 端口来连接 &lt;code&gt;FTP&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;chown_uploads&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;匿名上传的文件是否由某一指定用户 &lt;code&gt;chown_username&lt;/code&gt; 所有&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;chown_username&lt;/td&gt;
+        &lt;td&gt;有效用户名&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;匿名上传的文件由该设定用户所有&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;xferlog_file&lt;/td&gt;
+        &lt;td&gt;有效路径&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;设置日志文件的保存位置，默认为 &lt;code&gt;/var/log/xferlog&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;xferlog_std_format&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否使用标准的 &lt;code&gt;ftpd xferlog&lt;/code&gt;日志格式，该格式日志默认保存在 &lt;code&gt;/var/log/xferlog&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;idle_session_timeout&lt;/td&gt;
+        &lt;td&gt;数值&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;设置空闲连接的超时时间，单位 秒&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;data_connection_timeout&lt;/td&gt;
+        &lt;td&gt;数值&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;设置等待数据传输的最大时间，单位 秒（&lt;code&gt;data_connection_timeout&lt;/code&gt; 与 &lt;code&gt;idle_session_timeout&lt;/code&gt;
+            在同一时间只有一个有效）
+        &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;nopriv_user&lt;/td&gt;
+        &lt;td&gt;有效用户名&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;指定一个非特权用户，用于运行 &lt;code&gt;vsftpd&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;async_abor_enable&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否支持异步 &lt;code&gt;ABOR&lt;/code&gt; 请求&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;ascii_upload_enable&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否开启 &lt;code&gt;ASCII&lt;/code&gt; 模式进行文件上传，一般不开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;ascii_download_enable&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否开启 &lt;code&gt;ASCII&lt;/code&gt; 模式进行文件下载，一般不开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;ftpd_banner&lt;/td&gt;
+        &lt;td&gt;…&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;自定义登录标语&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;deny_email_enable&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;如果匿名登录，则会要求输入 email 地址，如果不希望一些 email 地址具有登录权限，则可以开启此项，并在 &lt;code&gt;banned_email_file&lt;/code&gt;
+            指定的文件中写入对应的 email 地址
+        &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;banned_email_file&lt;/td&gt;
+        &lt;td&gt;有效文件&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;当开启 &lt;code&gt;deny_email_enable&lt;/code&gt; 时，需要通过此项指定一个保存登录无效 email 的文件&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;chroot_local_user&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否将所有用户限制在主目录，当为 &lt;code&gt;NO&lt;/code&gt; 时， &lt;code&gt;FTP&lt;/code&gt; 用户可以切换到其他目录&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;chroot_list_enable&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否启用限制用户的名单列表&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;chroot_list_file&lt;/td&gt;
+        &lt;td&gt;有效文件&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;用户列表，其作用与 &lt;code&gt;chroot_local_user&lt;/code&gt; 和 &lt;code&gt;chroot_local_user&lt;/code&gt; 的组合有关，详见下表&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;allow_writeable_chroot&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否允许用户对 ftp 根目录具有写权限，如果设置成不允许而目录实际上却具备写权限，则会报错&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;ls_recurse_enable&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否允许 &lt;code&gt;ls -R&lt;/code&gt; 指令来递归查询，递归查询比较耗资源&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;listen&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;如果为 &lt;code&gt;YES&lt;/code&gt;，&lt;code&gt;vsftpd&lt;/code&gt; 将以独立模式运行并监听 &lt;code&gt;IPv4&lt;/code&gt; 的套接字，处理相关连接请求（该指令不能与
+            &lt;code&gt;listen_ipv6&lt;/code&gt; 一起使用）
+        &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;listen_ipv6&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否允许监听 &lt;code&gt;IPv6&lt;/code&gt; 套接字&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;pam_service_name&lt;/td&gt;
+        &lt;td&gt;…&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;设置 &lt;code&gt;PAM&lt;/code&gt; 外挂模块提供的认证服务所使用的配置文件名 ，即 &lt;code&gt;/etc/pam.d/vsftpd&lt;/code&gt; 文件，此文件中 &lt;code&gt;file=/etc/vsftpd/ftpusers&lt;/code&gt;
+            字段，说明了 &lt;code&gt;PAM&lt;/code&gt; 模块能抵挡的帐号内容来自文件 &lt;code&gt;/etc/vsftpd/ftpusers&lt;/code&gt; 中
+        &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;userlist_enable&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否启用 &lt;code&gt;user_list&lt;/code&gt; 文件来控制用户登录&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;userlist_deny&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否拒绝 &lt;code&gt;user_list&lt;/code&gt; 中的用户登录，此属性设置需在 &lt;code&gt;userlist_enable = YES&lt;/code&gt; 时才有效&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;tcp_wrappers&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;是否使用 &lt;code&gt;tcp_wrappers&lt;/code&gt; 作为主机访问控制方式&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;max_clients&lt;/td&gt;
+        &lt;td&gt;数值&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;同一时间允许的最大连接数&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;max_per_ip&lt;/td&gt;
+        &lt;td&gt;数值&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;同一个IP客户端连接的最大值&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;local_root&lt;/td&gt;
+        &lt;td&gt;有效目录&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;系统用户登录后的根目录&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;anon_root&lt;/td&gt;
+        &lt;td&gt;有效目录&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;匿名用户登录后的根目录&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;user_config_dir&lt;/td&gt;
+        &lt;td&gt;有效目录&lt;/td&gt;
+        &lt;td align=&#34;left&#34;&gt;用户单独配置文件存放目录，该目录下用户的文件名就是对应用户名&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;以上搞完之后还要把ftp目录的权限给更改&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#以上搞完之后还要把ftp目录的权限给更改&#34;&gt;#&lt;/a&gt; 以上搞完之后还要把 ftp 目录的权限给更改&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;chmod 777 /var/ftp/pub&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;这里只能更改 ftp 目录下的子目录的权限。这就是个坑，当更改 /etc/ftp/ 这个目录的权限时，都没法登陆这个 ftp 服务器了。&lt;br /&gt;
+当然是可以更改 ftp 下的目录的，在 vsftpd.config 中配置。&lt;/p&gt;
+</content>
+        <category term="Linux" scheme="https://self-ferry.github.io/categories/Linux/" />
+        <category term="CentOS7配置vsftp" scheme="https://self-ferry.github.io/tags/CentOS7%E9%85%8D%E7%BD%AEvsftp/" />
+        <updated>2021-04-20T02:41:51.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://self-ferry.github.io/2021/03/30/win32%EF%BC%88%E4%BA%8C%EF%BC%89%E4%BA%8B%E4%BB%B6%E6%B6%88%E6%81%AF/</id>
+        <title>win32（二）事件消息</title>
+        <link rel="alternate" href="https://self-ferry.github.io/2021/03/30/win32%EF%BC%88%E4%BA%8C%EF%BC%89%E4%BA%8B%E4%BB%B6%E6%B6%88%E6%81%AF/"/>
+        <content type="html">&lt;h1 id=&#34;事件-消息&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#事件-消息&#34;&gt;#&lt;/a&gt; 事件 消息&lt;/h1&gt;
+&lt;p&gt;Windows 中的事件是一个 &amp;quot;动作&amp;quot;，这个动作可能是用户操作应用程序产生的，也可能是 Windows 自己产生的.&lt;/p&gt;
+&lt;p&gt;而消息，就是用来描述这些 &amp;quot;动作&amp;quot; 的，比如：&lt;/p&gt;
+&lt;p&gt;这个动作是什么时候产生的？&lt;/p&gt;
+&lt;p&gt;哪个应用程序产生的？&lt;/p&gt;
+&lt;p&gt;在什么位置产生的？&lt;br /&gt;
+等等。。。&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;label&#34;&gt;事件驱动消息，消息封装事件&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Windows 为了能够准确的描述这些信息，提供了一个结构体：MSG，该结构体里面记录的事件的详细信息.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;typedef struct tagMSG &amp;#123;    
+
+HWND hwnd;     // 窗口句柄
+
+UINT message;     //消息类型
+
+WPARAM wParam;     // 对消息类型进一步描述
+
+LPARAM lParam;     //同上
+
+DWORD time;     // 动作发生时间
+
+POINT pt;     //坐标，结构体封装了，内部是x，y
+
+&amp;#125; MSG, *PMSG;     
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;说明：&lt;/p&gt;
+&lt;p&gt;1、hwnd：&lt;/p&gt;
+&lt;p&gt;表示消息所属的窗口&lt;/p&gt;
+&lt;p&gt;一个消息一般都是与某个窗口相关联的&lt;/p&gt;
+&lt;p&gt;在 Windows 中 HWND 类型的变量通常用来标识窗口。&lt;/p&gt;
+&lt;p&gt;2、message&lt;/p&gt;
+&lt;p&gt;在 Windows 中，消息是由一个数值来表示的&lt;/p&gt;
+&lt;p&gt;但是由于数值不便于记忆，所以 Windows 将消息对应的数值定义为 WM_XXX 宏（WM == Window Message）&lt;/p&gt;
+&lt;p&gt;鼠标左键按下 WM_LBUTTONDOWN        键盘按下 WM_KEYDOWN&lt;/p&gt;
+&lt;p&gt;3、wParam 和 lParam&lt;/p&gt;
+&lt;p&gt;32 位消息的特定附加信息，具体表示什么处决于 message&lt;/p&gt;
+&lt;p&gt;4、time&lt;/p&gt;
+&lt;p&gt;消息创建时的时间&lt;/p&gt;
+&lt;p&gt;5、消息创建时的鼠标位置&lt;/p&gt;
+&lt;p&gt;具体来说：如下图，用户输入后，封装成消息，加入系统的消息队列，然后应用程序那还有队列&lt;/p&gt;
+&lt;p&gt;用来存储自己的消息队列，所以系统队列到应用程序队列是分流而治的过程。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image001.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;从队列中取出消息，使用的是循环机制，就是不停的取出消息，而后面的判断消息类型是不是我们关心的意思其实是&lt;/p&gt;
+&lt;p&gt;我们是否写了该消息下的响应函数，或者说回调函数。&lt;/p&gt;
+&lt;p&gt;具体流程如下图：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image002.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;创建一个窗口程序&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#创建一个窗口程序&#34;&gt;#&lt;/a&gt; 创建一个窗口程序&lt;/h1&gt;
+&lt;p&gt;步骤 1：创建 Windows 应用程序 选择空项目&lt;/p&gt;
+&lt;p&gt;步骤 2：在新建项窗口中选 C++ 代码文件 创建一个新的 cpp 文件&lt;/p&gt;
+&lt;p&gt;步骤 3：在新的 cpp 文件中添加: &lt;code&gt;#include &amp;lt;Windows.h&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;并添加入口函数：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;int CALLBACK WinMain(                 CALLBACK 是一个宏             
+
+_In_ HINSTANCE hInstance,         #define CALLBACK __stdcall    
+
+_In_ HINSTANCE hPrevInstance,     
+
+_In_ LPSTR lpCmdLine,                 
+
+_In_ int nCmdShow             
+
+)                     所有的Win32 API函数都遵循该约定    
+
+&amp;#123;                     
+
+return 0;             
+
+&amp;#125;                     
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;步骤 4：设计窗口类&lt;/p&gt;
+&lt;p&gt;代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;
+//窗口的类名    
+
+TCHAR className[] = &amp;quot;My First Window&amp;quot;;     
+
+// 创建窗口类的对象     
+
+WNDCLASS wndclass = &amp;#123;0&amp;#125;;        //一定要先将所有值赋值    
+
+wndclass.hbrBackground = (HBRUSH)COLOR_MENU;        //窗口的背景色    
+
+wndclass.lpfnWndProc = WindowProc;        //窗口过程函数    
+
+wndclass.lpszClassName = className;        //窗口类的名字    
+
+wndclass.hInstance = hInstance;        //定义窗口类的应用程序的实例句柄    
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;步骤 5：注册窗口类    ，这是什么？哈哈哈，就是把结构体赋值后传参调用。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;RegisterClass(&amp;amp;wndclass);     
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;步骤 6：创建窗口&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;// 创建窗口     
+
+HWND hwnd = CreateWindow(     
+
+className,        //类名    
+
+TEXT(&amp;quot;我的第一个窗口&amp;quot;),        //窗口标题    
+
+WS_OVERLAPPEDWINDOW,        //窗口外观样式     
+
+10,        //相对于父窗口的X坐标    
+
+10,        //相对于父窗口的Y坐标    
+
+600,        //窗口的宽度     
+
+300,        //窗口的高度     
+
+NULL,        //父窗口句柄，为NULL     
+
+NULL,        //菜单句柄，为NULL     
+
+hInstance,        //当前应用程序的句柄     
+
+NULL);        //附加数据一般为NULL    
+
+if(hwnd == NULL)        //是否创建成功     
+
+return 0;     
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;步骤 7：显示窗口&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;// 显示窗口     
+
+ShowWindow(hwnd, SW_SHOW);     
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;步骤 8：消息循环&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;MSG msg;     
+
+while(GetMessage(&amp;amp;msg, NULL, 0, 0))     
+
+&amp;#123;     
+
+TranslateMessage(&amp;amp;msg);     
+
+DispatchMessage(&amp;amp;msg);     
+
+&amp;#125;     
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;步骤 9：回调函数&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;/*                        
+
+窗口消息处理程序 窗口回调函数：            
+
+1、窗口回调函数处理过的消息，必须传回0.        
+
+2、窗口回调不处理的消息，由DefWindowProc来处理.    
+
+*/                        
+
+LRESULT CALLBACK WindowProc(         
+
+IN HWND hwnd,     
+
+IN UINT uMsg,     
+
+IN WPARAM wParam,     
+
+IN LPARAM lParam     
+
+)     
+
+&amp;#123;     
+
+switch(uMsg)    
+
+&amp;#123;    
+
+//窗口消息    
+
+case WM_CREATE:     
+
+&amp;#123;    
+
+DbgPrintf(&amp;quot;WM_CREATE %d %d\n&amp;quot;,wParam,lParam);    
+
+CREATESTRUCT* createst = (CREATESTRUCT*)lParam;    
+
+DbgPrintf(&amp;quot;CREATESTRUCT %s\n&amp;quot;,createst-&amp;gt;lpszClass);    
+
+return 0;    
+
+&amp;#125;    
+
+case WM_MOVE:    
+
+&amp;#123;    
+
+DbgPrintf(&amp;quot;WM_MOVE %d %d\n&amp;quot;,wParam,lParam);    
+
+POINTS points = MAKEPOINTS(lParam);    
+
+DbgPrintf(&amp;quot;X Y %d %d\n&amp;quot;,points.x,points.y);    
+
+return 0;    
+
+&amp;#125;    
+
+case WM_SIZE:    
+
+&amp;#123;    
+
+DbgPrintf(&amp;quot;WM_SIZE %d %d\n&amp;quot;,wParam,lParam);    
+
+int newWidth = (int)(short) LOWORD(lParam);     
+
+int newHeight = (int)(short) HIWORD(lParam);     
+
+DbgPrintf(&amp;quot;WM_SIZE %d %d\n&amp;quot;,newWidth,newHeight);    
+
+return 0;    
+
+&amp;#125;    
+
+case WM_DESTROY:    //销毁
+
+&amp;#123;    
+
+DbgPrintf(&amp;quot;WM_DESTROY %d %d\n&amp;quot;,wParam,lParam);    
+
+PostQuitMessage(0);    
+
+return 0;    
+
+&amp;#125;    
+
+//键盘消息    
+
+case WM_KEYUP:    
+
+&amp;#123;    
+
+DbgPrintf(&amp;quot;WM_KEYUP %d %d\n&amp;quot;,wParam,lParam);    
+
+return 0;    
+
+&amp;#125;    
+
+case WM_KEYDOWN:    
+
+&amp;#123;    
+
+DbgPrintf(&amp;quot;WM_KEYDOWN %d %d\n&amp;quot;,wParam,lParam);    
+
+return 0;    
+
+&amp;#125;    
+
+//鼠标消息    
+
+case WM_LBUTTONDOWN:    
+
+&amp;#123;    
+
+DbgPrintf(&amp;quot;WM_LBUTTONDOWN %d %d\n&amp;quot;,wParam,lParam);    
+
+POINTS points = MAKEPOINTS(lParam);    
+
+DbgPrintf(&amp;quot;WM_LBUTTONDOWN %d %d\n&amp;quot;,points.x,points.y);    
+
+return 0;    
+
+&amp;#125;    
+
+&amp;#125;    
+
+return DefWindowProc(hwnd,uMsg,wParam,lParam);    //扔给windows处理其他消息
+
+&amp;#125;     
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;MFC 就是基于此封装&lt;/p&gt;
+&lt;h1 id=&#34;reference&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#reference&#34;&gt;#&lt;/a&gt; Reference&lt;/h1&gt;
+&lt;p&gt;滴水逆向课件&lt;/p&gt;
+</content>
+        <category term="Win32编程" scheme="https://self-ferry.github.io/categories/Win32%E7%BC%96%E7%A8%8B/" />
+        <category term="widows" scheme="https://self-ferry.github.io/tags/widows/" />
+        <updated>2021-03-30T14:32:27.000Z</updated>
     </entry>
 </feed>
