@@ -1,22 +1,25 @@
 <?xml version="1.0"?>
 <rss version="2.0">
     <channel>
-        <title>1asy</title>
+        <title>Be malicious</title>
         <subtitle>Till I no longer can</subtitle>
         <icon>https://self-ferry.github.io/images/favicon.ico</icon>
         <link>https://Self-ferry.github.io</link>
         <author>
-          <name>1asy</name>
+          <name>Or0kit</name>
         </author>
         <description>临渊羡鱼，不如退而结网</description>
         <language>zh-CN</language>
         <pubDate>Wed, 07 Jul 2021 14:27:57 +0800</pubDate>
         <lastBuildDate>Wed, 07 Jul 2021 14:27:57 +0800</lastBuildDate>
+        <category term="win" />
+        <category term="渗透测试" />
+        <category term="逆向" />
         <category term="学习" />
         <item>
-            <guid isPermalink="true">https://self-ferry.github.io/2021/07/07/CobaltStrike%E6%94%BB%E5%87%BB%E6%A8%A1%E5%9D%97%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+            <guid isPermalink="true">https://self-ferry.github.io/CobaltStrike%E6%94%BB%E5%87%BB%E6%A8%A1%E5%9D%97%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
             <title>CobaltStrike攻击模块的使用</title>
-            <link>https://self-ferry.github.io/2021/07/07/CobaltStrike%E6%94%BB%E5%87%BB%E6%A8%A1%E5%9D%97%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+            <link>https://self-ferry.github.io/CobaltStrike%E6%94%BB%E5%87%BB%E6%A8%A1%E5%9D%97%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
             <category term="CobaltStrike" scheme="https://self-ferry.github.io/categories/CobaltStrike/" />
             <category term="CobaltStrike" scheme="https://self-ferry.github.io/tags/CobaltStrike/" />
             <pubDate>Wed, 07 Jul 2021 14:27:57 +0800</pubDate>
@@ -213,9 +216,9 @@ gem install json&lt;/p&gt;
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://self-ferry.github.io/2021/07/06/CobaltStrike%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/</guid>
+            <guid isPermalink="true">https://self-ferry.github.io/CobaltStrike%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/</guid>
             <title>CobaltStrike的安装和配置</title>
-            <link>https://self-ferry.github.io/2021/07/06/CobaltStrike%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/</link>
+            <link>https://self-ferry.github.io/CobaltStrike%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/</link>
             <category term="CobaltStrike" scheme="https://self-ferry.github.io/categories/CobaltStrike/" />
             <category term="CobaltStrike" scheme="https://self-ferry.github.io/tags/CobaltStrike/" />
             <pubDate>Tue, 06 Jul 2021 16:58:41 +0800</pubDate>
@@ -272,10 +275,10 @@ Cobalt Strike 集成了端口转发、服务扫描，自动化溢出，多模式
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://self-ferry.github.io/2021/07/05/Win%E6%B6%88%E6%81%AF%E6%9C%BA%E5%88%B6%E5%92%8C%E6%B6%88%E6%81%AF%E7%B1%BB%E5%9E%8B/</guid>
+            <guid isPermalink="true">https://self-ferry.github.io/Win%E6%B6%88%E6%81%AF%E6%9C%BA%E5%88%B6%E5%92%8C%E6%B6%88%E6%81%AF%E7%B1%BB%E5%9E%8B/</guid>
             <title>Win消息机制和消息类型</title>
-            <link>https://self-ferry.github.io/2021/07/05/Win%E6%B6%88%E6%81%AF%E6%9C%BA%E5%88%B6%E5%92%8C%E6%B6%88%E6%81%AF%E7%B1%BB%E5%9E%8B/</link>
-            <category term="Win32编程" scheme="https://self-ferry.github.io/categories/Win32%E7%BC%96%E7%A8%8B/" />
+            <link>https://self-ferry.github.io/Win%E6%B6%88%E6%81%AF%E6%9C%BA%E5%88%B6%E5%92%8C%E6%B6%88%E6%81%AF%E7%B1%BB%E5%9E%8B/</link>
+            <category term="Win32" scheme="https://self-ferry.github.io/categories/Win32/" />
             <category term="窗口程序" scheme="https://self-ferry.github.io/tags/%E7%AA%97%E5%8F%A3%E7%A8%8B%E5%BA%8F/" />
             <category term="消息机制" scheme="https://self-ferry.github.io/tags/%E6%B6%88%E6%81%AF%E6%9C%BA%E5%88%B6/" />
             <category term="消息类型" scheme="https://self-ferry.github.io/tags/%E6%B6%88%E6%81%AF%E7%B1%BB%E5%9E%8B/" />
@@ -418,10 +421,10 @@ Cobalt Strike 集成了端口转发、服务扫描，自动化溢出，多模式
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://self-ferry.github.io/2021/07/05/Win%E7%AA%97%E5%8F%A3%E7%9A%84%E6%9C%AC%E8%B4%A8/</guid>
+            <guid isPermalink="true">https://self-ferry.github.io/Win%E7%AA%97%E5%8F%A3%E7%9A%84%E6%9C%AC%E8%B4%A8/</guid>
             <title>Win窗口的本质</title>
-            <link>https://self-ferry.github.io/2021/07/05/Win%E7%AA%97%E5%8F%A3%E7%9A%84%E6%9C%AC%E8%B4%A8/</link>
-            <category term="Win32编程" scheme="https://self-ferry.github.io/categories/Win32%E7%BC%96%E7%A8%8B/" />
+            <link>https://self-ferry.github.io/Win%E7%AA%97%E5%8F%A3%E7%9A%84%E6%9C%AC%E8%B4%A8/</link>
+            <category term="Win32" scheme="https://self-ferry.github.io/categories/Win32/" />
             <category term="设备对象" scheme="https://self-ferry.github.io/tags/%E8%AE%BE%E5%A4%87%E5%AF%B9%E8%B1%A1/" />
             <category term="DC设备上下文" scheme="https://self-ferry.github.io/tags/DC%E8%AE%BE%E5%A4%87%E4%B8%8A%E4%B8%8B%E6%96%87/" />
             <category term="图形对象" scheme="https://self-ferry.github.io/tags/%E5%9B%BE%E5%BD%A2%E5%AF%B9%E8%B1%A1/" />
@@ -512,16 +515,16 @@ Cobalt Strike 集成了端口转发、服务扫描，自动化溢出，多模式
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://self-ferry.github.io/2021/06/19/Windows%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/</guid>
+            <guid isPermalink="true">https://self-ferry.github.io/Windows%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/</guid>
             <title>Windows逆向工程入门指南</title>
-            <link>https://self-ferry.github.io/2021/06/19/Windows%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/</link>
+            <link>https://self-ferry.github.io/Windows%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/</link>
             <category term="Windows逆向" scheme="https://self-ferry.github.io/categories/Windows%E9%80%86%E5%90%91/" />
             <category term="Windows逆向" scheme="https://self-ferry.github.io/tags/Windows%E9%80%86%E5%90%91/" />
             <pubDate>Sat, 19 Jun 2021 07:52:01 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;reference&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#reference&#34;&gt;#&lt;/a&gt; Reference&lt;/h1&gt;
 &lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL0JWMUdKNDExWTd1YQ==&#34;&gt;https://www.bilibili.com/video/BV1GJ411Y7ua&lt;/span&gt;&lt;/p&gt;
 &lt;h1 id=&#34;windows逆向工程入门指南&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#windows逆向工程入门指南&#34;&gt;#&lt;/a&gt; Windows 逆向工程入门指南&lt;/h1&gt;
-&lt;p&gt;对我这种菜鸡小白指了条路。&lt;/p&gt;
+&lt;p&gt;对小白指了条路。&lt;/p&gt;
 &lt;h2 id=&#34;思维导图截图&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#思维导图截图&#34;&gt;#&lt;/a&gt; 思维导图截图&lt;/h2&gt;
 &lt;p&gt;&lt;img data-src=&#34;image001.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 &lt;hr /&gt;
@@ -600,10 +603,10 @@ Boss 直聘&lt;br /&gt;
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://self-ferry.github.io/2021/06/03/Win%E4%BA%8B%E4%BB%B6/</guid>
+            <guid isPermalink="true">https://self-ferry.github.io/Win%E4%BA%8B%E4%BB%B6/</guid>
             <title>Win事件与线程同步</title>
-            <link>https://self-ferry.github.io/2021/06/03/Win%E4%BA%8B%E4%BB%B6/</link>
-            <category term="Win32编程" scheme="https://self-ferry.github.io/categories/Win32%E7%BC%96%E7%A8%8B/" />
+            <link>https://self-ferry.github.io/Win%E4%BA%8B%E4%BB%B6/</link>
+            <category term="Win32" scheme="https://self-ferry.github.io/categories/Win32/" />
             <category term="Win事件" scheme="https://self-ferry.github.io/tags/Win%E4%BA%8B%E4%BB%B6/" />
             <category term="线程同步" scheme="https://self-ferry.github.io/tags/%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5/" />
             <pubDate>Thu, 03 Jun 2021 12:56:46 +0800</pubDate>
@@ -645,10 +648,10 @@ Boss 直聘&lt;br /&gt;
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://self-ferry.github.io/2021/05/31/Win%E4%BA%92%E6%96%A5%E4%BD%93/</guid>
+            <guid isPermalink="true">https://self-ferry.github.io/Win%E4%BA%92%E6%96%A5%E4%BD%93/</guid>
             <title>Win互斥体</title>
-            <link>https://self-ferry.github.io/2021/05/31/Win%E4%BA%92%E6%96%A5%E4%BD%93/</link>
-            <category term="Win32编程" scheme="https://self-ferry.github.io/categories/Win32%E7%BC%96%E7%A8%8B/" />
+            <link>https://self-ferry.github.io/Win%E4%BA%92%E6%96%A5%E4%BD%93/</link>
+            <category term="Win32" scheme="https://self-ferry.github.io/categories/Win32/" />
             <category term="Win互斥体" scheme="https://self-ferry.github.io/tags/Win%E4%BA%92%E6%96%A5%E4%BD%93/" />
             <pubDate>Mon, 31 May 2021 20:05:41 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;内核级临界资源怎么办&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#内核级临界资源怎么办&#34;&gt;#&lt;/a&gt; 内核级临界资源怎么办&lt;/h1&gt;
@@ -681,10 +684,10 @@ Boss 直聘&lt;br /&gt;
 &lt;figure class=&#34;highlight cpp&#34;&gt;&lt;figcaption data-lang=&#34;C++&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token macro property&#34;&gt;&lt;span class=&#34;token directive-hash&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;token directive keyword&#34;&gt;include&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&amp;lt;stdio.h&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token macro property&#34;&gt;&lt;span class=&#34;token directive-hash&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;token directive keyword&#34;&gt;include&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&amp;lt;stdlib.h&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token macro property&#34;&gt;&lt;span class=&#34;token directive-hash&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;token directive keyword&#34;&gt;include&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&amp;lt;windows.h&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; argc&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;char&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt; argv&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	HANDLE hMutex &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;CreateMutex&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token constant&#34;&gt;NULL&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; FALSE&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;TEXT&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;防止多开&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token comment&#34;&gt;//1. 第一次打开程序的时候 GetLastError () 返回值为：0&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token comment&#34;&gt;//2. 第二次打开程序的时候 GetLastError () 返回为：ERROR_ALREADY_EXISTS&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token comment&#34;&gt;//3. 其它情况则是程序出错&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	DWORD dwRet &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;GetLastError&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token keyword&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;hMutex&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token keyword&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;ERROR_ALREADY_EXISTS &lt;span class=&#34;token operator&#34;&gt;==&lt;/span&gt; dwRet&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;    &lt;span class=&#34;token comment&#34;&gt;// 如果是第二次打开程序，直接关闭进程&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;15&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;	&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;16&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;			&lt;span class=&#34;token function&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;程序已存在\n&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;17&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;			&lt;span class=&#34;token function&#34;&gt;system&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;pause&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;18&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;			&lt;span class=&#34;token function&#34;&gt;CloseHandle&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;hMutex&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;19&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;			&lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;20&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;21&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;22&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token keyword&#34;&gt;else&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;23&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;24&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token function&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;创建失败，程序退出\n&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;25&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token function&#34;&gt;system&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;pause&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;26&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token function&#34;&gt;CloseHandle&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;hMutex&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;27&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;28&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;29&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;30&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token keyword&#34;&gt;while&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;31&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;32&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token function&#34;&gt;Sleep&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;1000&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;33&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token function&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;程序执行中.....\n&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;34&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;35&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;36&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt; ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://self-ferry.github.io/2021/05/31/Win%E4%B8%B4%E7%95%8C%E5%8C%BA/</guid>
+            <guid isPermalink="true">https://self-ferry.github.io/Win%E4%B8%B4%E7%95%8C%E5%8C%BA/</guid>
             <title>Win临界区</title>
-            <link>https://self-ferry.github.io/2021/05/31/Win%E4%B8%B4%E7%95%8C%E5%8C%BA/</link>
-            <category term="Win32编程" scheme="https://self-ferry.github.io/categories/Win32%E7%BC%96%E7%A8%8B/" />
+            <link>https://self-ferry.github.io/Win%E4%B8%B4%E7%95%8C%E5%8C%BA/</link>
+            <category term="Win32" scheme="https://self-ferry.github.io/categories/Win32/" />
             <category term="Win临界区" scheme="https://self-ferry.github.io/tags/Win%E4%B8%B4%E7%95%8C%E5%8C%BA/" />
             <pubDate>Mon, 31 May 2021 20:05:19 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;临界区&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#临界区&#34;&gt;#&lt;/a&gt; 临界区&lt;/h1&gt;
@@ -705,10 +708,10 @@ Boss 直聘&lt;br /&gt;
 &lt;figure class=&#34;highlight cpp&#34;&gt;&lt;figcaption data-lang=&#34;C++&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token macro property&#34;&gt;&lt;span class=&#34;token directive-hash&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;token directive keyword&#34;&gt;include&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&amp;lt;stdio.h&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token macro property&#34;&gt;&lt;span class=&#34;token directive-hash&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;token directive keyword&#34;&gt;include&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&amp;lt;stdlib.h&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token macro property&#34;&gt;&lt;span class=&#34;token directive-hash&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;token directive keyword&#34;&gt;include&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&amp;lt;windows.h&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; g_dwTickets &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;CRITICAL_SECTION cs&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;   &lt;span class=&#34;token comment&#34;&gt;// 创建全局变量&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;DWORD WINAPI &lt;span class=&#34;token function&#34;&gt;MyFirstThreadProc&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;LPVOID lpParameter&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token function&#34;&gt;EnterCriticalSection&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;&amp;amp;&lt;/span&gt;cs&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;     &lt;span class=&#34;token comment&#34;&gt;// 实现临界区&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token keyword&#34;&gt;while&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;g_dwTickets &lt;span class=&#34;token operator&#34;&gt;&gt;&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token function&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;还有：%d张票\n&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; g_dwTickets&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		g_dwTickets&lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;15&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token function&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;卖出一张，还有：%d张票\n&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; g_dwTickets&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;16&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;17&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;18&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token function&#34;&gt;LeaveCriticalSection&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;&amp;amp;&lt;/span&gt;cs&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;    &lt;span class=&#34;token comment&#34;&gt;// 使用临界资源&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;19&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;20&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;21&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;22&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; argc&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;char&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt; argv&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;23&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;24&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	HANDLE arrThread&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;25&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;26&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token function&#34;&gt;InitializeCriticalSection&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;&amp;amp;&lt;/span&gt;cs&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;   &lt;span class=&#34;token comment&#34;&gt;// 初始化全局变量&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;27&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;28&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	arrThread&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;CreateThread&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token constant&#34;&gt;NULL&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; MyFirstThreadProc&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token constant&#34;&gt;NULL&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token constant&#34;&gt;NULL&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;29&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	arrThread&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;CreateThread&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token constant&#34;&gt;NULL&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; MyFirstThreadProc&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token constant&#34;&gt;NULL&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token constant&#34;&gt;NULL&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;30&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;31&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token function&#34;&gt;WaitForMultipleObjects&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; arrThread&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; TRUE&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; INFINITE&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;32&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;33&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token function&#34;&gt;CloseHandle&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;arrThread&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;34&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token function&#34;&gt;CloseHandle&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;arrThread&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;35&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;36&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;37&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt; ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://self-ferry.github.io/2021/05/26/Win%E7%BA%BF%E7%A8%8B/</guid>
+            <guid isPermalink="true">https://self-ferry.github.io/Win%E7%BA%BF%E7%A8%8B/</guid>
             <title>Win线程</title>
-            <link>https://self-ferry.github.io/2021/05/26/Win%E7%BA%BF%E7%A8%8B/</link>
-            <category term="Win32编程" scheme="https://self-ferry.github.io/categories/Win32%E7%BC%96%E7%A8%8B/" />
+            <link>https://self-ferry.github.io/Win%E7%BA%BF%E7%A8%8B/</link>
+            <category term="Win32" scheme="https://self-ferry.github.io/categories/Win32/" />
             <category term="创建线程" scheme="https://self-ferry.github.io/tags/%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B/" />
             <category term="线程控制" scheme="https://self-ferry.github.io/tags/%E7%BA%BF%E7%A8%8B%E6%8E%A7%E5%88%B6/" />
             <category term="线程相关API" scheme="https://self-ferry.github.io/tags/%E7%BA%BF%E7%A8%8B%E7%9B%B8%E5%85%B3API/" />
@@ -826,10 +829,10 @@ dwStackSize，设置初始栈的大小，以字节为单位，如果为 0，那�
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://self-ferry.github.io/2021/05/20/Win%E8%BF%9B%E7%A8%8B%E3%80%81%E5%8F%A5%E6%9F%84%E8%A1%A8/</guid>
+            <guid isPermalink="true">https://self-ferry.github.io/Win%E8%BF%9B%E7%A8%8B%E3%80%81%E5%8F%A5%E6%9F%84%E8%A1%A8/</guid>
             <title>Win进程、句柄表</title>
-            <link>https://self-ferry.github.io/2021/05/20/Win%E8%BF%9B%E7%A8%8B%E3%80%81%E5%8F%A5%E6%9F%84%E8%A1%A8/</link>
-            <category term="Win32编程" scheme="https://self-ferry.github.io/categories/Win32%E7%BC%96%E7%A8%8B/" />
+            <link>https://self-ferry.github.io/Win%E8%BF%9B%E7%A8%8B%E3%80%81%E5%8F%A5%E6%9F%84%E8%A1%A8/</link>
+            <category term="Win32" scheme="https://self-ferry.github.io/categories/Win32/" />
             <category term="Windows进程" scheme="https://self-ferry.github.io/tags/Windows%E8%BF%9B%E7%A8%8B/" />
             <category term="句柄表" scheme="https://self-ferry.github.io/tags/%E5%8F%A5%E6%9F%84%E8%A1%A8/" />
             <pubDate>Thu, 20 May 2021 23:14:28 +0800</pubDate>
@@ -945,9 +948,9 @@ dwStackSize，设置初始栈的大小，以字节为单位，如果为 0，那�
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://self-ferry.github.io/2021/05/12/Pentest_Note/</guid>
+            <guid isPermalink="true">https://self-ferry.github.io/Pentest_Note/</guid>
             <title>Pentest_Note[转载]</title>
-            <link>https://self-ferry.github.io/2021/05/12/Pentest_Note/</link>
+            <link>https://self-ferry.github.io/Pentest_Note/</link>
             <category term="Pentest" scheme="https://self-ferry.github.io/categories/Pentest/" />
             <category term="Pentest" scheme="https://self-ferry.github.io/tags/Pentest/" />
             <pubDate>Wed, 12 May 2021 19:41:18 +0800</pubDate>
@@ -14027,9 +14030,9 @@ Windows的一个功能允许红队或攻击者将服务隐藏起来，从而为�
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://self-ferry.github.io/2021/05/10/Linux%E9%85%8D%E7%BD%AENginx%E6%9C%8D%E5%8A%A1/</guid>
+            <guid isPermalink="true">https://self-ferry.github.io/Linux%E9%85%8D%E7%BD%AENginx%E6%9C%8D%E5%8A%A1/</guid>
             <title>Linux配置Nginx服务</title>
-            <link>https://self-ferry.github.io/2021/05/10/Linux%E9%85%8D%E7%BD%AENginx%E6%9C%8D%E5%8A%A1/</link>
+            <link>https://self-ferry.github.io/Linux%E9%85%8D%E7%BD%AENginx%E6%9C%8D%E5%8A%A1/</link>
             <category term="Linux" scheme="https://self-ferry.github.io/categories/Linux/" />
             <category term="Nginx" scheme="https://self-ferry.github.io/tags/Nginx/" />
             <pubDate>Mon, 10 May 2021 19:21:34 +0800</pubDate>
@@ -14124,9 +14127,9 @@ Nginx 是一款轻量级的 Web 服务器 / 反向代理服务器及电子邮件
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://self-ferry.github.io/2021/05/08/%E9%87%8D%E5%AE%9A%E4%BD%8D%E8%A1%A8/</guid>
+            <guid isPermalink="true">https://self-ferry.github.io/%E9%87%8D%E5%AE%9A%E4%BD%8D%E8%A1%A8/</guid>
             <title>重定位表</title>
-            <link>https://self-ferry.github.io/2021/05/08/%E9%87%8D%E5%AE%9A%E4%BD%8D%E8%A1%A8/</link>
+            <link>https://self-ferry.github.io/%E9%87%8D%E5%AE%9A%E4%BD%8D%E8%A1%A8/</link>
             <category term="WindowsPE" scheme="https://self-ferry.github.io/categories/WindowsPE/" />
             <category term="重定位表" scheme="https://self-ferry.github.io/tags/%E9%87%8D%E5%AE%9A%E4%BD%8D%E8%A1%A8/" />
             <pubDate>Sat, 08 May 2021 21:50:11 +0800</pubDate>
@@ -14232,9 +14235,9 @@ Nginx 是一款轻量级的 Web 服务器 / 反向代理服务器及电子邮件
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://self-ferry.github.io/2021/05/07/%E5%AF%BC%E5%85%A5%E8%A1%A8/</guid>
+            <guid isPermalink="true">https://self-ferry.github.io/%E5%AF%BC%E5%85%A5%E8%A1%A8/</guid>
             <title>导入表</title>
-            <link>https://self-ferry.github.io/2021/05/07/%E5%AF%BC%E5%85%A5%E8%A1%A8/</link>
+            <link>https://self-ferry.github.io/%E5%AF%BC%E5%85%A5%E8%A1%A8/</link>
             <category term="WindowsPE" scheme="https://self-ferry.github.io/categories/WindowsPE/" />
             <category term="导入表" scheme="https://self-ferry.github.io/tags/%E5%AF%BC%E5%85%A5%E8%A1%A8/" />
             <pubDate>Fri, 07 May 2021 20:23:15 +0800</pubDate>
@@ -14242,9 +14245,9 @@ Nginx 是一款轻量级的 Web 服务器 / 反向代理服务器及电子邮件
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://self-ferry.github.io/2021/05/07/%E5%AF%BC%E5%87%BA%E8%A1%A8/</guid>
+            <guid isPermalink="true">https://self-ferry.github.io/%E5%AF%BC%E5%87%BA%E8%A1%A8/</guid>
             <title>导出表</title>
-            <link>https://self-ferry.github.io/2021/05/07/%E5%AF%BC%E5%87%BA%E8%A1%A8/</link>
+            <link>https://self-ferry.github.io/%E5%AF%BC%E5%87%BA%E8%A1%A8/</link>
             <category term="WindowsPE" scheme="https://self-ferry.github.io/categories/WindowsPE/" />
             <category term="导出表" scheme="https://self-ferry.github.io/tags/%E5%AF%BC%E5%87%BA%E8%A1%A8/" />
             <pubDate>Fri, 07 May 2021 20:23:07 +0800</pubDate>
@@ -14305,9 +14308,9 @@ NumberOfFunction 的值并不准确，它的计算结果为： &lt;code&gt;最�
 &lt;figure class=&#34;highlight cpp&#34;&gt;&lt;figcaption data-lang=&#34;C++&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token operator&#34;&gt;-&gt;&lt;/span&gt;Export Table&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;   Characteristics&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt;        &lt;span class=&#34;token number&#34;&gt;0x00000000&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;   TimeDateStamp&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt;          &lt;span class=&#34;token number&#34;&gt;0x6094F8FD&lt;/span&gt;  &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;GMT&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; Fri May &lt;span class=&#34;token number&#34;&gt;07&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;08&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;23&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;25&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;2021&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;   MajorVersion&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt;           &lt;span class=&#34;token number&#34;&gt;0x0000&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;   MinorVersion&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt;           &lt;span class=&#34;token number&#34;&gt;0x0000&lt;/span&gt;  &lt;span class=&#34;token operator&#34;&gt;-&gt;&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0.00&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;   Name&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt;                   &lt;span class=&#34;token number&#34;&gt;0x0002DF60&lt;/span&gt;  &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;2021_05_073.dll&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;   Base&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt;                   &lt;span class=&#34;token number&#34;&gt;0x00000001&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;   NumberOfFunctions&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt;      &lt;span class=&#34;token number&#34;&gt;0x00000004&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;   NumberOfNames&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt;          &lt;span class=&#34;token number&#34;&gt;0x00000004&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;   AddressOfFunctions&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt;     &lt;span class=&#34;token number&#34;&gt;0x0002DF38&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;   AddressOfNames&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt;         &lt;span class=&#34;token number&#34;&gt;0x0002DF48&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;   AddressOfNameOrdinals&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt;  &lt;span class=&#34;token number&#34;&gt;0x0002DF58&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;   Ordinal RVA        Symbol Name&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;15&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;   &lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;16&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;   &lt;span class=&#34;token number&#34;&gt;0x0001&lt;/span&gt;  &lt;span class=&#34;token number&#34;&gt;0x00001014&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;_Div@8&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;17&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;   &lt;span class=&#34;token number&#34;&gt;0x0002&lt;/span&gt;  &lt;span class=&#34;token number&#34;&gt;0x0000100F&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;_Mul@8&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;18&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;   &lt;span class=&#34;token number&#34;&gt;0x0003&lt;/span&gt;  &lt;span class=&#34;token number&#34;&gt;0x0000100A&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;_Plus@8&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;19&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;   &lt;span class=&#34;token number&#34;&gt;0x0004&lt;/span&gt;  &lt;span class=&#34;token number&#34;&gt;0x00001005&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;_Sub@8&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt; ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://self-ferry.github.io/2021/05/06/%E9%9D%99%E6%80%81%E3%80%81%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93%E3%80%81%E5%8F%A5%E6%9F%84/</guid>
+            <guid isPermalink="true">https://self-ferry.github.io/%E9%9D%99%E6%80%81%E3%80%81%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93%E3%80%81%E5%8F%A5%E6%9F%84/</guid>
             <title>静态、动态链接库、句柄</title>
-            <link>https://self-ferry.github.io/2021/05/06/%E9%9D%99%E6%80%81%E3%80%81%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93%E3%80%81%E5%8F%A5%E6%9F%84/</link>
+            <link>https://self-ferry.github.io/%E9%9D%99%E6%80%81%E3%80%81%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93%E3%80%81%E5%8F%A5%E6%9F%84/</link>
             <category term="WindowsPE" scheme="https://self-ferry.github.io/categories/WindowsPE/" />
             <category term="静态链接库" scheme="https://self-ferry.github.io/tags/%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93/" />
             <category term="动态链接库" scheme="https://self-ferry.github.io/tags/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93/" />
@@ -14477,9 +14480,9 @@ __stdcall 在你的函数声明中去掉就可以了，更详细的区别可以�
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://self-ferry.github.io/2021/05/04/%E6%96%B0%E5%A2%9E%E8%8A%82/</guid>
+            <guid isPermalink="true">https://self-ferry.github.io/%E6%96%B0%E5%A2%9E%E8%8A%82/</guid>
             <title>新增节</title>
-            <link>https://self-ferry.github.io/2021/05/04/%E6%96%B0%E5%A2%9E%E8%8A%82/</link>
+            <link>https://self-ferry.github.io/%E6%96%B0%E5%A2%9E%E8%8A%82/</link>
             <category term="WindowsPE" scheme="https://self-ferry.github.io/categories/WindowsPE/" />
             <category term="新增节" scheme="https://self-ferry.github.io/tags/%E6%96%B0%E5%A2%9E%E8%8A%82/" />
             <pubDate>Tue, 04 May 2021 04:49:52 +0800</pubDate>
@@ -14539,9 +14542,9 @@ __stdcall 在你的函数声明中去掉就可以了，更详细的区别可以�
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://self-ferry.github.io/2021/05/02/%E6%89%A9%E5%A4%A7%E8%8A%82/</guid>
+            <guid isPermalink="true">https://self-ferry.github.io/%E6%89%A9%E5%A4%A7%E8%8A%82/</guid>
             <title>扩大节</title>
-            <link>https://self-ferry.github.io/2021/05/02/%E6%89%A9%E5%A4%A7%E8%8A%82/</link>
+            <link>https://self-ferry.github.io/%E6%89%A9%E5%A4%A7%E8%8A%82/</link>
             <category term="WindowsPE" scheme="https://self-ferry.github.io/categories/WindowsPE/" />
             <category term="扩大节" scheme="https://self-ferry.github.io/tags/%E6%89%A9%E5%A4%A7%E8%8A%82/" />
             <pubDate>Sun, 02 May 2021 17:26:17 +0800</pubDate>
@@ -14571,9 +14574,9 @@ __stdcall 在你的函数声明中去掉就可以了，更详细的区别可以�
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://self-ferry.github.io/2021/05/02/%E5%9C%A8%E7%A9%BA%E7%99%BD%E5%8C%BA%E6%B7%BB%E5%8A%A0%E4%BB%A3%E7%A0%81/</guid>
+            <guid isPermalink="true">https://self-ferry.github.io/%E5%9C%A8%E7%A9%BA%E7%99%BD%E5%8C%BA%E6%B7%BB%E5%8A%A0%E4%BB%A3%E7%A0%81/</guid>
             <title>在空白区添加代码</title>
-            <link>https://self-ferry.github.io/2021/05/02/%E5%9C%A8%E7%A9%BA%E7%99%BD%E5%8C%BA%E6%B7%BB%E5%8A%A0%E4%BB%A3%E7%A0%81/</link>
+            <link>https://self-ferry.github.io/%E5%9C%A8%E7%A9%BA%E7%99%BD%E5%8C%BA%E6%B7%BB%E5%8A%A0%E4%BB%A3%E7%A0%81/</link>
             <category term="WindowsPE" scheme="https://self-ferry.github.io/categories/WindowsPE/" />
             <category term="空白区添加代码" scheme="https://self-ferry.github.io/tags/%E7%A9%BA%E7%99%BD%E5%8C%BA%E6%B7%BB%E5%8A%A0%E4%BB%A3%E7%A0%81/" />
             <pubDate>Sun, 02 May 2021 16:58:55 +0800</pubDate>
@@ -14609,9 +14612,9 @@ MessageBox - ImageBase -508 - 5 =  75F2 1423&lt;br /&gt;
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://self-ferry.github.io/2021/05/02/RVA%E4%B8%8EFOA%E8%BD%AC%E6%8D%A2/</guid>
+            <guid isPermalink="true">https://self-ferry.github.io/RVA%E4%B8%8EFOA%E8%BD%AC%E6%8D%A2/</guid>
             <title>RVA与FOA转换</title>
-            <link>https://self-ferry.github.io/2021/05/02/RVA%E4%B8%8EFOA%E8%BD%AC%E6%8D%A2/</link>
+            <link>https://self-ferry.github.io/RVA%E4%B8%8EFOA%E8%BD%AC%E6%8D%A2/</link>
             <category term="WindowsPE" scheme="https://self-ferry.github.io/categories/WindowsPE/" />
             <category term="RVA与FOA" scheme="https://self-ferry.github.io/tags/RVA%E4%B8%8EFOA/" />
             <pubDate>Sun, 02 May 2021 16:05:32 +0800</pubDate>

